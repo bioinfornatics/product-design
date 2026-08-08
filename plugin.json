@@ -1,0 +1,24 @@
+{
+  "name": "product-design",
+  "version": "0.1.0",
+  "description": "Turn early product ideas, live URLs, and static screenshots into prototypes teams can review, refine, and carry forward. Ported from OpenAI Codex product-design plugin.",
+  "license": "MIT",
+  "author": {
+    "name": "OpenAI (ported to Goose)",
+    "url": "https://github.com/openai/role-specific-plugins"
+  },
+  "repository": "https://github.com/openai/role-specific-plugins/tree/main/plugins/product-design",
+  "homepage": "https://github.com/openai/role-specific-plugins",
+  "keywords": [
+    "prototype",
+    "product-design",
+    "prototyping",
+    "ux",
+    "wireframes",
+    "design-systems",
+    "frontend",
+    "research",
+    "audit",
+    "ideation"
+  ]
+}
