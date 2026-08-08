@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "product_design",
+  "project_id": "927f4f42-5915-4b33-8b31-bd67a7ece599"
+}
