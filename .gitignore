@@ -3,5 +3,9 @@
 .dolt/
 *.db
 .beads-credential-key
+# Local evaluation prompts, traces, reports, and generated review workspaces.
+# Keep the reusable harness in scripts/evaluate-routing.py tracked.
 evaluations/
+*-workspace/
 __pycache__/
+*.py[cod]

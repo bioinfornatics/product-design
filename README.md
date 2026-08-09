@@ -36,6 +36,26 @@ For an explicit combined request, load `product-design:index`, then `product-des
 
 Saved context is optional and Goose-local under `$GOOSE_HOME/.local/state/product-design/` (default Goose home: `~/.config/goose`). The plugin does not require Codex state, `@Browser`, `@Sites`, or `terminal.local`.
 
+## Local routing evaluation
+
+Evaluation prompts, raw Goose traces, reports, and review workspaces are local artifacts and are ignored by Git. Keep them under `evaluations/` (or a `*-workspace/` directory); do not commit them because traces may include conversation or runtime data.
+
+Use the tracked, non-mutating harness to grade existing traces:
+
+```bash
+python3 scripts/evaluate-routing.py evaluations/<run>/run-*.stdout.json
+```
+
+Or replay a local prompt three times and write the evidence beneath the ignored `evaluations/` directory:
+
+```bash
+python3 scripts/evaluate-routing.py --run \
+  --prompt-file evaluations/prompts/routing.txt \
+  --runs 3
+```
+
+The harness distinguishes an attempted skill load from successful skill use, records every Apps operation (including deletion), and exits nonzero unless every fresh run observes the required order: `product-design:index`, then `product-design:get-context`, then Apps. Replays can still invoke runtime tools, so use a prompt and account containing no mutable production artifact.
+
 ## Installation
 
 ```bash
