@@ -1,0 +1,10 @@
+{
+  "beads.pathToBd": "bd",
+  "beads.projects": [
+    "${workspaceFolder}"
+  ],
+  "beads.refreshInterval": 3000,
+  "beads.renderMarkdown": true,
+  "beads.userId": "${env:USER}",
+  "beads.tooltipHoverDelay": 750
+}
