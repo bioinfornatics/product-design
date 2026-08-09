@@ -19,6 +19,65 @@ Turn early product ideas, live URLs, and static screenshots into prototypes team
 | `product-design:design-qa` | Compare prototype implementation against its source visual target |
 | `product-design:share` | Deploy a prototype and return a shareable URL |
 
+## How the skills work together
+
+The plugin follows a **route → clarify → explore or inspect → build → verify → share** workflow:
+
+```text
+product-design:index
+        ↓
+product-design:get-context
+        ↓
+research / audit / ideate
+        ↓
+image-to-code or url-to-code
+        ↓
+design-qa
+        ↓
+share
+```
+
+Not every request needs every step. `product-design:index` is the entry point and router; it selects the focused skill rather than doing that skill's work.
+
+### Common flow
+
+1. **Route the request.** Start with `product-design:index` whenever Product Design or the plugin is explicitly named.
+2. **Clarify the brief.** For design, prototype, redesign, or build work, `product-design:get-context` confirms the design target and intended user outcome. It asks one focused question only when either is missing.
+3. **Choose a direction.** If there is no selected visual target, run `product-design:ideate`, present exactly three visual options, and wait for the user to choose one before building.
+4. **Build from the source.** Use `product-design:image-to-code` for a screenshot, Figma frame, mockup, generated concept, or other image. Use `product-design:url-to-code` for a faithful clone of a live URL.
+5. **Verify fidelity.** After implementation, capture the rendered prototype and use `product-design:design-qa` to compare it with the source visual.
+6. **Share when requested.** Use `product-design:share` only when the user asks to deploy, publish, host, or create a shareable link. A local build is not a deployment.
+
+The default path for a new interface is therefore:
+
+```text
+index → get-context → ideate → user selects an option
+      → image-to-code → design-qa → share (if requested)
+```
+
+### Choosing the focused skill
+
+| Request | Recommended flow |
+|---|---|
+| New interface without a visual reference | `index → get-context → ideate → image-to-code → design-qa` |
+| Build from a screenshot, mockup, or Figma frame | `index → get-context → image-to-code → design-qa` |
+| Faithfully clone a live website | `index → get-context → url-to-code → design-qa` |
+| Redesign or create something “like” a URL | `index → get-context → capture source → ideate → image-to-code → design-qa` |
+| Review an existing screen, flow, or journey | `index → audit` |
+| Audit and then improve an experience | `index → audit → get-context → ideate/build → design-qa` |
+| Research user pain or workflow friction | `index → research` |
+| Save or recall preferences and references | `index → user-context` |
+| Deploy a finished prototype | Append `share` after implementation and QA |
+
+### Important distinctions
+
+- **`audit` vs. `design-qa`:** use `audit` for user-facing UX, visual-design, and accessibility critique. Use `design-qa` to compare a coded prototype with its visual source.
+- **Clone vs. redesign:** “clone this URL” routes to `url-to-code`; “redesign this” or “make something like this URL” requires context and visual ideation first.
+- **`research` vs. `audit`:** use `research` to discover broader, source-grounded user problems; use `audit` to inspect a specific existing experience.
+- **`user-context` vs. `get-context`:** `user-context` manages durable saved preferences and references, while `get-context` establishes the brief for the current task.
+- **No visual target, no build:** a complete brief or permission to make assumptions does not replace visual selection. Run `ideate` and wait for the user's choice.
+- **Verification requires evidence:** do not claim visual QA without a rendered capture, and do not claim sharing without a working deployment URL.
+
 ## Runtime Dependencies
 
 This plugin requires the following tools available to goose:
