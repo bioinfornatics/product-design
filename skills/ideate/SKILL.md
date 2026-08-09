@@ -1,6 +1,6 @@
 ---
 name: ideate
-description: "Generate image-based alternatives, remixes, or new design directions from a Product Design brief. Use when the user asks for design variants, visual exploration, remixes, or image-generated approaches from provided context."
+description: "Focused Product Design ideation workflow. Use after product-design:index and get-context have established and played back the brief; requires an available image-generation capability and hands a user-selected visual option to image-to-code or Goose Apps, never directly to implementation before selection."
 ---
 
 # Ideate
@@ -16,7 +16,7 @@ Follow the shared Product Design routing guidance in [../index/SKILL.md](../inde
 
 ## User Context
 
-Before starting, load [../user-context/SKILL.md](../user-context/SKILL.md) and run its preflight script when local shell access is available.
+Use saved context only when it is relevant and available under the Goose Product Design state directory; missing saved context is not a blocker.
 
 Attach provided product URLs, Figma files, screenshots, reference images, codebase paths, Storybook, tokens, design systems, brand assets, component refs, browser preferences, and share targets to the Image Gen generations to align them to the design brief.
 
@@ -80,7 +80,7 @@ Before generating images:
 Rules you must follow:
 
 - Use the Image Gen prompt below.
-- Use the built-in Image Gen tool.
+- Use an image-generation tool exposed in the current Goose session; do not assume a tool named “built-in Image Gen” exists. If none is available, stop and name the missing capability.
 - Generate exactly three independent images unless the user overrides the count.
 - Launch each Image Gen call independently. Do not batch Image Gen calls with `Promise.all`, collect them into an ordered array, or replay them in request order.
 - Each option must be its own Image Gen result. Do not put multiple ideas in one image.

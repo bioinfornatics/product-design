@@ -10,7 +10,7 @@ from pathlib import Path
 
 SKILL_ROOT = Path(__file__).resolve().parents[1]
 TEMPLATE_PATH = SKILL_ROOT / "plugin-author-config/user-context-template.md"
-PLUGIN_STATE_DIR = Path("state/plugins/product-design")
+PLUGIN_STATE_DIR = Path(".local/state/product-design")
 
 CONTEXT_NOTE = """<!--
 Product Design context. This file is user-editable.
@@ -24,15 +24,15 @@ Saved references should include Date Added, Useful Context, and Future Use when 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Create $CODEX_HOME/state/plugins/product-design/user-context.md "
+            "Create $GOOSE_HOME/.local/state/product-design/user-context.md "
             "from the bundled Product Design template."
         )
     )
     parser.add_argument(
-        "--codex-home",
+        "--goose-home",
         type=Path,
         default=None,
-        help="Codex home directory. Defaults to $CODEX_HOME or ~/.codex.",
+        help="Goose home directory. Defaults to $GOOSE_HOME or ~/.config/goose.",
     )
     parser.add_argument(
         "--state-dir",
@@ -48,16 +48,16 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def resolve_state_dir(codex_home: Path | None, state_dir: Path | None) -> Path:
+def resolve_state_dir(goose_home: Path | None, state_dir: Path | None) -> Path:
     if state_dir is not None:
         return state_dir.expanduser().resolve()
-    home = codex_home or Path(os.environ.get("CODEX_HOME", "~/.codex"))
+    home = goose_home or Path(os.environ.get("GOOSE_HOME", "~/.config/goose"))
     return (home.expanduser() / PLUGIN_STATE_DIR).resolve()
 
 
 def main() -> int:
     args = parse_args()
-    state_dir = resolve_state_dir(args.codex_home, args.state_dir)
+    state_dir = resolve_state_dir(args.goose_home, args.state_dir)
     context_path = state_dir / "user-context.md"
 
     if not TEMPLATE_PATH.exists():

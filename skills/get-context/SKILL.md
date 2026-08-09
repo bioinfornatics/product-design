@@ -1,6 +1,6 @@
 ---
 name: get-context
-description: "Mandatory design-brief gate for clarifying the product and outcome. Use before ideation, image-to-code builds, redesigns, or product UI work to clarify missing product information and play back the brief before proceeding."
+description: "Product Design brief gate. After product-design:index, load before ideation, image-to-code, redesign, Product Design + Goose Apps, or product UI build work; require a clear design target and intended user outcome, play back the brief, then hand off to the named focused workflow before any rendering tool."
 ---
 
 # Get Context
@@ -24,7 +24,7 @@ Hard boundary: do not implement UI, scaffold a prototype, start a server, or cre
 
 ## User Context
 
-Before starting, load [../user-context/SKILL.md](../user-context/SKILL.md) and run its preflight script when local shell access is available.
+Saved user context is optional. Load [../user-context/SKILL.md](../user-context/SKILL.md) only when the user asks to save/recall context or a configured Product Design state directory is known to contain relevant context.
 
 Use saved product URLs, Figma files, screenshots, reference images, codebase paths, Storybook, tokens, design systems, brand assets, component refs, browser preferences, and share targets as grounding material when relevant.
 

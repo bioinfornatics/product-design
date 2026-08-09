@@ -1,6 +1,6 @@
 ---
 name: index
-description: "Use when Product Design is explicitly invoked, or when the user's main goal is to explore a design, research UX, audit or critique a flow, faithfully clone a visual source, check a built design, or share a prototype. Do not use Product Design for ordinary implementation unless the user explicitly asks for it."
+description: "Primary Product Design router. Load this exact skill first whenever the user explicitly names Product Design or the product-design plugin, including requests that also name Goose Apps. Also route design exploration, UX research/audit, visual-source cloning, prototype QA, and sharing here; ordinary UI implementation stays outside unless Product Design is explicit."
 ---
 
 # Skill Purpose
@@ -29,9 +29,9 @@ Speak to the user in a warm, fun, and collaborative way, prioritizing pithy expl
 
 ## Router Only
 
-This index chooses the next Product Design skill. It does not do that skill's work.
+This index chooses the next Product Design skill. It does not do that skill's work. An explicit `Product Design`, `product-design`, or Product Design plugin mention always enters through `product-design:index`, even when Goose Apps or another tool is named in the same request. After the index is loaded, load the focused skill by its full catalogue name, such as `product-design:get-context`.
 
-If the user names a focused skill, read that exact skill first. Do not replace it with a related skill.
+If the user names a focused Product Design skill, load the index first and then that exact focused skill. Do not replace it with a related skill.
 
 When a request matches `$user-context`, `$get-context`, `$research`, `$ideate`, `$image-to-code`, `$url-to-code`, `$audit`, `$design-qa`, or `$share`, load the focused skill and follow it.
 
@@ -43,31 +43,26 @@ For clone or recreation of a live URL, load `$url-to-code` directly.
 
 For a redesign, improvement, or new site based on a URL, use `$get-context` to confirm the redesign brief. `Like <URL>` means redesign, not clone. Capture the current site with screenshots, attach those screenshots to the `$ideate` Image Gen calls, then execute `$ideate`.
 
-## Standard Chat Mode
+## Goose Capability Preflight
 
-If Product Design is invoked in standard ChatGPT chat without Work Mode tools, do not start the workflow. Tell the user once:
+Do not assume Codex Desktop, ChatGPT Work Mode, `@Browser`, `@Sites`, a cloud browser, or `terminal.local` exists in Goose. Before a workflow needs capture, image generation, app rendering, or deployment:
 
-```text
-Chat isn't supported by the Product Design plugin. Please switch to the Work tab and paste this prompt in for the full experience.
-```
+1. Inspect the tools currently exposed by Goose. Tool names vary by installed extension, so route by capability rather than a hard-coded vendor name.
+2. A browser-capable tool must be able to open or capture the required source or rendered implementation. A hosting-capable tool must return a working URL. Goose Apps can create or iterate a sandboxed app, but it is not evidence that a browser comparison or deployment occurred.
+3. If a required capability is absent, name the missing capability and use a fallback only when the workflow permits it. Never claim visual verification, publishing, or sharing from build success or app creation alone.
 
-Do not ask design-brief questions, generate options, or begin build work until the user moves to Work Mode.
+## Product Design + Goose Apps Contract
 
-## Browser Choice
+When the request explicitly combines Product Design and Goose Apps, preserve this order:
 
-In ChatGPT Work Mode, always use the cloud browser available to that chat. If it is not initially visible, load the Browser skill and follow its setup instructions before concluding it is unavailable.
+1. Load `product-design:index`.
+2. Load `product-design:get-context`, resolve the design target and intended user outcome, and play back the brief.
+3. Load and complete the focused design workflow. For a new interface without a selected visual target, this is `product-design:ideate`; wait for a selected generated option before build.
+4. Only then use Goose Apps as the rendering target (`listApps` to inspect existing apps, then `createApp` or `iterateApp` as appropriate). Do not call Apps in parallel with skill loading or use Apps to skip context, visual selection, or design decisions.
+5. Capture the rendered result with an available browser-capable tool and run `product-design:design-qa` before handoff. If capture is unavailable, report QA as blocked.
+6. Load `product-design:share` only when the user requests a shareable deployment; Apps creation is not a deployment URL.
 
-In Codex Desktop, use `@Browser` and explicitly select the in-app surface with `agent.browsers.get("iab")`.
-
-In Codex Desktop, use Chrome only when the user asks for it, the task needs an existing Chrome tab/login/profile/extension, or the in-app Browser is unavailable or blocked.
-
-If ChatGPT Work Mode does not expose both the cloud browser and `@Sites` after preflight, tell the user once:
-
-```text
-Cloud browser and Sites are not available in this chat. I can still build a single-page HTML prototype, but I cannot visually verify it or publish a live checkpoint, so fidelity and interaction polish may be lower. Continue with that fallback?
-```
-
-Only proceed after the user agrees. Do not claim the fallback is verified, open, hosted, or ready to share. This fallback applies to image-to-code and new prototypes. It does not apply to URL-to-code when browser capture is required.
+A conceptual question such as “how do you see it?” may stop after the brief, workflow recommendation, and explicit next question. Do not create or mutate an app unless the user asked to proceed or the brief clearly requests an implementation now.
 
 ## No Visual Target, No Build
 
@@ -100,7 +95,7 @@ For setup-only requests, do not inspect the workspace, install dependencies, sca
 
 When answering "what can you do?", "how do I get started?", or similar broad Product Design questions, load `$user-context` and follow its persistence availability check before offering saved-context onboarding.
 
-Before routing to Product Design workflows, load [$user-context](../user-context/SKILL.md) and run its preflight script when local shell access is available.
+Saved user context is optional in Goose. Load `$user-context` only when the user asks to save/recall context or when relevant saved context is known to exist; do not make its preflight a mandatory gate for every workflow.
 
 ## Browser Annotation Updates
 
@@ -144,7 +139,7 @@ Implement a selected visual target as a faithful, responsive, interactive fronte
 
 ### $share
 
-Deploy a runnable prototype and return a shareable URL using the user's preferred target when available. Route here when the user asks to share, deploy, publish, host, create a link, or make a prototype shareable with `@Sites`, `@Vercel`, or another deployment tool.
+Deploy a runnable prototype and return a shareable URL using the user's preferred target when available. Route here when the user asks to share, deploy, publish, host, create a link, or make a prototype shareable with an available hosting tool.
 
 ### $design-qa
 

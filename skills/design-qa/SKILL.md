@@ -1,6 +1,6 @@
 ---
 name: design-qa
-description: "Internal prototype QA helper. Use only after a Product Design prototype, URL-to-code build, or image-to-code build has a source visual target and a rendered implementation to compare before handoff. Do not use for broad UX critique, design critique, product audits, or flow reviews; route those user-facing requests to audit."
+description: "Blocking Product Design handoff gate after image-to-code, URL-to-code, or Goose Apps rendering. Requires an openable source visual and browser-captured rendered implementation at a comparable state; write passed/blocked evidence before handoff. Broad UX critique belongs to audit."
 ---
 
 # Design QA
@@ -49,7 +49,7 @@ A later pass must identify the earlier findings, the fixes made, and the post-fi
 
 2. Capture evidence.
    - For Figma, use design context and screenshot tools when available.
-   - For web/app implementations, follow the Browser Choice rule in [../index/SKILL.md](../index/SKILL.md#browser-choice). In ChatGPT Work Mode, follow the active build skill's "Previewing prototypes in ChatGPT Work Mode" section before opening a local implementation. Then capture screenshots at the intended viewport.
+   - For web/app implementations, follow the Browser Choice rule in [../index/SKILL.md](../index/SKILL.md#browser-choice). Follow the active build skill's “Previewing prototypes in Goose” section before opening a local implementation. Then capture screenshots at the intended viewport.
    - Capture additional states when relevant: mobile/desktop, hover/focus/active, empty/loading/error, dark/light, and key responsive breakpoints.
    - Save paths or URLs for screenshots when available so findings can cite evidence.
    - Capturing screenshots is not enough. Put the source image and the implementation screenshot together in the same comparison input before judging.
@@ -138,7 +138,7 @@ When this skill is used before handoff, save the latest QA report as project-roo
 - comparison history for every P0/P1/P2 iteration: earlier findings, fixes made, and post-fix visual evidence
 - final result
 
-For ChatGPT Work Mode builds, `design-qa.md` must include the browser-rendered implementation screenshot, viewport, primary interactions tested, console errors checked, and final result. If browser-rendered evidence is missing, `final result` is `blocked`.
+For Goose builds, `design-qa.md` must include the browser-rendered implementation screenshot, viewport, primary interactions tested, console errors checked when supported, and final result. If browser-rendered evidence is missing, `final result` is `blocked`.
 
 `final result` must be exactly `passed` or `blocked`.
 

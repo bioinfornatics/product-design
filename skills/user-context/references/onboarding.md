@@ -31,7 +31,7 @@ Send any of those now, or say `skip` and I'll work from each task's source.
 When the user provides references, save them to:
 
 ```text
-$CODEX_HOME/state/plugins/product-design/user-context.md
+$GOOSE_HOME/.local/state/product-design/user-context.md
 ```
 
 Create the file first if needed:
@@ -45,7 +45,7 @@ Use the category structure from `../SKILL.md`.
 If the user provides screenshots or reference images, copy them into:
 
 ```text
-$CODEX_HOME/state/plugins/product-design/assets/
+$GOOSE_HOME/.local/state/product-design/assets/
 ```
 
 Give saved images clear names that say what they show, such as `assets/payment-sheet-mobile-error-state.png` or `assets/account-menu-open-state.png`.

@@ -13,7 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-PLUGIN_STATE_DIR = Path("state/plugins/product-design")
+PLUGIN_STATE_DIR = Path(".local/state/product-design")
 DEFAULT_MAX_CONTEXT_BYTES = 2_000_000
 
 
@@ -22,10 +22,10 @@ def parse_args() -> argparse.Namespace:
         description="Read Product Design user-context.md and return saved context as JSON."
     )
     parser.add_argument(
-        "--codex-home",
+        "--goose-home",
         type=Path,
         default=None,
-        help="Codex home directory. Defaults to $CODEX_HOME or ~/.codex.",
+        help="Goose home directory. Defaults to $GOOSE_HOME or ~/.config/goose.",
     )
     parser.add_argument(
         "--state-dir",
@@ -42,10 +42,10 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def resolve_state_dir(codex_home: Path | None, state_dir: Path | None) -> Path:
+def resolve_state_dir(goose_home: Path | None, state_dir: Path | None) -> Path:
     if state_dir is not None:
         return state_dir.expanduser().resolve()
-    home = codex_home or Path(os.environ.get("CODEX_HOME", "~/.codex"))
+    home = goose_home or Path(os.environ.get("GOOSE_HOME", "~/.config/goose"))
     return (home.expanduser() / PLUGIN_STATE_DIR).resolve()
 
 
@@ -149,7 +149,7 @@ def missing_payload(state_dir: Path, context_path: Path) -> dict[str, Any]:
 
 def main() -> int:
     args = parse_args()
-    state_dir = resolve_state_dir(args.codex_home, args.state_dir)
+    state_dir = resolve_state_dir(args.goose_home, args.state_dir)
     context_path = state_dir / "user-context.md"
 
     if not context_path.exists():

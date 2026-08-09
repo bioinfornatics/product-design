@@ -1,6 +1,6 @@
 ---
 name: user-context
-description: Load or manage Product Design's saved user context. Use when the user asks to set up Product Design, get started, onboard, save product or design sources, see what Product Design remembers, update saved context, or remember Product Design preferences. Examples include product URLs, Figma files, screenshots, reference images, codebase paths, Storybook, tokens, design systems, brand assets, and general product/design notes.
+description: Load or manage optional Product Design context stored locally for Goose. Use only when the user asks to set up, save, recall, inspect, or update durable product/design references or preferences; ordinary Product Design workflows do not require persisted context.
 ---
 
 # User Context
@@ -22,7 +22,7 @@ Use this skill when the user asks to:
 
 - Refer to the Plugin router [../index/SKILL.md](../index/SKILL.md) before proceeding.
 - Follow [../../references/critical-overrides.md](../../references/critical-overrides.md).
-- Before offering onboarding or saving context for future conversations, confirm that local shell access is available, `$CODEX_HOME` can be resolved, and `$CODEX_HOME/state/plugins/product-design/` exists and is writable or can be created in a writable parent directory. If `user-context.md` already exists, confirm that it is writable too.
+- Before offering onboarding or saving context for future conversations, confirm that local shell access is available, `$GOOSE_HOME` can be resolved (default `~/.config/goose`), and `$GOOSE_HOME/.local/state/product-design/` exists and is writable or can be created in a writable parent directory. If `user-context.md` already exists, confirm that it is writable too.
 - If any check cannot be completed or fails, persistent context is unavailable. Do not offer saved-context onboarding or claim that new context was saved for future conversations. If the user asks to save something, explain that it can be used in the current conversation but not saved for future conversations.
 
 ## Saved User Context
@@ -40,13 +40,13 @@ When a workflow needs visual grounding, attach or include relevant saved screens
 Saved context lives here:
 
 ```text
-$CODEX_HOME/state/plugins/product-design/user-context.md
+$GOOSE_HOME/.local/state/product-design/user-context.md
 ```
 
 Saved screenshots and reference images live next to it:
 
 ```text
-$CODEX_HOME/state/plugins/product-design/assets/
+$GOOSE_HOME/.local/state/product-design/assets/
 ```
 
 If the file does not exist, continue normally unless the user asks to set up Product Design, save context, or the current task is blocked by missing product/design context.
@@ -56,7 +56,7 @@ If the file does not exist, continue normally unless the user asks to set up Pro
 When any Product Design workflow needs saved context, run:
 
 ```bash
-python3 scripts/user_context_preflight.py
+python3 skills/user-context/scripts/user_context_preflight.py
 ```
 
 Use the returned saved entries as the starting context for the task.
@@ -78,7 +78,7 @@ Do not inspect the workspace, install dependencies, scaffold a prototype, genera
 After the user provides references to save, run:
 
 ```bash
-python3 scripts/init_user_context.py
+python3 skills/user-context/scripts/init_user_context.py
 ```
 
 Then add the references to the created `user-context.md`.

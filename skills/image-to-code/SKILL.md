@@ -1,6 +1,6 @@
 ---
 name: image-to-code
-description: "Implement a selected image, screenshot, mockup, or Image Gen reference as a faithful, responsive frontend."
+description: "Focused Product Design build workflow. Use only after product-design:index/get-context and an unambiguous selected visual target; render to the requested frontend target or Goose Apps, then hand off to design-qa with source and rendered evidence before completion."
 ---
 
 # Image to Code
@@ -14,27 +14,17 @@ You're tasked with translating the visual target image into a high-quality, inte
 
 ## User Context
 
-Before starting, load [../user-context/SKILL.md](../user-context/SKILL.md) and run its preflight script when local shell access is available.
+Use saved context only when relevant and available; missing saved context does not block a build with a complete brief and selected visual target.
 
 Use saved product URLs, Figma files, screenshots, reference images, codebase paths, Storybook, tokens, design systems, brand assets, component refs, browser preferences, and share targets as grounding material when relevant.
 
 Do not inspect every saved reference. Inspect only what the current task needs.
 
-### [IMPORTANT] Previewing prototypes in ChatGPT Work Mode
+### Previewing prototypes in Goose
 
-Starting `sites-preview` is not verification. Verification requires opening `http://terminal.local:4173/` in the cloud browser, inspecting the rendered page, testing primary interactions, checking browser console errors, and passing design QA.
+Build success, HTTP health, Goose Apps creation, and deployment success are not visual verification. Use a browser-capable tool exposed in the current Goose session to open the rendered implementation, inspect it at the target viewport, exercise primary interactions, check console errors when supported, and capture evidence for design QA.
 
-Do not substitute HTTP health, build success, preview-service status, or deployment success for browser verification. If the cloud browser cannot be used, report verification as blocked.
-
-For local prototype verification and design QA in ChatGPT Work Mode:
-
-1. Install dependencies if needed. The project must have an npm `dev` script.
-2. `sites-preview` runs `npm run dev -- --host 0.0.0.0 --port 4173 --strictPort`. The `dev` script must accept those flags.
-3. For Vite or Vinext projects, use `"dev": "vite"`. Do not use `vinext dev`. Configure Vite with `server.host: "0.0.0.0"` and `server.allowedHosts: ["terminal.local"]`.
-4. From the site root, run `sites-preview start "$PWD"`.
-5. Open `http://terminal.local:4173/` in the cloud browser. Do not use `localhost`, `127.0.0.1`, `0.0.0.0`, HTTPS, or another port.
-6. Verify the rendered site and its primary interactions before reporting completion.
-7. Never mention `terminal.local` or output that URL to the user. Deploy a checkpoint with `@Sites` and give the user only the deployed checkpoint URL.
+If no browser-capable tool is available, record `final result: blocked` in `design-qa.md`; do not claim the prototype is visually verified. Do not assume `sites-preview`, `terminal.local`, `@Browser`, or `@Sites` exists. Use the local or Apps preview URL actually returned by the available runtime, and expose it to the user only when it is a valid user-accessible URL.
 
 ### Mobile prototypes
 
@@ -72,11 +62,11 @@ CRITICAL: THIS IS NOT GUIDANCE. THIS IS A CHECKLIST TO COMPLETE.
 
     Rules:
 
-    - CRITICAL RULE: Do not create custom div art, CSS art, inline SVGs, handcrafted SVGs, HTML element drawings, div/span shapes, CSS drawings, gradients, emoji, or text glyphs instead of real icons and image assets ever. Use the built-in Image Gen tool for images and the closest matching icon library for icons.
+    - CRITICAL RULE: Do not create custom div art, CSS art, inline SVGs, handcrafted SVGs, HTML element drawings, div/span shapes, CSS drawings, gradients, emoji, or text glyphs instead of real icons and image assets ever. Use an available image-generation tool for images and the closest matching icon library for icons.
     - If text is part of an image asset, keep it in the image asset. Examples include full bleed hero images, signs, posters, packaging, storefronts, article art, and illustrations where the type belongs to the visual itself. Do not crop the background image and recreate that text with transparent text boxes, HTML, CSS, or separate overlay layers unless the source clearly shows editable UI text sitting on top of the image.
     - Do not use generic placeholders where the reference implies custom visual content.
     - Generated assets must share the same art direction, palette, rendering style, and design language as the reference mockup.
-    - The built-in Image Gen tool does not support transparent images; post-process generated assets when transparency is required.
+    - If the available image-generation tool lacks transparency support, post-process generated assets when transparency is required.
 
 ### Parallel asset production
 
@@ -94,7 +84,7 @@ Prioritize critical above-the-fold assets first, then reuse agents for supportin
 
     Rules:
 
-    - CRITICAL RULE: Do not create custom inline SVGs, handcrafted SVGs, HTML element drawings, div/span shapes, CSS drawings, gradients, emoji, or text glyphs. Use the built-in Image Gen tool to generate assets and use the closest matching icon library for icons.
+    - CRITICAL RULE: Do not create custom inline SVGs, handcrafted SVGs, HTML element drawings, div/span shapes, CSS drawings, gradients, emoji, or text glyphs. Use an available image-generation tool to generate assets and use the closest matching icon library for icons.
 
 9. Build the app starting with [../../references/local-prototype-preflight.md](../../references/local-prototype-preflight.md). Unless the user asks for a static mock, full production behavior, or a different scope, bring the app or website to life with:
 
@@ -130,6 +120,6 @@ Prioritize critical above-the-fold assets first, then reuse agents for supportin
 
     - Only hand off after [../design-qa/SKILL.md](../design-qa/SKILL.md) passes.
     - Keep the prototype running locally.
-    - In Codex Desktop, provide the clickable local URL. In ChatGPT Work Mode, deploy a checkpoint with `@Sites` and provide only its deployed URL; never output `terminal.local`.
+    - Provide a valid user-accessible local or deployed URL only when the active Goose runtime returned one. Goose Apps creation alone is not a deployment; use `$share` for requested hosting.
     - After the prototype link, use the shared build handoff from `critical-overrides.md`. Do not add a different completion message.
     - Include the post-build iteration and share nudge from [../../references/critical-overrides.md](../../references/critical-overrides.md#build-handoff).
