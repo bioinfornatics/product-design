@@ -2,6 +2,10 @@
 
 This project uses **bd** (beads) for issue tracking. Run `bd prime` for full workflow context.
 
+## Goose Discovery
+
+Goose only auto-discovers content under `.agents/skills/`, `.agents/plugins/`, and `.agents/agents/`. Do not place standalone context or instruction files directly under `.agents/`; put repository-wide instructions in `AGENTS.md` and workflow-specific guidance in the appropriate skill or agent.
+
 ## Quick Reference
 
 ```bash
