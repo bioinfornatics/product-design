@@ -55,7 +55,7 @@ Test every modified executable directly, in addition to plugin validation:
 - Node.js:
 
   ```bash
-  node --check scripts/bootstrap-prototype.mjs
+  /usr/bin/node --check "$PWD/scripts/bootstrap-prototype.mjs"
   ```
 
   Exercise bootstrap behavior only in a disposable temporary directory. Verify generated paths and files, idempotence when applicable, and nonzero exits for invalid input. Do not bootstrap over a real project during evaluation.
