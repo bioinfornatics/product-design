@@ -1,6 +1,6 @@
 # Product Design (Goose Plugin)
 
-> Ported from [OpenAI Codex product-design plugin](https://github.com/openai/role-specific-plugins/tree/main/plugins/product-design) under MIT License.
+> Goose port maintained at [bioinfornatics/product-design](https://github.com/bioinfornatics/product-design), based on OpenAI's Product Design plugin version 0.1.50 from commit `fe5608d` of [openai/role-specific-plugins](https://github.com/openai/role-specific-plugins/tree/main/plugins/product-design), under the MIT License.
 
 Turn early product ideas, live URLs, and static screenshots into prototypes teams can review, refine, and carry forward.
 
@@ -102,13 +102,14 @@ Evaluate this plugin with `open-agent-creators:skill-creator`, which provides th
 ## Installation
 
 ```bash
-goose plugin install https://github.com/YOUR_ORG/product-design-goose.git
+goose plugin install https://github.com/bioinfornatics/product-design.git
 ```
 
-Or for local development:
+Or for project-local development, copy the plugin into the repository's Goose discovery directory:
 
 ```bash
-cp -r /path/to/product-design ~/.agents/plugins/product-design
+mkdir -p .agents/plugins
+cp -rf /path/to/product-design .agents/plugins/product-design
 ```
 
 ## License

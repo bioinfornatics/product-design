@@ -20,7 +20,7 @@ Clone `<target-url>` as a real interactive, frontend-only local app or website. 
 
 ## User Context
 
-Before starting, load [../user-context/SKILL.md](../user-context/SKILL.md) and run its preflight script when local shell access is available.
+Saved user context is optional. Load [../user-context/SKILL.md](../user-context/SKILL.md) only when the user asks to save or recall context, or when relevant saved context is known to exist.
 
 Use saved product URLs, Figma files, screenshots, reference images, codebase paths, Storybook, tokens, design systems, brand assets, component refs, browser preferences, and share targets as grounding material when relevant.
 
@@ -94,21 +94,11 @@ Do not inspect every saved reference. Inspect only what the current task needs.
 
 10. Run the local app.
 
-### Previewing prototypes in ChatGPT Work Mode
+### Previewing prototypes in Goose
 
-Starting `sites-preview` is not verification. Verification requires opening `http://terminal.local:4173/` in the cloud browser, inspecting the rendered page, testing primary interactions, checking browser console errors, and passing design QA.
+Starting a development server is not verification. Use a browser-capable tool exposed in the current Goose session to open the URL returned by the local runtime, inspect the rendered page at the captured desktop and mobile viewports, test primary interactions, check console errors when supported, and capture evidence for design QA.
 
-Do not substitute HTTP health, build success, preview-service status, or deployment success for browser verification. If the cloud browser cannot be used, report verification as blocked.
-
-For local prototype verification in ChatGPT Work Mode:
-
-1. Install dependencies if needed. The project must have an npm `dev` script.
-2. `sites-preview` runs `npm run dev -- --host 0.0.0.0 --port 4173 --strictPort`. The `dev` script must accept those flags.
-3. For Vite or Vinext projects, use `"dev": "vite"`. Do not use `vinext dev`. Configure Vite with `server.host: "0.0.0.0"` and `server.allowedHosts: ["terminal.local"]`.
-4. From the site root, run `sites-preview start "$PWD"`.
-5. Open `http://terminal.local:4173/` in the cloud browser. Do not use `localhost`, `127.0.0.1`, `0.0.0.0`, HTTPS, or another port.
-6. Verify the rendered site and its primary interactions before reporting completion.
-7. Never mention `terminal.local` or output that URL to the user. Deploy a checkpoint with `@Sites` and give the user only the deployed checkpoint URL.
+Do not substitute HTTP health, build success, preview-service status, Goose Apps creation, or deployment success for browser verification. Do not assume `sites-preview`, `terminal.local`, `@Browser`, or `@Sites` exists. If no browser-capable tool can capture both the source and prototype at comparable states, report verification as blocked.
 
 11. Compare the local app against the original.
 
@@ -129,7 +119,7 @@ For local prototype verification in ChatGPT Work Mode:
 
 - Only hand off after [../design-qa/SKILL.md](../design-qa/SKILL.md) passes.
 - Keep the prototype running locally.
-- In Codex Desktop, provide the clickable local URL. In ChatGPT Work Mode, deploy a checkpoint with `@Sites` and provide only its deployed URL; never output `terminal.local`.
+- Provide a valid user-accessible local URL only when the active runtime returned one. Deploy only when the user asks to share, using `product-design:share`; Goose Apps creation alone is not deployment.
 - After the prototype link, use the shared build handoff from `critical-overrides.md`. Do not add a different completion message.
 - Include the post-build iteration and share nudge from [../../references/critical-overrides.md](../../references/critical-overrides.md#build-handoff).
 

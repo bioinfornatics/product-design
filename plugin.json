@@ -4,11 +4,11 @@
   "description": "Turn early product ideas, live URLs, and static screenshots into prototypes teams can review, refine, and carry forward. Ported from OpenAI Codex product-design plugin.",
   "license": "MIT",
   "author": {
-    "name": "OpenAI (ported to Goose)",
-    "url": "https://github.com/openai/role-specific-plugins"
+    "name": "bioinfornatics",
+    "url": "https://github.com/bioinfornatics"
   },
-  "repository": "https://github.com/openai/role-specific-plugins/tree/main/plugins/product-design",
-  "homepage": "https://github.com/openai/role-specific-plugins",
+  "repository": "https://github.com/bioinfornatics/product-design",
+  "homepage": "https://github.com/bioinfornatics/product-design",
   "keywords": [
     "prototype",
     "product-design",

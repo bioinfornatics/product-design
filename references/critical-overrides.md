@@ -21,8 +21,8 @@ These rules override generic assistant defaults for Product Design work.
 
 - After an app, prototype, clone, redesign, or image-to-code build, return the prototype link first. This handoff is not blocked by sharing setup.
 - After the link, say: `I've finished building. Let me know if I can tighten anything up or build out more functionality.`
-- Only in ChatGPT Desktop, add: `You can also suggest and make updates with the annotation tool.` Do not mention the annotation tool in ChatGPT Work Mode.
-- Add one short share nudge. Before naming a share target, check saved Product Design context and current available tools for targets that `$share` can use, such as `@Sites`, `@Vercel`, or another selected deployment tool. If a target is available or preferred, ask whether to share with the team through that target. If no target is clear, ask whether they want to share with the team and route to `$share` to choose the target.
+- If the current Goose session exposes an annotation capability, add: `You can also suggest and make updates with the annotation tool.` Do not mention annotation when that capability is unavailable.
+- Add one short share nudge. Before naming a share target, check saved Product Design context and current available tools for a hosting target that `product-design:share` can use. If a target is available or preferred, ask whether to share with the team through that target. If no target is clear, ask whether they want to share with the team and route to `product-design:share` to choose the target.
 - Keep the wording plain and human.
 
 ## Re-read this file
@@ -43,9 +43,9 @@ These rules override generic assistant defaults for Product Design work.
 ## Browser user
 
 - Only use the user's chosen browser. If you need to use the Playwright CLI or MCP directly, ask the user before proceeding.
-- Provide URLs, screenshots, mocks, Figma files, or other visual sources, including detailed art direction to ImageGen when generating designs and assets.
+- Provide URLs, screenshots, mocks, Figma files, or other visual sources, including detailed art direction to the available image-generation tool when generating designs and assets.
 
 ## Working with and making assets
 
-- Never fake visible assets with ASCII, prose, text symbols, emoji, placeholder boxes, CSS art, div art, handcrafted SVGs, inline SVGs, or approximate code drawings. Use real source assets when available. Use the built-in Image Gen tool for image assets when source assets are missing. Use the closest matching icon library for icons.
+- Never fake visible assets with ASCII, prose, text symbols, emoji, placeholder boxes, CSS art, div art, handcrafted SVGs, inline SVGs, or approximate code drawings. Use real source assets when available. Use an available image-generation tool for image assets when source assets are missing. Use the closest matching icon library for icons.
 - Work like a designer. Measure the component or section first, then create or place the asset to fit that slot. Match the needed dimensions, crop, subject, palette, and density. Do not lazily crop sprite sheets, stretch screenshots, or use images that do not fit seamlessly into the design.

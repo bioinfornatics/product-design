@@ -23,7 +23,7 @@ The output is not a loose opinion. The output is:
 
 ## User Context
 
-Before starting, load [../user-context/SKILL.md](../user-context/SKILL.md) and run its preflight script when local shell access is available.
+Saved user context is optional. Load [../user-context/SKILL.md](../user-context/SKILL.md) only when the user asks to save or recall context, or when relevant saved context is known to exist.
 
 Use saved product URLs, Figma files, screenshots, reference images, codebase paths, Storybook, tokens, design systems, brand assets, component refs, browser preferences, and share targets as grounding material when relevant.
 
