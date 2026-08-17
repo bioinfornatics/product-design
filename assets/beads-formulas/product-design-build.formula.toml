@@ -51,9 +51,21 @@ Play back the brief. Do not proceed until target and outcome are both clear."""
 acceptance = "Design target, intended user outcome, framework, and design-system status are all resolved and played back"
 
 [[steps]]
+id = "brief-gate"
+title = "Evaluate product brief gate"
+description = "Apply G1 hard criteria, weighted score, confidence, success criteria, assumptions and verdict; store .gates/01-brief-to-ideation.md."
+needs = ["get-context"]
+
+[[steps]]
+id = "journey-selection"
+title = "Compare and select journey"
+description = "Normalize journey hypotheses, score G2, and select or define the smallest experiment; store .gates/02-journey-selection.md."
+needs = ["brief-gate"]
+
+[[steps]]
 id = "visual-source"
 title = "Resolve visual target for {{target}} ({{visual_source}})"
-needs = ["get-context"]
+needs = ["journey-selection"]
 type = "task"
 description = """Resolve the exact visual target to build, per {{visual_source}}:
 - ideate: run product-design:ideate, generate distinct visual options (using any resolved design system/palette from get-context), wait for the user to select one.

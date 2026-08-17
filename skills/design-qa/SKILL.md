@@ -26,6 +26,8 @@ Follow [../../references/critical-overrides.md](../../references/critical-overri
 
 Compare the intended design to the implementation as a product-quality reviewer, not as a generic aesthetic critic. The output must be a prioritized fix list grounded in evidence from both artifacts.
 
+Apply both G5 gates in [product decision gates](../../references/product-decision-gates.md): execution quality and product-test validity. Verify the selected journey, hypothesis, evaluation slice and success criterion; primary task, realistic-enough data/states, test scenario and limitations must be explicit. A faithful implementation of the wrong or untestable journey is `blocked`. For involved work write `.gates/05-prototype-to-review.md`.
+
 Do not write the QA review from memory, code, or file paths alone. Open or capture both the source design and the implementation first, then compare what is actually visible.
 
 Do not pretend separate image views are side-by-side comparison. Put the source image and the implementation screenshot together in the same comparison input, then judge the visible differences from that combined input.

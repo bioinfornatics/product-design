@@ -24,7 +24,11 @@ Do not inspect every saved reference. Inspect only what the current task needs.
 
 ## Workflow
 
-Do not generate images until `../get-context/SKILL.md` has satisfied the minimum required design brief.
+Do not generate images until `../get-context/SKILL.md` has satisfied the brief and G1 in [product decision gates](../../references/product-decision-gates.md) is not blocked.
+
+### Journey-first decision
+
+If the scope has multiple pages, states, roles or plausible paths, follow [comparable journeys](references/comparable-journeys.md): define one boundary, propose up to three comparable journey hypotheses, score with G2, expose assumptions/trade-offs, then select or experimentally test a journey. Never generate three polished screens taken from different journey moments. After journey selection freeze the same 2–4 checkpoints, content/data, viewport/state, design-system constraints and success criterion for all three visual directions. One image may contain multiple labeled screens from one direction; never multiple directions. If a storyboard is unreadable, compare the same key checkpoint first and extend only the selected direction.
 
 Before generating images:
 
@@ -60,12 +64,13 @@ Before generating images:
 - Pick the dimensions that best match the user's request and any provided visual reference.
 - Mobile app: `390 x 844`.
 - Tablet app: `834 x 1194`.
-- Desktop app, dashboard, admin, or SaaS: `1440 x 1024`.
-- Landing or marketing page: `1440` wide and scrollable.
+- Desktop app, dashboard, admin, or SaaS: `1280 x 1024` for fast review by default; match a provided reference when fidelity requires another viewport.
+- Landing or marketing page: `1280` wide and scrollable.
 - Modal, panel, widget, or component: natural container size.
 - Provided screenshot, Figma frame, mockup, or reference image: match its dimensions and aspect ratio when the user wants to continue from that visual.
 - Avoid crowding. Make the design fit the chosen dimensions cleanly, with realistic spacing, readable type, and no clipped content.
 - Include the chosen dimensions in every Image Gen prompt.
+- Use low generation quality for ideation (`quality: low` when available). Do not request 4K or high/HD quality for review concepts. If the provider cannot emit `1280 x 1024` exactly, use its nearest supported landscape canvas (for example `1536 x 1024`) and crop/downscale to the target without stretching. Escalate quality only on explicit request or when small detail makes the result unusable.
 
 6. Check for access gaps.
 
@@ -81,9 +86,9 @@ Rules you must follow:
 
 - Use the Image Gen prompt below.
 - Use an image-generation tool exposed in the current Goose session; do not assume a tool named “built-in Image Gen” exists. If none is available, stop and name the missing capability.
-- Generate exactly three independent images unless the user overrides the count.
+- Generate exactly three independent visual-direction results unless the user overrides the count. For a journey, every result covers the same frozen checkpoint set, as a readable storyboard or the same key checkpoint.
 - Launch each Image Gen call independently. Do not batch Image Gen calls with `Promise.all`, collect them into an ordered array, or replay them in request order.
-- Each option must be its own Image Gen result. Do not put multiple ideas in one image.
+- Each option must be its own Image Gen result. Never put multiple design directions in one image. Multiple labeled checkpoints from one journey and one direction are allowed.
 - Give each direction a distinct, descriptive name before generation, but do not call it `option 1`, `option 2`, or `option 3` and do not put planned numeric labels in Image Gen prompts. Parallel results can arrive in a different order from the requests.
 - Number options only after the Image Gen results are present in the thread. The only authoritative option order is the order those generated-image results are displayed in the current thread. Ignore the planned concept order, original request chain, prompt submission order, `Promise.all` result order, batch order, array indexes, retry order, and assumed completion order.
 - After all results return, bind each visible option number to the result in that displayed order. Do not name or describe the options in the final selection message.
@@ -94,7 +99,7 @@ Rules you must follow:
 - Only claim a visual reference was attached if the Image Gen call actually received that image or a readable local image path.
 - If you cannot attach the image, say that clearly and ask whether to continue with text-only direction.
 - Preserve hard constraints from the brief in every image.
-- After generating options, stop for the user's selection before any build work begins.
+- Score each result with G3, report confidence, benefits, trade-offs, risks and a recommendation; red-team irrelevant polish, complexity, assumptions, metric gaming and smaller tests. For involved work save `.gates/03-visual-selection.md`, then stop for selection before build.
 - When the user later selects option `N`, resolve it against the Nth displayed generated-image result from the most recent ideation set, not the original planned concept order. If the exact displayed result cannot be resolved, do not build from a guess; ask the user to name the concept or reattach/select the image.
 - The selected option is the visual target for `$image-to-code`.
 
@@ -123,10 +128,12 @@ Default to a desktop web-app frame unless the user or reference clearly calls fo
 
  - Mobile app: `390 x 844`
  - Tablet app: `834 x 1194`
- - Desktop app, dashboard, admin, or SaaS: `1440 x 1024`
- - Landing or marketing page: `1440` wide and scrollable
+ - Desktop app, dashboard, admin, or SaaS: `1280 x 1024` (fast-review default)
+ - Landing or marketing page: `1280` wide and scrollable
  - Modal, panel, widget, or component: natural container size
  - Provided screenshot, Figma frame, mockup, or reference image: match its dimensions and aspect ratio when the user wants to continue from that visual
+
+Generate at low quality for ideation; do not request 4K/high/HD output. If the exact target is unsupported, use the nearest canvas and crop/downscale without stretching.
 
 Use a natural viewport ratio for the intended surface. Never stretch, squash, or warp the generated screen, imagery, typography, or UI elements to fill the canvas. If the composition does not fit naturally, recompose or simplify the layout instead.
 

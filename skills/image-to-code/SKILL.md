@@ -34,7 +34,7 @@ For a mobile app or phone prototype, build and verify at 390 × 844 unless the u
 
 CRITICAL: THIS IS NOT GUIDANCE. THIS IS A CHECKLIST TO COMPLETE.
 
-1. Do not start unless you have a selected image, screenshot, mockup, or Image Gen result to recreate. A written brief is not enough.
+1. Do not start unless you have a selected image, screenshot, mockup, or Image Gen result. Apply G4 in [product decision gates](../../references/product-decision-gates.md): journey, evaluation slice, hypothesis, exact visual target, states, realistic mock data, success criterion, out-of-scope behavior, design-system components and framework rationale must be resolvable. For involved work write `.gates/04-selection-to-prototype.md`.
 
 2. Resolve the exact selected visual target before building.
 
@@ -66,6 +66,8 @@ CRITICAL: THIS IS NOT GUIDANCE. THIS IS A CHECKLIST TO COMPLETE.
     - If text is part of an image asset, keep it in the image asset. Examples include full bleed hero images, signs, posters, packaging, storefronts, article art, and illustrations where the type belongs to the visual itself. Do not crop the background image and recreate that text with transparent text boxes, HTML, CSS, or separate overlay layers unless the source clearly shows editable UI text sitting on top of the image.
     - Do not use generic placeholders where the reference implies custom visual content.
     - Generated assets must share the same art direction, palette, rendering style, and design language as the reference mockup.
+    - Default new raster assets to low quality and the smallest dimensions covering their rendered size, normally no more than a `1280 x 1024` source canvas for a full-width review asset. Never request 4K/high/HD by default. If only fixed canvases exist, choose the nearest and crop/downscale without stretching. Preserve supplied source dimensions when fidelity requires them; raise quality only for a documented visible QA failure or explicit request.
+    - This limit applies to newly generated raster assets, not user-supplied originals, vector logos/icons, or screenshots used as visual truth.
     - If the available image-generation tool lacks transparency support, post-process generated assets when transparency is required.
 
 ### Parallel asset production

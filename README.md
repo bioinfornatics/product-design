@@ -51,6 +51,8 @@ Not every request needs every step. `product-design:index` is the entry point an
 5. **Verify fidelity.** After implementation, capture the rendered prototype and use `product-design:design-qa` to compare it with the source visual.
 6. **Share when requested.** Use `product-design:share` only when the user asks to deploy, publish, host, or create a shareable link. A local build is not a deployment.
 
+For disposable review, Vite + React is the default even when production will be Next.js; use Next.js immediately only when Next-specific behavior is under validation. Generated concepts and raster assets default to low quality and a 1280 × 1024 review target (or nearest provider canvas, cropped/downscaled), never 4K by default.
+
 The default path for a new interface is therefore:
 
 ```text
@@ -91,6 +93,10 @@ This plugin requires the following tools available to goose:
 - **Python 3** — for optional Goose user-context preflight and init scripts
 - **Goose Apps** — optional sandboxed rendering target; use only after the design brief and focused workflow, never as a substitute for design QA or deployment
 - **Hosting tool** — optional for sharing prototypes; a working deployment URL is required before claiming the prototype is shared
+
+## Product decision gates
+
+Involved workflows use hard criteria, weighted score, evidence confidence and explicit verdict from [`references/product-decision-gates.md`](references/product-decision-gates.md). Multi-page ideation first compares journey strategies at one normalized boundary, then renders three visual directions over the exact same checkpoint set. Records live in the generated project's `.gates/`; Beads may mirror status but is not the evaluator.
 
 ## Optional: project status via Beads
 
