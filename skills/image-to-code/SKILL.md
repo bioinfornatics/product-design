@@ -1,6 +1,6 @@
 ---
 name: image-to-code
-description: "Focused Product Design build workflow. Use only after product-design:index/get-context and an unambiguous selected visual target; render to the requested frontend target or Goose Apps, then hand off to design-qa with source and rendered evidence before completion."
+description: "Build a selected visual target into a reviewable frontend after product-design:index/get-context. Trigger for screenshot/mock/Figma/ImageGen-to-code, including Servier/DIFA/DNA screens in an existing boilerplate. Default design-validation builds to mock data only (no new DB/auth/services/actions), automatically install annotation support in existing projects, start the app yourself, verify the review URL, then run design-qa. Never ask the user to launch the server manually."
 ---
 
 # Image to Code
@@ -86,7 +86,7 @@ Prioritize critical above-the-fold assets first, then reuse agents for supportin
 
     - CRITICAL RULE: Do not create custom inline SVGs, handcrafted SVGs, HTML element drawings, div/span shapes, CSS drawings, gradients, emoji, or text glyphs. Use an available image-generation tool to generate assets and use the closest matching icon library for icons.
 
-9. Build the app starting with [../../references/local-prototype-preflight.md](../../references/local-prototype-preflight.md). Unless the user asks for a static mock, full production behavior, or a different scope, bring the app or website to life with:
+9. Build the app starting with [../../references/local-prototype-preflight.md](../../references/local-prototype-preflight.md), using the framework `$get-context` resolved (Vite by default, or Next.js/Nuxt/Astro when named or already in use — pass `--framework <name>` to `bootstrap-prototype.mjs` for a new scaffold). If a design system was identified in `$get-context`, build with its real components per that skill's own guidance instead of generic HTML/CSS. Unless the user asks for a static mock, full production behavior, or a different scope, bring the app or website to life with:
 
     - Working navigation, links, tabs, menus, and primary CTAs.
     - Functional inputs, filters, toggles, selections, and forms shown in the main experience.
@@ -100,7 +100,7 @@ Prioritize critical above-the-fold assets first, then reuse agents for supportin
     - Place every image asset you generated into its position before proceeding. I repeat, replace all placeholders, including CSS/SVG placeholders, before proceeding.
     - Do not leave controls in the core experience as static chrome. Do not create new pages or routes unless the user asks for them.
 
-10. Run the local app.
+10. Prepare the review loop and run the local app. For a bundled template, the annotation overlay is already present. For an existing project or external boilerplate, load and execute `product-design:annotate-inject` automatically when annotation is absent. Start or reuse the documented dev server yourself in a persistent/background process, wait for a healthy HTTP response, verify the annotation toggle and endpoint, and keep the process running. Do not ask the user to open a terminal or run `npm run dev`, `pnpm dev`, `make start-dev`, or equivalent. If startup fails, investigate it; report blocked only after actionable diagnosis.
 
 11. Capture the local app using the Browser Choice rule in [../index/SKILL.md](../index/SKILL.md#browser-choice).
 
@@ -119,7 +119,8 @@ Prioritize critical above-the-fold assets first, then reuse agents for supportin
 13. Handoff the app or website.
 
     - Only hand off after [../design-qa/SKILL.md](../design-qa/SKILL.md) passes.
-    - Keep the prototype running locally.
+    - Keep the prototype running locally; the agent owns startup and lifecycle for the review handoff.
+    - Confirm annotation is usable and tell the user how to enter annotation mode in the running UI; do not give terminal setup steps.
     - Provide a valid user-accessible local or deployed URL only when the active Goose runtime returned one. Goose Apps creation alone is not a deployment; use `$share` for requested hosting.
     - After the prototype link, use the shared build handoff from `critical-overrides.md`. Do not add a different completion message.
     - Include the post-build iteration and share nudge from [../../references/critical-overrides.md](../../references/critical-overrides.md#build-handoff).

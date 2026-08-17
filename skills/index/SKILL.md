@@ -105,6 +105,12 @@ Read the annotation, its target, and the surrounding screen before changing code
 
 Do not redesign nearby UI or rebuild the prototype just because an annotation touches that area. If the annotation is ambiguous and the choice would materially change the prototype, ask first.
 
+For every locally reviewable Product Design build, the agent—not the user—must leave the app running with annotation available. Bundled templates already include it; existing projects must route through `$annotate-inject` automatically before handoff. The agent starts/reuses and verifies the server, returns the URL, and never asks the user to run a terminal command.
+
+Route here to `$annotate` when the user says they left, drew, marked, or added annotations on a running local project, or asks to check/apply annotation feedback. This works out of the box for prototypes scaffolded from any bundled template (Vite, Next.js, Nuxt, Astro). For an existing/user-provided project that doesn't have the mechanism yet, route to `$annotate-inject` first to install it, then `$annotate` to process what comes in.
+
+Do not wait to be told annotations exist. For any project with the annotation mechanism installed and a dev server currently running, opportunistically check `.goose/annotations/inbox/` for that project at the start of a turn and whenever returning to that project's context, even if the user's message is about something else. If the inbox has pending records, route to `$annotate` before other work on that project.
+
 ## Skills
 
 Use this as the root routing guidance for Product Design plugin work. If several focused skills apply, sequence them in the order that creates the most useful design workflow. Keep this index as a router; do not perform focused workflow logic here.
@@ -144,3 +150,15 @@ Deploy a runnable prototype and return a shareable URL using the user's preferre
 ### $design-qa
 
 Compare a coded Product Design prototype against its source visual target before handoff. Route here only as an internal helper after a prototype, URL-to-code build, or image-to-code build has both a source visual and rendered implementation. Do not route broad UX critiques, audits, or product-flow reviews here; use `audit` instead.
+
+### $annotate
+
+Process pending in-app annotations left on a running local project (drawn regions plus notes) and turn them into scoped code edits. Route here when the user says they left/added annotations, marked up a region, or asks to check or apply annotation feedback on a project with the mechanism installed (any bundled template, or an existing project after `$annotate-inject`).
+
+### $annotate-inject
+
+Install the browser annotation mechanism into a user-provided or existing project that doesn't have it yet (a boilerplate, an existing codebase, or a design-system-provided starter) — supports Next.js, Nuxt, Astro, Vite, and gives a porting path for other frameworks. Route here before `$annotate` whenever the target isn't one of this plugin's own bundled templates.
+
+### $project-status
+
+Optional Beads (`bd`) tracking for a Product Design project's phase or annotation rounds. Route here when the user explicitly names Beads/bd/tracking, or when they describe the project using planning vocabulary (epic, gate, user story, success/acceptance criteria, task breakdown, ready/blocked) without naming Beads directly. Never a gate on any other skill — plain phase-by-phase prose alone does not route here.

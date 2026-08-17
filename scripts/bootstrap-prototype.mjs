@@ -13,7 +13,24 @@ import { fileURLToPath } from "node:url";
 
 const scriptPath = fileURLToPath(import.meta.url);
 const pluginRoot = path.resolve(path.dirname(scriptPath), "..");
-const templateRoot = path.join(pluginRoot, "templates", "prototype");
+const templatesRoot = path.join(pluginRoot, "templates");
+
+const FRAMEWORK_DIRS = {
+  vite: "prototype", // legacy dir name, kept for backward compatibility
+  nextjs: "nextjs",
+  nuxt: "nuxt",
+  astro: "astro",
+};
+
+function resolveTemplateRoot(framework) {
+  const key = String(framework || "vite").toLowerCase();
+  const dir = FRAMEWORK_DIRS[key];
+  if (!dir) {
+    const known = Object.keys(FRAMEWORK_DIRS).join(", ");
+    throw new Error(`Unknown framework: ${key}. Known frameworks: ${known}`);
+  }
+  return path.join(templatesRoot, dir);
+}
 
 function parseArgs(argv) {
   const args = {};
@@ -116,15 +133,18 @@ function setLocalNpmCache(root) {
   ].join("\n"));
 }
 
-function createNew(root) {
+function createNew(root, framework) {
+  const templateRoot = resolveTemplateRoot(framework);
   if (!existsSync(templateRoot)) {
     throw new Error(`Bundled Product Design prototype template is missing: ${templateRoot}`);
   }
   ensureEmptyDest(root);
   copyDir(templateRoot, root);
   setPackageName(root);
-  setLocalNpmCache(root);
-  return { status: "created", root };
+  if (existsSync(packageJsonPath(root))) {
+    setLocalNpmCache(root);
+  }
+  return { status: "created", root, framework: String(framework || "vite").toLowerCase() };
 }
 
 function main() {
@@ -135,7 +155,7 @@ function main() {
     const mode = String(args.mode);
     throw new Error(`Unknown mode: ${mode}`);
   }
-  const result = createNew(root);
+  const result = createNew(root, args.framework);
   console.log(JSON.stringify(result, null, 2));
 }
 

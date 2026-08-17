@@ -1,0 +1,15 @@
+---
+import AnnotationOverlay from "../components/AnnotationOverlay";
+const isDev = import.meta.env.DEV;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Design Prototype</title>
+  </head>
+  <body>
+    <slot />
+    {isDev && <AnnotationOverlay client:only="react" />}
+  </body>
+</html>

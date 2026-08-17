@@ -1,158 +1,320 @@
-# Agent Instructions
+# Product Design — Agentic System Context
 
-This project uses **bd** (beads) for issue tracking. Run `bd prime` for full workflow context.
+> Philosophie, architecture, et références pour le développement agentique dans ce projet.
 
-## Goose Discovery
+---
 
-Goose only auto-discovers content under `.agents/skills/`, `.agents/plugins/`, and `.agents/agents/`. Do not place standalone context or instruction files directly under `.agents/`; put repository-wide instructions in `AGENTS.md` and workflow-specific guidance in the appropriate skill or agent.
+## 🧭 Philosophie générale
 
-## Quick Reference
+Ce projet construit une infrastructure d'**exploration agentique** centrée sur le **Product Design**, en opposition à une approche purement GraphRAG statique.
 
-```bash
-bd ready              # Find available work
-bd show <id>          # View issue details
-bd update <id> --claim  # Claim work atomically
-bd close <id>         # Complete work
-bd dolt push          # Push beads data to remote
+Le principe directeur est :
+
+> **Une architecture qui apprend à explorer dynamiquement l'espace d'information peut être plus puissante qu'une architecture qui se contente d'effectuer un retrieval sur une structure préparée à l'avance.**
+
+Cette position est soutenue par des résultats récents (voir la section [Références](#références)) montrant que l'exploration adaptative surpasse significativement la recherche statique — jusqu'à **~50-59 % de résolution vs ~12-23 % pour le RAG/BM25** sur des tâches complexes.
+
+---
+
+## 📐 Évolution du curriculum
+
+Le modèle historique :
+
+```
+Prompt Engineering → Context Engineering → RAG → GraphRAG → Agentic RAG
 ```
 
-## Evaluating the Plugin, Scripts, and Agent Behavior
+La recherche récente suggère plutôt une **bifurcation** :
 
-Use the shared `open-agent-creators` workflows rather than adding an evaluation framework to this repository.
-
-### Plugin and bundled skills
-
-1. Load `open-agent-creators:plugin-creator` for plugin-level audits, manifest checks, packaging, and cross-component validation.
-2. Load `open-agent-creators:skill-creator` for every new or modified `skills/*/SKILL.md` and for behavioral evaluation.
-3. Validate the plugin statically:
-
-   ```bash
-   python3 ~/.agents/plugins/open-agent-creators/skills/plugin-creator/scripts/validate_goose_plugin.py .
-   ```
-
-4. For behavioral changes, follow Skill Creator's complete evaluation loop:
-   - snapshot the previous skill version when improving an existing skill;
-   - create realistic prompts in the local evaluation workspace;
-   - run the changed skill and its baseline on the same prompts;
-   - define objective assertions where possible;
-   - grade outputs and aggregate `benchmark.json`;
-   - generate the human review with `eval-viewer/generate_review.py`;
-   - inspect failures and iterate before accepting the change.
-5. For routing or description changes, include positive and near-miss negative trigger cases. Verify the exact catalogue skill selected and the required handoff order; file presence or `goose skills list` alone is not proof of successful use.
-
-### Scripts
-
-Test every modified executable directly, in addition to plugin validation:
-
-- Python:
-
-  ```bash
-  python3 -m py_compile skills/user-context/scripts/*.py
-  ```
-
-  Run behavior tests with an isolated temporary `GOOSE_HOME`; do not read or overwrite the maintainer's real Product Design state.
-
-- Node.js:
-
-  ```bash
-  /usr/bin/node --check "$PWD/scripts/bootstrap-prototype.mjs"
-  ```
-
-  Exercise bootstrap behavior only in a disposable temporary directory. Verify generated paths and files, idempotence when applicable, and nonzero exits for invalid input. Do not bootstrap over a real project during evaluation.
-
-When a deterministic script check is needed only for one evaluation, keep it in that evaluation workspace rather than shipping it as plugin runtime code.
-
-### Agents and runtime behavior
-
-This repository currently bundles no standalone agent definitions. If `.agents/agents/` is added later, load `open-agent-creators:agent-creator` and evaluate each agent in isolated sessions against its intended role, tool permissions, output contract, and failure behavior.
-
-For Goose behavior produced by this plugin:
-
-- run evaluations in fresh, isolated sessions;
-- compare against a baseline using the same provider/model and prompt;
-- verify successful `load_skill` responses, not merely load attempts;
-- verify required sequencing such as `product-design:index` before focused skills and rendering tools;
-- avoid prompts or accounts containing mutable production Apps or assets;
-- treat tool traces as potentially sensitive runtime data.
-
-### Evaluation artifacts
-
-Keep all prompts, traces, outputs, graders, benchmarks, feedback, and generated review files under ignored `evaluations/` or `*-workspace/` paths. Never commit them. Before committing, run:
-
-```bash
-git status --short
-git check-ignore -v evaluations/test product-design-workspace/test
+```
+                    Context Engineering
+                           │
+              ┌────────────┴────────────┐
+              ↓                         ↓
+        Static Retrieval         Agentic Exploration
+              │                         │
+         RAG / GraphRAG         Search / inspect / act
+              │                         │
+              └────────────┬────────────┘
+                           ↓
+                  Agentic Graph RAG
+                           ↓
+                 Learned Exploration
+                           ↓
+              self-optimizing retrieval
 ```
 
-Commit only reusable plugin components and documentation. Do not copy Skill Creator's evaluation scripts into this plugin.
+Le concept supérieur devient **Exploration Engineering** — non plus « quelles informations récupérer ? » mais **« quelle prochaine action réduira le plus mon incertitude ? »**
 
-## Non-Interactive Shell Commands
+### Primitives d'exploration
 
-**ALWAYS use non-interactive flags** with file operations to avoid hanging on confirmation prompts.
+| Primitive  | Comportement |
+|------------|-------------|
+| **Retrieve**  | Récupérer directement de l'information pertinente |
+| **Traverse**  | Suivre une relation déjà connue |
+| **Explore**   | Décider dynamiquement où chercher ensuite à partir des résultats précédents |
+| **Verify**    | Rechercher des éléments qui confirment ou infirment l'hypothèse actuelle |
 
-Shell commands like `cp`, `mv`, and `rm` may be aliased to include `-i` (interactive) mode on some systems, causing the agent to hang indefinitely waiting for y/n input.
+Un agent puissant alterne les quatre :
 
-**Use these forms instead:**
-```bash
-# Force overwrite without prompting
-cp -f source dest           # NOT: cp source dest
-mv -f source dest           # NOT: mv source dest
-rm -f file                  # NOT: rm file
-
-# For recursive operations
-rm -rf directory            # NOT: rm -r directory
-cp -rf source dest          # NOT: cp -r source dest
+```
+Question → Hypothèse → Retrieve → Explore → Nouvelle info → Hypothèse mise à jour → Traverse / Retrieve → Verify → Réponse
 ```
 
-**Other commands that may prompt:**
-- `scp` - use `-o BatchMode=yes` for non-interactive
-- `ssh` - use `-o BatchMode=yes` to fail instead of prompting
-- `apt-get` - use `-y` flag
-- `brew` - use `HOMEBREW_NO_AUTO_UPDATE=1` env var
+---
 
-<!-- BEGIN BEADS INTEGRATION v:1 profile:minimal hash:ca08a54f -->
-## Beads Issue Tracker
+## 🏗️ Architecture du plugin `goose-graph-engineering`
 
-This project uses **bd (beads)** for issue tracking. Run `bd prime` to see full workflow context and commands.
+### Composants
 
-### Quick Reference
+**4 skills** (la procédure que l'agent sait appliquer) :
 
-```bash
-bd ready              # Find available work
-bd show <id>          # View issue details
-bd update <id> --claim  # Claim work
-bd close <id>         # Complete work
+- `goose-graph-engineering:graph-orchestrator`
+- `goose-graph-engineering:agentic-exploration`
+- `goose-graph-engineering:qdrant-memory`
+- `goose-graph-engineering:graph-evaluation`
+
+**4 custom agents** (qui travaille) :
+
+- `@graph-architect`
+- `@explorer`
+- `@memory-curator`
+- `@graph-evaluator`
+
+### Flux général
+
+```
+User request
+     │
+     ▼
+@graph-architect
+     │
+     ▼
+graph-orchestrator
+     │
+     ├──────────────┐
+     ▼              ▼
+@explorer        @explorer
+     │              │
+     ├── tools      ├── code/files
+     ├── web        ├── dependencies
+     └── Qdrant     └── Qdrant
+          │
+          ▼
+     synthesis
+          │
+          ▼
+ @graph-evaluator
+       │       │
+     accept   retry
+               │
+               └──► targeted node only
 ```
 
-### Rules
+### Rôle de Qdrant
 
-- Use `bd` for ALL task tracking — do NOT use TodoWrite, TaskCreate, or markdown TODO lists
-- Run `bd prime` for detailed command reference and session close protocol
-- Use `bd remember` for persistent knowledge — do NOT use MEMORY.md files
+Qdrant est utilisé comme **moteur de persistance et mémoire d'exploration**, pas comme GraphRAG central. Le flux :
 
-## Session Completion
+```
+agentic exploration
+        │
+        ├── inspect current evidence
+        ├── query Qdrant
+        ├── formulate hypothesis
+        ├── acquire new evidence
+        ├── verify
+        └── persist useful discoveries
+```
 
-**When ending a work session**, you MUST complete ALL steps below. Work is NOT complete until `git push` succeeds.
+**4 collections distinctes** (pas une collection unique) :
 
-**MANDATORY WORKFLOW:**
+| Collection | Rôle |
+|-----------|------|
+| `memory` | Mémoire sémantique consolidée |
+| `evidence` | Preuves collectées par les explorateurs |
+| `graph_state` | Nœuds et état du graphe d'exploration |
+| `traces` | Traces d'exploration (éphémères, TTL) |
 
-1. **File issues for remaining work** - Create issues for anything that needs follow-up
-2. **Run quality gates** (if code changed) - Tests, linters, builds
-3. **Update issue status** - Close finished work, update in-progress items
-4. **PUSH TO REMOTE** - This is MANDATORY:
-   ```bash
-   git pull --rebase
-   bd dolt push
-   git push
-   git status  # MUST show "up to date with origin"
-   ```
-5. **Clean up** - Clear stashes, prune remote branches
-6. **Verify** - All changes committed AND pushed
-7. **Hand off** - Provide context for next session
+**3 niveaux de mémoire :**
 
-**CRITICAL RULES:**
-- Work is NOT complete until `git push` succeeds
-- NEVER stop before pushing - that leaves work stranded locally
-- NEVER say "ready to push when you are" - YOU must push
-- If push fails, resolve and retry until it succeeds
-<!-- END BEADS INTEGRATION -->
+1. **Working memory** — mémoire du graphe/session courant (L1)
+2. **Episodic memory** — anciennes explorations réutilisables (L2)
+3. **Semantic memory** — connaissances consolidées et généralisables (L3)
+
+L'évaluateur décide du niveau de promotion :
+
+```
+exploration trace → evaluator → inutile → TTL/delete
+                               → utile → episodic
+                               → généralisable → semantic memory
+```
+
+---
+
+## 🔗 Architecture MCP
+
+Deux serveurs MCP distincts, avec des responsabilités séparées :
+
+```
+                         Goose
+                           │
+             ┌─────────────┴─────────────┐
+             │                           │
+       Graph skills                Custom Agents
+             │                           │
+             └─────────────┬─────────────┘
+                           ▼
+                 graph-explorer MCP
+                           │
+          ┌────────────────┼─────────────────┐
+          │                │                 │
+          ▼                ▼                 ▼
+   Qdrant MCP/API      Developer MCP      Web/Search
+          │
+          ▼
+   Remote Qdrant
+```
+
+### 1. Qdrant MCP officiel
+
+- **Porte d'accès à la mémoire** pour Goose et les agents
+- Opérations : `qdrant-find`, `qdrant-store`
+- Transport : `stdio`, `sse`, ou `streamable-http`
+- Configurable via `QDRANT_URL` / `QDRANT_API_KEY`
+
+### 2. `graph-explorer-mcp` (personnalisé)
+
+- **Plan de contrôle de l'exploration**
+- Utilise le SDK Qdrant directement (pas via le MCP Qdrant)
+- Opérations exposées :
+
+```
+graph_create           — Créer un graphe d'exploration
+graph_plan             — Planifier les nœuds à explorer
+graph_frontier         — Récupérer la frontière d'exploration
+graph_add_evidence     — Ajouter une preuve à un nœud
+graph_get_context      — Récupérer le contexte consolidé d'un nœud
+graph_retry            — Marquer un nœud pour ré-exploration
+graph_complete         — Marquer l'exploration comme terminée
+memory_promote         — Promouvoir une trace en mémoire durable
+memory_forget          — Supprimer une trace inutile
+```
+
+### Pourquoi deux MCP plutôt qu'un ?
+
+- **Évite de mélanger les niveaux d'abstraction**
+- Le Qdrant MCP reste remplaçable
+- Le Graph MCP voit des opérations sémantiquement utiles, pas des primitives de base de données
+- Goose peut utiliser Qdrant MCP directement pour les opérations générales
+
+### Interaction avec MCP Roots
+
+Goose supporte **MCP Roots** — le serveur Graph MCP peut connaître automatiquement le workspace actif de la session, évitant de passer le chemin à chaque appel :
+
+```
+Goose session → MCP Root → /project/foo → Graph MCP
+                                              │
+                                       workspace_id = hash(root)
+                                              │
+                                       Qdrant filters workspace_id
+```
+
+### MCP Sampling
+
+Le Graph MCP peut utiliser **MCP Sampling** pour demander des classements ou décisions au modèle Goose sans gérer d'API externe :
+
+```
+Graph MCP → 15 evidence candidates → MCP Sampling
+                                         ↓
+                                  "rank according to objective"
+```
+
+---
+
+## 📂 Structure du bundle
+
+```
+.agents/
+├── plugins/
+│   └── goose-graph-engineering/
+│       ├── plugin.json
+│       ├── skills/
+│       │   ├── graph-orchestrator/
+│       │   ├── agentic-exploration/
+│       │   ├── qdrant-memory/
+│       │   └── graph-evaluation/
+│       ├── hooks/
+│       │   └── hooks.json
+│       └── scripts/
+│           └── setup_collection.py
+│
+├── agents/
+│   ├── graph-architect.md
+│   ├── explorer.md
+│   ├── memory-curator.md
+│   └── graph-evaluator.md
+│
+├── .env.example
+├── install.sh
+└── README.md
+```
+
+### Hooks disponibles
+
+| Hook | Rôle | Activé par défaut |
+|------|------|:---:|
+| `AfterFileEdit` | Indexe les fichiers modifiés dans Qdrant | Non (`GRAPH_QDRANT_INDEX_EDITS=0`) |
+| `PostToolUse` | Enregistre des traces compactes dans la mémoire | Oui |
+| `PostToolUseFailure` | Enregistre des traces d'échec | Oui |
+| `PreToolUse` | Policy guard (bloque `sudo`, `rm -rf /`) | Oui |
+
+---
+
+## 🧪 Bottleneck connu
+
+Les résultats de SWE-Explore montrent que :
+
+```text
+Trouver la zone générale     ██████████████   (HitFile ~0,667)
+Trouver l'évidence exacte    ███               (line recall ~0,154)
+```
+
+Le bottleneck n'est donc plus **« trouver le document »** mais **« explorer efficacement l'espace informationnel à l'intérieur et entre les documents »**.
+
+C'est exactement là où l'approche agentique apporte le plus de valeur : la précision descendante (file → line) est une faiblesse que le bouclage agentique (inspecter → hypothèse → vérifier → affiner) peut adresser.
+
+---
+
+## 🔬 Références
+
+| Papier | Lien | Contribution |
+|--------|------|-------------|
+| **SWE-Explore** (2026) | [arXiv:2606.07297](https://arxiv.org/abs/2606.07297) | L'exploration agentique surpasse nettement la recherche classique (BM25, TF-IDF, RAG dense) sur les dépôts de code. HitFile ~0,68 vs ~0,14. Résolution 50-59 % vs 12-23 %. |
+| **Agentic RAG vs GraphRAG** (2026) | [arXiv:2606.25656](https://arxiv.org/abs/2606.25656) | Des variantes agentiques simples peuvent surpasser des architectures GraphRAG sophistiquées. Un retrieval plus large n'améliore pas proportionnellement la génération. |
+| **GraphScout** (2026) | [arXiv:2603.01410](https://arxiv.org/abs/2603.01410) | Explore activement le graphe plutôt que d'effectuer un retrieval fixe. Un Qwen3-4B + GraphScout dépasse les baselines LLM plus puissants de +16,7 %. |
+| **Graph-R1** (2025) | [arXiv:2507.21892](https://arxiv.org/abs/2507.21892) | Le retrieval devient une interaction agent-environnement multi-tour, optimisée par RL. |
+| **Youtu-GraphRAG** (2026) | [Paper Digest](https://r9-hu.github.io/paper-digest/agentic-ai/2026/papers/youtu-graphrag-vertically-unified-agents-for-graph-retrieval-augmented-complex-r/) | Des retrievers agentiques capables de décomposer les questions, choisir les opérations de graphe et réfléchir sur les résultats. |
+| **Qdrant MCP Server** | [GitHub](https://github.com/qdrant/mcp-server-qdrant) | Serveur MCP officiel pour Qdrant, utilisé comme couche d'accès mémoire standard. |
+
+---
+
+## ⚙️ Configuration
+
+```bash
+# Dans .env ou config Goose
+QDRANT_URL=https://your-qdrant-instance:6333
+QDRANT_API_KEY=your-api-key
+QDRANT_MODEL=qdrant/bm25
+QDRANT_VECTOR_NAME=content-bm25
+GRAPH_QDRANT_INDEX_EDITS=0
+```
+
+### Installation
+
+```bash
+# Créer la collection Qdrant
+python .agents/plugins/goose-graph-engineering/scripts/setup_collection.py
+
+# Installer le bundle
+bash .agents/install.sh
+```

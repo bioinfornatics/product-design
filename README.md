@@ -18,6 +18,9 @@ Turn early product ideas, live URLs, and static screenshots into prototypes team
 | `product-design:url-to-code` | Clone a live URL as a runnable frontend-only local app |
 | `product-design:design-qa` | Compare prototype implementation against its source visual target |
 | `product-design:share` | Deploy a prototype and return a shareable URL |
+| `product-design:annotate` | Process pending browser annotations on a running project (any supported framework) |
+| `product-design:annotate-inject` | Install the annotation mechanism onto a user-provided/existing project that doesn't have it yet |
+| `product-design:project-status` | Optional: track project phase/annotation rounds as Beads (`bd`) issues — never a gate |
 
 ## How the skills work together
 
@@ -88,6 +91,12 @@ This plugin requires the following tools available to goose:
 - **Python 3** — for optional Goose user-context preflight and init scripts
 - **Goose Apps** — optional sandboxed rendering target; use only after the design brief and focused workflow, never as a substitute for design QA or deployment
 - **Hosting tool** — optional for sharing prototypes; a working deployment URL is required before claiming the prototype is shared
+
+## Optional: project status via Beads
+
+`assets/beads-formulas/` bundles two [Beads](https://github.com/steveyegge/beads) (`bd`) formulas — `product-design-build` (mirrors `get-context → visual-source → build → design-qa → share`) and `annotate-cycle` (mirrors `annotate-inject → collect → annotate → verify`). Use `product-design:project-status` to install and query them. This is purely additive: no Product Design skill requires or checks for Beads, and a project with no `.beads/` directory works exactly the same. It exists for users who want project phase/status queryable via `bd ready`/`bd show` instead of only reconstructable from conversation history, or who already track work in Beads and want these workflows to compose with it.
+
+Both formulas were verified against a real `bd` install: recognized by `bd formula show`, instantiated via `bd mol pour`/`bd mol wisp`, and their step dependencies correctly enforced by `bd ready`/`bd close`.
 
 ## Product Design + Goose Apps
 

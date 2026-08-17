@@ -1,0 +1,98 @@
+.goose-annotate-toggle {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2147483000;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: #111827;
+  color: #f9fafb;
+  font: 600 13px/1 system-ui, sans-serif;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.goose-annotate-toggle--active {
+  background: #2563eb;
+}
+
+.goose-annotate-surface {
+  position: fixed;
+  inset: 0;
+  z-index: 2147482900;
+  cursor: crosshair;
+  background: rgba(37, 99, 235, 0.04);
+}
+
+.goose-annotate-rect {
+  position: fixed;
+  border: 2px solid #2563eb;
+  background: rgba(37, 99, 235, 0.12);
+  pointer-events: none;
+  z-index: 2147482950;
+}
+
+.goose-annotate-popover {
+  position: fixed;
+  z-index: 2147483100;
+  width: 260px;
+  max-width: calc(100vw - 16px);
+  max-height: calc(100vh - 16px);
+  overflow-y: auto;
+  padding: 10px;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #111827;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+  font: 13px/1.4 system-ui, sans-serif;
+}
+
+.goose-annotate-popover-title {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.goose-annotate-popover-components {
+  font-size: 11px;
+  color: #6b7280;
+  margin-bottom: 6px;
+  word-break: break-word;
+}
+
+.goose-annotate-popover textarea {
+  width: 100%;
+  resize: vertical;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 6px;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+.goose-annotate-popover-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.goose-annotate-popover-actions button {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  cursor: pointer;
+  font: inherit;
+}
+
+.goose-annotate-primary {
+  background: #2563eb !important;
+  color: #fff;
+  border-color: #2563eb !important;
+}
+
+.goose-annotate-popover-actions button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}

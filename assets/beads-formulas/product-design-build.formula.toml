@@ -1,0 +1,98 @@
+# product-design-build — mirrors the Product Design plugin's own UX order
+# (get-context → ideate/url-to-code → image-to-code → design-qa loop → share)
+# as a Beads formula, so a project's status (what's done, what's next, what's
+# blocked) is queryable via `bd` instead of only living in conversation
+# history.
+#
+# This does not replace the plugin's own skills or gate them on Beads — it's
+# an optional tracking layer. An agent following the Product Design skills
+# does the actual design-qa loop, ideation, etc.; this formula just gives
+# each phase a bead so `bd ready`, `bd blocked`, and `bd show` can answer
+# "where is this project" without re-reading the whole conversation.
+#
+# Usage:
+#   bd mol pour product-design-build --var target="settings screen" --var framework=vite
+#   bd mol wisp product-design-build --var target="..." --var framework=nextjs   (if disposable)
+#
+# The design-qa step is intentionally NOT expanded into a fixed number of
+# fix/re-check steps — design-qa.md's own comparison-history requirement
+# already tracks that loop; re-open (`bd reopen design-qa`) the step and
+# leave a comment each time a QA pass returns "blocked" instead of modeling
+# an unbounded loop as more beads.
+
+formula = "product-design-build"
+description = "Tracks a Product Design build through get-context, visual sourcing, implementation, QA, and share — one bead per phase, matching the plugin's own workflow order."
+version = 1
+type = "workflow"
+
+[vars.target]
+description = "What is being designed/built (screen, feature, component, or product name)"
+required = true
+
+[vars.framework]
+description = "Scaffold framework, when a new prototype is being created (matches product-design:get-context's resolution)"
+default = "vite"
+enum = ["vite", "nextjs", "nuxt", "astro", "existing-codebase"]
+
+[vars.visual_source]
+description = "How the visual target will be resolved: ideate (generate options), url (clone a live URL), or provided (user already has an image/Figma/mockup)"
+default = "ideate"
+enum = ["ideate", "url", "provided"]
+
+[[steps]]
+id = "get-context"
+title = "Resolve design brief for {{target}}"
+type = "task"
+description = """Run product-design:get-context. Resolve and record:
+- design target and intended user outcome
+- framework: {{framework}} (or detected from an existing codebase)
+- design system: existing one in use, tokens/palette provided, or none (falls through to ideate's generated palette options)
+Play back the brief. Do not proceed until target and outcome are both clear."""
+acceptance = "Design target, intended user outcome, framework, and design-system status are all resolved and played back"
+
+[[steps]]
+id = "visual-source"
+title = "Resolve visual target for {{target}} ({{visual_source}})"
+needs = ["get-context"]
+type = "task"
+description = """Resolve the exact visual target to build, per {{visual_source}}:
+- ideate: run product-design:ideate, generate distinct visual options (using any resolved design system/palette from get-context), wait for the user to select one.
+- url: run product-design:url-to-code against the provided URL after get-context's brief is played back.
+- provided: use the attached image/screenshot/Figma frame/mockup directly — no generation needed.
+Do not proceed to build with an ambiguous or unselected target."""
+acceptance = "Exactly one visual target is selected and unambiguous (image, URL capture, or attached source)"
+
+[[steps]]
+id = "build"
+title = "Implement {{target}}"
+needs = ["visual-source"]
+type = "task"
+description = """Run product-design:image-to-code (or url-to-code's clone step if visual_source was 'url').
+- Scaffold with framework {{framework}} if this is a new prototype (product-design:bootstrap-prototype.mjs --framework {{framework}}), or build within the existing codebase if framework is 'existing-codebase'.
+- If a design system was identified in get-context, build with its real components (see that design system's own bridge skill, e.g. servier-webapp:dna-in-prototypes for Servier/DNA) instead of generic HTML/CSS.
+- Bring the core experience to life per image-to-code's own checklist (working nav, forms, states).
+- Run the local app and capture it with a browser-capable tool before moving on."""
+acceptance = "App/prototype builds, runs locally, and has been captured with a browser tool at the target viewport"
+
+[[steps]]
+id = "design-qa"
+title = "Design QA for {{target}}"
+needs = ["build"]
+type = "task"
+description = """Run product-design:design-qa as the blocking handoff gate. This step's own acceptance criteria mirror design-qa.md's requirements, not a fixed loop count:
+- Compare source visual and rendered implementation at the same viewport/state.
+- Fix any P0/P1/P2 finding, re-capture, and re-compare — repeat until passed.
+- Leave a comment on this bead each time a pass returns blocked, citing the design-qa.md findings, instead of creating new beads per iteration.
+- Reopen this step (`bd reopen design-qa`) if new annotations (see the annotate/annotate-inject skills) require another QA pass after this step was already closed."""
+acceptance = "design-qa.md exists with final result: passed, and its comparison-history covers every P0/P1/P2 iteration"
+
+[[steps]]
+id = "share"
+title = "Share {{target}}"
+needs = ["design-qa"]
+type = "human"
+description = """Run product-design:share only if the user asks for a deployable link.
+- Confirm the hosting target (ask if not already chosen or saved).
+- Deploy and return a verified working URL — Goose Apps creation alone does not satisfy this step.
+- If the user only wanted a local prototype, close this step with a note that sharing wasn't requested rather than leaving it open indefinitely."""
+acceptance = "Either a verified shareable URL was returned, or the step is explicitly closed as not requested"

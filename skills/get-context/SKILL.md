@@ -17,6 +17,23 @@ Do not re-ask answered questions. When both are clear, play back the brief and d
 
 Hard boundary: do not implement UI, scaffold a prototype, start a server, or create files while the design target or intended user outcome is still missing.
 
+## Framework and Design System Detection
+
+Resolve these two before handing off to `$ideate`/`$image-to-code`/`$url-to-code`, alongside the design target and outcome — do not leave them implicit and default to the bundled Vite template without checking.
+
+**Framework.** If the target is a new prototype:
+
+- If an existing project is already present (an existing codebase, not a fresh empty folder), detect its framework from config files (`next.config.*`, `nuxt.config.*`, `astro.config.*`, `vite.config.*`) and build within it — do not scaffold a separate template. Follow [../../references/existing-codebase-edits.md](../../references/existing-codebase-edits.md).
+- If there is no existing project, ask which framework to scaffold only if the user's context makes it ambiguous (e.g. they've named a target stack, or saved user context records a preference). Otherwise default to the bundled Vite template — it's the fastest path for a disposable visual prototype. Supported frameworks: Vite (default), Next.js, Nuxt, Astro. Name the chosen framework in the brief playback.
+
+**Design system.** Ask or check, in this order, before build starts:
+
+1. **Is there an existing design system?** Check saved user context (`$user-context`) for a recorded design system, codebase paths, Storybook, or component refs. If the user names one, or a plugin exposes skills for one (for example a Servier DNA or other branded component-tier skill), use it — route real UI construction to those real components instead of generic HTML/CSS, following that skill's own guidance.
+2. **If no design system is in use, are there tokens or a palette to use?** Ask for existing design tokens, a brand palette, a Figma file, or brand assets before generating anything from scratch. Use whatever is provided as grounding for `$ideate`'s Image Gen calls and for any hardcoded colors/spacing/type in the build.
+3. **If neither exists,** say so plainly and generate visual directions with distinctly different palettes as part of `$ideate` — this is the fallback, not the default. Do not silently invent a single palette and skip ideation.
+
+Do not skip straight to build with an assumed framework or an assumed palette when the project is new; a wrong assumption here is expensive to undo (rewritten components, mismatched brand colors). A quick check or one targeted question is worth it.
+
 ## Critical Overrides
 
 - Refer to the Plugin router [../index/SKILL.md](../index/SKILL.md) before proceeding.

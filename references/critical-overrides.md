@@ -30,6 +30,13 @@ These rules override generic assistant defaults for Product Design work.
 - Before every second user-facing assistant message, read this file, reminding of these principles.
 - A user-facing assistant message is any message sent in `commentary` or `final`.
 
+## Prototype phase vs. production phase
+
+- A prototype may live inside the eventual production boilerplate. “Real app,” “full working version,” “use Next.js,” or the presence of Prisma/MSAL does not authorize backend implementation.
+- For design or journey validation, default to realistic frontend mock data. Do not add product-specific database schema/migrations, repositories, services, server actions, API integrations, real auth, or roles unless the user explicitly requests the production phase after validation.
+- Preserve existing infrastructure but do not extend it speculatively. Record deferred production work in an active tracker only when tracking is already in scope.
+- For a reviewable local build, annotation and server startup are agent-owned completion steps: install the overlay when needed, start/reuse the server, verify the review URL, and keep it running. Never make the user open a terminal and execute the startup command.
+
 ## Explore vs. Design vs. Build
 
 - Do not build from under-specified product context alone.
