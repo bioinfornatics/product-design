@@ -11,7 +11,7 @@ Focus on current, evidence-backed user problems. Prioritize logged-in product ex
 
 ## Critical Overrides
 
-- Refer to the Plugin router [../index/SKILL.md](../index/SKILL.md) before proceeding.
+- Refer to the Plugin router [../product-design/SKILL.md](../product-design/SKILL.md) before proceeding.
 - Follow [../../references/critical-overrides.md](../../references/critical-overrides.md).
 
 ## User Context

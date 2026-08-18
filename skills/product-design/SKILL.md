@@ -1,5 +1,5 @@
 ---
-name: index
+name: product-design
 description: "Primary Product Design router. Load this exact skill first whenever the user explicitly names Product Design or the product-design plugin, including requests that also name Goose Apps. Also route design exploration, UX research/audit, visual-source cloning, prototype QA, and sharing here; ordinary UI implementation stays outside unless Product Design is explicit."
 ---
 
@@ -29,9 +29,9 @@ Speak to the user in a warm, fun, and collaborative way, prioritizing pithy expl
 
 ## Router Only
 
-This index chooses the next Product Design skill. It does not do that skill's work. An explicit `Product Design`, `product-design`, or Product Design plugin mention always enters through `product-design:index`, even when Goose Apps or another tool is named in the same request. After the index is loaded, load the focused skill by its full catalogue name, such as `product-design:get-context`.
+The `product-design` skill chooses the next focused Product Design skill. It does not do that skill's work. An explicit `Product Design`, `product-design`, or Product Design plugin mention always enters through `product-design`, even when Goose Apps or another tool is named in the same request. After the router is loaded, load the focused skill by its catalogue name, such as `get-context`.
 
-If the user names a focused Product Design skill, load the index first and then that exact focused skill. Do not replace it with a related skill.
+If the user names a focused Product Design skill, load `product-design` first and then that exact focused skill. Do not replace it with a related skill.
 
 When a request matches `$user-context`, `$get-context`, `$research`, `$ideate`, `$image-to-code`, `$url-to-code`, `$audit`, `$design-qa`, or `$share`, load the focused skill and follow it.
 
@@ -55,12 +55,12 @@ Do not assume Codex Desktop, ChatGPT Work Mode, `@Browser`, `@Sites`, a cloud br
 
 When the request explicitly combines Product Design and Goose Apps, preserve this order:
 
-1. Load `product-design:index`.
-2. Load `product-design:get-context`, resolve the design target and intended user outcome, and play back the brief.
-3. Load and complete the focused design workflow. For a new interface without a selected visual target, this is `product-design:ideate`; wait for a selected generated option before build.
+1. Load `index`.
+2. Load `get-context`, resolve the design target and intended user outcome, and play back the brief.
+3. Load and complete the focused design workflow. For a new interface without a selected visual target, this is `ideate`; wait for a selected generated option before build.
 4. Only then use Goose Apps as the rendering target (`listApps` to inspect existing apps, then `createApp` or `iterateApp` as appropriate). Do not call Apps in parallel with skill loading or use Apps to skip context, visual selection, or design decisions.
-5. Capture the rendered result with an available browser-capable tool and run `product-design:design-qa` before handoff. If capture is unavailable, report QA as blocked.
-6. Load `product-design:share` only when the user requests a shareable deployment; Apps creation is not a deployment URL.
+5. Capture the rendered result with an available browser-capable tool and run `design-qa` before handoff. If capture is unavailable, report QA as blocked.
+6. Load `share` only when the user requests a shareable deployment; Apps creation is not a deployment URL.
 
 A conceptual question such as “how do you see it?” may stop after the brief, workflow recommendation, and explicit next question. Do not create or mutate an app unless the user asked to proceed or the brief clearly requests an implementation now.
 
@@ -105,7 +105,7 @@ Read the annotation, its target, and the surrounding screen before changing code
 
 Do not redesign nearby UI or rebuild the prototype just because an annotation touches that area. If the annotation is ambiguous and the choice would materially change the prototype, ask first.
 
-For every locally reviewable Product Design build, the agent—not the user—must leave the app running with annotation available. Bundled templates already include it; existing projects must route through `$annotate-inject` automatically before handoff. The agent starts/reuses and verifies the server, returns the URL, and never asks the user to run a terminal command.
+For every locally reviewable Product Design build, the agent—not the user—starts/reuses and verifies the local server and returns the URL; never ask the user to run a terminal command themselves. Bundled templates already include annotation, so it's available automatically once the server is running. For an existing/user-provided project without the mechanism, offer `$annotate-inject` rather than installing it automatically — it edits the user's own codebase (a new API route, a mounted overlay component), so treat it like any other non-trivial change to existing code: confirm before doing it, per [../../references/existing-codebase-edits.md](../../references/existing-codebase-edits.md). Do not block or delay handoff on the user's answer; hand off the build first, then offer annotation as a follow-up.
 
 Route here to `$annotate` when the user says they left, drew, marked, or added annotations on a running local project, or asks to check/apply annotation feedback. This works out of the box for prototypes scaffolded from any bundled template (Vite, Next.js, Nuxt, Astro). For an existing/user-provided project that doesn't have the mechanism yet, route to `$annotate-inject` first to install it, then `$annotate` to process what comes in.
 

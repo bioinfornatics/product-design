@@ -1,6 +1,6 @@
 ---
 name: image-to-code
-description: "Build a selected visual target into a reviewable frontend after product-design:index/get-context. Trigger for screenshot/mock/Figma/ImageGen-to-code, including Servier/DIFA/DNA screens in an existing boilerplate. Default design-validation builds to mock data only (no new DB/auth/services/actions), automatically install annotation support in existing projects, start the app yourself, verify the review URL, then run design-qa. Never ask the user to launch the server manually."
+description: "Build a selected visual target into a reviewable frontend after product-design/get-context. Trigger for screenshot/mock/Figma/ImageGen-to-code, including Servier/DIFA/DNA screens in an existing boilerplate. Default design-validation builds to mock data only (no new DB/auth/services/actions), automatically install annotation support in existing projects, start the app yourself, verify the review URL, then run design-qa. Never ask the user to launch the server manually."
 ---
 
 # Image to Code
@@ -9,7 +9,7 @@ You're tasked with translating the visual target image into a high-quality, inte
 
 ## Critical Overrides
 
-- Refer to the Plugin router [../index/SKILL.md](../index/SKILL.md) before proceeding.
+- Refer to the Plugin router [../product-design/SKILL.md](../product-design/SKILL.md) before proceeding.
 - Follow [../../references/critical-overrides.md](../../references/critical-overrides.md).
 
 ## User Context
@@ -102,9 +102,9 @@ Prioritize critical above-the-fold assets first, then reuse agents for supportin
     - Place every image asset you generated into its position before proceeding. I repeat, replace all placeholders, including CSS/SVG placeholders, before proceeding.
     - Do not leave controls in the core experience as static chrome. Do not create new pages or routes unless the user asks for them.
 
-10. Prepare the review loop and run the local app. For a bundled template, the annotation overlay is already present. For an existing project or external boilerplate, load and execute `product-design:annotate-inject` automatically when annotation is absent. Start or reuse the documented dev server yourself in a persistent/background process, wait for a healthy HTTP response, verify the annotation toggle and endpoint, and keep the process running. Do not ask the user to open a terminal or run `npm run dev`, `pnpm dev`, `make start-dev`, or equivalent. If startup fails, investigate it; report blocked only after actionable diagnosis.
+10. Prepare the review loop and run the local app. For a bundled template, the annotation overlay is already present. For an existing project or external boilerplate, load and execute `annotate-inject` automatically when annotation is absent. Start or reuse the documented dev server yourself in a persistent/background process, wait for a healthy HTTP response, verify the annotation toggle and endpoint, and keep the process running. Do not ask the user to open a terminal or run `npm run dev`, `pnpm dev`, `make start-dev`, or equivalent. If startup fails, investigate it; report blocked only after actionable diagnosis.
 
-11. Capture the local app using the Browser Choice rule in [../index/SKILL.md](../index/SKILL.md#browser-choice).
+11. Capture the local app using the Goose Capability Preflight rule in [../product-design/SKILL.md](../product-design/SKILL.md#goose-capability-preflight).
 
 12. Run [../design-qa/SKILL.md](../design-qa/SKILL.md) as the blocking build gate.
 

@@ -6,7 +6,7 @@ import "./annotate.css";
 // Lets a non-technical reviewer drag a rectangle over any region of the
 // running prototype, attach a short note, and send it to the local Vite dev
 // server (/__goose-annotate). A Goose session picks these up later via the
-// `product-design:annotate` skill: it screenshots the same route/viewport,
+// `annotate` skill: it screenshots the same route/viewport,
 // crops to the recorded bbox, and uses the collected component-name guesses
 // to jump straight to the right source file.
 //

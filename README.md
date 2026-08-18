@@ -8,28 +8,28 @@ Turn early product ideas, live URLs, and static screenshots into prototypes team
 
 | Skill | Description |
 |---|---|
-| `product-design:index` | Primary router — load first for explicit Product Design mentions, including Product Design + Goose Apps |
-| `product-design:get-context` | Clarify the design brief before starting ideation or build work |
-| `product-design:user-context` | Save and load product URLs, Figma files, screenshots, brand assets |
-| `product-design:research` | Source-grounded UX research on user pain and workflow friction |
-| `product-design:ideate` | Generate image-based design alternatives with Image Gen |
-| `product-design:audit` | Capture and review UX, design, and accessibility from screenshots |
-| `product-design:image-to-code` | Implement a selected visual target as a faithful, responsive frontend |
-| `product-design:url-to-code` | Clone a live URL as a runnable frontend-only local app |
-| `product-design:design-qa` | Compare prototype implementation against its source visual target |
-| `product-design:share` | Deploy a prototype and return a shareable URL |
-| `product-design:annotate` | Process pending browser annotations on a running project (any supported framework) |
-| `product-design:annotate-inject` | Install the annotation mechanism onto a user-provided/existing project that doesn't have it yet |
-| `product-design:project-status` | Optional: track project phase/annotation rounds as Beads (`bd`) issues — never a gate |
+| `product-design` | Primary router — load first for explicit Product Design mentions, including Product Design + Goose Apps |
+| `get-context` | Clarify the design brief before starting ideation or build work |
+| `user-context` | Save and load product URLs, Figma files, screenshots, brand assets |
+| `research` | Source-grounded UX research on user pain and workflow friction |
+| `ideate` | Generate image-based design alternatives with Image Gen |
+| `audit` | Capture and review UX, design, and accessibility from screenshots |
+| `image-to-code` | Implement a selected visual target as a faithful, responsive frontend |
+| `url-to-code` | Clone a live URL as a runnable frontend-only local app |
+| `design-qa` | Compare prototype implementation against its source visual target |
+| `share` | Deploy a prototype and return a shareable URL |
+| `annotate` | Process pending browser annotations on a running project (any supported framework) |
+| `annotate-inject` | Install the annotation mechanism onto a user-provided/existing project that doesn't have it yet |
+| `project-status` | Optional: track project phase/annotation rounds as Beads (`bd`) issues — never a gate |
 
 ## How the skills work together
 
 The plugin follows a **route → clarify → explore or inspect → build → verify → share** workflow:
 
 ```text
-product-design:index
+index
         ↓
-product-design:get-context
+get-context
         ↓
 research / audit / ideate
         ↓
@@ -40,16 +40,16 @@ design-qa
 share
 ```
 
-Not every request needs every step. `product-design:index` is the entry point and router; it selects the focused skill rather than doing that skill's work.
+Not every request needs every step. `product-design` is the entry point and router; it selects the focused skill rather than doing that skill's work.
 
 ### Common flow
 
-1. **Route the request.** Start with `product-design:index` whenever Product Design or the plugin is explicitly named.
-2. **Clarify the brief.** For design, prototype, redesign, or build work, `product-design:get-context` confirms the design target and intended user outcome. It asks one focused question only when either is missing.
-3. **Choose a direction.** If there is no selected visual target, run `product-design:ideate`, present exactly three visual options, and wait for the user to choose one before building.
-4. **Build from the source.** Use `product-design:image-to-code` for a screenshot, Figma frame, mockup, generated concept, or other image. Use `product-design:url-to-code` for a faithful clone of a live URL.
-5. **Verify fidelity.** After implementation, capture the rendered prototype and use `product-design:design-qa` to compare it with the source visual.
-6. **Share when requested.** Use `product-design:share` only when the user asks to deploy, publish, host, or create a shareable link. A local build is not a deployment.
+1. **Route the request.** Start with `product-design` whenever Product Design or the plugin is explicitly named.
+2. **Clarify the brief.** For design, prototype, redesign, or build work, `get-context` confirms the design target and intended user outcome. It asks one focused question only when either is missing.
+3. **Choose a direction.** If there is no selected visual target, run `ideate`, present exactly three visual options, and wait for the user to choose one before building.
+4. **Build from the source.** Use `image-to-code` for a screenshot, Figma frame, mockup, generated concept, or other image. Use `url-to-code` for a faithful clone of a live URL.
+5. **Verify fidelity.** After implementation, capture the rendered prototype and use `design-qa` to compare it with the source visual.
+6. **Share when requested.** Use `share` only when the user asks to deploy, publish, host, or create a shareable link. A local build is not a deployment.
 
 For disposable review, Vite + React is the default even when production will be Next.js; use Next.js immediately only when Next-specific behavior is under validation. Generated concepts and raster assets default to low quality and a 1280 × 1024 review target (or nearest provider canvas, cropped/downscaled), never 4K by default.
 
@@ -100,13 +100,13 @@ Involved workflows use hard criteria, weighted score, evidence confidence and ex
 
 ## Optional: project status via Beads
 
-`assets/beads-formulas/` bundles two [Beads](https://github.com/steveyegge/beads) (`bd`) formulas — `product-design-build` (mirrors `get-context → visual-source → build → design-qa → share`) and `annotate-cycle` (mirrors `annotate-inject → collect → annotate → verify`). Use `product-design:project-status` to install and query them. This is purely additive: no Product Design skill requires or checks for Beads, and a project with no `.beads/` directory works exactly the same. It exists for users who want project phase/status queryable via `bd ready`/`bd show` instead of only reconstructable from conversation history, or who already track work in Beads and want these workflows to compose with it.
+`assets/beads-formulas/` bundles two [Beads](https://github.com/steveyegge/beads) (`bd`) formulas — `product-design-build` (mirrors `get-context → visual-source → build → design-qa → share`) and `annotate-cycle` (mirrors `annotate-inject → collect → annotate → verify`). Use `project-status` to install and query them. This is purely additive: no Product Design skill requires or checks for Beads, and a project with no `.beads/` directory works exactly the same. It exists for users who want project phase/status queryable via `bd ready`/`bd show` instead of only reconstructable from conversation history, or who already track work in Beads and want these workflows to compose with it.
 
 Both formulas were verified against a real `bd` install: recognized by `bd formula show`, instantiated via `bd mol pour`/`bd mol wisp`, and their step dependencies correctly enforced by `bd ready`/`bd close`.
 
 ## Product Design + Goose Apps
 
-For an explicit combined request, load `product-design:index`, then `product-design:get-context`, then the focused workflow. A new interface without a selected visual target goes through `product-design:ideate` and user selection before Apps rendering. After rendering, browser-capture the result and run `product-design:design-qa`; use `product-design:share` only for requested deployment. Natural-language routing is probabilistic and must be measured with repeated replays rather than described as deterministic.
+For an explicit combined request, load `product-design`, then `get-context`, then the focused workflow. A new interface without a selected visual target goes through `ideate` and user selection before Apps rendering. After rendering, browser-capture the result and run `design-qa`; use `share` only for requested deployment. Natural-language routing is probabilistic and must be measured with repeated replays rather than described as deterministic.
 
 Saved context is optional and Goose-local under `$GOOSE_HOME/.local/state/product-design/` (default Goose home: `~/.config/goose`). The plugin does not require Codex state, `@Browser`, `@Sites`, or `terminal.local`.
 

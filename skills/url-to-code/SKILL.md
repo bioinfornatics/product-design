@@ -9,13 +9,13 @@ If the user explicitly invokes this skill, continue.
 
 Only continue when the user asks to clone or recreate the current site.
 
-If the user says `like`, `better`, `redesign`, or `improve`, return to [../index/SKILL.md](../index/SKILL.md).
+If the user says `like`, `better`, `redesign`, or `improve`, return to [../product-design/SKILL.md](../product-design/SKILL.md).
 
 Clone `<target-url>` as a real interactive, frontend-only local app or website. The clone should look and interact like the source.
 
 ## Critical Overrides
 
-- Refer to the Plugin router [../index/SKILL.md](../index/SKILL.md) before proceeding.
+- Refer to the Plugin router [../product-design/SKILL.md](../product-design/SKILL.md) before proceeding.
 - Follow [../../references/critical-overrides.md](../../references/critical-overrides.md).
 
 ## User Context
@@ -30,7 +30,7 @@ Do not inspect every saved reference. Inspect only what the current task needs.
 
 1. CRITICAL STEP: Warn the user that they must follow the target website's terms before proceeding. This workflow is only for apps and websites the user owns, or has permission to recreate.
 
-2. Open the source URL using the Browser Choice rule in [../index/SKILL.md](../index/SKILL.md#browser-choice).
+2. Open the source URL using the Goose Capability Preflight rule in [../product-design/SKILL.md](../product-design/SKILL.md#goose-capability-preflight).
 
 3. Check that the page is correct.
 
@@ -119,7 +119,7 @@ Do not substitute HTTP health, build success, preview-service status, Goose Apps
 
 - Only hand off after [../design-qa/SKILL.md](../design-qa/SKILL.md) passes.
 - Keep the prototype running locally.
-- Provide a valid user-accessible local URL only when the active runtime returned one. Deploy only when the user asks to share, using `product-design:share`; Goose Apps creation alone is not deployment.
+- Provide a valid user-accessible local URL only when the active runtime returned one. Deploy only when the user asks to share, using `share`; Goose Apps creation alone is not deployment.
 - After the prototype link, use the shared build handoff from `critical-overrides.md`. Do not add a different completion message.
 - Include the post-build iteration and share nudge from [../../references/critical-overrides.md](../../references/critical-overrides.md#build-handoff).
 

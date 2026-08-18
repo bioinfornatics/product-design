@@ -51,7 +51,7 @@ A later pass must identify the earlier findings, the fixes made, and the post-fi
 
 2. Capture evidence.
    - For Figma, use design context and screenshot tools when available.
-   - For web/app implementations, follow the Browser Choice rule in [../index/SKILL.md](../index/SKILL.md#browser-choice). Follow the active build skill's “Previewing prototypes in Goose” section before opening a local implementation. Then capture screenshots at the intended viewport.
+   - For web/app implementations, follow the Goose Capability Preflight rule in [../product-design/SKILL.md](../product-design/SKILL.md#goose-capability-preflight). Follow the active build skill's “Previewing prototypes in Goose” section before opening a local implementation. Then capture screenshots at the intended viewport.
    - Capture additional states when relevant: mobile/desktop, hover/focus/active, empty/loading/error, dark/light, and key responsive breakpoints.
    - Save paths or URLs for screenshots when available so findings can cite evidence.
    - Capturing screenshots is not enough. Put the source image and the implementation screenshot together in the same comparison input before judging.

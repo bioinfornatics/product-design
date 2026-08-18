@@ -22,7 +22,7 @@ These rules override generic assistant defaults for Product Design work.
 - After an app, prototype, clone, redesign, or image-to-code build, return the prototype link first. This handoff is not blocked by sharing setup.
 - After the link, say: `I've finished building. Let me know if I can tighten anything up or build out more functionality.`
 - If the current Goose session exposes an annotation capability, add: `You can also suggest and make updates with the annotation tool.` Do not mention annotation when that capability is unavailable.
-- Add one short share nudge. Before naming a share target, check saved Product Design context and current available tools for a hosting target that `product-design:share` can use. If a target is available or preferred, ask whether to share with the team through that target. If no target is clear, ask whether they want to share with the team and route to `product-design:share` to choose the target.
+- Add one short share nudge. Before naming a share target, check saved Product Design context and current available tools for a hosting target that `share` can use. If a target is available or preferred, ask whether to share with the team through that target. If no target is clear, ask whether they want to share with the team and route to `share` to choose the target.
 - Keep the wording plain and human.
 
 ## Re-read this file

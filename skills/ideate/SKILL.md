@@ -1,17 +1,17 @@
 ---
 name: ideate
-description: "Focused Product Design ideation workflow. Use after product-design:index and get-context have established and played back the brief; requires an available image-generation capability and hands a user-selected visual option to image-to-code or Goose Apps, never directly to implementation before selection."
+description: "Focused Product Design ideation workflow. Use after product-design and get-context have established and played back the brief; requires an available image-generation capability and hands a user-selected visual option to image-to-code or Goose Apps, never directly to implementation before selection."
 ---
 
 # Ideate
 
 You're tasked with generating design concepts for a user's idea.
 
-Follow the shared Product Design routing guidance in [../index/SKILL.md](../index/SKILL.md).
+Follow the shared Product Design routing guidance in [../product-design/SKILL.md](../product-design/SKILL.md).
 
 ## Critical Overrides
 
-- Refer to the Plugin router [../index/SKILL.md](../index/SKILL.md) before proceeding.
+- Refer to the Plugin router [../product-design/SKILL.md](../product-design/SKILL.md) before proceeding.
 - Follow [../../references/critical-overrides.md](../../references/critical-overrides.md).
 
 ## User Context

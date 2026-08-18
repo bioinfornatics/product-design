@@ -35,7 +35,7 @@ id = "install"
 title = "Install annotation mechanism on {{target}} ({{framework}})"
 type = "task"
 description = """Only relevant when needs_install={{needs_install}}. If false, close this step immediately with a note that the bundled template already includes it.
-If true, run product-design:annotate-inject for framework {{framework}}:
+If true, run annotate-inject for framework {{framework}}:
 - copy the matching assets, wire the endpoint at a non-underscore-prefixed path (goose-annotate, never __goose-annotate)
 - mount the overlay client-side only, guarded to development
 - verify by actually running dev (200 + file written) and a production build (503 or absent)"""
@@ -46,7 +46,7 @@ id = "collect"
 title = "Collect pending annotations for {{target}}"
 needs = ["install"]
 type = "human"
-description = """Wait for the user to leave one or more annotations via the running overlay (drag a region, add a note, send). This step represents that waiting period — close it once the user confirms they've left feedback, or once product-design:annotate's proactive check finds a non-empty inbox."""
+description = """Wait for the user to leave one or more annotations via the running overlay (drag a region, add a note, send). This step represents that waiting period — close it once the user confirms they've left feedback, or once annotate's proactive check finds a non-empty inbox."""
 acceptance = "At least one record exists under <project-root>/.goose/annotations/inbox/, or the user confirms no annotations are pending this round"
 
 [[steps]]
@@ -54,7 +54,7 @@ id = "process"
 title = "Process pending annotations for {{target}}"
 needs = ["collect"]
 type = "task"
-description = """Run product-design:annotate. For each pending record, oldest first:
+description = """Run annotate. For each pending record, oldest first:
 - reproduce the same route/viewport, screenshot and crop to the bbox
 - make the scoped edit the note asks for, preferring existing design-system component props over raw markup when one is in use
 - re-capture and sanity-check, then move the record to processed/
@@ -66,5 +66,5 @@ id = "verify"
 title = "Re-run design QA after annotations for {{target}}"
 needs = ["process"]
 type = "task"
-description = """If annotation edits were non-trivial (more than a tiny visual tweak) or this was the last outstanding round before handoff, re-open and re-run product-design:design-qa rather than assuming the annotation-scoped check was sufficient. Skip (close with a note) for trivial single-property tweaks already sanity-checked in the process step."""
+description = """If annotation edits were non-trivial (more than a tiny visual tweak) or this was the last outstanding round before handoff, re-open and re-run design-qa rather than assuming the annotation-scoped check was sufficient. Skip (close with a note) for trivial single-property tweaks already sanity-checked in the process step."""
 acceptance = "Either design-qa was re-run and passed, or this step is closed with a justification for skipping it"

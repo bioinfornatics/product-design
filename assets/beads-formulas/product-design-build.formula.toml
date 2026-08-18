@@ -30,7 +30,7 @@ description = "What is being designed/built (screen, feature, component, or prod
 required = true
 
 [vars.framework]
-description = "Scaffold framework, when a new prototype is being created (matches product-design:get-context's resolution)"
+description = "Scaffold framework, when a new prototype is being created (matches get-context's resolution)"
 default = "vite"
 enum = ["vite", "nextjs", "nuxt", "astro", "existing-codebase"]
 
@@ -43,7 +43,7 @@ enum = ["ideate", "url", "provided"]
 id = "get-context"
 title = "Resolve design brief for {{target}}"
 type = "task"
-description = """Run product-design:get-context. Resolve and record:
+description = """Run get-context. Resolve and record:
 - design target and intended user outcome
 - framework: {{framework}} (or detected from an existing codebase)
 - design system: existing one in use, tokens/palette provided, or none (falls through to ideate's generated palette options)
@@ -68,8 +68,8 @@ title = "Resolve visual target for {{target}} ({{visual_source}})"
 needs = ["journey-selection"]
 type = "task"
 description = """Resolve the exact visual target to build, per {{visual_source}}:
-- ideate: run product-design:ideate, generate distinct visual options (using any resolved design system/palette from get-context), wait for the user to select one.
-- url: run product-design:url-to-code against the provided URL after get-context's brief is played back.
+- ideate: run ideate, generate distinct visual options (using any resolved design system/palette from get-context), wait for the user to select one.
+- url: run url-to-code against the provided URL after get-context's brief is played back.
 - provided: use the attached image/screenshot/Figma frame/mockup directly — no generation needed.
 Do not proceed to build with an ambiguous or unselected target."""
 acceptance = "Exactly one visual target is selected and unambiguous (image, URL capture, or attached source)"
@@ -79,8 +79,8 @@ id = "build"
 title = "Implement {{target}}"
 needs = ["visual-source"]
 type = "task"
-description = """Run product-design:image-to-code (or url-to-code's clone step if visual_source was 'url').
-- Scaffold with framework {{framework}} if this is a new prototype (product-design:bootstrap-prototype.mjs --framework {{framework}}), or build within the existing codebase if framework is 'existing-codebase'.
+description = """Run image-to-code (or url-to-code's clone step if visual_source was 'url').
+- Scaffold with framework {{framework}} if this is a new prototype (bootstrap-prototype.mjs --framework {{framework}}), or build within the existing codebase if framework is 'existing-codebase'.
 - If a design system was identified in get-context, build with its real components (see that design system's own bridge skill, e.g. servier-webapp:dna-in-prototypes for Servier/DNA) instead of generic HTML/CSS.
 - Bring the core experience to life per image-to-code's own checklist (working nav, forms, states).
 - Run the local app and capture it with a browser-capable tool before moving on."""
@@ -91,7 +91,7 @@ id = "design-qa"
 title = "Design QA for {{target}}"
 needs = ["build"]
 type = "task"
-description = """Run product-design:design-qa as the blocking handoff gate. This step's own acceptance criteria mirror design-qa.md's requirements, not a fixed loop count:
+description = """Run design-qa as the blocking handoff gate. This step's own acceptance criteria mirror design-qa.md's requirements, not a fixed loop count:
 - Compare source visual and rendered implementation at the same viewport/state.
 - Fix any P0/P1/P2 finding, re-capture, and re-compare — repeat until passed.
 - Leave a comment on this bead each time a pass returns blocked, citing the design-qa.md findings, instead of creating new beads per iteration.
@@ -103,7 +103,7 @@ id = "share"
 title = "Share {{target}}"
 needs = ["design-qa"]
 type = "human"
-description = """Run product-design:share only if the user asks for a deployable link.
+description = """Run share only if the user asks for a deployable link.
 - Confirm the hosting target (ask if not already chosen or saved).
 - Deploy and return a verified working URL — Goose Apps creation alone does not satisfy this step.
 - If the user only wanted a local prototype, close this step with a note that sharing wasn't requested rather than leaving it open indefinitely."""

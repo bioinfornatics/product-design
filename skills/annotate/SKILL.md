@@ -7,7 +7,7 @@ description: "Process pending browser annotations left on a running Product Desi
 
 Read pending annotation records left by the user through the in-app annotation overlay on a running local project, turn each into a scoped code edit, and clear the inbox.
 
-This is the mechanism behind [../index/SKILL.md](../index/SKILL.md)'s "Browser Annotation Updates" section and the annotation-tool line in [../../references/critical-overrides.md](../../references/critical-overrides.md). Follow that section's editing discipline (preserve the project by default, ask before making an ambiguous change that would materially change it).
+This is the mechanism behind [../product-design/SKILL.md](../product-design/SKILL.md)'s "Browser Annotation Updates" section and the annotation-tool line in [../../references/critical-overrides.md](../../references/critical-overrides.md). Follow that section's editing discipline (preserve the project by default, ask before making an ambiguous change that would materially change it).
 
 ## Critical Overrides
 
@@ -56,7 +56,7 @@ Identical across every framework port — one JSON file per annotation under `<p
    a. Open the project at `record.route`, sized to `record.viewport`. Use the running dev server; do not start a second one.
    b. Screenshot the full viewport, then crop to `record.bbox` (grow the crop by ~24px on each side for surrounding context). Downscale the crop so its longer edge is ~1024px before inspecting it, matching the project's standard image-size convention.
    c. Use `record.components` (when present) to locate the candidate source file(s). Prefer the most specific (first) component name that plausibly renders in that bbox; confirm by matching visible content/markup, not name alone. When `components` is empty, locate the source by route + visible content instead.
-   d. Read the surrounding component and screen before editing, per [../index/SKILL.md](../index/SKILL.md)'s Browser Annotation Updates rule. Make the scoped edit `record.note` asks for. Do not redesign nearby UI. If a design system is in use for this project, keep the edit scoped to that component's existing props/variants rather than dropping to raw markup — see [../../references/existing-codebase-edits.md](../../references/existing-codebase-edits.md).
+   d. Read the surrounding component and screen before editing, per [../product-design/SKILL.md](../product-design/SKILL.md)'s Browser Annotation Updates rule. Make the scoped edit `record.note` asks for. Do not redesign nearby UI. If a design system is in use for this project, keep the edit scoped to that component's existing props/variants rather than dropping to raw markup — see [../../references/existing-codebase-edits.md](../../references/existing-codebase-edits.md).
    e. If `record.note` is ambiguous and the natural reading would materially change the project (new layout, new section, different visual direction), stop and ask the user instead of guessing.
 3. After editing, re-screenshot the same route/viewport/bbox and do a quick visual check that the change addresses the note (this is a scoped check, not a full [../design-qa/SKILL.md](../design-qa/SKILL.md) pass — run that separately before handoff if this was the last outstanding annotation).
 4. Move each processed record from `inbox/` to `<project-root>/.goose/annotations/processed/`, keeping the filename, so it is not re-applied on a future pass.

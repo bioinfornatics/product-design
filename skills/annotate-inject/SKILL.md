@@ -9,7 +9,7 @@ The bundled prototype templates (`$get-context` → any framework via `bootstrap
 
 ## Critical Overrides
 
-- Refer to the Plugin router [../index/SKILL.md](../index/SKILL.md) before proceeding.
+- Refer to the Plugin router [../product-design/SKILL.md](../product-design/SKILL.md) before proceeding.
 - Follow [../../references/critical-overrides.md](../../references/critical-overrides.md) and [../../references/existing-codebase-edits.md](../../references/existing-codebase-edits.md).
 
 ## How the mechanism works, regardless of framework

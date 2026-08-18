@@ -1,6 +1,6 @@
 ---
 name: get-context
-description: "Product Design brief gate. After product-design:index, load before ideation, image-to-code, redesign, Product Design + Goose Apps, or product UI build work; require a clear design target and intended user outcome, play back the brief, then hand off to the named focused workflow before any rendering tool."
+description: "Product Design brief gate. After product-design, load before ideation, image-to-code, redesign, Product Design + Goose Apps, or product UI build work; require a clear design target and intended user outcome, play back the brief, then hand off to the named focused workflow before any rendering tool."
 ---
 
 # Get Context
@@ -40,7 +40,7 @@ Before ideation, apply G1 in [product decision gates](../../references/product-d
 
 ## Critical Overrides
 
-- Refer to the Plugin router [../index/SKILL.md](../index/SKILL.md) before proceeding.
+- Refer to the Plugin router [../product-design/SKILL.md](../product-design/SKILL.md) before proceeding.
 - Follow [../../references/critical-overrides.md](../../references/critical-overrides.md).
 
 ## User Context
