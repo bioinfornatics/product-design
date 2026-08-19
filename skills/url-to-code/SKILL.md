@@ -9,13 +9,13 @@ If the user explicitly invokes this skill, continue.
 
 Only continue when the user asks to clone or recreate the current site.
 
-If the user says `like`, `better`, `redesign`, or `improve`, return to [../product-design/SKILL.md](../product-design/SKILL.md).
+If the user says `like`, `better`, `redesign`, or `improve`, return to [../index/SKILL.md](../index/SKILL.md).
 
 Clone `<target-url>` as a real interactive, frontend-only local app or website. The clone should look and interact like the source.
 
 ## Critical Overrides
 
-- Refer to the Plugin router [../product-design/SKILL.md](../product-design/SKILL.md) before proceeding.
+- Refer to the Plugin router [../index/SKILL.md](../index/SKILL.md) before proceeding.
 - Follow [../../references/critical-overrides.md](../../references/critical-overrides.md).
 
 ## User Context
@@ -30,7 +30,7 @@ Do not inspect every saved reference. Inspect only what the current task needs.
 
 1. CRITICAL STEP: Warn the user that they must follow the target website's terms before proceeding. This workflow is only for apps and websites the user owns, or has permission to recreate.
 
-2. Open the source URL using the Goose Capability Preflight rule in [../product-design/SKILL.md](../product-design/SKILL.md#goose-capability-preflight).
+2. Open the source URL using the Goose Capability Preflight rule in [../index/SKILL.md](../index/SKILL.md#goose-capability-preflight).
 
 3. Check that the page is correct.
 

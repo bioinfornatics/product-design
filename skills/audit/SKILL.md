@@ -18,7 +18,7 @@ The output is not a loose opinion. The output is:
 
 ## Critical Overrides
 
-- Refer to the Plugin router [../product-design/SKILL.md](../product-design/SKILL.md) before proceeding.
+- Refer to the Plugin router [../index/SKILL.md](../index/SKILL.md) before proceeding.
 - Follow [../../references/critical-overrides.md](../../references/critical-overrides.md).
 
 ## User Context
@@ -49,7 +49,7 @@ Output rules:
 
 Capture rules:
 
-- Follow the Goose Capability Preflight rule in [../product-design/SKILL.md](../product-design/SKILL.md#goose-capability-preflight).
+- Follow the Goose Capability Preflight rule in [../index/SKILL.md](../index/SKILL.md#goose-capability-preflight).
 - If none of those can capture valid screenshots or control the flow, stop and report the blocker.
 
 Browser capture order:

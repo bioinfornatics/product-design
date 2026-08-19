@@ -1,5 +1,5 @@
 ---
-name: product-design
+name: index
 description: "Primary Product Design router. Load this exact skill first whenever the user explicitly names Product Design or the product-design plugin, including requests that also name Goose Apps. Also route design exploration, UX research/audit, visual-source cloning, prototype QA, and sharing here; ordinary UI implementation stays outside unless Product Design is explicit."
 ---
 
@@ -29,9 +29,11 @@ Speak to the user in a warm, fun, and collaborative way, prioritizing pithy expl
 
 ## Router Only
 
-The `product-design` skill chooses the next focused Product Design skill. It does not do that skill's work. An explicit `Product Design`, `product-design`, or Product Design plugin mention always enters through `product-design`, even when Goose Apps or another tool is named in the same request. After the router is loaded, load the focused skill by its catalogue name, such as `get-context`.
+The `index` skill (loaded as `product-design:index` once the plugin is installed) chooses the next focused Product Design skill. It does not do that skill's work. An explicit `Product Design`, `product-design`, or Product Design plugin mention always enters through `product-design:index`, even when Goose Apps or another tool is named in the same request. After the router is loaded, load the focused skill by its full qualified name, such as `product-design:get-context`.
 
-If the user names a focused Product Design skill, load `product-design` first and then that exact focused skill. Do not replace it with a related skill.
+If the user names a focused Product Design skill, load `product-design:index` first and then that exact focused skill. Do not replace it with a related skill.
+
+Goose prefixes every skill in this plugin with `product-design:` once installed via `goose plugin install`. Anticipate this: cross-skill references in this plugin's documentation and prose use the qualified form (`product-design:get-context`, `product-design:ideate`, ...). Skill directory names and `SKILL.md` frontmatter `name:` stay unqualified (e.g. `name: get-context`), per the Agent Skills specification — only the runtime-exposed, loadable name is plugin-qualified.
 
 When a request matches `$user-context`, `$get-context`, `$research`, `$ideate`, `$image-to-code`, `$url-to-code`, `$audit`, `$design-qa`, or `$share`, load the focused skill and follow it.
 
@@ -55,12 +57,12 @@ Do not assume Codex Desktop, ChatGPT Work Mode, `@Browser`, `@Sites`, a cloud br
 
 When the request explicitly combines Product Design and Goose Apps, preserve this order:
 
-1. Load `index`.
-2. Load `get-context`, resolve the design target and intended user outcome, and play back the brief.
-3. Load and complete the focused design workflow. For a new interface without a selected visual target, this is `ideate`; wait for a selected generated option before build.
+1. Load `product-design:index`.
+2. Load `product-design:get-context`, resolve the design target and intended user outcome, and play back the brief.
+3. Load and complete the focused design workflow. For a new interface without a selected visual target, this is `product-design:ideate`; wait for a selected generated option before build.
 4. Only then use Goose Apps as the rendering target (`listApps` to inspect existing apps, then `createApp` or `iterateApp` as appropriate). Do not call Apps in parallel with skill loading or use Apps to skip context, visual selection, or design decisions.
-5. Capture the rendered result with an available browser-capable tool and run `design-qa` before handoff. If capture is unavailable, report QA as blocked.
-6. Load `share` only when the user requests a shareable deployment; Apps creation is not a deployment URL.
+5. Capture the rendered result with an available browser-capable tool and run `product-design:design-qa` before handoff. If capture is unavailable, report QA as blocked.
+6. Load `product-design:share` only when the user requests a shareable deployment; Apps creation is not a deployment URL.
 
 A conceptual question such as “how do you see it?” may stop after the brief, workflow recommendation, and explicit next question. Do not create or mutate an app unless the user asked to proceed or the brief clearly requests an implementation now.
 

@@ -6,81 +6,86 @@ Turn early product ideas, live URLs, and static screenshots into prototypes team
 
 ## Skills
 
-| Skill | Description |
+Goose prefixes every skill in this plugin with the plugin name (`product-design:`) once
+installed via `goose plugin install`. Skill directories and `SKILL.md` frontmatter use the
+plain, unqualified name (e.g. `get-context`); the table below shows the qualified name used
+to load each skill after installation.
+
+| Skill (qualified name) | Description |
 |---|---|
-| `product-design` | Primary router — load first for explicit Product Design mentions, including Product Design + Goose Apps |
-| `get-context` | Clarify the design brief before starting ideation or build work |
-| `user-context` | Save and load product URLs, Figma files, screenshots, brand assets |
-| `research` | Source-grounded UX research on user pain and workflow friction |
-| `ideate` | Generate image-based design alternatives with Image Gen |
-| `audit` | Capture and review UX, design, and accessibility from screenshots |
-| `image-to-code` | Implement a selected visual target as a faithful, responsive frontend |
-| `url-to-code` | Clone a live URL as a runnable frontend-only local app |
-| `design-qa` | Compare prototype implementation against its source visual target |
-| `share` | Deploy a prototype and return a shareable URL |
-| `annotate` | Process pending browser annotations on a running project (any supported framework) |
-| `annotate-inject` | Install the annotation mechanism onto a user-provided/existing project that doesn't have it yet |
-| `project-status` | Optional: track project phase/annotation rounds as Beads (`bd`) issues — never a gate |
+| `product-design:index` | Primary router — load first for explicit Product Design mentions, including Product Design + Goose Apps |
+| `product-design:get-context` | Clarify the design brief before starting ideation or build work |
+| `product-design:user-context` | Save and load product URLs, Figma files, screenshots, brand assets |
+| `product-design:research` | Source-grounded UX research on user pain and workflow friction |
+| `product-design:ideate` | Generate image-based design alternatives with Image Gen |
+| `product-design:audit` | Capture and review UX, design, and accessibility from screenshots |
+| `product-design:image-to-code` | Implement a selected visual target as a faithful, responsive frontend |
+| `product-design:url-to-code` | Clone a live URL as a runnable frontend-only local app |
+| `product-design:design-qa` | Compare prototype implementation against its source visual target |
+| `product-design:share` | Deploy a prototype and return a shareable URL |
+| `product-design:annotate` | Process pending browser annotations on a running project (any supported framework) |
+| `product-design:annotate-inject` | Install the annotation mechanism onto a user-provided/existing project that doesn't have it yet |
+| `product-design:project-status` | Optional: track project phase/annotation rounds as Beads (`bd`) issues — never a gate |
 
 ## How the skills work together
 
 The plugin follows a **route → clarify → explore or inspect → build → verify → share** workflow:
 
 ```text
-index
+product-design:index
         ↓
-get-context
+product-design:get-context
         ↓
-research / audit / ideate
+product-design:research / product-design:audit / product-design:ideate
         ↓
-image-to-code or url-to-code
+product-design:image-to-code or product-design:url-to-code
         ↓
-design-qa
+product-design:design-qa
         ↓
-share
+product-design:share
 ```
 
-Not every request needs every step. `product-design` is the entry point and router; it selects the focused skill rather than doing that skill's work.
+Not every request needs every step. `product-design:index` is the entry point and router; it selects the focused skill rather than doing that skill's work.
 
 ### Common flow
 
-1. **Route the request.** Start with `product-design` whenever Product Design or the plugin is explicitly named.
-2. **Clarify the brief.** For design, prototype, redesign, or build work, `get-context` confirms the design target and intended user outcome. It asks one focused question only when either is missing.
-3. **Choose a direction.** If there is no selected visual target, run `ideate`, present exactly three visual options, and wait for the user to choose one before building.
-4. **Build from the source.** Use `image-to-code` for a screenshot, Figma frame, mockup, generated concept, or other image. Use `url-to-code` for a faithful clone of a live URL.
-5. **Verify fidelity.** After implementation, capture the rendered prototype and use `design-qa` to compare it with the source visual.
-6. **Share when requested.** Use `share` only when the user asks to deploy, publish, host, or create a shareable link. A local build is not a deployment.
+1. **Route the request.** Start with `product-design:index` whenever Product Design or the plugin is explicitly named.
+2. **Clarify the brief.** For design, prototype, redesign, or build work, `product-design:get-context` confirms the design target and intended user outcome. It asks one focused question only when either is missing.
+3. **Choose a direction.** If there is no selected visual target, run `product-design:ideate`, present exactly three visual options, and wait for the user to choose one before building.
+4. **Build from the source.** Use `product-design:image-to-code` for a screenshot, Figma frame, mockup, generated concept, or other image. Use `product-design:url-to-code` for a faithful clone of a live URL.
+5. **Verify fidelity.** After implementation, capture the rendered prototype and use `product-design:design-qa` to compare it with the source visual.
+6. **Share when requested.** Use `product-design:share` only when the user asks to deploy, publish, host, or create a shareable link. A local build is not a deployment.
 
 For disposable review, Vite + React is the default even when production will be Next.js; use Next.js immediately only when Next-specific behavior is under validation. Generated concepts and raster assets default to low quality and a 1280 × 1024 review target (or nearest provider canvas, cropped/downscaled), never 4K by default.
 
 The default path for a new interface is therefore:
 
 ```text
-index → get-context → ideate → user selects an option
-      → image-to-code → design-qa → share (if requested)
+product-design:index → product-design:get-context → product-design:ideate → user selects an option
+      → product-design:image-to-code → product-design:design-qa → product-design:share (if requested)
 ```
 
 ### Choosing the focused skill
 
 | Request | Recommended flow |
 |---|---|
-| New interface without a visual reference | `index → get-context → ideate → image-to-code → design-qa` |
-| Build from a screenshot, mockup, or Figma frame | `index → get-context → image-to-code → design-qa` |
-| Faithfully clone a live website | `index → get-context → url-to-code → design-qa` |
-| Redesign or create something “like” a URL | `index → get-context → capture source → ideate → image-to-code → design-qa` |
-| Review an existing screen, flow, or journey | `index → audit` |
-| Audit and then improve an experience | `index → audit → get-context → ideate/build → design-qa` |
-| Research user pain or workflow friction | `index → research` |
-| Save or recall preferences and references | `index → user-context` |
-| Deploy a finished prototype | Append `share` after implementation and QA |
+| New interface without a visual reference | `product-design:index → product-design:get-context → product-design:ideate → product-design:image-to-code → product-design:design-qa` |
+| Build from a screenshot, mockup, or Figma frame | `product-design:index → product-design:get-context → product-design:image-to-code → product-design:design-qa` |
+| Faithfully clone a live website | `product-design:index → product-design:get-context → product-design:url-to-code → product-design:design-qa` |
+| Redesign or create something “like” a URL | `product-design:index → product-design:get-context → capture source → product-design:ideate → product-design:image-to-code → product-design:design-qa` |
+| Review an existing screen, flow, or journey | `product-design:index → product-design:audit` |
+| Audit and then improve an experience | `product-design:index → product-design:audit → product-design:get-context → product-design:ideate/build → product-design:design-qa` |
+| Research user pain or workflow friction | `product-design:index → product-design:research` |
+| Save or recall preferences and references | `product-design:index → product-design:user-context` |
+| Deploy a finished prototype | Append `product-design:share` after implementation and QA |
 
 ### Important distinctions
 
-- **`audit` vs. `design-qa`:** use `audit` for user-facing UX, visual-design, and accessibility critique. Use `design-qa` to compare a coded prototype with its visual source.
-- **Clone vs. redesign:** “clone this URL” routes to `url-to-code`; “redesign this” or “make something like this URL” requires context and visual ideation first.
-- **`research` vs. `audit`:** use `research` to discover broader, source-grounded user problems; use `audit` to inspect a specific existing experience.
-- **`user-context` vs. `get-context`:** `user-context` manages durable saved preferences and references, while `get-context` establishes the brief for the current task.
-- **No visual target, no build:** a complete brief or permission to make assumptions does not replace visual selection. Run `ideate` and wait for the user's choice.
+- **`product-design:audit` vs. `product-design:design-qa`:** use `product-design:audit` for user-facing UX, visual-design, and accessibility critique. Use `product-design:design-qa` to compare a coded prototype with its visual source.
+- **Clone vs. redesign:** “clone this URL” routes to `product-design:url-to-code`; “redesign this” or “make something like this URL” requires context and visual ideation first.
+- **`product-design:research` vs. `product-design:audit`:** use `product-design:research` to discover broader, source-grounded user problems; use `product-design:audit` to inspect a specific existing experience.
+- **`product-design:user-context` vs. `product-design:get-context`:** `product-design:user-context` manages durable saved preferences and references, while `product-design:get-context` establishes the brief for the current task.
+- **No visual target, no build:** a complete brief or permission to make assumptions does not replace visual selection. Run `product-design:ideate` and wait for the user's choice.
 - **Verification requires evidence:** do not claim visual QA without a rendered capture, and do not claim sharing without a working deployment URL.
 
 ## Runtime Dependencies
@@ -106,7 +111,7 @@ Both formulas were verified against a real `bd` install: recognized by `bd formu
 
 ## Product Design + Goose Apps
 
-For an explicit combined request, load `product-design`, then `get-context`, then the focused workflow. A new interface without a selected visual target goes through `ideate` and user selection before Apps rendering. After rendering, browser-capture the result and run `design-qa`; use `share` only for requested deployment. Natural-language routing is probabilistic and must be measured with repeated replays rather than described as deterministic.
+For an explicit combined request, load `product-design:index`, then `product-design:get-context`, then the focused workflow. A new interface without a selected visual target goes through `product-design:ideate` and user selection before Apps rendering. After rendering, browser-capture the result and run `product-design:design-qa`; use `product-design:share` only for requested deployment. Natural-language routing is probabilistic and must be measured with repeated replays rather than described as deterministic.
 
 Saved context is optional and Goose-local under `$GOOSE_HOME/.local/state/product-design/` (default Goose home: `~/.config/goose`). The plugin does not require Codex state, `@Browser`, `@Sites`, or `terminal.local`.
 

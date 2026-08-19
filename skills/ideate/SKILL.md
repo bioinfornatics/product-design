@@ -7,11 +7,11 @@ description: "Focused Product Design ideation workflow. Use after product-design
 
 You're tasked with generating design concepts for a user's idea.
 
-Follow the shared Product Design routing guidance in [../product-design/SKILL.md](../product-design/SKILL.md).
+Follow the shared Product Design routing guidance in [../index/SKILL.md](../index/SKILL.md).
 
 ## Critical Overrides
 
-- Refer to the Plugin router [../product-design/SKILL.md](../product-design/SKILL.md) before proceeding.
+- Refer to the Plugin router [../index/SKILL.md](../index/SKILL.md) before proceeding.
 - Follow [../../references/critical-overrides.md](../../references/critical-overrides.md).
 
 ## User Context
