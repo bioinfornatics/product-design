@@ -37,7 +37,7 @@ $GOOSE_HOME/.local/state/product-design/user-context.md
 Create the file first if needed:
 
 ```bash
-python3 scripts/init_user_context.py
+node dist/init_user_context.js
 ```
 
 Use the category structure from `../SKILL.md`.

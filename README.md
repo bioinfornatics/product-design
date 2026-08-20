@@ -94,8 +94,7 @@ This plugin requires the following tools available to goose:
 
 - **Browser-capable tool** — for capturing live product surfaces and browser-rendered prototypes (audits, URL-to-code, QA); no specific vendor or tool name is assumed
 - **Image-generation tool** — for visual alternatives and assets (ideate, image-to-code); workflows report a capability blocker when absent
-- **Node.js / npm** — for running the prototype bootstrap script and dev server
-- **Python 3** — for optional Goose user-context preflight and init scripts
+- **Node.js / npm** — for running the prototype bootstrap script and dev server, and for the optional user-context preflight/init scripts (compiled TypeScript, no Python required)
 - **Goose Apps** — optional sandboxed rendering target; use only after the design brief and focused workflow, never as a substitute for design QA or deployment
 - **Hosting tool** — optional for sharing prototypes; a working deployment URL is required before claiming the prototype is shared
 
