@@ -18,12 +18,12 @@ The output is not a loose opinion. The output is:
 
 ## Critical Overrides
 
-- Refer to the Plugin router [../index/SKILL.md](../index/SKILL.md) before proceeding.
+- Refer to the Plugin router [`product-design:index`](../index/SKILL.md) before proceeding.
 - Follow [../../references/critical-overrides.md](../../references/critical-overrides.md).
 
 ## User Context
 
-Saved user context is optional. Load [../user-context/SKILL.md](../user-context/SKILL.md) only when the user asks to save or recall context, or when relevant saved context is known to exist.
+Saved user context is optional. Load [`product-design:user-context`](../user-context/SKILL.md) only when the user asks to save or recall context, or when relevant saved context is known to exist.
 
 Use saved product URLs, Figma files, screenshots, reference images, codebase paths, Storybook, tokens, design systems, brand assets, component refs, browser preferences, and share targets as grounding material when relevant.
 
@@ -49,7 +49,7 @@ Output rules:
 
 Capture rules:
 
-- Follow the Goose Capability Preflight rule in [../index/SKILL.md](../index/SKILL.md#goose-capability-preflight).
+- Follow the Goose Capability Preflight rule in [`product-design:index`](../index/SKILL.md#goose-capability-preflight).
 - If none of those can capture valid screenshots or control the flow, stop and report the blocker.
 
 Browser capture order:

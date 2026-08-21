@@ -2,7 +2,7 @@
 
 Use this reference when saved user context is missing, when the user asks what Product Design can remember, when the user asks to set up Product Design, or when the user provides product/design references to save.
 
-Before beginning setup, run the persistence availability check in [$user-context](../SKILL.md). If persistent context is unavailable, do not render the onboarding prompt below. Explain that references can be used in the current conversation but cannot be saved for future conversations.
+Before beginning setup, run the persistence availability check in [`product-design:user-context`](../SKILL.md). If persistent context is unavailable, do not render the onboarding prompt below. Explain that references can be used in the current conversation but cannot be saved for future conversations.
 
 Setup is short. It is not a questionnaire and not a formal onboarding state machine.
 

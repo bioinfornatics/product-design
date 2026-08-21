@@ -1,6 +1,6 @@
 ---
 name: get-context
-description: "Product Design brief gate. After product-design, load before ideation, image-to-code, redesign, Product Design + Goose Apps, or product UI build work; require a clear design target and intended user outcome, play back the brief, then hand off to the named focused workflow before any rendering tool."
+description: "Product Design brief gate. After `product-design:index`, load before `product-design:ideate`, `product-design:image-to-code`, redesign, Product Design + Goose Apps, or product UI build work; require a clear design target and intended user outcome, play back the brief, then hand off to the named focused workflow before any rendering tool."
 ---
 
 # Get Context
@@ -19,7 +19,7 @@ Hard boundary: do not implement UI, scaffold a prototype, start a server, or cre
 
 ## Framework and Design System Detection
 
-Resolve these two before handing off to `$ideate`/`$image-to-code`/`$url-to-code`, alongside the design target and outcome — do not leave them implicit and default to the bundled Vite template without checking.
+Resolve these two before handing off to `product-design:ideate`/`product-design:image-to-code`/`product-design:url-to-code`, alongside the design target and outcome — do not leave them implicit and default to the bundled Vite template without checking.
 
 **Framework.** If the target is a new prototype:
 
@@ -28,9 +28,9 @@ Resolve these two before handing off to `$ideate`/`$image-to-code`/`$url-to-code
 
 **Design system.** Ask or check, in this order, before build starts:
 
-1. **Is there an existing design system?** Check saved user context (`$user-context`) for a recorded design system, codebase paths, Storybook, or component refs. If a plugin exposes one, use its real components. For Servier/DIFA, load `servier-webapp:dna-in-prototypes`, then the required qualified tier skills (`servier-webapp:dna-atoms`, `servier-webapp:dna-molecules`, `servier-webapp:dna-organisms`, `servier-webapp:dna-tokens`). Honor its React compatibility gate before accepting the framework choice.
-2. **If no design system is in use, are there tokens or a palette to use?** Ask for existing design tokens, a brand palette, a Figma file, or brand assets before generating anything from scratch. Use whatever is provided as grounding for `$ideate`'s Image Gen calls and for any hardcoded colors/spacing/type in the build.
-3. **If neither exists,** say so plainly and generate visual directions with distinctly different palettes as part of `$ideate` — this is the fallback, not the default. Do not silently invent a single palette and skip ideation.
+1. **Is there an existing design system?** Check saved user context (`product-design:user-context`) for a recorded design system, codebase paths, Storybook, or component refs. If a plugin exposes one, use its real components. For Servier/DIFA, load `servier-webapp:dna-in-prototypes`, then the required qualified tier skills (`servier-webapp:dna-atoms`, `servier-webapp:dna-molecules`, `servier-webapp:dna-organisms`, `servier-webapp:dna-tokens`). Honor its React compatibility gate before accepting the framework choice.
+2. **If no design system is in use, are there tokens or a palette to use?** Ask for existing design tokens, a brand palette, a Figma file, or brand assets before generating anything from scratch. Use whatever is provided as grounding for `product-design:ideate`'s Image Gen calls and for any hardcoded colors/spacing/type in the build.
+3. **If neither exists,** say so plainly and generate visual directions with distinctly different palettes as part of `product-design:ideate` — this is the fallback, not the default. Do not silently invent a single palette and skip ideation.
 
 Do not skip straight to build with an assumed framework or an assumed palette when the project is new; a wrong assumption here is expensive to undo (rewritten components, mismatched brand colors). A quick check or one targeted question is worth it.
 
@@ -40,12 +40,12 @@ Before ideation, apply G1 in [product decision gates](../../references/product-d
 
 ## Critical Overrides
 
-- Refer to the Plugin router [../index/SKILL.md](../index/SKILL.md) before proceeding.
+- Refer to the Plugin router [`product-design:index`](../index/SKILL.md) before proceeding.
 - Follow [../../references/critical-overrides.md](../../references/critical-overrides.md).
 
 ## User Context
 
-Saved user context is optional. Load [../user-context/SKILL.md](../user-context/SKILL.md) only when the user asks to save/recall context or a configured Product Design state directory is known to contain relevant context.
+Saved user context is optional. Load [`product-design:user-context`](../user-context/SKILL.md) only when the user asks to save/recall context or a configured Product Design state directory is known to contain relevant context.
 
 Use saved product URLs, Figma files, screenshots, reference images, codebase paths, Storybook, tokens, design systems, brand assets, component refs, browser preferences, and share targets as grounding material when relevant.
 
@@ -55,7 +55,7 @@ Do not inspect every saved reference. Inspect only what the current task needs.
 
 1. When the next workflow is already clear, read that skill before sending the brief playback. Do not only name a skill you have not read.
 
-2. Before executing `$ideate`, `$url-to-code`, or `$image-to-code`, play back the minimum brief and any defaults in one pithy user-visible note.
+2. Before executing `product-design:ideate`, `product-design:url-to-code`, or `product-design:image-to-code`, play back the minimum brief and any defaults in one pithy user-visible note.
 
 3. If the target and intended user outcome are clear, continue to the next workflow in the same turn. Do not wait for explicit confirmation. If the user provides feedback, incorporate it and course-correct.
 

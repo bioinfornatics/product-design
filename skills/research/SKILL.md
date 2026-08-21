@@ -11,12 +11,12 @@ Focus on current, evidence-backed user problems. Prioritize logged-in product ex
 
 ## Critical Overrides
 
-- Refer to the Plugin router [../index/SKILL.md](../index/SKILL.md) before proceeding.
+- Refer to the Plugin router [`product-design:index`](../index/SKILL.md) before proceeding.
 - Follow [../../references/critical-overrides.md](../../references/critical-overrides.md).
 
 ## User Context
 
-Saved user context is optional. Load [../user-context/SKILL.md](../user-context/SKILL.md) only when the user asks to save or recall context, or when relevant saved context is known to exist.
+Saved user context is optional. Load [`product-design:user-context`](../user-context/SKILL.md) only when the user asks to save or recall context, or when relevant saved context is known to exist.
 
 Use saved product URLs, Figma files, screenshots, reference images, codebase paths, Storybook, tokens, design systems, brand assets, component refs, browser preferences, and share targets as grounding material when relevant.
 

@@ -1,6 +1,6 @@
 ---
 name: image-to-code
-description: "Build a selected visual target into a reviewable frontend after product-design:get-context. Trigger for screenshot/mock/Figma/ImageGen-to-code, including Servier/DIFA/DNA screens in an existing boilerplate. Default design-validation builds to mock data only (no new DB/auth/services/actions), automatically install annotation support in existing projects, start the app yourself, verify the review URL, then run design-qa. Never ask the user to launch the server manually."
+description: "Build a selected visual target into a reviewable frontend after product-design:get-context. Trigger for screenshot/mock/Figma/ImageGen-to-code, including Servier/DIFA/DNA screens in an existing boilerplate. Default design-validation builds to mock data only (no new DB/auth/services/actions), automatically install annotation support in existing projects, start the app yourself, verify the review URL, then run `product-design:design-qa`. Never ask the user to launch the server manually."
 ---
 
 # Image to Code
@@ -9,7 +9,7 @@ You're tasked with translating the visual target image into a high-quality, inte
 
 ## Critical Overrides
 
-- Refer to the Plugin router [../index/SKILL.md](../index/SKILL.md) before proceeding.
+- Refer to the Plugin router [`product-design:index`](../index/SKILL.md) before proceeding.
 - Follow [../../references/critical-overrides.md](../../references/critical-overrides.md).
 
 ## User Context
@@ -38,8 +38,8 @@ CRITICAL: THIS IS NOT GUIDANCE. THIS IS A CHECKLIST TO COMPLETE.
 
 2. Resolve the exact selected visual target before building.
 
-    - If the user selected a numbered `$ideate` option, use the Nth displayed generated-image result from the most recent ideation set. Do not use the original concept planning order or Image Gen prompt submission order.
-    - Use the concept-name list from `$ideate` only when it was explicitly written in the same displayed-image order.
+    - If the user selected a numbered `product-design:ideate` option, use the Nth displayed generated-image result from the most recent ideation set. Do not use the original concept planning order or Image Gen prompt submission order.
+    - Use the concept-name list from `product-design:ideate` only when it was explicitly written in the same displayed-image order.
     - A generated-image result ID, selected image attachment, screenshot, mockup, or Figma frame is stronger than a bare ordinal. Prefer that exact reference when available.
     - If the selected result cannot be resolved unambiguously, stop before implementation and ask the user to name the concept or reattach/select the image. Never guess and build a nearby option.
 
@@ -88,7 +88,7 @@ Prioritize critical above-the-fold assets first, then reuse agents for supportin
 
     - CRITICAL RULE: Do not create custom inline SVGs, handcrafted SVGs, HTML element drawings, div/span shapes, CSS drawings, gradients, emoji, or text glyphs. Use an available image-generation tool to generate assets and use the closest matching icon library for icons.
 
-9. Build the app starting with [../../references/local-prototype-preflight.md](../../references/local-prototype-preflight.md), using the framework `$get-context` resolved (Vite by default, or Next.js/Nuxt/Astro when named or already in use — pass `--framework <name>` to `bootstrap-prototype.mjs` for a new scaffold). If a design system was identified in `$get-context`, build with its real components per that skill's own guidance instead of generic HTML/CSS. Unless the user asks for a static mock, full production behavior, or a different scope, bring the app or website to life with:
+9. Build the app starting with [../../references/local-prototype-preflight.md](../../references/local-prototype-preflight.md), using the framework `product-design:get-context` resolved (Vite by default, or Next.js/Nuxt/Astro when named or already in use — pass `--framework <name>` to `bootstrap-prototype.mjs` for a new scaffold). If a design system was identified in `product-design:get-context`, build with its real components per that skill's own guidance instead of generic HTML/CSS. Unless the user asks for a static mock, full production behavior, or a different scope, bring the app or website to life with:
 
     - Working navigation, links, tabs, menus, and primary CTAs.
     - Functional inputs, filters, toggles, selections, and forms shown in the main experience.
@@ -102,11 +102,11 @@ Prioritize critical above-the-fold assets first, then reuse agents for supportin
     - Place every image asset you generated into its position before proceeding. I repeat, replace all placeholders, including CSS/SVG placeholders, before proceeding.
     - Do not leave controls in the core experience as static chrome. Do not create new pages or routes unless the user asks for them.
 
-10. Prepare the review loop and run the local app. For a bundled template, the annotation overlay is already present. For an existing project or external boilerplate, load and execute `annotate-inject` automatically when annotation is absent. Start or reuse the documented dev server yourself in a persistent/background process, wait for a healthy HTTP response, verify the annotation toggle and endpoint, and keep the process running. Do not ask the user to open a terminal or run `npm run dev`, `pnpm dev`, `make start-dev`, or equivalent. If startup fails, investigate it; report blocked only after actionable diagnosis.
+10. Prepare the review loop and run the local app. For a bundled template, the annotation overlay is already present. For an existing project or external boilerplate, load and execute `product-design:annotate-inject` automatically when annotation is absent. Start or reuse the documented dev server yourself in a persistent/background process, wait for a healthy HTTP response, verify the annotation toggle and endpoint, and keep the process running. Do not ask the user to open a terminal or run `npm run dev`, `pnpm dev`, `make start-dev`, or equivalent. If startup fails, investigate it; report blocked only after actionable diagnosis.
 
-11. Capture the local app using the Goose Capability Preflight rule in [../index/SKILL.md](../index/SKILL.md#goose-capability-preflight).
+11. Capture the local app using the Goose Capability Preflight rule in [`product-design:index`](../index/SKILL.md#goose-capability-preflight).
 
-12. Run [../design-qa/SKILL.md](../design-qa/SKILL.md) as the blocking build gate.
+12. Run [`product-design:design-qa`](../design-qa/SKILL.md) as the blocking build gate.
 
     Steps:
 
@@ -120,9 +120,9 @@ Prioritize critical above-the-fold assets first, then reuse agents for supportin
 
 13. Handoff the app or website.
 
-    - Only hand off after [../design-qa/SKILL.md](../design-qa/SKILL.md) passes.
+    - Only hand off after [`product-design:design-qa`](../design-qa/SKILL.md) passes.
     - Keep the prototype running locally; the agent owns startup and lifecycle for the review handoff.
     - Confirm annotation is usable and tell the user how to enter annotation mode in the running UI; do not give terminal setup steps.
-    - Provide a valid user-accessible local or deployed URL only when the active Goose runtime returned one. Goose Apps creation alone is not a deployment; use `$share` for requested hosting.
+    - Provide a valid user-accessible local or deployed URL only when the active Goose runtime returned one. Goose Apps creation alone is not a deployment; use `product-design:share` for requested hosting.
     - After the prototype link, use the shared build handoff from `critical-overrides.md`. Do not add a different completion message.
     - Include the post-build iteration and share nudge from [../../references/critical-overrides.md](../../references/critical-overrides.md#build-handoff).

@@ -20,7 +20,7 @@ Use this skill when the user asks to:
 
 ## Critical Overrides
 
-- Refer to the Plugin router [../index/SKILL.md](../index/SKILL.md) before proceeding.
+- Refer to the Plugin router [`product-design:index`](../index/SKILL.md) before proceeding.
 - Follow [../../references/critical-overrides.md](../../references/critical-overrides.md).
 - Before offering onboarding or saving context for future conversations, confirm that local shell access is available, `$GOOSE_HOME` can be resolved (default `~/.config/goose`), and `$GOOSE_HOME/.local/state/product-design/` exists and is writable or can be created in a writable parent directory. If `user-context.md` already exists, confirm that it is writable too.
 - If any check cannot be completed or fails, persistent context is unavailable. Do not offer saved-context onboarding or claim that new context was saved for future conversations. If the user asks to save something, explain that it can be used in the current conversation but not saved for future conversations.

@@ -1,13 +1,13 @@
 ---
 name: design-qa
-description: "Blocking Product Design handoff gate after image-to-code, URL-to-code, or Goose Apps rendering. Requires an openable source visual and browser-captured rendered implementation at a comparable state; write passed/blocked evidence before handoff. Broad UX critique belongs to audit."
+description: "Blocking Product Design handoff gate after `product-design:image-to-code`, `product-design:url-to-code`, or Goose Apps rendering. Requires an openable source visual and browser-captured rendered implementation at a comparable state; write passed/blocked evidence before handoff. Broad UX critique belongs to `product-design:audit`."
 ---
 
 # Design QA
 
 Use this internal helper to compare a prototype's source design against the rendered implementation before handoff.
 
-Do not use this skill for broad UX critique, design critique, product audits, or flow reviews. Use [../audit/SKILL.md](../audit/SKILL.md) for those user-facing requests.
+Do not use this skill for broad UX critique, design critique, product audits, or flow reviews. Use [`product-design:audit`](../audit/SKILL.md) for those user-facing requests.
 
 Use this skill before every Product Design build handoff.
 
@@ -51,7 +51,7 @@ A later pass must identify the earlier findings, the fixes made, and the post-fi
 
 2. Capture evidence.
    - For Figma, use design context and screenshot tools when available.
-   - For web/app implementations, follow the Goose Capability Preflight rule in [../index/SKILL.md](../index/SKILL.md#goose-capability-preflight). Follow the active build skill's “Previewing prototypes in Goose” section before opening a local implementation. Then capture screenshots at the intended viewport.
+   - For web/app implementations, follow the Goose Capability Preflight rule in [`product-design:index`](../index/SKILL.md#goose-capability-preflight). Follow the active build skill's “Previewing prototypes in Goose” section before opening a local implementation. Then capture screenshots at the intended viewport.
    - Capture additional states when relevant: mobile/desktop, hover/focus/active, empty/loading/error, dark/light, and key responsive breakpoints.
    - Save paths or URLs for screenshots when available so findings can cite evidence.
    - Capturing screenshots is not enough. Put the source image and the implementation screenshot together in the same comparison input before judging.

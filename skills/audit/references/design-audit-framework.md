@@ -1,8 +1,8 @@
 # Design Audit Framework
 
-Use this structure for `audit`.
+Use this structure for `product-design:audit`.
 
-Use `audit` for systematic assessment across a broader experience, not for feedback on a single artifact.
+Use `product-design:audit` for systematic assessment across a broader experience, not for feedback on a single artifact.
 
 ## Audit modes
 

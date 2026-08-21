@@ -1,13 +1,13 @@
 ---
 name: project-status
-description: "Optional: track a Product Design project's phase (get-context, visual sourcing, build, design-qa, share) or annotation rounds as Beads (bd) issues, so status is queryable via `bd ready`/`bd show` instead of only living in conversation history. Triggers on two kinds of request: (1) explicit — the user names Beads, bd, issue tracking, or asks to track/plan progress; (2) vocabulary-based — the user talks in epic, gate, user story, success/acceptance criteria, task breakdown, ready/blocked, or backlog terms about a Product Design project. Never a gate — Product Design workflows run the same with or without this."
+description: "Optional: track a Product Design project's phase (`product-design:get-context`, visual sourcing, build, `product-design:design-qa`, `product-design:share`) or annotation rounds as Beads (bd) issues, so status is queryable via `bd ready`/`bd show` instead of only living in conversation history. Triggers on two kinds of request: (1) explicit — the user names Beads, bd, issue tracking, or asks to track/plan progress; (2) vocabulary-based — the user talks in epic, gate, user story, success/acceptance criteria, task breakdown, ready/blocked, or backlog terms about a Product Design project. Never a gate — Product Design workflows run the same with or without this."
 ---
 
 # Project Status (Beads)
 
-[Beads](https://github.com/steveyegge/beads) (`bd`) is an issue tracker with first-class dependency support. This skill wires up two optional formulas that mirror the Product Design plugin's own workflow order — `product-design-build` (get-context → visual source → build → design-qa → share) and `annotate-cycle` (install → collect → process → verify) — so a project's status becomes a `bd` query instead of something only reconstructable from chat history.
+[Beads](https://github.com/steveyegge/beads) (`bd`) is an issue tracker with first-class dependency support. This skill wires up two optional formulas that mirror the Product Design plugin's own workflow order — the `product-design-build` Beads formula (`product-design:get-context` → visual source → build → `product-design:design-qa` → `product-design:share`) and the `annotate-cycle` Beads formula (install → collect → process → verify) — so a project's status becomes a `bd` query instead of something only reconstructable from chat history.
 
-**This is purely additive.** Product Design workflows never depend on Beads being installed, configured, or used. Do not treat any step here as a blocking gate on `get-context`, `image-to-code`, `design-qa`, or any other skill — those run exactly the same whether or not this skill is ever invoked.
+**This is purely additive.** Product Design workflows never depend on Beads being installed, configured, or used. Do not treat any step here as a blocking gate on `product-design:get-context`, `product-design:image-to-code`, `product-design:design-qa`, or any other skill — those run exactly the same whether or not this skill is ever invoked.
 
 ## When this applies
 
@@ -50,7 +50,7 @@ Both live in `../../assets/beads-formulas/*.formula.toml` and use `bd`'s real fo
    ```bash
    bd mol wisp annotate-cycle --var target="<project>" --var needs_install=<true|false> --var framework=<...>
    ```
-5. As the actual Product Design skills run (`get-context`, `ideate`, `image-to-code`, `design-qa`, `share`, `annotate`), close the matching bead step (`bd close <id> --reason "..."`) rather than leaving beads to drift from the real state. Do not batch-close several steps at once to "catch up" — close each as its real work finishes.
+5. As the actual Product Design skills run (`product-design:get-context`, `product-design:ideate`, `product-design:image-to-code`, `product-design:design-qa`, `product-design:share`, `product-design:annotate`), close the matching bead step (`bd close <id> --reason "..."`) rather than leaving beads to drift from the real state. Do not batch-close several steps at once to "catch up" — close each as its real work finishes.
 
 ## Querying status
 
@@ -63,9 +63,9 @@ Use these to answer "where are we on X" instead of re-deriving it from the conve
 
 ## Design-QA's loop is not modeled as N beads
 
-`design-qa` is inherently iterative (compare → fix → re-compare until passed). Do not create a new bead per QA iteration. Instead:
+`product-design:design-qa` is inherently iterative (compare → fix → re-compare until passed). Do not create a new bead per QA iteration. Instead:
 
-- Leave a comment on the `design-qa` step each time a pass returns `blocked`, citing the findings (`bd comment <id> "..."`).
+- Leave a comment on the `product-design:design-qa` step each time a pass returns `blocked`, citing the findings (`bd comment <id> "..."`).
 - Reopen the step (`bd reopen <id>`) if new annotations require another QA pass after it was already closed.
 - Close it once `design-qa.md` says `final result: passed`.
 
@@ -74,4 +74,4 @@ Use these to answer "where are we on X" instead of re-deriving it from the conve
 - Do not require the user to have `bd` installed, or install it for them unprompted, to do ordinary Product Design work.
 - Do not pour a persistent mol for a one-off disposable prototype the user explicitly called throwaway — use `wisp`, or skip tracking entirely.
 - Do not let bead bookkeeping become user-visible busywork — keep status updates to `bd close`/`bd comment` calls between the actual design work, not a parallel narration track.
-- Do not invent additional formula steps beyond what's in the two bundled formulas without checking whether the plugin's own skills actually changed shape first — these formulas should stay in sync with `get-context`/`image-to-code`/`design-qa`/`annotate`'s real steps, not drift into their own workflow.
+- Do not invent additional formula steps beyond what's in the two bundled formulas without checking whether the plugin's own skills actually changed shape first — these formulas should stay in sync with `product-design:get-context`/`product-design:image-to-code`/`product-design:design-qa`/`product-design:annotate`'s real steps, not drift into their own workflow.

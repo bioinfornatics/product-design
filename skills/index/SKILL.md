@@ -29,21 +29,21 @@ Speak to the user in a warm, fun, and collaborative way, prioritizing pithy expl
 
 ## Router Only
 
-The `index` skill (loaded as `product-design:index` once the plugin is installed) chooses the next focused Product Design skill. It does not do that skill's work. An explicit `Product Design`, `product-design`, or Product Design plugin mention always enters through `product-design:index`, even when Goose Apps or another tool is named in the same request. After the router is loaded, load the focused skill by its full qualified name, such as `product-design:get-context`.
+The `product-design:index` skill (loaded as `product-design:index` once the plugin is installed) chooses the next focused Product Design skill. It does not do that skill's work. An explicit `Product Design`, `product-design`, or Product Design plugin mention always enters through `product-design:index`, even when Goose Apps or another tool is named in the same request. After the router is loaded, load the focused skill by its full qualified name, such as `product-design:get-context`.
 
 If the user names a focused Product Design skill, load `product-design:index` first and then that exact focused skill. Do not replace it with a related skill.
 
 Goose prefixes every skill in this plugin with `product-design:` once installed via `goose plugin install`. Anticipate this: cross-skill references in this plugin's documentation and prose use the qualified form (`product-design:get-context`, `product-design:ideate`, ...). Skill directory names and `SKILL.md` frontmatter `name:` stay unqualified (e.g. `name: get-context`), per the Agent Skills specification — only the runtime-exposed, loadable name is plugin-qualified.
 
-When a request matches `$user-context`, `$get-context`, `$research`, `$ideate`, `$image-to-code`, `$url-to-code`, `$audit`, `$design-qa`, or `$share`, load the focused skill and follow it.
+When a request matches `product-design:user-context`, `product-design:get-context`, `product-design:research`, `product-design:ideate`, `product-design:image-to-code`, `product-design:url-to-code`, `product-design:audit`, `product-design:design-qa`, or `product-design:share`, load the focused skill and follow it.
 
-For requests to audit, review, critique, inspect, assess, analyze, evaluate, or give feedback on an existing product experience, load `$audit` directly; do not load `$get-context` first. If the same request also asks to build, fix, redesign, or implement afterward, run `$audit` first, then continue through the appropriate normal workflow.
+For requests to audit, review, critique, inspect, assess, analyze, evaluate, or give feedback on an existing product experience, load `product-design:audit` directly; do not load `product-design:get-context` first. If the same request also asks to build, fix, redesign, or implement afterward, run `product-design:audit` first, then continue through the appropriate normal workflow.
 
-For visual ideation, `$ideate` is the focused workflow. Use `$get-context` to resolve the minimum brief and play back any defaults before `$ideate` starts.
+For visual ideation, `product-design:ideate` is the focused workflow. Use `product-design:get-context` to resolve the minimum brief and play back any defaults before `product-design:ideate` starts.
 
-For clone or recreation of a live URL, load `$url-to-code` directly.
+For clone or recreation of a live URL, load `product-design:url-to-code` directly.
 
-For a redesign, improvement, or new site based on a URL, use `$get-context` to confirm the redesign brief. `Like <URL>` means redesign, not clone. Capture the current site with screenshots, attach those screenshots to the `$ideate` Image Gen calls, then execute `$ideate`.
+For a redesign, improvement, or new site based on a URL, use `product-design:get-context` to confirm the redesign brief. `Like <URL>` means redesign, not clone. Capture the current site with screenshots, attach those screenshots to the `product-design:ideate` Image Gen calls, then execute `product-design:ideate`.
 
 ## Goose Capability Preflight
 
@@ -70,9 +70,9 @@ A conceptual question such as “how do you see it?” may stop after the brief,
 
 For new app, prototype, redesign, or UI build requests without a URL, screenshot, Figma frame, mockup, source image, or existing code target:
 
-- `$ideate` is the focused workflow.
-- Use `$get-context` to resolve the minimum brief.
-- Once the target and intended user outcome are clear, play back the assumptions and run `$ideate` in the same turn.
+- `product-design:ideate` is the focused workflow.
+- Use `product-design:get-context` to resolve the minimum brief.
+- Once the target and intended user outcome are clear, play back the assumptions and run `product-design:ideate` in the same turn.
 - Show exactly three visual options and wait for the user to choose one.
 - Do not scaffold, edit files, or start a server before a visual option is selected.
 
@@ -80,7 +80,7 @@ For new app, prototype, redesign, or UI build requests without a URL, screenshot
 
 ## User Context
 
-Use [$user-context](../user-context/SKILL.md) when the user asks to:
+Use [`product-design:user-context`](../user-context/SKILL.md) when the user asks to:
 
 - Set up Product Design
 - Get started with Product Design
@@ -95,9 +95,9 @@ Adjust the context-gathering request to match the user's request. First-time set
 
 For setup-only requests, do not inspect the workspace, install dependencies, scaffold a prototype, generate images, run audits, or start implementation.
 
-When answering "what can you do?", "how do I get started?", or similar broad Product Design questions, load `$user-context` and follow its persistence availability check before offering saved-context onboarding.
+When answering "what can you do?", "how do I get started?", or similar broad Product Design questions, load `product-design:user-context` and follow its persistence availability check before offering saved-context onboarding.
 
-Saved user context is optional in Goose. Load `$user-context` only when the user asks to save/recall context or when relevant saved context is known to exist; do not make its preflight a mandatory gate for every workflow.
+Saved user context is optional in Goose. Load `product-design:user-context` only when the user asks to save/recall context or when relevant saved context is known to exist; do not make its preflight a mandatory gate for every workflow.
 
 ## Browser Annotation Updates
 
@@ -107,60 +107,60 @@ Read the annotation, its target, and the surrounding screen before changing code
 
 Do not redesign nearby UI or rebuild the prototype just because an annotation touches that area. If the annotation is ambiguous and the choice would materially change the prototype, ask first.
 
-For every locally reviewable Product Design build, the agent—not the user—starts/reuses and verifies the local server and returns the URL; never ask the user to run a terminal command themselves. Bundled templates already include annotation, so it's available automatically once the server is running. For an existing/user-provided project without the mechanism, offer `$annotate-inject` rather than installing it automatically — it edits the user's own codebase (a new API route, a mounted overlay component), so treat it like any other non-trivial change to existing code: confirm before doing it, per [../../references/existing-codebase-edits.md](../../references/existing-codebase-edits.md). Do not block or delay handoff on the user's answer; hand off the build first, then offer annotation as a follow-up.
+For every locally reviewable Product Design build, the agent—not the user—starts/reuses and verifies the local server and returns the URL; never ask the user to run a terminal command themselves. Bundled templates already include annotation, so it's available automatically once the server is running. For an existing/user-provided project without the mechanism, offer `product-design:annotate-inject` rather than installing it automatically — it edits the user's own codebase (a new API route, a mounted overlay component), so treat it like any other non-trivial change to existing code: confirm before doing it, per [../../references/existing-codebase-edits.md](../../references/existing-codebase-edits.md). Do not block or delay handoff on the user's answer; hand off the build first, then offer annotation as a follow-up.
 
-Route here to `$annotate` when the user says they left, drew, marked, or added annotations on a running local project, or asks to check/apply annotation feedback. This works out of the box for prototypes scaffolded from any bundled template (Vite, Next.js, Nuxt, Astro). For an existing/user-provided project that doesn't have the mechanism yet, route to `$annotate-inject` first to install it, then `$annotate` to process what comes in.
+Route here to `product-design:annotate` when the user says they left, drew, marked, or added annotations on a running local project, or asks to check/apply annotation feedback. This works out of the box for prototypes scaffolded from any bundled template (Vite, Next.js, Nuxt, Astro). For an existing/user-provided project that doesn't have the mechanism yet, route to `product-design:annotate-inject` first to install it, then `product-design:annotate` to process what comes in.
 
-Do not wait to be told annotations exist. For any project with the annotation mechanism installed and a dev server currently running, opportunistically check `.goose/annotations/inbox/` for that project at the start of a turn and whenever returning to that project's context, even if the user's message is about something else. If the inbox has pending records, route to `$annotate` before other work on that project.
+Do not wait to be told annotations exist. For any project with the annotation mechanism installed and a dev server currently running, opportunistically check `.goose/annotations/inbox/` for that project at the start of a turn and whenever returning to that project's context, even if the user's message is about something else. If the inbox has pending records, route to `product-design:annotate` before other work on that project.
 
 ## Skills
 
 Use this as the root routing guidance for Product Design plugin work. If several focused skills apply, sequence them in the order that creates the most useful design workflow. Keep this index as a router; do not perform focused workflow logic here.
 
-### $user-context
+### `product-design:user-context`
 
 Preflight, save, or answer from Product Design setup context. Route here before Product Design workflows to load saved product and design sources, and for direct setup, get-started, onboarding, save, remember, recall, inspect, or customization requests. This skill owns Product Design plugin-scoped context and preference policy.
 
-### $get-context
+### `product-design:get-context`
 
 Route here first for design, build, prototype, redesign, extend, or UI exploration work. Require only a clear design target and intended user outcome. Ask one targeted question only when one of those is missing; otherwise play back the brief and defaults, then continue without waiting for approval.
 
-### $research
+### `product-design:research`
 
 Run fast, source-grounded UX research on current user problems for a named digital product. Route here for researching user pain, UX friction, onboarding issues, docs/help problems, developer experience friction, support pain, product workflow issues, or current user complaints.
 
-### $audit
+### `product-design:audit`
 
-Capture and review a product flow, journey, screen, or multi-step product experience from screenshots. Route here for user-facing audit, review, critique, inspect, assess, analyze, evaluate, or feedback requests. It reports UX, design, and accessibility findings tied to captured evidence; do not use `design-qa` for user-facing audits.
+Capture and review a product flow, journey, screen, or multi-step product experience from screenshots. Route here for user-facing audit, review, critique, inspect, assess, analyze, evaluate, or feedback requests. It reports UX, design, and accessibility findings tied to captured evidence; do not use `product-design:design-qa` for user-facing audits.
 
-### $ideate
+### `product-design:ideate`
 
-Generate image-based visual alternatives, remixes, or concept directions for a component, screen, feature, workflow, or product idea. Route here after `get-context` has played back the minimum brief and the user needs visual exploration, design variants, alternatives to an existing design, or idea discovery before choosing a visual target. Prefer this over prose-only ideation unless the user asks for prose.
+Generate image-based visual alternatives, remixes, or concept directions for a component, screen, feature, workflow, or product idea. Route here after `product-design:get-context` has played back the minimum brief and the user needs visual exploration, design variants, alternatives to an existing design, or idea discovery before choosing a visual target. Prefer this over prose-only ideation unless the user asks for prose.
 
-### $url-to-code
+### `product-design:url-to-code`
 
-Clone a live URL as a runnable frontend-only local app using the Browser Choice rule above. Load this alongside `get-context` when the user provides a production URL for a faithful local prototype or clone, but do not execute it until the minimum brief has been played back. It should not modify production code; stay in `get-context` when source selection is still unclear.
+Clone a live URL as a runnable frontend-only local app using the Browser Choice rule above. Load this alongside `product-design:get-context` when the user provides a production URL for a faithful local prototype or clone, but do not execute it until the minimum brief has been played back. It should not modify production code; stay in `product-design:get-context` when source selection is still unclear.
 
-### $image-to-code
+### `product-design:image-to-code`
 
-Implement a selected visual target as a faithful, responsive, interactive frontend. Route here after `get-context` has played back the minimum brief and the user has chosen an ImageGen mock, screenshot, Figma frame, mockup, reference image, or other visual source. Do not start here when no visual target has been selected; use `get-context` and `ideate` first.
+Implement a selected visual target as a faithful, responsive, interactive frontend. Route here after `product-design:get-context` has played back the minimum brief and the user has chosen an ImageGen mock, screenshot, Figma frame, mockup, reference image, or other visual source. Do not start here when no visual target has been selected; use `product-design:get-context` and `product-design:ideate` first.
 
-### $share
+### `product-design:share`
 
 Deploy a runnable prototype and return a shareable URL using the user's preferred target when available. Route here when the user asks to share, deploy, publish, host, create a link, or make a prototype shareable with an available hosting tool.
 
-### $design-qa
+### `product-design:design-qa`
 
-Compare a coded Product Design prototype against its source visual target before handoff. Route here only as an internal helper after a prototype, URL-to-code build, or image-to-code build has both a source visual and rendered implementation. Do not route broad UX critiques, audits, or product-flow reviews here; use `audit` instead.
+Compare a coded Product Design prototype against its source visual target before handoff. Route here only as an internal helper after a prototype, `product-design:url-to-code` build, or `product-design:image-to-code` build has both a source visual and rendered implementation. Do not route broad UX critiques, audits, or product-flow reviews here; use `product-design:audit` instead.
 
-### $annotate
+### `product-design:annotate`
 
-Process pending in-app annotations left on a running local project (drawn regions plus notes) and turn them into scoped code edits. Route here when the user says they left/added annotations, marked up a region, or asks to check or apply annotation feedback on a project with the mechanism installed (any bundled template, or an existing project after `$annotate-inject`).
+Process pending in-app annotations left on a running local project (drawn regions plus notes) and turn them into scoped code edits. Route here when the user says they left/added annotations, marked up a region, or asks to check or apply annotation feedback on a project with the mechanism installed (any bundled template, or an existing project after `product-design:annotate-inject`).
 
-### $annotate-inject
+### `product-design:annotate-inject`
 
-Install the browser annotation mechanism into a user-provided or existing project that doesn't have it yet (a boilerplate, an existing codebase, or a design-system-provided starter) — supports Next.js, Nuxt, Astro, Vite, and gives a porting path for other frameworks. Route here before `$annotate` whenever the target isn't one of this plugin's own bundled templates.
+Install the browser annotation mechanism into a user-provided or existing project that doesn't have it yet (a boilerplate, an existing codebase, or a design-system-provided starter) — supports Next.js, Nuxt, Astro, Vite, and gives a porting path for other frameworks. Route here before `product-design:annotate` whenever the target isn't one of this plugin's own bundled templates.
 
-### $project-status
+### `product-design:project-status`
 
 Optional Beads (`bd`) tracking for a Product Design project's phase or annotation rounds. Route here when the user explicitly names Beads/bd/tracking, or when they describe the project using planning vocabulary (epic, gate, user story, success/acceptance criteria, task breakdown, ready/blocked) without naming Beads directly. Never a gate on any other skill — plain phase-by-phase prose alone does not route here.

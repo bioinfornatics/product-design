@@ -1,17 +1,17 @@
 ---
 name: ideate
-description: "Focused Product Design ideation workflow. Use after product-design and get-context have established and played back the brief; requires an available image-generation capability and hands a user-selected visual option to image-to-code or Goose Apps, never directly to implementation before selection."
+description: "Focused Product Design ideation workflow. Use after `product-design:index` and `product-design:get-context` have established and played back the brief; requires an available image-generation capability and hands a user-selected visual option to `product-design:image-to-code` or Goose Apps, never directly to implementation before selection."
 ---
 
 # Ideate
 
 You're tasked with generating design concepts for a user's idea.
 
-Follow the shared Product Design routing guidance in [../index/SKILL.md](../index/SKILL.md).
+Follow the shared Product Design routing guidance in [`product-design:index`](../index/SKILL.md).
 
 ## Critical Overrides
 
-- Refer to the Plugin router [../index/SKILL.md](../index/SKILL.md) before proceeding.
+- Refer to the Plugin router [`product-design:index`](../index/SKILL.md) before proceeding.
 - Follow [../../references/critical-overrides.md](../../references/critical-overrides.md).
 
 ## User Context
@@ -24,7 +24,7 @@ Do not inspect every saved reference. Inspect only what the current task needs.
 
 ## Workflow
 
-Do not generate images until `../get-context/SKILL.md` has satisfied the brief and G1 in [product decision gates](../../references/product-decision-gates.md) is not blocked.
+Do not generate images until `product-design:get-context` has satisfied the brief and G1 in [product decision gates](../../references/product-decision-gates.md) is not blocked.
 
 ### Journey-first decision
 
@@ -37,7 +37,7 @@ Before generating images:
 - Identify the target: component, screen, feature/workflow, or broad product idea.
 - Identify the intended user, product surface, and goal.
 - Preserve hard constraints from the user.
-- Run `get-context` if the minimum required design brief isn't satisfied.
+- Run `product-design:get-context` if the minimum required design brief isn't satisfied.
 
 2. Resolve context.
 
@@ -101,7 +101,7 @@ Rules you must follow:
 - Preserve hard constraints from the brief in every image.
 - Score each result with G3, report confidence, benefits, trade-offs, risks and a recommendation; red-team irrelevant polish, complexity, assumptions, metric gaming and smaller tests. For involved work save `.gates/03-visual-selection.md`, then stop for selection before build.
 - When the user later selects option `N`, resolve it against the Nth displayed generated-image result from the most recent ideation set, not the original planned concept order. If the exact displayed result cannot be resolved, do not build from a guess; ask the user to name the concept or reattach/select the image.
-- The selected option is the visual target for `$image-to-code`.
+- The selected option is the visual target for `product-design:image-to-code`.
 
 ## Feedback Loop
 
@@ -193,6 +193,6 @@ Do not name or describe the options. For the default three images, send only:
 
 Adjust the numbers only if the user requested a different count.
 
-If the user chooses a number, acknowledge the chosen option before routing to `$image-to-code`, for example: `Building option 2!` Do not ask for confirmation when the mapping is clear.
+If the user chooses a number, acknowledge the chosen option before routing to `product-design:image-to-code`, for example: `Building option 2!` Do not ask for confirmation when the mapping is clear.
 
 Done means the requested number of independent images have been generated and the user has been asked to select one.

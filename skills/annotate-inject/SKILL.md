@@ -5,11 +5,11 @@ description: "Install and verify browser annotation in an existing/user-provided
 
 # Annotate Inject
 
-The bundled prototype templates (`$get-context` → any framework via `bootstrap-prototype.mjs`) already ship the annotation overlay wired in. This skill is for the other case: the user has their own boilerplate, an existing codebase, or a design-system-provided starter (see `existing-codebase-edits.md`), and wants the same draggable-rectangle-plus-note annotation loop available there.
+The bundled prototype templates (`product-design:get-context` → any framework via `bootstrap-prototype.mjs`) already ship the annotation overlay wired in. This skill is for the other case: the user has their own boilerplate, an existing codebase, or a design-system-provided starter (see `existing-codebase-edits.md`), and wants the same draggable-rectangle-plus-note annotation loop available there.
 
 ## Critical Overrides
 
-- Refer to the Plugin router [../index/SKILL.md](../index/SKILL.md) before proceeding.
+- Refer to the Plugin router [`product-design:index`](../index/SKILL.md) before proceeding.
 - Follow [../../references/critical-overrides.md](../../references/critical-overrides.md) and [../../references/existing-codebase-edits.md](../../references/existing-codebase-edits.md).
 
 ## How the mechanism works, regardless of framework
@@ -19,7 +19,7 @@ Every port shares the same contract:
 1. A dev-only server endpoint at `/api/goose-annotate` (or framework-equivalent path) accepts `POST` with a small JSON body (`bbox`, `viewport`, `route`, `components`, `note`) — no screenshots, no binary payloads.
 2. It writes each record as its own file under `<project-root>/.goose/annotations/inbox/*.json`.
 3. A client-side overlay component lets a reviewer drag a rectangle, add a note, and POST it there.
-4. `$annotate` (this plugin's processing skill) picks up pending records on a later turn: screenshots the same route/viewport, crops to the bbox, edits, and moves the record to `processed/`.
+4. `product-design:annotate` (this plugin's processing skill) picks up pending records on a later turn: screenshots the same route/viewport, crops to the bbox, edits, and moves the record to `processed/`.
 
 **The endpoint must be excluded from production**, but the exclusion mechanism differs by runtime:
 
@@ -62,7 +62,7 @@ Before installing, identify what the existing project actually is — do not ass
 
 ## Processing pending annotations
 
-Once installed, pending annotations are processed by `$annotate` exactly the same way regardless of framework — the record format is identical everywhere. `$annotate`'s "When this applies" check for `vite-annotate-plugin.mjs` presence should be read as "the installed annotation mechanism for this project's framework", not literally Vite-only, when this skill was used to install it elsewhere.
+Once installed, pending annotations are processed by `product-design:annotate` exactly the same way regardless of framework — the record format is identical everywhere. `product-design:annotate`'s "When this applies" check for `vite-annotate-plugin.mjs` presence should be read as "the installed annotation mechanism for this project's framework", not literally Vite-only, when this skill was used to install it elsewhere.
 
 ## Notes
 
