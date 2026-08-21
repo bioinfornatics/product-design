@@ -1,6 +1,6 @@
 ---
 name: research
-description: "Run fast, source-grounded UX research on the highest-signal problems users are experiencing with a user-specified digital product. Use when the user asks to research user pain, UX friction, onboarding issues, docs/help problems, developer experience friction, support pain, product workflow issues, or current user complaints for a named product."
+description: Run fast, source-grounded UX research on the highest-signal problems users are experiencing with a user-specified digital product. Use when the user asks to research user pain, UX friction, onboarding issues, docs/help problems, developer experience friction, support pain, product workflow issues, or current user complaints for a named product.
 ---
 
 # Research
@@ -21,6 +21,12 @@ Saved user context is optional. Load [`product-design:user-context`](../user-con
 Use saved product URLs, Figma files, screenshots, reference images, codebase paths, Storybook, tokens, design systems, brand assets, component refs, browser preferences, and share targets as grounding material when relevant.
 
 Do not inspect every saved reference. Inspect only what the current task needs.
+
+## Evidence threshold
+
+Call the work UX research only when it uses inspectable sources or participant evidence. LLM synthesis of a brief, stakeholder direction, expert heuristics, competitive patterns, or a generated prototype is hypothesis formation, not user research. Label it accordingly. If no source connector, participant access, analytics, support corpus, prior studies, or public evidence is available, produce a research plan and assumptions ledger rather than invented findings.
+
+For multi-persona services, research each persona and the backstage/operator lane separately, then synthesize one service blueprint. Parallel research streams are useful when they inspect independent evidence; reconcile contradictions and handoffs before recommending a journey.
 
 ## Contract
 

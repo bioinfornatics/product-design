@@ -1,0 +1,102 @@
+{
+  "plugin_name": "product-design",
+  "evals": [
+    {
+      "id": 1,
+      "name": "full-new-service-state-machine",
+      "prompt": "Crée un service multi-écran sans référence visuelle.",
+      "expected_sequence": [
+        "index",
+        "get-context",
+        "service blueprint if multi-persona",
+        "ideate: journey boards",
+        "user journey selection",
+        "screen-production plan",
+        "one image per screen",
+        "user screen-set approval",
+        "image-to-code",
+        "design-qa"
+      ],
+      "forbidden": [
+        "build after board selection",
+        "three images as three separate steps",
+        "unapproved screen set"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "single-screen-short-path",
+      "prompt": "Crée uniquement une modale sans autre état.",
+      "expected_sequence": [
+        "index",
+        "get-context",
+        "ideate: three same-screen directions",
+        "user selection",
+        "image-to-code",
+        "design-qa"
+      ],
+      "forbidden": [
+        "manufactured journey board"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "research-before-unsupported-service-claims",
+      "prompt": "Crée un service à trois personas sans recherche accessible.",
+      "expected_sequence": [
+        "evidence classification",
+        "assumptions ledger",
+        "service blueprint hypothesis",
+        "journey boards"
+      ],
+      "forbidden": [
+        "claim user validation",
+        "invent research findings"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "url-clone-unchanged",
+      "prompt": "Clone fidèlement une URL existante.",
+      "expected_sequence": [
+        "index",
+        "get-context",
+        "url-to-code",
+        "design-qa"
+      ],
+      "forbidden": [
+        "journey boards unless redesign requested"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "annotation-loop",
+      "prompt": "J'ai fini les annotations du prototype.",
+      "expected_sequence": [
+        "annotate",
+        "capture annotated regions",
+        "scoped edits",
+        "verify",
+        "archive processed records"
+      ],
+      "forbidden": [
+        "redesign unrelated UI"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "imagegen-capability-contract",
+      "prompt": "Génère les concepts avec le provider disponible.",
+      "expected_sequence": [
+        "1024x1024 default",
+        "low quality when supported",
+        "sequential distinct results",
+        "absolute-path embeds"
+      ],
+      "forbidden": [
+        "unsupported 1280x1024 default",
+        "Promise.all final image calls"
+      ]
+    }
+  ]
+}

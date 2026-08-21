@@ -1,0 +1,56 @@
+{
+  "skill_name": "ideate",
+  "iteration": 1,
+  "comparison": "repository HEAD vs revised two-stage workflow",
+  "cases": [
+    {
+      "name": "new-multistep",
+      "baseline": {
+        "passed": false,
+        "evidence": "Selected journey in prose then proposed three visual directions."
+      },
+      "revised": {
+        "passed": true,
+        "evidence": "Proposed three distinct complete journey boards with identical boundaries."
+      }
+    },
+    {
+      "name": "journey-selection",
+      "baseline": {
+        "passed": false,
+        "evidence": "Generated three visual directions after board selection."
+      },
+      "revised": {
+        "passed": true,
+        "evidence": "Created ordered screen plan and one-screen-at-a-time production; no build."
+      }
+    },
+    {
+      "name": "single-screen",
+      "baseline": {
+        "passed": true,
+        "evidence": "Three variants of same modal."
+      },
+      "revised": {
+        "passed": true,
+        "evidence": "Same-screen exception preserved with explicit supported size and presentation."
+      }
+    },
+    {
+      "name": "premature-build",
+      "baseline": {
+        "passed": false,
+        "evidence": "Blocked build but lacked stable screen-plan and approval contract."
+      },
+      "revised": {
+        "passed": true,
+        "evidence": "Blocked build and required G2/G3 records plus screen-set approval."
+      }
+    }
+  ],
+  "summary": {
+    "baseline_pass_rate": 0.25,
+    "revised_pass_rate": 1,
+    "delta": 0.75
+  }
+}

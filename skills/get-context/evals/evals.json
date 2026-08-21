@@ -1,0 +1,49 @@
+{
+  "skill_name": "get-context",
+  "evals": [
+    {
+      "id": 1,
+      "name": "freeze-journey-boundaries",
+      "prompt": "Conçois un service où un salarié trouve un mentor puis réserve son premier échange.",
+      "expected_output": "Playback target, outcome, exact start/end boundaries, shared scenario, success criterion, evidence level, framework and design system before ideation.",
+      "assertions": [
+        "contains:start",
+        "contains:end",
+        "contains:success",
+        "contains:evidence"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "missing-outcome-one-question",
+      "prompt": "Je veux refaire notre portail RH.",
+      "expected_output": "Ask exactly one focused question that resolves target context, intended outcome and observable success without a questionnaire.",
+      "assertions": [
+        "regex:\\?$",
+        "not-contains:1.",
+        "not-contains:2."
+      ]
+    },
+    {
+      "id": 3,
+      "name": "multi-persona-service-blueprint",
+      "prompt": "Crée un service de mentoring pour mentees, mentors et RH.",
+      "expected_output": "Require a shared service boundary and blueprint before selecting one persona slice; label unsupported claims as assumptions.",
+      "assertions": [
+        "contains:service blueprint",
+        "contains:assumption",
+        "not-contains:validated"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "single-screen-routing",
+      "prompt": "Conçois uniquement le contenu d'une modale d'annulation existante; le résultat doit aider l'utilisateur à confirmer ou revenir.",
+      "expected_output": "Recognize a single-screen target and route to same-screen visual ideation rather than journey boards.",
+      "assertions": [
+        "contains:single-screen",
+        "not-contains:end-to-end journey boards"
+      ]
+    }
+  ]
+}

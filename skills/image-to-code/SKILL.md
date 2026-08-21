@@ -1,6 +1,6 @@
 ---
 name: image-to-code
-description: "Build a selected visual target into a reviewable frontend after product-design:get-context. Trigger for screenshot/mock/Figma/ImageGen-to-code, including Servier/DIFA/DNA screens in an existing boilerplate. Default design-validation builds to mock data only (no new DB/auth/services/actions), automatically install annotation support in existing projects, start the app yourself, verify the review URL, then run `product-design:design-qa`. Never ask the user to launch the server manually."
+description: Build a selected visual target into a reviewable frontend after product-design:get-context. Trigger for screenshot/mock/Figma/ImageGen-to-code, including Servier/DIFA/DNA screens in an existing boilerplate. Default design-validation builds to mock data only (no new DB/auth/services/actions), automatically install annotation support in existing projects, start the app yourself, verify the review URL, then run `product-design:design-qa`. Never ask the user to launch the server manually.
 ---
 
 # Image to Code
@@ -34,11 +34,12 @@ For a mobile app or phone prototype, build and verify at 390 × 844 unless the u
 
 CRITICAL: THIS IS NOT GUIDANCE. THIS IS A CHECKLIST TO COMPLETE.
 
-1. Do not start unless you have a selected image, screenshot, mockup, or Image Gen result. Apply G4 in [product decision gates](../../references/product-decision-gates.md): journey, evaluation slice, hypothesis, exact visual target, states, realistic mock data, success criterion, out-of-scope behavior, design-system components and framework rationale must be resolvable. For involved work write `.gates/04-selection-to-prototype.md`.
+1. Do not start unless the visual source matches the target scope. For a multi-step journey, require the user-approved ordered detailed screen set produced after journey-board selection; a selected journey board alone is not sufficient. For a genuinely single-screen target, one selected image, screenshot, mockup, Figma frame or Image Gen result is sufficient. Apply G4 in [product decision gates](../../references/product-decision-gates.md): journey, evaluation slice, hypothesis, exact visual targets, states, realistic mock data, success criterion, out-of-scope behavior, design-system components and framework rationale must be resolvable. For involved work write `.gates/04-selection-to-prototype.md`.
 
-2. Resolve the exact selected visual target before building.
+2. Resolve the exact selected visual target or ordered screen set before building.
 
-    - If the user selected a numbered `product-design:ideate` option, use the Nth displayed generated-image result from the most recent ideation set. Do not use the original concept planning order or Image Gen prompt submission order.
+    - If multi-step ideation was used, read `.gates/02-journey-selection.md`, `.gates/03-screen-production-plan.md` and `.gates/03-visual-selection.md`; resolve every required screen to its exact displayed generated result. A bare journey-option number identifies the board, not the detailed build sources.
+    - For the single-screen exception, resolve a numbered `product-design:ideate` option against the Nth displayed generated-image result from the most recent single-screen ideation set. Do not use submission order.
     - Use the concept-name list from `product-design:ideate` only when it was explicitly written in the same displayed-image order.
     - A generated-image result ID, selected image attachment, screenshot, mockup, or Figma frame is stronger than a bare ordinal. Prefer that exact reference when available.
     - If the selected result cannot be resolved unambiguously, stop before implementation and ask the user to name the concept or reattach/select the image. Never guess and build a nearby option.
@@ -66,7 +67,7 @@ CRITICAL: THIS IS NOT GUIDANCE. THIS IS A CHECKLIST TO COMPLETE.
     - If text is part of an image asset, keep it in the image asset. Examples include full bleed hero images, signs, posters, packaging, storefronts, article art, and illustrations where the type belongs to the visual itself. Do not crop the background image and recreate that text with transparent text boxes, HTML, CSS, or separate overlay layers unless the source clearly shows editable UI text sitting on top of the image.
     - Do not use generic placeholders where the reference implies custom visual content.
     - Generated assets must share the same art direction, palette, rendering style, and design language as the reference mockup.
-    - Default new raster assets to low quality and the smallest dimensions covering their rendered size, normally no more than a `1280 x 1024` source canvas for a full-width review asset. Never request 4K/high/HD by default. If only fixed canvases exist, choose the nearest and crop/downscale without stretching. Preserve supplied source dimensions when fidelity requires them; raise quality only for a documented visible QA failure or explicit request.
+    - Default every newly generated raster asset to a `1024 x 1024` source canvas and request `quality: low` when the model/provider supports it. Use a different size or aspect ratio only when the selected source visual, the exact rendered crop, or an explicit user request requires it; document that exception. If low quality is unsupported, omit the parameter or use automatic/default quality rather than failing. Never request 4K/high/HD by default. Preserve user-supplied source dimensions when fidelity requires them; raise quality only for a documented visible QA failure or explicit request.
     - This limit applies to newly generated raster assets, not user-supplied originals, vector logos/icons, or screenshots used as visual truth.
     - If the available image-generation tool lacks transparency support, post-process generated assets when transparency is required.
 

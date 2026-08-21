@@ -34,6 +34,10 @@ function resolveTemplateRoot(framework) {
 
 function parseArgs(argv) {
   const args = {};
+  // Accept an explicit positional destination as well as --root/--dest.
+  // This avoids silently scaffolding in a wrapper-controlled cwd.
+  const positional = argv.find((arg) => !arg.startsWith("--"));
+  if (positional) args.root = positional;
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index];
     if (!arg.startsWith("--")) continue;

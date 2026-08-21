@@ -1,27 +1,62 @@
-# Comparable journey ideation
+# End-to-end journey boards and screen production
 
-Three unrelated polished screens are not comparable. Separate journey divergence (which interaction strategy creates the outcome?) from visual divergence (how should the selected journey look?).
+Three images are useful only when they support one decision. For a multi-step product, the first decision is **which complete user journey should exist**, not which isolated screen looks best.
 
-## A — Common challenge
+## A — Freeze the comparison contract
 
-Freeze target user/context, entry trigger, job/outcome, baseline when known, success metric and guardrails, constraints/design system, exact start/end boundary, and common scenario/data.
+Before image generation, freeze target user/context, entry trigger, exact start boundary, exact end outcome, common scenario/data, success criterion, design-system constraints and evidence level. Every candidate journey uses this same contract.
 
-## B — Journey hypotheses
+## B — Define three journey hypotheses
 
-Propose up to three different journey strategies in text or diagrams before Image Gen. For each: thesis, numbered happy path, decisions/branches, recovery, screens/states, progressive disclosure, assumptions, main risk, expected advantage, and cheapest falsification experiment. Guided wizard versus direct workspace versus recommendation-first are journey differences; colors or card layouts are not.
+Create three meaningfully different interaction strategies. For each specify thesis, ordered happy path, decisions, critical branch/recovery, progressive disclosure, assumptions, risk and expected advantage. The strategies must differ in how the user reaches the outcome—not merely in color, layout or naming.
 
-## C — Normalize and score
+## C — Generate three end-to-end boards
 
-Apply G2 from product-decision-gates.md using the same boundary and scenario. Recommend one. If two remain plausible because evidence is weak, create low-fidelity clickable skeletons only for disputed steps and test them; do not generate three polished systems per journey.
+Generate exactly three independent 1024 × 1024 images, sequentially. Each image is a single sprite sheet/contact sheet/storyboard for **one complete journey**.
 
-## D — Visual comparison contract
+Each board must:
 
-After journey selection, choose the minimum 2–4 checkpoints: entry/orientation, key decision/core action, result, and only critical recovery. Freeze screen names, content/data, viewport, state, DNA constraints, and success criterion.
+- show the full path from the frozen start to the frozen end;
+- contain the same 4–6 numbered journey moments in reading order;
+- use short persistent screen IDs such as J1-S1, J1-S2;
+- include entry/orientation, core decision, action/commitment, result, and one critical recovery when material;
+- use the same persona, content, dates and business data across boards;
+- remain readable as a 1024 × 1024 overview; use simplified low-fidelity UI if needed;
+- contain one journey only—never multiple alternatives inside one image.
 
-## E — Comparable visual directions
+Never generate image 1 as entry, image 2 as decision and image 3 as result. Never compare a home screen against a booking screen. The unit of comparison is the complete journey.
 
-Generate three directions against that exact contract. One result may be a labeled storyboard containing all checkpoints for one direction. Never compare one direction's home with another direction's result page. If multi-screen output is unreadable, compare the same key checkpoint across all directions, select visual language, then extend only the winner.
+## D — User selects the journey
 
-## F — Decision
+Show the three boards and stop. The displayed image order defines options 1–3. The user selects one complete journey or requests a revision. Record the choice in .gates/02-journey-selection.md.
 
-Present journey decision/confidence, comparable directions, weighted matrix, red-team challenge, trade-offs, recommendation, remaining unknowns, and next experiment/build slice. Save involved-work records to .gates/02-journey-selection.md and .gates/03-visual-selection.md.
+## E — Plan detailed screen production
+
+After selection, derive an ordered screen contract before generating more images. For every screen record:
+
+- stable screen ID and name;
+- purpose and user question answered;
+- entry state and exit action;
+- visible content/data;
+- interaction and validation states;
+- source board panel;
+- dependencies on previous/next screens;
+- whether it is required, optional or recovery.
+
+Save it to .gates/03-screen-production-plan.md. Remove duplicate screens and keep only what is required to test the selected journey.
+
+## F — Generate screen by screen
+
+Generate one 1024 × 1024 detailed screen image at a time, in journey order, at low quality when supported. The first screen establishes the visual anchor. Every later prompt must reference the selected board, the accepted preceding screen, the common shell, tokens, content and screen contract.
+
+Each prompt must say explicitly: "Create only screen <ID>; do not show other journey steps, a storyboard, a device frame, or alternate directions." Preserve navigation, typography, spacing, imagery, component anatomy and data continuity.
+
+Inspect each result before continuing. If it contradicts the screen contract or visual anchor, regenerate that screen only. Do not silently change the journey while producing screens.
+
+## G — Approve the screen set
+
+After all required screens are visible, present the ordered screen list and ask the user to approve or identify screens to revise. The accepted ordered set is the visual source of truth for image-to-code. A journey board alone is insufficient for a multi-screen build.
+
+## H — Single-screen exception
+
+If the design target genuinely has no multi-step journey, generate three visual directions for the same screen, then build the selected result. Do not manufacture a journey board for a component-only task.

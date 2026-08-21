@@ -1,6 +1,6 @@
 ---
 name: get-context
-description: "Product Design brief gate. After `product-design:index`, load before `product-design:ideate`, `product-design:image-to-code`, redesign, Product Design + Goose Apps, or product UI build work; require a clear design target and intended user outcome, play back the brief, then hand off to the named focused workflow before any rendering tool."
+description: Product Design brief gate. After `product-design:index`, load before `product-design:ideate`, `product-design:image-to-code`, redesign, Product Design + Goose Apps, or product UI build work; require a clear design target and intended user outcome, play back the brief, then hand off to the named focused workflow before any rendering tool.
 ---
 
 # Get Context
@@ -33,6 +33,18 @@ Resolve these two before handing off to `product-design:ideate`/`product-design:
 3. **If neither exists,** say so plainly and generate visual directions with distinctly different palettes as part of `product-design:ideate` — this is the fallback, not the default. Do not silently invent a single palette and skip ideation.
 
 Do not skip straight to build with an assumed framework or an assumed palette when the project is new; a wrong assumption here is expensive to undo (rewritten components, mismatched brand colors). A quick check or one targeted question is worth it.
+
+## Evidence and UX-research gate
+
+Before journey ideation, classify every important input as one of: observed user evidence, stakeholder input, inference, or assumption. Never describe stakeholder approval, an LLM-generated journey, a polished mock, or a successful usability walkthrough by the agent as UX research.
+
+For a new service or a request spanning several personas, roles, or backstage operations:
+
+- Define the shared service boundary and the cross-role outcome.
+- Load product-design:research when user problems, terminology, policies, handoffs, or current workflows are not evidenced and suitable sources are available.
+- When source access is unavailable, proceed only as an explicit hypothesis/experiment and include a research plan; do not label the resulting persona or journey as validated.
+- Create one service blueprint covering user-facing and backstage lanes before selecting a single prototype slice.
+- A stakeholder may choose the first slice, but that choice does not validate unmet needs, desirability, or usability.
 
 ## Product Value Gate
 
@@ -67,4 +79,6 @@ This kind of build usually takes about 10-15 minutes, and ambitious ones can tak
 
 Do not send this note for tiny static changes, quick audits, simple research, setup-only, or share-only requests.
 
-Done means target user/context, problem, outcome, product value, observable success criterion, framework/design-system decisions, assumptions and confidence are explicit; G1 has a verdict; defaults have been played back; and the next skill has been read.
+For multi-step work, the brief playback must also state the exact journey start boundary, end outcome, common scenario/data, and whether the next output is three end-to-end journey boards. Do not describe the first three images as screen directions or checkpoints.
+
+Done means target user/context, problem, outcome, product value, observable success criterion, framework/design-system decisions, assumptions and confidence are explicit; G1 has a verdict; the journey comparison boundary and shared scenario are frozen when applicable; defaults have been played back; and the next skill has been read.

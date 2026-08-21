@@ -51,12 +51,12 @@ Not every request needs every step. `product-design:index` is the entry point an
 
 1. **Route the request.** Start with `product-design:index` whenever Product Design or the plugin is explicitly named.
 2. **Clarify the brief.** For design, prototype, redesign, or build work, `product-design:get-context` confirms the design target and intended user outcome. It asks one focused question only when either is missing.
-3. **Choose a direction.** If there is no selected visual target, run `product-design:ideate`, present exactly three visual options, and wait for the user to choose one before building.
-4. **Build from the source.** Use `product-design:image-to-code` for a screenshot, Figma frame, mockup, generated concept, or other image. Use `product-design:url-to-code` for a faithful clone of a live URL.
+3. **Choose the journey, then its screens.** For multi-step work, `product-design:ideate` first presents exactly three end-to-end journey boards. After the user selects a journey, it creates an ordered screen plan and generates each screen individually, then waits for screen-set approval. For a genuine single-screen target, it presents three directions for that same screen.
+4. **Build from the approved sources.** Use `product-design:image-to-code` only after a complete multi-screen source set is approved, or from one selected source for a single-screen target. Use `product-design:url-to-code` for a faithful clone of a live URL.
 5. **Verify fidelity.** After implementation, capture the rendered prototype and use `product-design:design-qa` to compare it with the source visual.
 6. **Share when requested.** Use `product-design:share` only when the user asks to deploy, publish, host, or create a shareable link. A local build is not a deployment.
 
-For disposable review, Vite + React is the default even when production will be Next.js; use Next.js immediately only when Next-specific behavior is under validation. Generated concepts and raster assets default to low quality and a 1280 × 1024 review target (or nearest provider canvas, cropped/downscaled), never 4K by default.
+For disposable review, Vite + React is the default even when production will be Next.js; use Next.js immediately only when Next-specific behavior is under validation. Generated journey boards, detailed screens and raster assets default to 1024 × 1024 and low quality when supported; use another size only for an explicit request or source-fidelity requirement.
 
 The default path for a new interface is therefore:
 
@@ -100,7 +100,7 @@ This plugin requires the following tools available to goose:
 
 ## Product decision gates
 
-Involved workflows use hard criteria, weighted score, evidence confidence and explicit verdict from [`references/product-decision-gates.md`](references/product-decision-gates.md). Multi-page ideation first compares journey strategies at one normalized boundary, then renders three visual directions over the exact same checkpoint set. Records live in the generated project's `.gates/`; Beads may mirror status but is not the evaluator.
+Involved workflows use hard criteria, weighted score, evidence confidence and explicit verdict from [`references/product-decision-gates.md`](references/product-decision-gates.md). Multi-step ideation first renders three complete journey boards at one normalized boundary. After selection, it generates the chosen journey one detailed screen at a time and requires approval of the complete set before build. Records live in the generated project's `.gates/`; Beads may mirror status but is not the evaluator.
 
 ## Optional: project status via Beads
 

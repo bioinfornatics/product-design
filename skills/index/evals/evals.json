@@ -1,0 +1,58 @@
+{
+  "skill_name": "index",
+  "evals": [
+    {
+      "id": 1,
+      "name": "route-new-multistep",
+      "prompt": "@Product Design crée un onboarding bancaire en plusieurs étapes sans maquette.",
+      "expected_output": "Route index → get-context → ideate journey boards; no build before journey and screen-set approvals.",
+      "assertions": [
+        "contains:get-context",
+        "contains:ideate",
+        "contains:journey",
+        "not-contains:image-to-code now"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "route-selected-board",
+      "prompt": "@Product Design je choisis la planche de parcours 1.",
+      "expected_output": "Stay in ideate for screen planning and detailed generation; do not route to image-to-code.",
+      "assertions": [
+        "contains:ideate",
+        "contains:screen",
+        "not-contains:image-to-code"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "route-approved-screen-set",
+      "prompt": "@Product Design le parcours et tous les écrans détaillés sont approuvés, construis-les.",
+      "expected_output": "Route to image-to-code and later design-qa.",
+      "assertions": [
+        "contains:image-to-code",
+        "contains:design-qa"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "route-audit-not-build",
+      "prompt": "@Product Design critique ce parcours existant et donne-moi les problèmes.",
+      "expected_output": "Route directly to audit, not get-context or design-qa.",
+      "assertions": [
+        "contains:audit",
+        "not-contains:design-qa"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "route-research",
+      "prompt": "@Product Design cherche les irritants actuels de nos mentors dans les tickets support.",
+      "expected_output": "Route to research and preserve evidence discipline.",
+      "assertions": [
+        "contains:research",
+        "not-contains:ideate"
+      ]
+    }
+  ]
+}

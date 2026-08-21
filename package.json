@@ -1,0 +1,12 @@
+{
+  "name": "product-design-plugin-development",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate:workflow": "node \"$(dirname \"$npm_package_json\")/scripts/validate-workflow-contract.mjs\"",
+    "validate:skills": "node \"$(dirname \"$npm_package_json\")/scripts/validate-skills.mjs\"",
+    "validate:plugin": "node \"$(dirname \"$npm_package_json\")/scripts/validate-plugin.mjs\"",
+    "validate": "npm run validate:workflow && npm run validate:skills && npm run validate:plugin",
+    "test": "npm run validate"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "skill_name": "image-to-code",
+  "evals": [
+    {
+      "id": 1,
+      "name": "board-only-is-insufficient",
+      "prompt": "Voici la planche de parcours sélectionnée. Construis l'application; aucun écran détaillé n'a été validé.",
+      "expected_output": "Block implementation and request/resume the approved detailed screen-set workflow.",
+      "assertions": [
+        "contains:screen set",
+        "contains:insufficient",
+        "not-contains:build complete"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "approved-screen-set-build",
+      "prompt": "Le parcours et les écrans S1 à S4 sont approuvés et leurs chemins exacts figurent dans les gates. Construis le prototype.",
+      "expected_output": "Resolve every exact source, preserve cross-screen continuity, build, browser-test and run per-screen design QA.",
+      "assertions": [
+        "contains:ordered",
+        "contains:browser",
+        "contains:design QA"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "single-screen-source",
+      "prompt": "Implémente cette unique capture de modale; il n'existe aucun autre état.",
+      "expected_output": "Accept the single source without inventing a journey board.",
+      "assertions": [
+        "contains:single-screen",
+        "not-contains:three journey"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "generated-asset-default",
+      "prompt": "Le mock approuvé contient un portrait à générer pour une carte profil.",
+      "expected_output": "Generate the raster asset at 1024x1024 low quality when supported, while using design-system controls for UI.",
+      "assertions": [
+        "contains:1024 x 1024",
+        "contains:low",
+        "contains:design system"
+      ]
+    }
+  ]
+}

@@ -1,198 +1,203 @@
 ---
 name: ideate
-description: "Focused Product Design ideation workflow. Use after `product-design:index` and `product-design:get-context` have established and played back the brief; requires an available image-generation capability and hands a user-selected visual option to `product-design:image-to-code` or Goose Apps, never directly to implementation before selection."
+description: Two-stage Product Design ideation workflow. For multi-step products, first generates exactly three comparable end-to-end journey boards, waits for journey selection, then plans and generates the selected journey one detailed screen at a time and waits for screen-set approval before build. For genuinely single-screen work, generates three comparable visual directions for that same screen.
 ---
 
 # Ideate
 
-You're tasked with generating design concepts for a user's idea.
+Use after product-design:index and product-design:get-context have established the brief and G1 is not blocked.
 
-Follow the shared Product Design routing guidance in [`product-design:index`](../index/SKILL.md).
+## Critical boundaries
 
-## Critical Overrides
+- Do not build, scaffold, start a server, call Goose Apps, or route to image-to-code while a multi-step journey has only a selected board.
+- A multi-step build requires two user decisions: selected journey, then approved detailed screen set.
+- The first three images must never be three different journey steps.
+- Follow ../../references/critical-overrides.md.
 
-- Refer to the Plugin router [`product-design:index`](../index/SKILL.md) before proceeding.
-- Follow [../../references/critical-overrides.md](../../references/critical-overrides.md).
+## State machine
 
-## User Context
+Use these states explicitly for involved work:
 
-Use saved context only when it is relevant and available under the Goose Product Design state directory; missing saved context is not a blocker.
+1. brief-ready
+2. journey-boards-generated
+3. journey-selected
+4. screen-plan-created
+5. screens-generated
+6. screen-set-approved
+7. ready-to-build
 
-Attach provided product URLs, Figma files, screenshots, reference images, codebase paths, Storybook, tokens, design systems, brand assets, component refs, browser preferences, and share targets to the Image Gen generations to align them to the design brief.
+Record journey selection in .gates/02-journey-selection.md. Record the ordered screen plan and exact generated result paths/IDs in .gates/03-screen-production-plan.md. Record user approval in .gates/03-visual-selection.md.
 
-Do not inspect every saved reference. Inspect only what the current task needs.
+## Decide the mode
 
-## Workflow
+### Multi-step journey mode
 
-Do not generate images until `product-design:get-context` has satisfied the brief and G1 in [product decision gates](../../references/product-decision-gates.md) is not blocked.
+Use when the outcome requires more than one meaningful state, decision, handoff or screen. Follow the two stages below.
 
-### Journey-first decision
+### Single-screen exception
 
-If the scope has multiple pages, states, roles or plausible paths, follow [comparable journeys](references/comparable-journeys.md): define one boundary, propose up to three comparable journey hypotheses, score with G2, expose assumptions/trade-offs, then select or experimentally test a journey. Never generate three polished screens taken from different journey moments. After journey selection freeze the same 2–4 checkpoints, content/data, viewport/state, design-system constraints and success criterion for all three visual directions. One image may contain multiple labeled screens from one direction; never multiple directions. If a storyboard is unreadable, compare the same key checkpoint first and extend only the selected direction.
+Use only for a genuinely isolated screen, component, modal, panel or static page with no meaningful journey. Generate exactly three visual directions for that same state, wait for one selection, then hand the selected result to image-to-code.
 
-Before generating images:
+## Common preflight
 
-1. Understand the brief.
+Before any generation:
 
-- Identify the target: component, screen, feature/workflow, or broad product idea.
-- Identify the intended user, product surface, and goal.
-- Preserve hard constraints from the user.
-- Run `product-design:get-context` if the minimum required design brief isn't satisfied.
+1. Freeze target user/context, entry trigger, exact start boundary, exact end outcome, common scenario/data, success criterion, evidence level, design system and constraints.
+2. Inspect provided screenshots, Figma frames, local images, Storybook, tokens and existing visual references directly. If a named source is inaccessible, stop and name the gap.
+3. For multi-persona services, reconcile persona and backstage journeys in one service blueprint before choosing the persona slice to visualize.
+4. Resolve exact current dates for time-sensitive mock data and reuse them consistently.
+5. Use 1024 x 1024 by default. Override only for an explicit user size or source-fidelity requirement.
+6. Request quality: low when supported. If unsupported, omit it or use automatic/default quality.
 
-2. Resolve context.
+# Stage 1 — Compare complete journeys
 
-- Use provided files, screenshots, links, and visible references.
-- In a local workspace, look for nearby design documentation and other local visual context.
-- Check likely design context folders such as `user-context`, `storybook/`, `.storybook/`, `design-system/`, `design-systems/`, `tokens/`, `components/`, `app/`, and generated prototype roots.
-- In an existing project, look for existing product screenshots, similar flows, Storybook captures, design tokens, and component references before generating. Ask if the user can provide example screens similar to the one they are building if the existing app isn't accessible. Ensure you add design language and tokens to the Image Gen prompt.
+## Define the three candidates
 
-3. Inspect references directly.
+Create exactly three meaningfully different interaction strategies against the same frozen contract. Each candidate must include:
 
-- Look at screenshots, images, Figma frames, app surfaces, or other visual references before generating.
-- Do not infer from filenames alone.
-- If a named local path or reference is not visible, stop and ask the user to confirm the path, upload the file, start the local app, or point to the correct workspace.
+- thesis;
+- complete ordered happy path;
+- decisions and one critical recovery when material;
+- progressive disclosure;
+- assumptions and main risk;
+- expected advantage and cheapest falsification experiment.
 
-4. Decide the variation mode.
+Do not vary only visual style. Do not assign candidate images to separate stages.
 
-- If useful local design context exists and the user has not asked for a new style, stay within that existing direction.
-- If no useful design context exists, or the user asks for broad exploration, vary both concept and visual system.
-- For a specific component or existing surface, vary structure, interaction, hierarchy, and emphasis before varying brand style.
-- For a broad product idea, explore three meaningfully different product directions.
+## Generate three journey boards
 
-5. Choose target dimensions before Image Gen.
+Launch three independent Image Gen calls sequentially. Each result is one 1024 x 1024 sprite sheet/contact sheet/storyboard for one complete candidate journey.
 
-- Pick the dimensions that best match the user's request and any provided visual reference.
-- Mobile app: `390 x 844`.
-- Tablet app: `834 x 1194`.
-- Desktop app, dashboard, admin, or SaaS: `1280 x 1024` for fast review by default; match a provided reference when fidelity requires another viewport.
-- Landing or marketing page: `1280` wide and scrollable.
-- Modal, panel, widget, or component: natural container size.
-- Provided screenshot, Figma frame, mockup, or reference image: match its dimensions and aspect ratio when the user wants to continue from that visual.
-- Avoid crowding. Make the design fit the chosen dimensions cleanly, with realistic spacing, readable type, and no clipped content.
-- Include the chosen dimensions in every Image Gen prompt.
-- Use low generation quality for ideation (`quality: low` when available). Do not request 4K or high/HD quality for review concepts. If the provider cannot emit `1280 x 1024` exactly, use its nearest supported landscape canvas (for example `1536 x 1024`) and crop/downscale to the target without stretching. Escalate quality only on explicit request or when small detail makes the result unusable.
+Every board must:
 
-6. Check for access gaps.
+- show the full path from the same start boundary to the same end outcome;
+- contain 4–6 numbered moments in a clear reading order;
+- include entry/orientation, core decision, commitment/action, result, and critical recovery when relevant;
+- use the same persona, business data, dates and constraints as the other boards;
+- use concise panel labels and stable board-local IDs such as J1-S1, J1-S2;
+- use simplified low-fidelity UI where needed so the entire journey remains legible;
+- contain exactly one journey, never several alternatives;
+- use no browser/device chrome and no extraneous feature inventory.
 
-- If a connector, reference, or file cannot be accessed because of auth, permissions, expired login, missing scope, suspiciously empty results, or unavailable local state, stop.
-- Name the gap clearly and ask whether to troubleshoot access or continue without that source.
-- Do not generate images while silently ignoring a named reference.
+Never generate image 1 as entry, image 2 as decision and image 3 as result. Never compare different journey moments as if they were alternatives.
 
-7. Attach images and mocks provided by the user to the Image Gen call along with your design brief.
+## Journey-board prompt
 
-8. Generate 3 independent options that have distinct information hierarchy, layout strategy, interaction model, or product framing.
-
-Rules you must follow:
-
-- Use the Image Gen prompt below.
-- Use an image-generation tool exposed in the current Goose session; do not assume a tool named “built-in Image Gen” exists. If none is available, stop and name the missing capability.
-- Generate exactly three independent visual-direction results unless the user overrides the count. For a journey, every result covers the same frozen checkpoint set, as a readable storyboard or the same key checkpoint.
-- Launch each Image Gen call independently. Do not batch Image Gen calls with `Promise.all`, collect them into an ordered array, or replay them in request order.
-- Each option must be its own Image Gen result. Never put multiple design directions in one image. Multiple labeled checkpoints from one journey and one direction are allowed.
-- Give each direction a distinct, descriptive name before generation, but do not call it `option 1`, `option 2`, or `option 3` and do not put planned numeric labels in Image Gen prompts. Parallel results can arrive in a different order from the requests.
-- Number options only after the Image Gen results are present in the thread. The only authoritative option order is the order those generated-image results are displayed in the current thread. Ignore the planned concept order, original request chain, prompt submission order, `Promise.all` result order, batch order, array indexes, retry order, and assumed completion order.
-- After all results return, bind each visible option number to the result in that displayed order. Do not name or describe the options in the final selection message.
-- Attach provided screenshots, files, app captures, Figma references, and visual source material as moodboard inspiration when available.
-- Attach existing product screenshots, similar flows, Storybook captures, design tokens, and component references as grounding material when available.
-- When mock data includes dates or time-sensitive information, resolve the exact current date and include it in every Image Gen prompt. Derive visible dates from that anchor; preserve dates required by the user or source design.
-- If a screenshot, image, or visual file is available, attach the actual image to the Image Gen call. Do not rely on text descriptions of it.
-- Only claim a visual reference was attached if the Image Gen call actually received that image or a readable local image path.
-- If you cannot attach the image, say that clearly and ask whether to continue with text-only direction.
-- Preserve hard constraints from the brief in every image.
-- Score each result with G3, report confidence, benefits, trade-offs, risks and a recommendation; red-team irrelevant polish, complexity, assumptions, metric gaming and smaller tests. For involved work save `.gates/03-visual-selection.md`, then stop for selection before build.
-- When the user later selects option `N`, resolve it against the Nth displayed generated-image result from the most recent ideation set, not the original planned concept order. If the exact displayed result cannot be resolved, do not build from a guess; ask the user to name the concept or reattach/select the image.
-- The selected option is the visual target for `product-design:image-to-code`.
-
-## Feedback Loop
-
-If the user gives feedback after seeing options, generate revised options with that feedback.
-
-If the user selects an option and gives feedback, generate a revised option with that feedback before build.
-
-If the user likes parts of more than one option, combine those choices into a new Image Gen design and show it before build.
-
-## Image Gen Prompt
-
-Adapt this prompt to the current design brief, attach any available image references, and send it to Image Gen:
+Adapt and send this prompt independently for each candidate:
 
 ```text
-Create realistic, production-quality UI designs with clear hierarchy, strong typography, intentional imagery, and purposeful spacing.
+Create one 1024 x 1024 low-fidelity but realistic product journey board for a single end-to-end user journey.
 
-Design a focused primary screen, not a feature inventory. The product may support many workflows, but this frame should show the hero use case, one clear primary action, and only one or two supporting actions or content areas. Do not add cards, panels, tabs, badges, metrics, filters, or navigation items merely to advertise every feature. Let the rest of the product exist off-screen. Prefer strong hierarchy and generous whitespace; if the screen feels crammed, remove UI.
+This image is one candidate journey, not one screen and not a collection of alternative designs. Show the complete path from [FROZEN START] to [FROZEN END] as [4–6] numbered panels in clear reading order. Use the same persona, scenario, data, dates, outcome, design-system constraints and success criterion supplied in the brief.
 
-### Target Dimensions
+Candidate journey thesis: [THESIS]
+Ordered moments: [MOMENTS]
+Critical decision/recovery: [DECISION OR RECOVERY]
+Expected advantage: [ADVANTAGE]
 
-Pick the dimensions that best match the user's request and any provided visual reference.
+Use short panel IDs [Jx-S1...], concise labels, arrows or sequencing cues, and enough UI anatomy to understand each interaction. Keep the whole path readable at a glance. Simplify detail rather than omitting a journey moment. Do not show only one checkpoint. Do not put multiple candidate journeys in this image. Do not add browser/device chrome.
 
-Default to a desktop web-app frame unless the user or reference clearly calls for mobile, tablet, or another format.
-
- - Mobile app: `390 x 844`
- - Tablet app: `834 x 1194`
- - Desktop app, dashboard, admin, or SaaS: `1280 x 1024` (fast-review default)
- - Landing or marketing page: `1280` wide and scrollable
- - Modal, panel, widget, or component: natural container size
- - Provided screenshot, Figma frame, mockup, or reference image: match its dimensions and aspect ratio when the user wants to continue from that visual
-
-Generate at low quality for ideation; do not request 4K/high/HD output. If the exact target is unsupported, use the nearest canvas and crop/downscale without stretching.
-
-Use a natural viewport ratio for the intended surface. Never stretch, squash, or warp the generated screen, imagery, typography, or UI elements to fill the canvas. If the composition does not fit naturally, recompose or simplify the layout instead.
-
-Avoid crowding. Make the design fit the chosen dimensions cleanly, with realistic spacing, readable type, and no clipped content.
-
-### Layout
-
-When deciding how to lay elements out on the page, this should be your priority order for tools to differentiate sections:
-
-1. Use spacing, grouping, alignment, typography, and hierarchy on the same product surface.
-2. Use simple dividers or row separators.
-3. Use a subtle surface tint only when the base surface is not enough.
-4. Use borders only when separation still is not clear.
-5. Use shadows/elevation last, and sparingly.
-
-Don'ts:
- - Do not default to a centered "app card" (the whole UI is in a card on the page) on top of a contrasting page background. Use the base page surface first unless the source product or user explicitly asks for a contained app panel.
- - Do not put cards inside cards. Do not make every major section a card. Do not make each list item its own card unless each item is truly a standalone object. A normal list should usually read as one grouped surface with lightweight row separation.
- - Do not make up extraneous features. Add only the things essential to accomplish what the prototype's goal is. Don't make up more features just to fill out a UI.
-
-### Typography
-
- - Anchor UI typography to readable product sizes. Body text should usually sit between 14px and 16px, with the rest of the type scale built around that baseline.
- - Keep long-form text to a comfortable line length, generally no more than 65 characters per line.
- - Use no more than 2 fonts in a UI. You can use any font available in the project, or fonts provided free on Google Fonts. Pick the font that is best for the goal of the product and that matches with its intended look and feel.
-
-### Presentation
-
- - Do not add browser or device chrome around the mockup.
- - Do not put multiple ideas into a single image generation.
- - Vary each idea as much as possible while adhering to the constraints given entirely.
-
-### Data Freshness
-
-When the design includes dates or time-sensitive mock data, use the supplied current date as the anchor. Weekly views must show the real containing week with correct weekday/date pairs. Feeds, charts, notifications, and recent activity must use plausible chronological dates relative to today. Mark today when useful. Preserve dates required by the brief or source design.
+Use the available design-system language as grounding, but prioritize flow comprehension over decorative polish. Generate at low quality when supported.
 ```
 
-## Output
+## Present and stop
 
-Wait until all Image Gen calls have returned before sending the final message that asks the user to choose.
+Wait until all three boards have readable saved artifacts. Number them by result-message order only, then embed all three in the selection message using Markdown image syntax and absolute filesystem paths. A textual path or relative path is insufficient. Save G2 scoring and evidence. Use this structure:
 
-Do not send the final selection message until every requested generated image is visible exactly once in the main chat.
+```md
+![Journey 1 — <name>](/absolute/path/to/journey-1.png)
 
-If fewer Image Gen outputs are visible than requested, retry the missing generation. Do not send the selection message.
+![Journey 2 — <name>](/absolute/path/to/journey-2.png)
 
-Number the returned Image Gen outputs in the order they appear in the conversation context:
+![Journey 3 — <name>](/absolute/path/to/journey-3.png)
 
-- First Image Gen output = Option 1
-- Second Image Gen output = Option 2
-- Third Image Gen output = Option 3
+Which complete journey should I develop: 1, 2, or 3? Or tell me what you want to change in the proposed flows.
+```
 
-Ignore the planned concept order, original request chain, request order, `Promise.all` result order, batch order, array indexes, retry order, and tool submission order.
+Do not say “build.” Do not route to image-to-code.
 
-Do not name or describe the options. For the default three images, send only:
+# Stage 2 — Produce the selected journey screen by screen
 
-`Which option should I build: 1, 2, or 3? Or tell me what you'd like to refine or personalize first.`
+When the user selects board N:
 
-Adjust the numbers only if the user requested a different count.
+1. Resolve N against the displayed journey boards, not submission order.
+2. Say: `Journey N selected. I’ll map its screens, then generate them one by one for final approval.`
+3. Write .gates/02-journey-selection.md with selected board path/result ID, evidence confidence and remaining assumptions.
+4. Derive the minimum complete ordered screen set, normally 3–6 screens. Remove duplicates; preserve critical recovery states.
+5. Write .gates/03-screen-production-plan.md before generating screens.
 
-If the user chooses a number, acknowledge the chosen option before routing to `product-design:image-to-code`, for example: `Building option 2!` Do not ask for confirmation when the mapping is clear.
+For each screen record:
 
-Done means the requested number of independent images have been generated and the user has been asked to select one.
+- stable ID and name;
+- purpose and user question answered;
+- source board panel;
+- entry state;
+- visible content/data;
+- primary and supporting actions;
+- validation, empty, loading, error or recovery state when material;
+- exit state and next screen;
+- shared shell/components/assets;
+- required, optional or recovery status.
+
+Play back the screen list briefly. Continue without waiting unless the plan materially changes the selected journey or remains ambiguous; in that case ask one focused question.
+
+## Generate one screen at a time
+
+Generate screens sequentially in plan order. Each Image Gen call produces exactly one detailed 1024 x 1024 screen.
+
+- The first accepted screen establishes the visual anchor.
+- Every later call references the selected journey board, screen plan, accepted prior screen(s), shared shell, typography, tokens, imagery, component anatomy and exact common data.
+- Inspect each result before generating the next. Regenerate only a screen that conflicts with the contract.
+- Never silently add, remove or reorder journey steps during visual production.
+- Never put several screens, states or alternative directions in one detailed-screen result.
+
+## Detailed-screen prompt
+
+Adapt this prompt for every screen:
+
+```text
+Create only detailed screen [SCREEN ID — NAME] from the selected end-to-end journey. Generate a single 1024 x 1024 image. Do not show other journey steps, a storyboard, a sprite sheet, a device/browser frame, or alternate design directions.
+
+Journey context: [START → END]
+Screen purpose: [PURPOSE]
+Entry state: [ENTRY]
+Visible content and exact shared data: [CONTENT]
+Primary action: [ACTION]
+Supporting/recovery state: [STATE]
+Exit to: [NEXT SCREEN]
+
+Preserve the selected journey board and accepted visual anchor exactly: shared application shell, navigation position, typography, spacing rhythm, colors/tokens, imagery, component anatomy and content continuity. Use the real design-system language. Keep one clear primary action and only necessary supporting content.
+
+Generate at low quality when supported.
+```
+
+## Approve the screen set and stop
+
+After every required screen has a readable saved artifact:
+
+1. Verify ordered coverage from journey start to outcome.
+2. Check continuity of shell, data, actions, terminology and states.
+3. Record exact result paths/IDs and G3 verdict.
+4. Present the ordered screen list and embed every screen exactly once using Markdown image syntax with its absolute path.
+5. Ask only:
+
+`Do you approve this complete screen set for build, or which screen IDs should I revise?`
+
+If approved, set state screen-set-approved and route to image-to-code. If feedback affects one screen, regenerate that screen only. If feedback changes the journey, return to Stage 1 or update the screen plan explicitly.
+
+# Single-screen exception workflow
+
+Generate three independent 1024 x 1024 visual directions for the exact same screen, content, state and constraints. Launch calls sequentially; each result contains one direction only. Number by displayed order, ask which option to build, and route the selected result to image-to-code.
+
+# Shared generation rules
+
+- Use an exposed image-generation capability; if absent, stop and name the blocker.
+- Never batch final Image Gen calls with Promise.all because displayed order is authoritative.
+- Attach actual readable visual references; do not claim an attachment that was not sent.
+- Never use generated imagery as a substitute for standard design-system controls.
+- Preserve supplied hard constraints and dates.
+- Avoid crowding, nested cards, decorative metrics and invented features.
+- Body text should correspond to readable product sizes, usually 14–16 px.
+- If quality: low is unsupported, omit it instead of failing.
+
+Done in multi-step mode means a journey board is selected, every planned detailed screen has been generated, the ordered set is approved, G2/G3 records are complete, and image-to-code can resolve every source image unambiguously.

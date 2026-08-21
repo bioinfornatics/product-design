@@ -18,17 +18,25 @@ Hard criteria: problem/opportunity, target user and context, intended outcome, p
 
 Weights: problem clarity 20; user importance 15; outcome 15; product value 15; measurable success 15; evidence 10; constraints/risks 5; ideation scope 5. Pass at 75+, conditional at 60–74 only with all hard criteria, blocked below 60. An essential dimension below 2/5 blocks.
 
-## G2 — Journey exploration to selected journey
+## Evidence labels
 
-Compare journey hypotheses at the same boundary and outcome. Each must share the user/context and identify entry, steps, decisions, recovery, end state, assumptions, and checkpoints. They must be interaction strategies, not renamed layouts.
+Every involved-work gate must identify whether its evidence is observed user behavior, internal operational data, stakeholder input, external research, inference, or assumption. A prototype walkthrough by the building agent proves execution, not usability or desirability. Stakeholder approval proves decision alignment, not user validation.
 
-Weights: need fit 25; success potential 20; friction/cognitive load 15; learnability/recovery 10; product value 10; feasibility 10; risks/assumptions 10. Select one journey before visual comparison. With insufficient evidence, use experiment and test the smallest competing flows.
+For multi-persona services, require a shared service boundary, persona lanes, backstage/system dependencies and handoffs before G2 can pass.
 
-## G3 — Visual directions to selected direction
+## G2 — End-to-end journey boards to selected journey
 
-All three directions use the same comparison contract: journey, checkpoints, content/data, viewport, state, design-system constraints, and success criterion. Multiple screens from one direction may share one labeled storyboard; never put multiple directions in one image.
+Compare exactly three journey hypotheses at the same boundary and outcome. Each must share user/context, scenario/data, start, end and success criterion, while differing as an interaction strategy. Each candidate must be represented by one complete 1024 × 1024 journey board containing the full ordered path, decisions and critical recovery. Three images showing three separate steps fail this gate.
 
-Weights: need fit 25; success potential 20; hierarchy/path clarity 15; friction 10; design-system fit 10; feasibility 10; risks 5; differentiation/value 5. Show score, confidence, trade-offs and recommendation. Red-team irrelevant polish, complexity, hidden assumptions, metric gaming, and simpler tests.
+Weights: need fit 25; success potential 20; friction/cognitive load 15; learnability/recovery 10; product value 10; feasibility 10; risks/assumptions 10. The user selects one complete board. With insufficient evidence, label the choice as an experiment. Save the selected displayed option and board path in .gates/02-journey-selection.md.
+
+## G3 — Selected journey to approved screen set
+
+Before detailed generation, require an ordered screen-production plan with stable IDs, purpose, entry/exit state, content/data, interaction states, dependencies and board-panel traceability. Generate one detailed screen at a time in journey order. The first accepted screen anchors the visual system; later screens must preserve shell, tokens, typography, imagery, component anatomy and data continuity.
+
+Pass only when every required screen has a visible generated source, the set covers the selected journey end to end, contradictions have been repaired, and the user approves the ordered screen set. A journey board alone cannot pass G3 for a multi-screen build. Save the plan and approval in .gates/03-screen-production-plan.md and .gates/03-visual-selection.md.
+
+For a genuinely single-screen target, G3 instead compares three visual directions for that same screen using the same content, viewport, state and design-system constraints.
 
 ## G4 — Selected direction to prototype
 

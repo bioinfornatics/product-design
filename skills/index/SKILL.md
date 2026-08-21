@@ -1,6 +1,6 @@
 ---
 name: index
-description: "Primary Product Design router. Load this exact skill first whenever the user explicitly names Product Design or the product-design plugin, including requests that also name Goose Apps. Also route design exploration, UX research/audit, visual-source cloning, prototype QA, and sharing here; ordinary UI implementation stays outside unless Product Design is explicit."
+description: Primary Product Design router. Load this exact skill first whenever the user explicitly names Product Design or the product-design plugin, including requests that also name Goose Apps. Also route design exploration, UX research/audit, visual-source cloning, prototype QA, and sharing here; ordinary UI implementation stays outside unless Product Design is explicit.
 ---
 
 # Skill Purpose
@@ -39,7 +39,7 @@ When a request matches `product-design:user-context`, `product-design:get-contex
 
 For requests to audit, review, critique, inspect, assess, analyze, evaluate, or give feedback on an existing product experience, load `product-design:audit` directly; do not load `product-design:get-context` first. If the same request also asks to build, fix, redesign, or implement afterward, run `product-design:audit` first, then continue through the appropriate normal workflow.
 
-For visual ideation, `product-design:ideate` is the focused workflow. Use `product-design:get-context` to resolve the minimum brief and play back any defaults before `product-design:ideate` starts.
+For visual ideation, `product-design:ideate` is the focused workflow. Use `product-design:get-context` to resolve the minimum brief and play back any defaults before `product-design:ideate` starts. Multi-step work uses two approvals: select one of three complete journey boards, then approve the selected journey's screen-by-screen source set. Never interpret journey selection as permission to build.
 
 For clone or recreation of a live URL, load `product-design:url-to-code` directly.
 
@@ -59,7 +59,7 @@ When the request explicitly combines Product Design and Goose Apps, preserve thi
 
 1. Load `product-design:index`.
 2. Load `product-design:get-context`, resolve the design target and intended user outcome, and play back the brief.
-3. Load and complete the focused design workflow. For a new interface without a selected visual target, this is `product-design:ideate`; wait for a selected generated option before build.
+3. Load and complete the focused design workflow. For a new multi-step interface without a selected visual target, `product-design:ideate` first produces three complete journey boards, waits for journey selection, then produces the chosen journey screen by screen and waits for screen-set approval before build. For a genuine single-screen target, wait for one selected visual option.
 4. Only then use Goose Apps as the rendering target (`listApps` to inspect existing apps, then `createApp` or `iterateApp` as appropriate). Do not call Apps in parallel with skill loading or use Apps to skip context, visual selection, or design decisions.
 5. Capture the rendered result with an available browser-capable tool and run `product-design:design-qa` before handoff. If capture is unavailable, report QA as blocked.
 6. Load `product-design:share` only when the user requests a shareable deployment; Apps creation is not a deployment URL.
@@ -73,8 +73,10 @@ For new app, prototype, redesign, or UI build requests without a URL, screenshot
 - `product-design:ideate` is the focused workflow.
 - Use `product-design:get-context` to resolve the minimum brief.
 - Once the target and intended user outcome are clear, play back the assumptions and run `product-design:ideate` in the same turn.
-- Show exactly three visual options and wait for the user to choose one.
-- Do not scaffold, edit files, or start a server before a visual option is selected.
+- For a multi-step workflow, generate exactly three **end-to-end journey boards** first. Each image is one complete journey from the same start boundary to the same end outcome; never use the three images for three different steps. Wait for the user to choose a journey.
+- After journey selection, plan the ordered screen inventory and generate the selected journey screen by screen. The completed screen set—not the journey board alone—is the visual source for build.
+- For a genuinely single-screen target with no journey, show exactly three comparable visual options for that same screen and wait for selection.
+- Do not scaffold, edit files, or start a server before the journey and its detailed screen set, or the single-screen visual option, are selected.
 
 `Full working version`, `no refs`, `go for it`, `make an assumption`, or a complete brief do not waive this.
 

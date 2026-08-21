@@ -1,0 +1,73 @@
+{
+  "skill_name": "ideate",
+  "evals": [
+    {
+      "id": 1,
+      "name": "new-multistep-journey-boards",
+      "prompt": "Crée une application de mentoring où un mentee trouve un mentor et réserve un rendez-vous. Il n'y a aucune maquette existante.",
+      "expected_output": "Generate three embedded 1024x1024 end-to-end journey boards, each covering the same complete scenario, then stop for journey selection.",
+      "assertions": [
+        "contains:1024 x 1024",
+        "contains:complete journey",
+        "not-contains:Building option",
+        "not-contains:image-to-code"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "journey-selection-resumes-ideate",
+      "prompt": "Je choisis le parcours 2 parmi les trois planches affichées.",
+      "expected_output": "Resolve board 2, record journey selection, create the ordered screen-production plan, and generate one screen at a time without building.",
+      "assertions": [
+        "contains:Journey 2 selected",
+        "contains:screen",
+        "not-contains:Building option 2",
+        "not-contains:start the server"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "single-screen-exception",
+      "prompt": "Conçois uniquement une modale de confirmation de suppression, sans parcours ni autre écran.",
+      "expected_output": "Generate three visual directions for the exact same modal state and stop for selection.",
+      "assertions": [
+        "contains:three",
+        "contains:single-screen",
+        "not-contains:journey board"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "premature-build-block",
+      "prompt": "Construis l'option 1 du parcours que je viens de choisir. Pour l'instant seule la planche générale existe, aucun écran détaillé n'a été généré.",
+      "expected_output": "Refuse build, return to screen planning and require an approved detailed screen set.",
+      "assertions": [
+        "contains:screen set",
+        "contains:insufficient",
+        "not-contains:server"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "screen-production-continuity",
+      "prompt": "Le parcours 3 est choisi. Génère maintenant les écrans détaillés nécessaires.",
+      "expected_output": "Create a 3–6 screen plan with stable IDs, then generate exactly one 1024x1024 screen per call while preserving shell and data continuity.",
+      "assertions": [
+        "contains:screen-production-plan",
+        "contains:one detailed screen",
+        "contains:1024 x 1024"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "explicit-image-size-override",
+      "prompt": "Pour cette planche de parcours, utilise explicitement un format 1024x1536 car elle doit correspondre à notre source verticale.",
+      "expected_output": "Honor the explicit source-fidelity size instead of the 1024-square default and document the exception.",
+      "assertions": [
+        "contains:1024",
+        "contains:1536",
+        "contains:exception"
+      ]
+    }
+  ]
+}

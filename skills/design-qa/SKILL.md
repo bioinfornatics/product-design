@@ -1,6 +1,6 @@
 ---
 name: design-qa
-description: "Blocking Product Design handoff gate after `product-design:image-to-code`, `product-design:url-to-code`, or Goose Apps rendering. Requires an openable source visual and browser-captured rendered implementation at a comparable state; write passed/blocked evidence before handoff. Broad UX critique belongs to `product-design:audit`."
+description: Blocking Product Design handoff gate after `product-design:image-to-code`, `product-design:url-to-code`, or Goose Apps rendering. Requires an openable source visual and browser-captured rendered implementation at a comparable state; write passed/blocked evidence before handoff. Broad UX critique belongs to `product-design:audit`.
 ---
 
 # Design QA
@@ -10,6 +10,8 @@ Use this internal helper to compare a prototype's source design against the rend
 Do not use this skill for broad UX critique, design critique, product audits, or flow reviews. Use [`product-design:audit`](../audit/SKILL.md) for those user-facing requests.
 
 Use this skill before every Product Design build handoff.
+
+Design QA proves implementation fidelity and interaction integrity. It is not a usability study and must not be described as user validation unless representative participants performed defined tasks and their evidence is included.
 
 A passing QA run requires both:
 
@@ -44,6 +46,7 @@ When a comparison finds any P0/P1/P2 issue:
 A later pass must identify the earlier findings, the fixes made, and the post-fix visual evidence. Build, dependency, lint, deployment, and preview troubleshooting do not count as design-QA iterations.
 
 1. Identify the comparison target.
+   - For a multi-screen journey, compare each implemented state against its corresponding approved detailed screen source, then verify end-to-end continuity. Do not compare the implementation only against the overview journey board.
    - Determine the source design: Figma node, image, design board, screenshot, spec, or mockup.
    - Determine the implementation: local URL, deployed URL, app screen, component, screenshot, or code-rendered view.
    - Match the same viewport, state, theme, device density, route, content, auth state, and interaction state before judging.

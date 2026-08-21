@@ -1,18 +1,19 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { createRoot } from "react-dom/client";
 import { App } from "./App.jsx";
 import "./styles.css";
 
-// Dev-only Product Design annotation overlay. Never included in production
-// builds: import.meta.env.DEV is statically replaced by Vite, so the
-// import and render are dropped entirely from `vite build` output.
 const AnnotationOverlay = import.meta.env.DEV
-  ? (await import("./annotate/AnnotationOverlay.jsx")).AnnotationOverlay
+  ? lazy(() => import("./annotate/AnnotationOverlay.jsx").then(({ AnnotationOverlay }) => ({ default: AnnotationOverlay })))
   : null;
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <App />
-    {AnnotationOverlay && <AnnotationOverlay />}
+    {AnnotationOverlay && (
+      <Suspense fallback={null}>
+        <AnnotationOverlay />
+      </Suspense>
+    )}
   </React.StrictMode>,
 );

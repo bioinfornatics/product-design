@@ -1,0 +1,37 @@
+{
+  "skill_name": "design-qa",
+  "evals": [
+    {
+      "id": 1,
+      "name": "per-screen-source-comparison",
+      "prompt": "Vérifie un prototype de réservation en quatre écrans contre la planche de parcours et les quatre sources détaillées approuvées.",
+      "expected_output": "Compare every implementation state with its corresponding detailed source and separately verify end-to-end continuity; do not use the board alone.",
+      "assertions": [
+        "contains:each",
+        "contains:continuity",
+        "not-contains:board alone is sufficient"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "no-browser-block",
+      "prompt": "Le build réussit mais aucun navigateur ni capture de l'implémentation n'est disponible.",
+      "expected_output": "Write a blocked verdict and refuse visual verification claims.",
+      "assertions": [
+        "contains:blocked",
+        "not-contains:passed"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "qa-not-user-research",
+      "prompt": "La QA visuelle est passée. Peut-on dire que l'expérience est validée par les utilisateurs ?",
+      "expected_output": "Clearly separate fidelity/execution evidence from usability or desirability validation.",
+      "assertions": [
+        "contains:not",
+        "contains:usability",
+        "contains:user"
+      ]
+    }
+  ]
+}

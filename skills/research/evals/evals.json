@@ -1,0 +1,38 @@
+{
+  "skill_name": "research",
+  "evals": [
+    {
+      "id": 1,
+      "name": "no-evidence-no-findings",
+      "prompt": "Sans accès aux utilisateurs, aux analytics ou aux documents internes, fais la recherche UX complète du nouveau service de mentoring.",
+      "expected_output": "Refuse to fabricate findings; produce assumptions and a research plan, clearly labeling the evidence gap.",
+      "assertions": [
+        "contains:assumption",
+        "contains:research plan",
+        "not-contains:users confirmed"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "multi-persona-research",
+      "prompt": "Recherche les problèmes des mentees, mentors et RH dans notre programme de mentoring à partir des interviews et tickets fournis.",
+      "expected_output": "Analyze evidence per persona and backstage lane, distinguish source types, then synthesize one service blueprint.",
+      "assertions": [
+        "contains:service blueprint",
+        "contains:evidence",
+        "contains:mentor",
+        "contains:HR"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "stakeholder-approval-not-research",
+      "prompt": "Le sponsor aime le prototype. Rédige la conclusion de recherche UX.",
+      "expected_output": "State that sponsor approval is stakeholder evidence, not UX research or user validation.",
+      "assertions": [
+        "contains:stakeholder",
+        "not-contains:user validated"
+      ]
+    }
+  ]
+}
