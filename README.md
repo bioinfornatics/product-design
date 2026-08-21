@@ -116,7 +116,7 @@ Saved context is optional and Goose-local under `$GOOSE_HOME/.local/state/produc
 
 ## Local evaluation
 
-Evaluate this plugin with `open-agent-creators:skill-creator`, which provides the standard run, baseline, grading, benchmark, and review workflow. Keep prompts, raw Goose traces, reports, specialized temporary graders, and generated review workspaces under the ignored `evaluations/` or `*-workspace/` paths. Do not commit evaluation artifacts because traces may include conversation or runtime data.
+Evaluate this plugin with `agent-plugins:plugin-creator`, which provides the standard run, baseline, grading, benchmark, and review workflow. Keep prompts, raw Goose traces, reports, specialized temporary graders, and generated review workspaces under the ignored `evaluations/` or `*-workspace/` paths. Do not commit evaluation artifacts because traces may include conversation or runtime data.
 
 ## Installation
 

@@ -1,2 +1,20 @@
 #!/usr/bin/env node
-import { spawnSync } from "node:child_process";import { fileURLToPath } from "node:url";import path from "node:path";const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),"..");const validator="/home/jmercier/.agents/plugins/open-agent-creators/skills/skill-creator/dist/scripts/quick_validate.js";const skills=["index","get-context","ideate","image-to-code","design-qa","research"];for(const skill of skills){const result=spawnSync(process.execPath,[validator,path.join(root,"skills",skill)],{stdio:"inherit"});if(result.status!==0)process.exit(result.status??1)}console.log(JSON.stringify({status:"passed",skills}));
+import { readdirSync } from "node:fs";
+import { spawnSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
+import path from "node:path";
+import { resolveAgentPluginsScript } from "./resolve-agent-plugins.mjs";
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const validator = resolveAgentPluginsScript("skill-creator", "quick_validate.js");
+const skillsRoot = path.join(root, "skills");
+const skills = readdirSync(skillsRoot, { withFileTypes: true })
+  .filter((entry) => entry.isDirectory())
+  .map((entry) => entry.name)
+  .sort();
+
+for (const skill of skills) {
+  const result = spawnSync(process.execPath, [validator, path.join(skillsRoot, skill)], { stdio: "inherit" });
+  if (result.status !== 0) process.exit(result.status ?? 1);
+}
+console.log(JSON.stringify({ status: "passed", skills }));
