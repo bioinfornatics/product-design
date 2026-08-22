@@ -5,10 +5,13 @@
       "id": 1,
       "name": "new-multistep-journey-boards",
       "prompt": "Crée une application de mentoring où un mentee trouve un mentor et réserve un rendez-vous. Il n'y a aucune maquette existante.",
-      "expected_output": "Generate three embedded 1024x1024 end-to-end journey boards, each covering the same complete scenario, then stop for journey selection.",
+      "expected_output": "Generate three embedded 1024x1024 end-to-end journey boards. Each board is one composite image with a regular grid of 4–6 recognizable miniature UI screens, visibly numbered 1–N in reading order, then stop for journey selection.",
       "assertions": [
         "contains:1024 x 1024",
         "contains:complete journey",
+        "contains:miniature UI screens",
+        "contains:number badge",
+        "contains:composite image",
         "not-contains:Building option",
         "not-contains:image-to-code"
       ]
@@ -67,6 +70,18 @@
         "contains:1024",
         "contains:1536",
         "contains:exception"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "repair-invalid-board-structure",
+      "prompt": "La première planche générée montre un grand dashboard unique et quatre légendes, mais pas quatre écrans miniatures; les numéros 2 et 3 sont aussi inversés. Continue avec les autres propositions.",
+      "expected_output": "Inspect the pixels, reject this structurally invalid journey board, and regenerate it as one composite image with 4–6 recognizable UI screen miniatures and correct visible sequential numbering before presentation.",
+      "assertions": [
+        "contains:regenerate",
+        "contains:miniature UI screens",
+        "contains:sequential number",
+        "not-contains:accept this board"
       ]
     }
   ]

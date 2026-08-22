@@ -20,6 +20,9 @@ const vite = read("templates/prototype/vite.config.mjs");
 
 ok(ideate.includes("three independent Image Gen calls sequentially"), "ideate must generate journey boards sequentially");
 ok(ideate.includes("complete candidate journey"), "ideate must use complete journeys");
+ok(ideate.includes("recognizable miniature UI screens"), "ideate journey boards must contain UI screen thumbnails");
+ok(ideate.includes("large, high-contrast sequential number badge"), "ideate journey steps must be visibly numbered");
+ok(ideate.includes("Reject and regenerate"), "ideate must repair structurally invalid boards");
 ok(ideate.includes("Never generate image 1 as entry"), "ideate must prohibit one-step-per-image");
 ok(ideate.includes("screen-set-approved"), "ideate must require screen-set approval");
 ok(ideate.includes("1024 x 1024"), "ideate must use supported square default");
@@ -59,4 +62,4 @@ if (failures.length) {
   console.error(failures.map((message) => `FAIL: ${message}`).join("\n"));
   process.exit(1);
 }
-console.log(JSON.stringify({ status: "passed", contractChecks: 16, evalFiles: evalFiles.length, evalCases }, null, 2));
+console.log(JSON.stringify({ status: "passed", contractChecks: 19, evalFiles: evalFiles.length, evalCases }, null, 2));

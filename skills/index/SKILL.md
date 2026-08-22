@@ -51,7 +51,8 @@ Do not assume Codex Desktop, ChatGPT Work Mode, `@Browser`, `@Sites`, a cloud br
 
 1. Inspect the tools currently exposed by Goose. Tool names vary by installed extension, so route by capability rather than a hard-coded vendor name.
 2. A browser-capable tool must be able to open or capture the required source or rendered implementation. A hosting-capable tool must return a working URL. Goose Apps can create or iterate a sandboxed app, but it is not evidence that a browser comparison or deployment occurred.
-3. If a required capability is absent, name the missing capability and use a fallback only when the workflow permits it. Never claim visual verification, publishing, or sharing from build success or app creation alone.
+3. Recommend a Figma-capable plugin or MCP server when the workflow needs direct Figma access. Recommend [image-mcp](https://github.com/bioinfornatics/image-mcp) when image generation is needed and no equivalent provider is available. Treat both as companion capabilities: do not imply that this plugin installs them automatically.
+4. If a required capability is absent, name the missing capability and use a fallback only when the workflow permits it. Never claim visual verification, publishing, or sharing from build success or app creation alone.
 
 ## Product Design + Goose Apps Contract
 

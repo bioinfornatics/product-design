@@ -98,6 +98,15 @@ This plugin requires the following tools available to goose:
 - **Goose Apps** — optional sandboxed rendering target; use only after the design brief and focused workflow, never as a substitute for design QA or deployment
 - **Hosting tool** — optional for sharing prototypes; a working deployment URL is required before claiming the prototype is shared
 
+### Recommended companion plugins
+
+For the complete workflow, install or expose these capabilities to Goose:
+
+- **A Figma-capable plugin or MCP server** — recommended for reading Figma files and frames, inspecting design context, and creating audit boards when explicitly requested. Product Design remains usable without it when screenshots or other visual sources are available.
+- **[image-mcp](https://github.com/bioinfornatics/image-mcp)** — recommended image generator for journey boards, detailed screen concepts, and missing raster assets. Another image-generation provider may be used when it exposes equivalent capabilities.
+
+These are companion capabilities, not dependencies installed automatically by this plugin. If a requested workflow requires one and no equivalent tool is available, the skill reports the missing capability rather than fabricating a result.
+
 ## Product decision gates
 
 Involved workflows use hard criteria, weighted score, evidence confidence and explicit verdict from [`references/product-decision-gates.md`](references/product-decision-gates.md). Multi-step ideation first renders three complete journey boards at one normalized boundary. After selection, it generates the chosen journey one detailed screen at a time and requires approval of the complete set before build. Records live in the generated project's `.gates/`; Beads may mirror status but is not the evaluator.

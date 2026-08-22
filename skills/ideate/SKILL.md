@@ -70,11 +70,15 @@ Launch three independent Image Gen calls sequentially. Each result is one 1024 x
 
 Every board must:
 
+- be one composite image containing the whole journey, not separate image files for its steps;
 - show the full path from the same start boundary to the same end outcome;
-- contain 4–6 numbered moments in a clear reading order;
+- contain 4–6 recognizable miniature UI screens in a clean, evenly spaced grid (normally 2 × 2 for four steps or 3 × 2 for five or six);
+- place a large, high-contrast sequential number badge (1, 2, 3...) on every miniature, with no missing or duplicated number;
+- pair each number with a short step label and stable board-local screen ID such as J1-S1, J1-S2;
+- make reading order unambiguous from left to right, then top to bottom, reinforced by restrained arrows when useful;
+- show actual UI anatomy inside every miniature—navigation, content, controls and state appropriate to that step—rather than prose cards, captions standing in for screens, or generic illustrations;
 - include entry/orientation, core decision, commitment/action, result, and critical recovery when relevant;
 - use the same persona, business data, dates and constraints as the other boards;
-- use concise panel labels and stable board-local IDs such as J1-S1, J1-S2;
 - use simplified low-fidelity UI where needed so the entire journey remains legible;
 - contain exactly one journey, never several alternatives;
 - use no browser/device chrome and no extraneous feature inventory.
@@ -95,14 +99,18 @@ Ordered moments: [MOMENTS]
 Critical decision/recovery: [DECISION OR RECOVERY]
 Expected advantage: [ADVANTAGE]
 
-Use short panel IDs [Jx-S1...], concise labels, arrows or sequencing cues, and enough UI anatomy to understand each interaction. Keep the whole path readable at a glance. Simplify detail rather than omitting a journey moment. Do not show only one checkpoint. Do not put multiple candidate journeys in this image. Do not add browser/device chrome.
+Compose the board as a clean grid of [4–6] recognizable miniature UI screens inside this single image: use 2 × 2 for four steps or 3 × 2 for five or six unless the target aspect ratio clearly requires another regular grid. Give every miniature a large high-contrast number badge (1, 2, 3...) in sequence, a short step label, and a stable ID [Jx-S1...]. No number may be missing, repeated, or out of order. Reading order is left to right, then top to bottom; use restrained arrows only to reinforce it. Each miniature must depict the actual interface state with recognizable navigation, content and controls—not a prose card, caption-only box, generic illustration, or device mockup.
+
+Keep the whole path readable at a glance. Simplify UI detail rather than omitting a journey moment. Keep labels very short because generated typography is fragile. Do not show only one checkpoint. Do not put multiple candidate journeys in this image. Do not add browser/device chrome.
 
 Use the available design-system language as grounding, but prioritize flow comprehension over decorative polish. Generate at low quality when supported.
 ```
 
-## Present and stop
+## Inspect, repair, present and stop
 
-Wait until all three boards have readable saved artifacts. Number them by result-message order only, then embed all three in the selection message using Markdown image syntax and absolute filesystem paths. A textual path or relative path is insufficient. Save G2 scoring and evidence. Use this structure:
+After each generation, inspect the saved artifact before accepting it. Verify that it is one composite image, contains the planned 4–6 miniature UI screens, shows exactly one visible sequential number per step, preserves the intended order, and keeps each miniature recognizable at overview size. Reject and regenerate that candidate board when a step is represented only by prose, a number is missing/duplicated/out of order, screens are cropped or illegible, or the output becomes one large screen instead of a journey grid. Do not repair structural failures only in the surrounding Markdown—the board itself must carry the sequence.
+
+Wait until all three boards have readable, structurally valid saved artifacts. Number them by result-message order only, then embed all three in the selection message using Markdown image syntax and absolute filesystem paths. A textual path or relative path is insufficient. Save G2 scoring and evidence. Use this structure:
 
 ```md
 ![Journey 1 — <name>](/absolute/path/to/journey-1.png)

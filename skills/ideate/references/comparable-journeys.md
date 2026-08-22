@@ -16,13 +16,19 @@ Generate exactly three independent 1024 × 1024 images, sequentially. Each image
 
 Each board must:
 
+- be one composite image containing the entire candidate journey;
 - show the full path from the frozen start to the frozen end;
-- contain the same 4–6 numbered journey moments in reading order;
-- use short persistent screen IDs such as J1-S1, J1-S2;
+- contain 4–6 recognizable miniature UI screens in a regular grid: normally 2 × 2 for four steps or 3 × 2 for five or six;
+- carry one large, high-contrast number badge per miniature, sequentially from 1 with no gap or duplicate;
+- use a short step label and persistent screen ID such as J1-S1, J1-S2 beside each number;
+- read left to right and then top to bottom, with restrained arrows only when they clarify sequencing;
+- depict real interface anatomy in each miniature rather than prose cards, caption-only boxes, illustrations, or device mockups;
 - include entry/orientation, core decision, action/commitment, result, and one critical recovery when material;
 - use the same persona, content, dates and business data across boards;
 - remain readable as a 1024 × 1024 overview; use simplified low-fidelity UI if needed;
 - contain one journey only—never multiple alternatives inside one image.
+
+Inspect the generated pixels, not just the prompt. Regenerate a board if its miniatures, visible numbering, reading order, or UI states do not satisfy this contract. Labels should remain short because image-generated typography is less reliable than numbers and screen structure.
 
 Never generate image 1 as entry, image 2 as decision and image 3 as result. Never compare a home screen against a booking screen. The unit of comparison is the complete journey.
 
