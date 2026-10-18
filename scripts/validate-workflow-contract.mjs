@@ -5,7 +5,9 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const failures = [];
+let contractChecks = 0;
 const ok = (condition, message) => {
+  contractChecks += 1;
   if (!condition) failures.push(message);
 };
 const read = (relative) => readFileSync(path.join(root, relative), "utf8");
@@ -80,8 +82,25 @@ for (const file of evalFiles) {
 }
 for (const required of ["route-explicit-beads", "route-planning-vocabulary-as-offer", "do-not-route-simple-ready-word", "do-not-route-ordinary-two-step-request", "existing-beads-may-activate"]) ok(evalNames.has(required), "routing eval missing: " + required);
 
+const evidenceContract = read("scripts/workflow-evidence-contract.mjs");
+for (const symbol of ["validateG1", "validateIdeationEvidence", "validateScreenSetEvidence", "verifyLocalEvidenceFiles", "validateGateRecord", "validateDesignContract", "validateExperienceBlueprint"]) ok(evidenceContract.includes("function " + symbol), "missing evidence validator " + symbol);
+for (const [name, content] of [["ideate", ideate], ["router", index], ["context", context], ["gates", gates]]) {
+  ok(content.includes("full-evidence") && /[Mm]ulti-step/.test(content), name + " must require complete multi-step evidence");
+  ok(content.includes("single-screen") && /lean/i.test(content), name + " must restrict lean to isolated single-screen work");
+  ok(!/lean default|Lean is default|three representative anchors in lean/.test(content), name + " must not default product exploration to landing anchors");
+}
+ok(ideate.includes("end-to-end-journey-coverage.md"), "ideate must load the end-to-end coverage contract");
+ok(read("scripts/ideation-contract.mjs").includes("multi-step requires full-evidence"), "manifest must reject partial multi-step evidence");
+ok(!read("scripts/ideation-contract.mjs").includes("variant.screens.filter(item => item.id === variant.anchorScreenId)"), "executor must not truncate journeys to anchors");
+ok(read("references/design-contract.md").includes("Calendar"), "design contract must distinguish calendar from metrics");
+const experienceMethod = read("references/product-experience-method.md");
+for (const [name, content] of [["router", index], ["context", context], ["ideate", ideate], ["build", build], ["QA", qa]]) ok(content.includes("product-experience-method.md"), name + " must carry value/intent/proactivity method through handoff");
+for (const theme of ["Questions that change the design", "Intent-to-surface", "Proactivity that reduces work", "Native deliverables", "question → answer/provenance → design decision → scenario/screen → verification"]) ok(experienceMethod.includes(theme), "experience method missing " + theme);
+for (const scenario of ["responsibility-value-before-stack", "feedback-tables-change-decisions", "intent-in-place-not-transcript", "future-opportunity-prepared-work", "bounded-agents-not-notification-supervision", "native-presentation-brand-separation", "value-intent-proactivity-through-build"]) ok(evalNames.has(scenario), "experience eval missing " + scenario);
+ok(!context.includes("generate visual directions with distinctly different palettes"), "context must not use palette-only directions for product ideation");
+for (const symbol of ["validateDesignQaReport","assertBeadsClosure","validateAnnotationReceipt","validateArtifactIndex","validateBuildHandoff"]) ok(evidenceContract.includes("function "+symbol), "missing upstream validator "+symbol);
 if (failures.length) {
   console.error(failures.map((message) => `FAIL: ${message}`).join("\n"));
   process.exit(1);
 }
-console.log(JSON.stringify({ status: "passed", contractChecks: 46, evalFiles: evalFiles.length, evalCases }, null, 2));
+console.log(JSON.stringify({ status: "passed", contractChecks, evalFiles: evalFiles.length, evalCases }, null, 2));

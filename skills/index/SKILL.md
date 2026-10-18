@@ -66,12 +66,16 @@ When the request explicitly combines Product Design and Goose Apps, preserve thi
 
 1. Load `product-design:index`.
 2. Load `product-design:get-context`, resolve the design target and intended user outcome, and play back the brief.
-3. Load and complete the focused design workflow. For a new multi-step interface without a selected visual target, `product-design:ideate` defines three journeys, generates every screen of every variant separately, assembles one board page per variant, then waits for journey selection and selected screen-set approval. For a genuine single-screen target, wait for one selected visual option.
-4. Only then use Goose Apps as the rendering target (`listApps` to inspect existing apps, then `createApp` or `iterateApp` as appropriate). Do not call Apps in parallel with skill loading or use Apps to skip context, visual selection, or design decisions.
+3. Load and complete the focused design workflow. For a new multi-step interface without a selected visual target, `product-design:ideate` defines three journeys, generates every screen of three complete end-to-end journeys separately in full-evidence, including outcomes and critical recovery, assembles one board page per variant, then waits for journey selection and selected screen-set approval. For a genuine single-screen target, wait for one selected visual option.
+4. After explicit G4 build scope, use Goose Apps as the rendering target (`listApps` to inspect existing apps, then `createApp` or `iterateApp` as appropriate). Do not call Apps in parallel with skill loading or use Apps to skip context, visual selection, or design decisions.
 5. Capture the rendered result with an available browser-capable tool and run `product-design:design-qa` before handoff. If capture is unavailable, report QA as blocked.
 6. Load `product-design:share` only when the user requests a shareable deployment; Apps creation is not a deployment URL.
 
 A conceptual question such as “how do you see it?” may stop after the brief, workflow recommendation, and explicit next question. Do not create or mutate an app unless the user asked to proceed or the brief clearly requests an implementation now.
+
+## Value, intentions and useful initiative
+
+Route by the requested design outcome, not by rendering tools. For involved work, get-context reads [product experience method](../../references/product-experience-method.md): supplied feedback → questions/answers/evidence → Product/UX/UI decisions → scenarios/screens/states → verification. Start from responsibility/value, not stack/palette. Personas are complementary; one scenario does not cover the whole product. Conversation transforms the relevant workspace rather than defaulting to a permanent transcript sidebar. Proactivity includes opportunities and exceptions with bounded preparation/execution and useful result evidence, not endless notifications. Native presentations require editable content, sources and explicit branding/authority boundaries. These conditional contracts continue through ideate, build and QA; mentioning them in a brief is not enough.
 
 ## No Visual Target, No Build
 
@@ -80,10 +84,10 @@ For new app, prototype, redesign, or UI build requests without a URL, screenshot
 - `product-design:ideate` is the focused workflow.
 - Use `product-design:get-context` to resolve the minimum brief.
 - Once the target and intended user outcome are clear, play back the assumptions and run `product-design:ideate` in the same turn.
-- For a multi-step workflow, define exactly three journeys, generate one full-size image for every screen in every variant, then assemble one board page per variant. Never generate a multi-screen composite image. Wait for the user to choose a page.
-- Plan all three screen inventories before generation. After selection, present that variant's existing screen set for approval. Individual screen files—not a board rendering—are build sources.
+- For a multi-step workflow, define exactly three journeys, freeze full-evidence regardless of risk and generate all required screens separately, then assemble one board page per variant. Never generate a multi-screen composite image. Wait for the user to choose a page.
+- Plan all three screen inventories before generation. After selection, reuse the chosen complete set; for an already selected historical direction, complete its missing journey evidence without reopening selection, correct defects and obtain explicit full screen-set approval. Individual screen files—not a board rendering—are build sources.
 - For a genuinely single-screen target with no journey, show exactly three comparable visual options for that same screen and wait for selection.
-- Do not scaffold, edit files, or start a server before the journey and its detailed screen set, or the single-screen visual option, are selected.
+- Do not scaffold, edit application files, or start an app server before the journey and its complete corrected screen set, or the isolated single-screen visual option, are approved and explicit G4 build scope is granted.
 
 `Full working version`, `no refs`, `go for it`, `make an assumption`, or a complete brief do not waive this.
 
@@ -173,3 +177,7 @@ Install the browser annotation mechanism into a user-provided or existing projec
 ### `product-design:project-status`
 
 Optional Beads (`bd`) tracking for a Product Design project's phases or annotation rounds. Route and activate for an explicit Beads/`bd`/tracking request; an existing target-project `.beads/` may activate tracking for related involved work. For planning vocabulary alone—epic, phase gate, acceptance criteria, dependencies, ready/blocked, owner, evidence, or next task—route to an offer and require confirmation before mutating Beads. Never a gate on another skill; simple one-shot requests and isolated vocabulary do not trigger.
+
+## Mode and decision scope
+
+Multi-step product ideation requires three complete end-to-end journeys in full-evidence, not three landing pages or anchors, even at low risk. Lean applies only to explicitly isolated single-screen work. Scope by a useful scenario, not a screen-count shortcut. Include the outcome and critical recovery before comparing. Require explicit complete corrected selected-set approval and G4 before build. Already selected directions are continued, not forced into three new alternatives. Personas are complementary service lanes; a reusable specialized view may coexist with the chosen home. A public marketing landing is not evidence for the authenticated product journey.

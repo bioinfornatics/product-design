@@ -27,7 +27,10 @@ function requireStringArray(value, label, allowEmpty = false) { if (!Array.isArr
 function isInside(candidate, directory) { return candidate === directory || candidate.startsWith(directory + path.sep); }
 export function validateIdeationManifest(manifest) {
   if (!manifest || manifest.schemaVersion !== 1) fail("schemaVersion must equal 1"); requireText(manifest.manifestId, "manifestId");
+  if (!["lean", "full-evidence"].includes(manifest.evidenceMode)) fail("evidenceMode must be explicitly frozen as lean or full-evidence");
   const contract = manifest.comparisonContract; if (!contract || typeof contract !== "object") fail("comparisonContract is required");
+  if (!["multi-step", "single-screen"].includes(contract.scope)) fail("comparisonContract.scope must be explicitly multi-step or single-screen; historical records need review");
+  if (contract.scope === "multi-step" && manifest.evidenceMode !== "full-evidence") fail("multi-step requires full-evidence; landing pages or anchors cannot establish journey coverage");
   for (const field of ["service", "userContext", "start", "end", "scenarioData", "successCriterion", "platform", "visualContract"]) requireText(contract[field], `comparisonContract.${field}`);
   if (!contract.viewport || !Number.isInteger(contract.viewport.width) || !Number.isInteger(contract.viewport.height)) fail("comparisonContract.viewport requires integer width and height");
   requireStringArray(contract.references, "comparisonContract.references", true);
@@ -39,6 +42,9 @@ export function validateIdeationManifest(manifest) {
     if (path.isAbsolute(variant.outputDirectory) || variant.outputDirectory.split(/[\\/]+/).includes("..")) fail(`${variant.id}.outputDirectory must be a safe relative path`);
     if (seenDirectories.has(variant.outputDirectory)) fail("variant output directories must be isolated"); seenDirectories.add(variant.outputDirectory);
     if (!Array.isArray(variant.screens) || !variant.screens.length) fail(`${variant.id}.screens must not be empty`);
+    if (contract.scope === "single-screen" && variant.screens.length !== 1) fail(`${variant.id} single-screen scope must contain exactly one isolated screen`);
+    if (contract.scope === "multi-step" && variant.screens.length < 2) fail(`${variant.id} multi-step requires an entry and distinct outcome screen, not only a landing`);
+    if (!variant.screens.some(screen => screen.id === variant.anchorScreenId)) fail(`${variant.id}.anchorScreenId must resolve to its screen plan`);
     variant.screens.forEach((screen, screenIndex) => {
       const expectedScreen = `${variant.id}-S${screenIndex + 1}`; if (screen.id !== expectedScreen) fail(`screen ${screenIndex + 1} in ${variant.id} must be ${expectedScreen}`);
       if (seenScreens.has(screen.id)) fail(`duplicate screen id: ${screen.id}`); seenScreens.add(screen.id);
@@ -50,7 +56,40 @@ export function validateIdeationManifest(manifest) {
       if (!Number.isInteger(screen.generation.attempts) || screen.generation.attempts < 1) fail(`${screen.id}.generation.attempts must be a positive integer`);
       if (typeof screen.generation.enhancement !== "boolean") fail(`${screen.id}.generation.enhancement must be boolean`);
     });
+    validateJourneyTopology(variant, contract.scope);
   }); return manifest;
+}
+
+function validateJourneyTopology(variant, scope) {
+  const byId = new Map(variant.screens.map(screen => [screen.id, screen]));
+  for (const screen of variant.screens) if (screen.nextScreen !== "End" && !byId.has(screen.nextScreen)) fail(`${screen.id}.nextScreen must resolve within its variant or End`);
+  if (scope === "single-screen") {
+    if (variant.screens[0].nextScreen !== "End") fail(`${variant.id} isolated single-screen must terminate at End`);
+    return;
+  }
+  const journey = variant.journey;
+  if (!journey || journey.startScreenId !== variant.screens[0].id) fail(`${variant.id}.journey.startScreenId must identify the first screen`);
+  if (!byId.has(journey.outcomeScreenId) || journey.outcomeScreenId === journey.startScreenId) fail(`${variant.id}.journey.outcomeScreenId must identify a distinct planned outcome`);
+  requireStringArray(journey.criticalRecoveryScreenIds, `${variant.id}.journey.criticalRecoveryScreenIds`, true);
+  const recovery = new Set(journey.criticalRecoveryScreenIds);
+  if (recovery.size !== journey.criticalRecoveryScreenIds.length || [...recovery].some(id => !byId.has(id))) fail(`${variant.id} critical recovery IDs must be unique planned screens`);
+  const main = new Set(); let id = journey.startScreenId, reachedOutcome = false;
+  while (id !== "End") {
+    if (main.has(id)) fail(`${variant.id} main path contains a cycle`);
+    if (recovery.has(id)) fail(`${variant.id} recovery branches must be separate from the main path`);
+    main.add(id);
+    if (id === journey.outcomeScreenId) { reachedOutcome = true; if (byId.get(id).nextScreen !== "End") fail(`${variant.id} outcome must terminate at End`); }
+    id = byId.get(id).nextScreen;
+  }
+  if (!reachedOutcome || main.size < 2) fail(`${variant.id} main path must reach its distinct outcome before End`);
+  for (const screen of variant.screens) if (!main.has(screen.id) && !recovery.has(screen.id)) fail(`${screen.id} is an orphan screen, not main path or declared critical recovery`);
+  for (const start of recovery) {
+    const visited = new Set(); let next = start;
+    while (next !== "End" && !main.has(next)) {
+      if (visited.has(next)) fail(`${variant.id} recovery path contains a cycle`);
+      visited.add(next); next = byId.get(next).nextScreen;
+    }
+  }
 }
 export function canonicalManifestJson(manifest) { validateIdeationManifest(manifest); const sort = (value) => Array.isArray(value) ? value.map(sort) : value && typeof value === "object" ? Object.fromEntries(Object.keys(value).sort().map((key) => [key, sort(value[key])])) : value; return JSON.stringify(sort(manifest), null, 2) + "\n"; }
 export function manifestFingerprint(manifest) { return createHash("sha256").update(canonicalManifestJson(manifest)).digest("hex"); }

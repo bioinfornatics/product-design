@@ -22,21 +22,17 @@ Weights: problem clarity 20; user importance 15; outcome 15; product value 15; m
 
 Every involved-work gate must identify whether its evidence is observed user behavior, internal operational data, stakeholder input, external research, inference, or assumption. A prototype walkthrough by the building agent proves execution, not usability or desirability. Stakeholder approval proves decision alignment, not user validation.
 
-For multi-persona services, require a shared service boundary, persona lanes, backstage/system dependencies and handoffs before G2 can pass.
+For multi-persona services, require a shared service boundary, persona lanes, backstage/system dependencies and handoffs before G2 can pass. For involved work use [product experience method](product-experience-method.md) to trace material supplied feedback through value/responsibility, answered/assumed design questions, Product/UX/UI decisions, scenarios/screens/states and verification. Conditional intent/proactivity/native-output contracts must be explicit before their sources are approved; a generic mention does not satisfy a material requirement.
 
-## G2 — End-to-end journey boards to selected journey
+## G2 — Comparable hypotheses to selected direction
 
-Compare exactly three journey hypotheses at the same boundary and outcome. Each must share user/context, scenario/data, start, end and success criterion, while differing as an interaction strategy. For every candidate, define its screen plan, generate every traversed screen as a separate full-size image, then assemble one board page from those files. Three candidates produce three pages. Multi-screen Image Gen composites, sprite sheets, miniature grids and N-column screen images fail.
+Freeze comparisonContract.scope, evidenceMode and three complete plans before generation. Multi-step requires full-evidence regardless of risk: every planned screen separately for three complete comparable journeys from trigger to outcome and critical recovery. A landing page or three anchors cannot pass multi-step G2. Lean is restricted to explicitly isolated single-screen work. If capacity is insufficient, reduce scope only to another agreed complete scenario or resume; preserve incomplete evidence rather than pass an anchor-only comparison. Multi-screen Image Gen composites fail. Personas are complementary service lanes, never alternative products. Already selected work continues; reusable specialized views do not reopen competition.
 
-Weights: need fit 25; success potential 20; friction/cognitive load 15; learnability/recovery 10; product value 10; feasibility 10; risks/assumptions 10. The user selects one complete board page. With insufficient evidence, label the choice as an experiment. Save the selected displayed option and board path in .gates/02-journey-selection.md.
+G2 journey-selected (multi-step full-evidence) or direction-selected (single-screen) is ready only for selected-screen-production, never build. A complete comparison with source defects may retain a stakeholder choice as verdict experiment under its scope-specific status; verdict pass rejects any ineligible comparison source. This is not approving the faulty source. Incomplete multi-step coverage cannot pass even as an experiment selection record. Preserve source paths/hashes and mode. Selection stakeholder is not UX validation.
 
-## G3 — Selected journey to approved screen set
+## G3 — Complete corrected selected screen set
 
-Before generation, require ordered plans for all three variants. Generate one full-size screen at a time for every variant. The first screen anchors each variant; later screens preserve shell, tokens, typography, imagery, anatomy and data continuity. Board pages reference these files without Image Gen recomposition.
-
-Pass only when every required screen has a visible generated source, the set covers the selected journey end to end, contradictions have been repaired, and the user approves the ordered screen set. A board page or screenshot alone cannot pass G3; the selected variant must resolve to individual approved screen files. Save the plan and approval in .gates/03-screen-production-plan.md and .gates/03-visual-selection.md.
-
-For a genuinely single-screen target, G3 instead compares three visual directions for that same screen using the same content, viewport, state and design-system constraints.
+Reuse the selected complete set. For a historical direction already chosen with incomplete sources, preserve that decision and complete only its missing sources without claiming the previous comparison passed. Correct only faulty sources in versioned files; changed plans require explicit manifest revision. Every required screen including planned recovery must have inspected, readable, composition/business-fidelity accepted source with no open findings. A board page or screenshot alone cannot pass G3. Explicit approval binds exact ordered source hashes. No automatic approval after source completion. screen-set-approved permits build-handoff, not build execution. G4 alone grants explicit prototype build scope.
 
 ## G4 — Selected direction to prototype
 
@@ -53,3 +49,13 @@ Assess desirability 20; usability 15; user/product value 20; feasibility 15; via
 ## G7 — Production readiness
 
 Require applicable tests/checks, auth, data migrations, i18n, observability, secret handling, accessibility, performance, compliance, business acceptance, rollback and post-release measurement. Repository conventions remain authoritative.
+
+## Machine-verifiable records
+
+scripts/workflow-evidence-contract.mjs checks new gates/ideation evidence schemaVersion2; generation manifests remain schemaVersion1 with mandatory comparisonContract.scope/evidenceMode/anchorScreenId and multi-step journey boundaries/recovery IDs. Legacy records are preserved for review, not auto-promoted. G1 has scoreBasis numeric0..5 ratings keyed problemClarity,userImportance,outcome,productValue,measurableSuccess,evidence,constraintsRisks,ideationScope; weights above, essential first5 >=2, total>=60, pass>=75, conditional60..74, experiment permits low evidence with hard criteria complete. Conditions boundary ideation/build/industrialization with disposition resolved/accepted-risk/blocked and detail; unknown phases rejected. Evidence labels explicitly classify provenance.
+
+All gates bind owner, scope, ISO timestamp, exact local evidencePath and SHA256 evidenceHash. G2 binds comparisonScope (multi-step/single-screen), evidenceMode, selectedVariant, manifestFingerprint and selectedAnchorPath/Sha256, readyFor selected-screen-production, screenSetApproved/buildApproved false. G3 binds readyFor build-handoff, screenSetApproved true, buildApproved false. G4 binds readyFor prototype-build, both approvals true. readiness is phase-scoped, not generic ready-to-build.
+
+Ideation evidence binds fingerprint, three ordered candidates, all screens in exact manifest order and fullJourneyCoverage true only for full-evidence multi-step scope. Sources: id/path/sha256/provenance/criticalCopyReadable/buildSourceEligible, review(inspectedPath,inspectedSha256,reviewer,timestamp,composition,businessFidelity,findings[]). Review statuses accepted/changes-required. Findings: id,severity(material/minor),category(business-data/action-state/permission/copy/composition/continuity),detail,evidence,status(open/resolved). Eligibility requires accepted reviews and no open findings. Review is declared evidence, not automatic pixel truth detection.
+
+Selected-screen-set evidence binds manifest/variant, complete ordered sources, approval(owner,timestamp,statement,screenSetApproved,screenSetHash). verifyLocalEvidenceFiles checks actual files/hash/confinement including symlinks. Human identity and rights remain outside structural validation. Transitions write evidence, authoritative gate, optional Beads mirror, scoped readiness in that order; any failure stops downstream writes. A pass label cannot manufacture approval. validateExperienceBlueprint checks a separate v1 blueprint linked to a v1 design contract; it checks declared traceability/conditional boundaries, not useful strategy, human authority or research evidence.

@@ -43,6 +43,406 @@
         "contains:low",
         "contains:design system"
       ]
+    },
+    {
+      "id": 5,
+      "name": "low-risk-product-not-three-landings",
+      "subject": "end-to-end-product-ideation",
+      "language": "fr",
+      "target": {
+        "kind": "existing-skill",
+        "path": "skills/image-to-code",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Use identical model, tools and budget for candidate and frozen old-skill runs",
+        "This routing scenario does not execute image generation or build"
+      ],
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "prompt": "@Product Design conçois un outil de mentoring interne simple : chercher un mentor, comparer sa disponibilité, réserver puis retrouver la confirmation. Risque faible, pas de service réel à intégrer. Nous voulons voir le produit avant de coder.",
+      "expected_output": "A scope-aware workflow plan preserving complete journey comparison or an honest blocker; no premature build.",
+      "assertions": [
+        "Three alternatives each cover search through confirmed booking, not only home pages",
+        "Every planned screen is generated separately before comparison is declared complete",
+        "No app files or app server are created before selected screen-set approval and G4"
+      ],
+      "coverage_tags": [
+        "language:fr",
+        "scope:multi-step",
+        "decision:approval"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "limited-image-budget-incomplete-journey",
+      "subject": "end-to-end-product-ideation",
+      "language": "fr",
+      "target": {
+        "kind": "existing-skill",
+        "path": "skills/image-to-code",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Use identical model, tools and budget for candidate and frozen old-skill runs",
+        "This routing scenario does not execute image generation or build"
+      ],
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "prompt": "@Product Design explore un service de réservation depuis la recherche jusqu’à la confirmation. Il reste un budget de trois images seulement pour cette session.",
+      "expected_output": "A scope-aware workflow plan preserving complete journey comparison or an honest blocker; no premature build.",
+      "assertions": [
+        "Three images do not establish three multi-step journeys",
+        "The agent reports incomplete comparison and offers resume or an agreed smaller complete scenario",
+        "No comparison pass or build approval is fabricated"
+      ],
+      "coverage_tags": [
+        "language:fr",
+        "scope:multi-step",
+        "failure:budget"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "isolated-marketing-page-keeps-small-scope",
+      "subject": "end-to-end-product-ideation",
+      "language": "fr",
+      "target": {
+        "kind": "existing-skill",
+        "path": "skills/image-to-code",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Use identical model, tools and budget for candidate and frozen old-skill runs",
+        "This routing scenario does not execute image generation or build"
+      ],
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "prompt": "@Product Design propose trois directions pour une landing marketing statique uniquement. Aucun espace connecté ni parcours de réservation dans ce lot.",
+      "expected_output": "A scope-aware workflow plan preserving complete journey comparison or an honest blocker; no premature build.",
+      "assertions": [
+        "The scope stays explicitly single-screen",
+        "Three directions compare the same content and viewport",
+        "No authenticated product journey is invented"
+      ],
+      "coverage_tags": [
+        "language:fr",
+        "scope:single-screen",
+        "decision:approval"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "approved-home-not-whole-product",
+      "subject": "end-to-end-product-ideation",
+      "language": "fr",
+      "target": {
+        "kind": "existing-skill",
+        "path": "skills/image-to-code",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Use identical model, tools and budget for candidate and frozen old-skill runs",
+        "This routing scenario does not execute image generation or build"
+      ],
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "prompt": "La direction de cet accueil est approuvée. Construis maintenant recherche, comparaison, réservation et confirmation dans le même produit ; leurs écrans ne sont pas encore définis.",
+      "expected_output": "A scope-aware workflow plan preserving complete journey comparison or an honest blocker; no premature build.",
+      "assertions": [
+        "The approved direction is retained without restarting a three-way competition",
+        "Missing downstream screens and critical recovery are planned and reviewed before code",
+        "The approved home does not authorize unreviewed product screens"
+      ],
+      "coverage_tags": [
+        "language:fr",
+        "scope:multi-step",
+        "decision:approval"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "responsibility-value-before-stack",
+      "subject": "value-intent-proactive-experience",
+      "language": "fr",
+      "target": {
+        "kind": "existing-skill",
+        "path": "skills/image-to-code",
+        "execution": "explain"
+      },
+      "prompt": "@Product Design refais les accueils d’un service : direction garantit les engagements, responsable d’équipe coordonne les blocages, responsable de compte tient le résultat client, opérateur réalise les tâches. J’ai fourni ces responsabilités et les objets communs. Les maquettes précédentes étaient des dashboards décoratifs.",
+      "preconditions": [
+        "Supplied context is stakeholder input, not observed research",
+        "Explain only: no generation, build, external command or deck export",
+        "Paired runs require identical models, tools and budget"
+      ],
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "expected_output": "Concrete value/scenario/UX/UI consequences, conditional initiative/action contracts and honest evidence/scope.",
+      "assertions": [
+        "Uses supplied responsibilities and shared outcome without electing a winning persona",
+        "Defines user value, current task and observable result before framework or palette",
+        "Connects information/action hierarchy to end-to-end scenarios"
+      ],
+      "coverage_tags": [
+        "language:fr",
+        "experience:responsibility-value-before-stack"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "feedback-tables-change-decisions",
+      "subject": "value-intent-proactive-experience",
+      "language": "fr",
+      "target": {
+        "kind": "existing-skill",
+        "path": "skills/image-to-code",
+        "execution": "explain"
+      },
+      "prompt": "@Product Design améliore un service après cette revue : calendrier de contact ≠ KPI ; budget absent ≠ zéro ; clic indicateur préserve population/filtres ; aperçu absent ne permet pas d’inventer une version. Je veux comprendre les conséquences produit, UX et UI.",
+      "preconditions": [
+        "Supplied context is stakeholder input, not observed research",
+        "Explain only: no generation, build, external command or deck export",
+        "Paired runs require identical models, tools and budget"
+      ],
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "expected_output": "Concrete value/scenario/UX/UI consequences, conditional initiative/action contracts and honest evidence/scope.",
+      "assertions": [
+        "Maps every supplied material feedback item to a concrete Product/UX/UI decision",
+        "Defines source/scope/detail and unknown/recovery states before prompts",
+        "Names a verification scenario or explicitly deferred area for each material feedback item"
+      ],
+      "coverage_tags": [
+        "language:fr",
+        "experience:feedback-tables-change-decisions"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "intent-in-place-not-transcript",
+      "subject": "value-intent-proactive-experience",
+      "language": "fr",
+      "target": {
+        "kind": "existing-skill",
+        "path": "skills/image-to-code",
+        "execution": "explain"
+      },
+      "prompt": "@Product Design notre dossier garde une conversation accessible. Demandes : explique ce blocage, filtre ces missions, compare deux options, prépare un point client. Aucune colonne permanente de chatbot. Une réponse arrive pendant une édition manuelle.",
+      "preconditions": [
+        "Supplied context is stakeholder input, not observed research",
+        "Explain only: no generation, build, external command or deck export",
+        "Paired runs require identical models, tools and budget"
+      ],
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "expected_output": "Concrete value/scenario/UX/UI consequences, conditional initiative/action contracts and honest evidence/scope.",
+      "assertions": [
+        "Maps explain/filter/compare/prepare to local explanation, reversible workspace, temporary comparison and native artifact",
+        "Keeps navigation, scope, origin and return stable with direct controls",
+        "Preserves edits and binds late responses to origin without taking over another view",
+        "Does not use a permanent transcript sidebar"
+      ],
+      "coverage_tags": [
+        "language:fr",
+        "experience:intent-in-place-not-transcript"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "future-opportunity-prepared-work",
+      "subject": "value-intent-proactive-experience",
+      "language": "fr",
+      "target": {
+        "kind": "existing-skill",
+        "path": "skills/image-to-code",
+        "execution": "explain"
+      },
+      "prompt": "@Product Design un lancement est prévu en décembre et une fenêtre de contact confirmée la semaine prochaine ; bouclage inconnu. Un agent peut préparer une proposition dans le compte, sans autorisation d’envoi. Que montre le parcours cette semaine ?",
+      "preconditions": [
+        "Supplied context is stakeholder input, not observed research",
+        "Explain only: no generation, build, external command or deck export",
+        "Paired runs require identical models, tools and budget"
+      ],
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "expected_output": "Concrete value/scenario/UX/UI consequences, conditional initiative/action contracts and honest evidence/scope.",
+      "assertions": [
+        "Anticipates preparation needed now for a future opportunity, not only overdue exceptions",
+        "Shows useful prepared work and sources instead of generic alerts",
+        "Keeps closing unknown and preparation distinct from send/delivery",
+        "Specifies bounded mandate, stop conditions, owner and attention/defer behavior"
+      ],
+      "coverage_tags": [
+        "language:fr",
+        "experience:future-opportunity-prepared-work"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "bounded-agents-not-notification-supervision",
+      "subject": "value-intent-proactive-experience",
+      "language": "fr",
+      "target": {
+        "kind": "existing-skill",
+        "path": "skills/image-to-code",
+        "execution": "explain"
+      },
+      "prompt": "@Product Design les agents réalisent le travail éligible sous mandat d’équipe, sans approbation humaine de chaque run. Après panne un effet externe est inconnu ; un droit vient d’être révoqué.",
+      "preconditions": [
+        "Supplied context is stakeholder input, not observed research",
+        "Explain only: no generation, build, external command or deck export",
+        "Paired runs require identical models, tools and budget"
+      ],
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "expected_output": "Concrete value/scenario/UX/UI consequences, conditional initiative/action contracts and honest evidence/scope.",
+      "assertions": [
+        "Designs eligible preparation/execution under scoped mandates with outcome evidence",
+        "Does not impose endless per-run notification approvals",
+        "Rechecks revoked rights and reconciles unknown effect before retry",
+        "Team replacement is an unproven ambition, not measured benefit"
+      ],
+      "coverage_tags": [
+        "language:fr",
+        "experience:bounded-agents-not-notification-supervision"
+      ]
+    },
+    {
+      "id": 14,
+      "name": "native-presentation-brand-separation",
+      "subject": "value-intent-proactive-experience",
+      "language": "fr",
+      "target": {
+        "kind": "existing-skill",
+        "path": "skills/image-to-code",
+        "execution": "explain"
+      },
+      "prompt": "@Product Design prépare le parcours de pitch, kickoff et point client en présentation éditable avec marque agence et client. La charte UI existe mais le gabarit de présentation officiel est absent.",
+      "preconditions": [
+        "Supplied context is stakeholder input, not observed research",
+        "Explain only: no generation, build, external command or deck export",
+        "Paired runs require identical models, tools and budget"
+      ],
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "expected_output": "Concrete value/scenario/UX/UI consequences, conditional initiative/action contracts and honest evidence/scope.",
+      "assertions": [
+        "Distinguishes app design system from agency/client branding",
+        "Plans native editable text/tables/charts with corpus, audience, snapshot and source-linked claims",
+        "Separates review/version, export and external delivery authority",
+        "No official conformity or completed native deck claim from PNG or missing template"
+      ],
+      "coverage_tags": [
+        "language:fr",
+        "experience:native-presentation-brand-separation"
+      ]
+    },
+    {
+      "id": 15,
+      "name": "reuse-answered-brief-proactive-next-step",
+      "subject": "question-selection-and-initiative",
+      "language": "fr",
+      "target": {
+        "kind": "existing-skill",
+        "path": "skills/image-to-code",
+        "execution": "explain"
+      },
+      "prompt": "@Product Design j’ai déjà fourni utilisateurs, valeur, responsabilités, cas d’usage et charte. La direction dossier est choisie. Complète la méthode pour une fenêtre future estimée et une décision client bloquée ; garde les données inconnues. Quelle est la prochaine étape utile avant le code ?",
+      "expected_output": "Reuse the answered brief and chosen direction, translate opportunity/exception into task/surface consequences, recommend the next discriminating design step without a new questionnaire or premature build.",
+      "assertions": [
+        "Does not re-ask supplied users/value/design-system facts or restart direction competition",
+        "Proposes a concrete useful next design step based on opportunity and exception with explicit unknowns",
+        "Asks at most one genuinely material blocking question if a missing fact prevents the next step",
+        "Does not treat conversational intent or product initiative as authorization for external effects or app build"
+      ],
+      "preconditions": [
+        "Routing explanation only; no actual generation/build/external effect",
+        "Supplied answers are stakeholder context, not user research",
+        "Equivalent baseline/current tools, model and budget"
+      ],
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:fr",
+        "experience:question-selection"
+      ]
     }
   ]
 }

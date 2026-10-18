@@ -51,7 +51,7 @@ Not every request needs every step. `product-design:index` is the entry point an
 
 1. **Route the request.** Start with `product-design:index` whenever Product Design or the plugin is explicitly named.
 2. **Clarify the brief.** For design, prototype, redesign, or build work, `product-design:get-context` confirms the design target and intended user outcome. It asks one focused question only when either is missing.
-3. **Choose the journey, then its screens.** For multi-step work, `product-design:ideate` defines three journeys, generates every screen of every variant as a separate full-size image, and creates one board page per variant with the bundled dependency-free journey-board viewer. Variants may generate concurrently in isolated workers, while screens remain sequential inside each variant. After selection, it waits for approval of the existing selected screen set. For a genuine single-screen target, it presents three directions for that same screen.
+3. **Choose the journey, then its screens.** For multi-step work, `product-design:ideate` defines three journeys, generates three complete end-to-end journeys as separate screen images, even for low-risk work, and creates one board page per variant with the bundled dependency-free journey-board viewer. Variants may generate concurrently in isolated workers, while screens remain sequential inside each variant. After selection, it waits for approval of the existing selected screen set. For a genuine single-screen target, it presents three directions for that same screen.
 4. **Build from the approved sources.** Use `product-design:image-to-code` only after a complete multi-screen source set is approved, or from one selected source for a single-screen target. Use `product-design:url-to-code` for a faithful clone of a live URL.
 5. **Verify fidelity.** After implementation, capture the rendered prototype and use `product-design:design-qa` to compare it with the source visual.
 6. **Share when requested.** Use `product-design:share` only when the user asks to deploy, publish, host, or create a shareable link. A local build is not a deployment.
@@ -147,7 +147,7 @@ These are companion capabilities, not dependencies installed automatically by th
 
 ## Product decision gates
 
-Involved workflows use hard criteria, weighted score, evidence confidence and explicit verdict from [`references/product-decision-gates.md`](references/product-decision-gates.md). Multi-step ideation generates each screen of all three variants separately and assembles one board page per variant. After selection, the selected existing set requires approval before build. Records live in the generated project's `.gates/`; Beads may mirror status but is not the evaluator.
+Involved workflows use hard criteria, weighted score, evidence confidence and explicit verdict from [`references/product-decision-gates.md`](references/product-decision-gates.md). Multi-step ideation freezes full-evidence and generates all three complete journeys separately and assembles one board page per variant. After selection, the selected existing set requires approval before build. Records live in the generated project's `.gates/`; Beads may mirror status but is not the evaluator.
 
 ## Optional: project status via Beads
 
@@ -181,3 +181,11 @@ cp -rf /path/to/product-design .agents/plugins/product-design
 ## License
 
 MIT — see [LICENSE](./LICENSE). Original work by OpenAI.
+
+## Evidence-mode contract
+
+Multi-step product ideation requires full-evidence: three complete comparable journeys, each with separately generated screens from trigger to proven outcome and critical recovery. A landing page or three anchors cannot establish journey coverage. Lean is restricted to an explicitly isolated single-screen scope. Already selected directions continue without a new competition; complete their missing journey evidence and correct sources before full-set approval and explicit G4. Personas are complementary. references/design-contract.md separates product/UX/UI and metrics/actions/states. scripts/workflow-evidence-contract.mjs checks gates/evidence schemaVersion2, coverage/review/hash/phase; legacy not auto-promoted. No source with open business findings is build eligible. Source tests are not usability research.
+
+## Experience framing and initiative
+
+For involved product work, [product experience method](references/product-experience-method.md) connects supplied feedback and discriminating questions to responsibility/value, Product/UX/UI decisions, complete scenarios, intent placement and verification. Keep a useful brief and principal workspace; no decorative dashboard default. Conditional conversation uses in-place responses and preserved context/edits, agents anticipate opportunities and exceptions with bounded preparation/execution, and presentations stay native/editable with distinct app/organization/client brands. validateExperienceBlueprint checks declared traceability and boundaries, not measured UX or human authorization. Changed skills and their evals carry this through brief → ideation → build → QA.

@@ -7,13 +7,15 @@
       "prompt": "Crée un service multi-écran sans référence visuelle.",
       "expected_sequence": [
         "index",
-        "get-context",
-        "service blueprint if multi-persona",
-        "define three journeys and plans",
-        "one full-size image per screen for every variant",
-        "one board page per variant",
-        "user journey selection",
-        "user selected screen-set approval",
+        "get-context product/UX/UI and service blueprint",
+        "freeze multi-step full-evidence regardless of risk",
+        "three complete plans",
+        "three complete end-to-end journey screen sets, including outcomes and critical recovery",
+        "three labeled pages",
+        "selection",
+        "complete corrected selected set",
+        "explicit source-set approval",
+        "G4",
         "image-to-code",
         "design-qa"
       ],
@@ -97,6 +99,50 @@
       "forbidden": [
         "unsupported 1280x1024 default",
         "Promise.all final image calls"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "low-risk-end-to-end-product-handoff",
+      "prompt": "@Product Design explore trois façons de chercher, comparer et réserver un mentor, puis retrouver la confirmation. Risque faible. Une landing ne suffit pas.",
+      "expected_sequence": [
+        "index",
+        "get-context shared scenario and complete start/end",
+        "ideate three distinct full-evidence journeys",
+        "all required separate screen sources including outcome and recovery",
+        "three complete comparable board pages",
+        "journey selection",
+        "correct selected sources and explicit ordered screen-set approval",
+        "G4 explicit build scope",
+        "image-to-code",
+        "design-qa for each implemented state"
+      ],
+      "forbidden": [
+        "three home anchors declared complete",
+        "single-screen approval expanded to product build",
+        "user research claim from generated boards"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "value-intent-proactivity-through-build",
+      "prompt": "@Product Design explore un service multirôle avec intentions dans le workspace central, agents qui préparent/exécutent sous mandat et présentation client éditable. Conserve les responsabilités et le retour d’expérience fourni puis montre les parcours avant le code.",
+      "expected_sequence": [
+        "index",
+        "get-context recover inputs, value and responsibilities",
+        "question to answer/evidence to Product/UX/UI decision mapping",
+        "scenario/intent placement and conditional proactive/native contracts",
+        "ideate three complete end-to-end strategies",
+        "semantic sources review including business/effect states",
+        "source-set approval and G4",
+        "image-to-code preserves direct/conversational paths and context",
+        "design-qa same-state sources and task-validity checks"
+      ],
+      "forbidden": [
+        "stack or palette replaces value framing",
+        "exceptions-only proactivity and endless run approval feed",
+        "native deck claim from PNG screens",
+        "measured UX/team replacement without evidence"
       ]
     }
   ]

@@ -8,8 +8,8 @@ Create one JSON manifest before image generation and link its path and SHA-256 f
 
 The manifest freezes:
 
-- one comparison contract: service, user/context, start, end, scenario data, success criterion, platform, viewport, references, and visual contract;
-- exactly `V1`, `V2`, and `V3`, each with a unique relative output directory;
+- one comparison contract: scope (multi-step or explicitly single-screen), service, user/context, start, end, scenario data, success criterion, platform, viewport, references, and visual contract;
+- exactly `V1`, `V2`, and `V3`, each with a unique relative output directory, anchorScreenId and, for multi-step scope, journey(startScreenId,outcomeScreenId,criticalRecoveryScreenIds);
 - ordered `Vx-Sn` screens with purpose, user question, entry, journey moment, exact visible content, actions, recovery, exit, next screen, acceptance criteria, canonical prompt, and screen visual contract;
 - generation model, resolved size, target aspect ratio, bounded attempt count, and enhancement setting.
 
@@ -53,3 +53,9 @@ For the three-lane versus fifteen-wide experiment, retain provider timing, end-t
 ### Live-evidence dependency
 
 Live parallelism evidence is blocked on an **image-mcp release newer than `@bioinfornatics/image-mcp@0.2.1`** that returns the observability fields required by this contract for every generation: configured/requested/resolved/effective deployment and model, input and effective prompts, provider timing distinct from caller-measured end-to-end timing, explicit usage and cost availability, and the exact persisted output path. Version 0.2.1 does not expose that complete released interface. An unreleased checkout or inferred provider configuration is not acceptable evidence. Keep the live claim blocked until a published package version containing that interface is installed and recorded in the benchmark artifact.
+
+## Evidence mode and source approval
+
+Freeze comparisonContract.scope and evidenceMode. Multi-step requires full-evidence and at least two meaningful main-path screens per variant; single-screen requires exactly one screen per variant and may use lean unless risk requires full-evidence. executeThreeLanes generates every planned screen, never just anchors. Multi-step journey boundaries identify the first screen, outcome screen and criticalRecoveryScreenIds (an explicit empty list needs scenario review). nextScreen must resolve within the variant or the terminal sentinel End. The main path must reach outcome then End, without cycles or orphan screens; recovery screens are explicitly listed branches, not decorative steps.
+
+Comparison evidence contains every source in exact manifest order. fullJourneyCoverage is true only for full-evidence multi-step scope. G2 selection is not G3 full-source approval or G4 build scope. Selected historical completion runs only the chosen plan under separate versioned production evidence, not a fabricated three-lane comparison. Gates/evidence schemaVersion2 bind review/coverage/hashes; legacy records lacking these scope fields remain historical and need explicit revision/review, never automatic promotion. Material business errors block build eligibility, even readable copy.

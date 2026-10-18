@@ -21,7 +21,7 @@ Charger `product-design:index` dès que l'utilisateur nomme Product Design ou le
 - `ideate` rend exactement trois alternatives comparables.
 - Une URL de référence doit être capturée et ouverte avant toute génération ou reproduction.
 
-Pour un parcours multi-écrans, définir le parcours et le plan d'écrans de chacune des trois variantes, générer une image web pleine par écran et par variante, puis créer une page-board séparée par variante avec le générateur statique fourni. Les trois variantes peuvent être déléguées en parallèle dans des répertoires isolés ; les écrans restent séquentiels au sein de chaque variante. Ne jamais générer une planche découpée en miniatures ni comprimer les écrans en N colonnes. Après le choix, faire approuver l'ensemble déjà généré.
+Pour un choix multi-écrans, générer trois parcours complets de bout en bout, même à faible risque : déclencheur, actions/décisions, passages de responsabilité, résultat et récupérations critiques. Une landing page ou trois ancres ne suffisent pas. Cadrer un scénario utile plutôt que supprimer sa fin pour réduire le coût. Réserver lean aux cibles explicitement mono-écran. Générer les sources séparément, puis sélectionner, corriger le set retenu et obtenir approbation explicite avant G4. Pas de nouvelle compétition pour une direction choisie.
 
 ### 4. Construire
 
@@ -56,7 +56,7 @@ N'exécuter `share` que sur demande explicite. Vérifier la cible d'hébergement
 La spécification complète est `../references/product-decision-gates.md`.
 
 - **G1** exige un brief exploitable, une valeur, un succès observable, les contraintes et références.
-- **G2** compare exactement trois parcours complets au même périmètre et aboutit à un choix utilisateur.
+- **G2** compare trois parcours complets au même périmètre (ou trois directions réellement mono-écran) et aboutit à un choix utilisateur.
 - **G3** exige le plan, toutes les sources détaillées cohérentes et l'approbation de l'ensemble.
 - **G4** cadre le prototype, ses états, données, hypothèse, métrique et hors-périmètre.
 - **G5** sépare qualité d'exécution et validité du test produit.
@@ -68,3 +68,11 @@ Pour les travaux impliqués, écrire les records dans `.gates/`. Un critère dur
 ## Handoff
 
 Le handoff doit commencer par le résultat visible ou l'URL de prototype, indiquer clairement les limites, et proposer une seule prochaine action utile. Ne pas noyer l'utilisateur dans les commandes, chemins internes ou traces, sauf s'il les demande ou qu'un blocker l'exige.
+
+## Evidence-mode contract
+
+Multi-step product ideation requires full-evidence: three complete comparable journeys, each with separately generated screens from trigger to proven outcome and critical recovery. A landing page or three anchors cannot establish journey coverage. Lean is restricted to an explicitly isolated single-screen scope. Already selected directions continue without a new competition; complete their missing journey evidence and correct sources before full-set approval and explicit G4. Personas are complementary. references/design-contract.md separates product/UX/UI and metrics/actions/states. scripts/workflow-evidence-contract.mjs checks gates/evidence schemaVersion2, coverage/review/hash/phase; legacy not auto-promoted. No source with open business findings is build eligible. Source tests are not usability research.
+
+## Experience framing and initiative
+
+For involved product work, [product experience method](../references/product-experience-method.md) connects supplied feedback and discriminating questions to responsibility/value, Product/UX/UI decisions, complete scenarios, intent placement and verification. Keep a useful brief and principal workspace; no decorative dashboard default. Conditional conversation uses in-place responses and preserved context/edits, agents anticipate opportunities and exceptions with bounded preparation/execution, and presentations stay native/editable with distinct app/organization/client brands. validateExperienceBlueprint checks declared traceability and boundaries, not measured UX or human authorization. Changed skills and their evals carry this through brief → ideation → build → QA.

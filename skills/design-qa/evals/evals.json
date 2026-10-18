@@ -32,6 +32,72 @@
         "contains:usability",
         "contains:user"
       ]
+    },
+    {
+      "id": 4,
+      "name": "traced-value-intent-rendered-task",
+      "subject": "experience-qa",
+      "language": "fr",
+      "target": {
+        "kind": "existing-skill",
+        "path": "skills/design-qa",
+        "execution": "explain"
+      },
+      "prompt": "@Product Design vérifie notre prototype dossier : sources et rendu au même état sont disponibles, blueprint lie valeur utilisateur, explication locale, filtre réversible, préparation native et résultat. Décris la vérification à effectuer.",
+      "expected_output": "A source/rendered comparison and task-validity plan tracing concrete design consequences; no completed QA claim from prose.",
+      "assertions": [
+        "Compares each implemented state to its approved source at the same viewport/state",
+        "Checks intent placement, direct controls, context/return and manual edits against the blueprint",
+        "Separates execution/test validity from measured usability or product value"
+      ],
+      "coverage_tags": [
+        "language:fr",
+        "qa:task-validity"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "beautiful-rendered-source-effect-drift",
+      "subject": "experience-qa",
+      "language": "fr",
+      "target": {
+        "kind": "existing-skill",
+        "path": "skills/design-qa",
+        "execution": "explain"
+      },
+      "prompt": "Les captures montrent que notre prototype est beau et ressemble aux sources, mais un filtre déclenche un envoi externe et une préparation est présentée comme livrée. Quel verdict Product Design ?",
+      "expected_output": "Blocked on material intent/effect differences despite visual fidelity.",
+      "assertions": [
+        "Blocks QA on no-effect view violations or false delivered state",
+        "Names affected source/implemented states and a targeted fix/recomparison",
+        "Does not let visual fidelity compensate for task/state errors"
+      ],
+      "coverage_tags": [
+        "language:fr",
+        "qa:effect-boundary"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "missing-capture-not-ux-validation",
+      "subject": "experience-qa",
+      "language": "fr",
+      "target": {
+        "kind": "existing-skill",
+        "path": "skills/design-qa",
+        "execution": "explain"
+      },
+      "prompt": "Le code compile et le brief reprend tous nos tableaux. Aucune capture du rendu n’est disponible. Peut-on annoncer QA et amélioration de productivité ?",
+      "expected_output": "Blocked rendered-source QA and unmeasured value, not a completed UX claim.",
+      "assertions": [
+        "Missing rendered visual evidence blocks QA",
+        "Build success or presence of feedback text is not fidelity/interaction evidence",
+        "Does not claim usability or productivity improvement without observed user/operational evidence"
+      ],
+      "coverage_tags": [
+        "language:fr",
+        "qa:missing-evidence"
+      ]
     }
   ]
 }

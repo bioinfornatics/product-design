@@ -68,8 +68,8 @@ Tous les travaux ne parcourent pas toute la chaîne. Le routeur choisit le skill
 ### Invariants de conception et de build
 
 - **Pas de cible visuelle, pas de build.** Un brief complet ne remplace pas la sélection visuelle.
-- Un parcours multi-écrans commence par exactement trois journey boards complets et comparables. Une image par étape est invalide.
-- Après sélection d'un parcours, créer un plan ordonné, générer chaque écran détaillé, puis obtenir l'approbation de l'ensemble avant le build. Un journey board seul ne suffit pas.
+- Un choix multi-écrans exige trois parcours complets de bout en bout avant sélection, même à faible risque. Une landing ou trois ancres ne suffisent pas. Réserver lean aux cibles explicitement mono-écran ; images individuelles jamais composites.
+- Après sélection, compléter/corriger seulement le set retenu puis obtenir approbation explicite liée aux hashes et handoff G4. Un journey board seul ne suffit pas.
 - Pour une vraie cible mono-écran, comparer trois directions du même écran, avec contenu, état et contraintes constants.
 - Dans un produit existant, inspecter d'abord les écrans analogues, composants, tokens, styles et interactions. Réutiliser avant d'inventer.
 - Un prototype valide le frontend et le parcours avec des données mock réalistes. Ne pas ajouter backend, auth réelle, schémas, migrations, services ou intégrations sans demande explicite de phase production.
@@ -83,7 +83,7 @@ La définition normative est `references/product-decision-gates.md`. Pour un tra
 | Gate | Passage |
 |---|---|
 | G1 | Brief → idéation du parcours/visuel |
-| G2 | Trois parcours complets → parcours sélectionné |
+| G2 | Trois parcours complets → parcours sélectionné, pas build |
 | G3 | Parcours sélectionné → ensemble détaillé d'écrans approuvé |
 | G4 | Direction sélectionnée → prototype |
 | G5 | Prototype → revue/handoff, avec qualité d'exécution et validité du test séparées |
@@ -163,3 +163,11 @@ npm run validate:plugin
 - Limiter le diff au besoin, conserver le style Markdown existant et vérifier `git diff --check` ainsi que `git status`.
 
 Voir aussi : `docs/architecture.md`, `docs/workflows.md`, `docs/operations.md` et `docs/contributing.md`.
+
+## Evidence-mode contract
+
+Multi-step product ideation requires full-evidence: three complete comparable journeys, each with separately generated screens from trigger to proven outcome and critical recovery. A landing page or three anchors cannot establish journey coverage. Lean is restricted to an explicitly isolated single-screen scope. Already selected directions continue without a new competition; complete their missing journey evidence and correct sources before full-set approval and explicit G4. Personas are complementary. references/design-contract.md separates product/UX/UI and metrics/actions/states. scripts/workflow-evidence-contract.mjs checks gates/evidence schemaVersion2, coverage/review/hash/phase; legacy not auto-promoted. No source with open business findings is build eligible. Source tests are not usability research.
+
+## Experience framing and initiative
+
+For involved product work, [product experience method](references/product-experience-method.md) connects supplied feedback and discriminating questions to responsibility/value, Product/UX/UI decisions, complete scenarios, intent placement and verification. Keep a useful brief and principal workspace; no decorative dashboard default. Conditional conversation uses in-place responses and preserved context/edits, agents anticipate opportunities and exceptions with bounded preparation/execution, and presentations stay native/editable with distinct app/organization/client brands. validateExperienceBlueprint checks declared traceability and boundaries, not measured UX or human authorization. Changed skills and their evals carry this through brief → ideation → build → QA.

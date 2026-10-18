@@ -8,7 +8,9 @@ description: Product Design brief gate. After `product-design:index`, load befor
 
 Run this skill at the start of Product Design requests that ask to design, build, prototype, clone, redesign, extend, or generate product UI directions.
 
-Use question mode to clarify the following:
+Start by recovering supplied tables, specs, references and existing decisions. Resolve Product (users/value) before UX (scenario/information/actions) before UI (representation/hierarchy); framework and visual tooling support those decisions, not the reverse.
+
+Use question mode only to clarify unanswered material facts:
 
 - what product, site, feature, workflow, component, or screen is being designed, redesigned, or extended
 - what the feature, change, app, or website should help the user do
@@ -16,6 +18,14 @@ Use question mode to clarify the following:
 Do not re-ask answered questions. When both are clear, play back the brief and defaults in one pithy note, name the next workflow, and continue in the same turn. Playback is not a request for approval. The user can course-correct style, scope, or interactivity at any point.
 
 Hard boundary: do not implement UI, scaffold a prototype, start a server, or create files while the design target or intended user outcome is still missing.
+
+## Responsibility, value and experience framing
+
+For involved product work read [product experience method](../../references/product-experience-method.md) before technical detection. Use its discriminating question themes as an internal analysis lens, not a questionnaire. Recover user responsibility/goal, current alternative, value hypothesis, cost of failure and observable success. Link important supplied feedback to answer/provenance, Product/UX/UI decision, scenario/screen-state and verification, or explicitly defer it with rationale. Keep one principal workspace and a compact useful brief; reveal calendar, capacity, recommendations, evidence and activity progressively rather than as equal dashboard blocks.
+
+When conversation, agents or presentations are in scope, classify intentions and their useful answer location, future-opportunity AND exception triggers, eligible prepared/executed work under bounded mandates, attention/stop/reconcile behavior, and native editable outputs with source/brand boundaries. Do not treat proactivity as only warnings, or make humans approve every run. The assistant itself should inspect, synthesize, warn on contradictions and propose/perform the next eligible design step without re-asking answered inputs.
+
+Produce an experience blueprint for involved work; validateExperienceBlueprint(blueprint, designContract) verifies declared links and conditional contracts, not UX research, human authorization or source truth. Tiny edits and exact clones do not require this artifact.
 
 ## Framework and Design System Detection
 
@@ -29,10 +39,10 @@ Resolve these two before handing off to `product-design:ideate`/`product-design:
 **Design system.** Ask or check, in this order, before build starts:
 
 1. **Is there an existing design system?** Check saved user context (`product-design:user-context`) for a recorded design system, codebase paths, Storybook, or component refs. If a plugin exposes one, use its real components. For Servier/DIFA, load `servier-webapp:dna-in-prototypes`, then the required qualified tier skills (`servier-webapp:dna-atoms`, `servier-webapp:dna-molecules`, `servier-webapp:dna-organisms`, `servier-webapp:dna-tokens`). Honor its React compatibility gate before accepting the framework choice.
-2. **If no design system is in use, are there tokens or a palette to use?** Ask for existing design tokens, a brand palette, a Figma file, or brand assets before generating anything from scratch. Use whatever is provided as grounding for `product-design:ideate`'s Image Gen calls and for any hardcoded colors/spacing/type in the build.
-3. **If neither exists,** say so plainly and generate visual directions with distinctly different palettes as part of `product-design:ideate` — this is the fallback, not the default. Do not silently invent a single palette and skip ideation.
+2. **If no design system is in use, are there tokens or a palette to use?** Reuse provided tokens, palette, Figma or brand assets. Ask only if a genuinely blocking brand constraint is unresolved; otherwise label neutral prototype styling as an assumption, not official brand conformity. Use whatever is provided as grounding for `product-design:ideate`'s Image Gen calls and for any hardcoded colors/spacing/type in the build.
+3. **If neither exists,** say so plainly and use explicitly provisional neutral styling. Compare distinct interaction strategies across complete journeys; palette differences may be secondary, never the only ideation axis. Do not skip ideation or imply official brand conformity.
 
-Do not skip straight to build with an assumed framework or an assumed palette when the project is new; a wrong assumption here is expensive to undo (rewritten components, mismatched brand colors). A quick check or one targeted question is worth it.
+Do not skip straight to build. Inspect existing framework/brand constraints first; name provisional defaults only when they do not contradict the brief. Ask one focused question only for an unresolved material blocker, rather than making framework or palette a repeated questionnaire.
 
 ## Evidence and UX-research gate
 
@@ -83,6 +93,10 @@ This kind of build usually takes about 10-15 minutes, and ambitious ones can tak
 
 Do not send this note for tiny static changes, quick audits, simple research, setup-only, or share-only requests.
 
-For multi-step work, the brief playback must also state the exact journey start boundary, end outcome, common scenario/data, and whether the next output is three candidate journeys, separate full-size images for every screen in every candidate, and one board page per candidate. Never propose composite multi-screen images.
+For multi-step work, the brief playback must also state the exact journey start boundary, end outcome, common scenario/data, and the frozen scope and evidenceMode: multi-step requires full-evidence for three complete journeys regardless of risk, from trigger through outcome and critical recovery; lean is reserved for an explicitly isolated single-screen target. Then require the complete corrected selected set for explicit approval. Never propose composite multi-screen images.
 
-Done means target user/context, problem, outcome, product value, observable success criterion, framework/design-system decisions, assumptions and confidence are explicit; G1 has a verdict; the journey comparison boundary and shared scenario are frozen when applicable; defaults have been played back; and the next skill has been read.
+Done means supplied inputs and decisions are recovered; user responsibilities/value and material question-to-Product/UX/UI consequences are traced when involved; conditional intent/proactivity/native-output contracts are explicit; target user/context, problem, outcome, product value, observable success criterion, framework/design-system decisions, assumptions and confidence are explicit; G1 has a verdict; the journey comparison boundary and shared scenario are frozen when applicable; defaults have been played back; and the next skill has been read.
+
+## Product / UX / UI contract
+
+For involved work read [design contract](../../references/design-contract.md). Preserve answered context and existing decisions; personas are complementary responsibilities, not alternatives. Separate product problem/value/invariants, UX scenario/actions/handoffs/return/states and UI hierarchy/components. Define data kind/metric/version/scope/detail/zero-vs-unknown contracts before prompts. Technology does not define the first action. Full-evidence is mandatory for multi-step product work, even at low risk. Do not reinterpret a product request as a single landing page. Keep a product coverage map of responsibilities, scenarios and journey moments, with explicitly covered/deferred areas; one scenario is not the whole product. Frame a bounded end-to-end scenario rather than dropping downstream screens; insufficient generation capacity means incomplete evidence and a precise blocker, not a passed comparison. Already selected work needs completion, not a new comparison. A missing truly blocking fact triggers one focused question; otherwise explicit assumptions allow an experiment.

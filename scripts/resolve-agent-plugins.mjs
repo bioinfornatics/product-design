@@ -11,8 +11,10 @@ export function resolveAgentPluginsScript(component, script) {
   ].filter(Boolean);
 
   for (const root of roots) {
-    const candidate = path.join(root, "skills", component, "dist", "scripts", script);
-    if (existsSync(candidate)) return candidate;
+    for (const layout of ["runtime/dist", "dist"]) {
+      const candidate = path.join(root, "skills", component, layout, "scripts", script);
+      if (existsSync(candidate)) return candidate;
+    }
   }
 
   throw new Error(
