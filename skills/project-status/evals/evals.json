@@ -4,32 +4,318 @@
     {
       "id": 1,
       "name": "explicit-beads-activates-tracking",
-      "prompt": "Use Beads to track this Product Design redesign as an epic with dependencies and acceptance criteria.",
-      "expected_output": "Route to product-design:project-status and activate Beads tracking within the requested scope without asking whether tracking is wanted."
+      "prompt": "For product-design:project-status at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Use Beads to track this Product Design redesign as an epic with dependencies and acceptance criteria. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The plan accepts explicit Beads request without re-asking whether tracking is wanted. The plan limits tracking to the requested redesign epic. The plan preserves dependencies and acceptance criteria. The plan checks Beads availability before mutation. The response does not claim actual Beads issues were created. Generation, build, research, rendered QA, tracking and deployment remain not run.",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-project-status-workflow-contract",
+      "language": "en",
+      "assertions": [
+        "The plan accepts explicit Beads request without re-asking whether tracking is wanted.",
+        "The plan limits tracking to the requested redesign epic.",
+        "The plan preserves dependencies and acceptance criteria.",
+        "The plan checks Beads availability before mutation.",
+        "The response does not claim actual Beads issues were created.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:project-status",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 2,
       "name": "planning-vocabulary-offers-before-activation",
-      "prompt": "Plan this involved Product Design rollout with an epic, phase gates, acceptance criteria, dependencies, owners, evidence, ready and blocked states, and a next task.",
-      "expected_output": "Offer product-design:project-status, ask for confirmation before creating or updating Beads, and continue the Product Design workflow while confirmation is pending."
+      "prompt": "For product-design:project-status at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Plan this involved Product Design rollout with an epic, phase gates, acceptance criteria, dependencies, owners, evidence, ready and blocked states, and a next task. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The response offers optional project-status for involved planning vocabulary. The plan waits confirmation before creating or updating Beads. The plan continues design while confirmation is pending. The response does not make Beads a design gate. Generation, build, research, rendered QA, tracking and deployment remain not run.",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-project-status-workflow-contract",
+      "language": "en",
+      "assertions": [
+        "The response offers optional project-status for involved planning vocabulary.",
+        "The plan waits confirmation before creating or updating Beads.",
+        "The plan continues design while confirmation is pending.",
+        "The response does not make Beads a design gate.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:project-status",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 3,
       "name": "existing-beads-may-activate",
-      "prompt": "This involved multi-phase Product Design project already has a .beads directory. Continue the work and keep its status current.",
-      "expected_output": "Route to product-design:project-status and use the existing Beads project when it matches the work; do not initialize another tracker."
+      "prompt": "For product-design:project-status at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: This involved multi-phase Product Design project already has a .beads directory. Continue the work and keep its status current. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The plan checks the existing .beads tracker belongs to the requested project. The plan reuses a matching tracker. The plan does not initialize a second tracker. The response does not claim an actual tracker update. Generation, build, research, rendered QA, tracking and deployment remain not run.",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-project-status-workflow-contract",
+      "language": "en",
+      "assertions": [
+        "The plan checks the existing .beads tracker belongs to the requested project.",
+        "The plan reuses a matching tracker.",
+        "The plan does not initialize a second tracker.",
+        "The response does not claim an actual tracker update.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:project-status",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 4,
       "name": "simple-one-shot-does-not-trigger",
-      "prompt": "Make this button label clearer and tell me when it is ready.",
-      "expected_output": "Handle the simple one-shot request without mentioning project-status, Beads, an epic, or tracking."
+      "prompt": "For product-design:project-status at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Make this button label clearer and tell me when it is ready. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The response addresses only the small button-label task. The response does not offer project-status or Beads. The response does not treat isolated ready as involved planning. Generation, build, research, rendered QA, tracking and deployment remain not run.",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-project-status-workflow-contract",
+      "language": "en",
+      "assertions": [
+        "The response addresses only the small button-label task.",
+        "The response does not offer project-status or Beads.",
+        "The response does not treat isolated ready as involved planning.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:project-status",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 5,
       "name": "ordinary-phases-do-not-trigger",
-      "prompt": "First review this single card, then suggest one revised version.",
-      "expected_output": "Follow the small two-step request without offering or activating project tracking."
+      "prompt": "For product-design:project-status at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: First review this single card, then suggest one revised version. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The plan retains single-card review and revision scope. The response does not offer tracking for ordinary two-step prose. Generation, build, research, rendered QA, tracking and deployment remain not run.",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-project-status-workflow-contract",
+      "language": "en",
+      "assertions": [
+        "The plan retains single-card review and revision scope.",
+        "The response does not offer tracking for ordinary two-step prose.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:project-status",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
+    },
+    {
+      "id": 6,
+      "name": "qualified-skill-invocation",
+      "prompt": "For product-design:project-status at target.path . (current skill root), explain how to invoke this installed skill in Goose for a focused handoff. The installed plugin namespace is product-design. Do not run the workflow.",
+      "expected_output": "An explain-only handoff using the exact instruction load skills product-design:project-status; no sibling SKILL.md link substituted as invocation.",
+      "assertions": [
+        "The response gives the exact invocation `load skills product-design:project-status`.",
+        "The invocation resolves the actual installed skill name rather than leaving a {name} placeholder.",
+        "The response does not substitute a sibling SKILL.md file link for skill invocation.",
+        "The response does not claim that explaining the invocation executed the focused workflow."
+      ],
+      "subject": "product-design-project-status-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:project-status",
+        "scope:explain",
+        "contract:qualified-invocation"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
     }
   ]
 }

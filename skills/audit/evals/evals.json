@@ -1,0 +1,199 @@
+{
+  "skill_name": "audit",
+  "evals": [
+    {
+      "name": "bounded-screen-audit-is-valid",
+      "prompt": "Explain how you would audit only our existing cancellation modal for clarity and keyboard access. I am not asking to compare code to a mock.",
+      "expected_output": "Scope user-facing audit to that surface with current captures and behavioral limits, not a QA reroute or wider journey.",
+      "assertions": [
+        "Keeps audit scoped to the modal",
+        "Does not substitute source/render QA",
+        "Requires accessible current evidence before claiming findings"
+      ],
+      "id": 1,
+      "subject": "instruction-coherence-and-discovery",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Use the current Skill and its applicable shared references; explain the scenario without claiming a build, study or capture occurred"
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 8,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:audit",
+        "change:instruction-coherence",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
+    },
+    {
+      "name": "intentional-error-state-evidence",
+      "prompt": "Explain how you would audit the validation error shown after submitting our form. This error state is the requested target.",
+      "expected_output": "Retain a correct capture of the intentional error state and inspect recovery; do not reject it merely because it is an error.",
+      "assertions": [
+        "Treats the requested error state as valid labeled evidence",
+        "Includes recovery behavior",
+        "Does not reject every error capture unconditionally"
+      ],
+      "id": 2,
+      "subject": "instruction-coherence-and-discovery",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Use the current Skill and its applicable shared references; explain the scenario without claiming a build, study or capture occurred"
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 8,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:audit",
+        "change:instruction-coherence",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
+    },
+    {
+      "name": "audit-no-browser-no-fake-findings",
+      "prompt": "We cannot open or capture the product in this session. Explain what you can honestly provide for an experience audit.",
+      "expected_output": "Report the missing audit capture capability, offer a plan or source research without inventing current screenshots/findings.",
+      "assertions": [
+        "Names unavailable capture as a blocker",
+        "Does not claim the current flow was audited",
+        "Does not fabricate screenshots or current state findings"
+      ],
+      "id": 3,
+      "subject": "instruction-coherence-and-discovery",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Use the current Skill and its applicable shared references; explain the scenario without claiming a build, study or capture occurred"
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 8,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:audit",
+        "change:instruction-coherence",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
+    },
+    {
+      "id": 4,
+      "name": "qualified-skill-invocation",
+      "prompt": "For product-design:audit at target.path . (current skill root), explain how to invoke this installed skill in Goose for a focused handoff. The installed plugin namespace is product-design. Do not run the workflow.",
+      "expected_output": "An explain-only handoff using the exact instruction load skills product-design:audit; no sibling SKILL.md link substituted as invocation.",
+      "assertions": [
+        "The response gives the exact invocation `load skills product-design:audit`.",
+        "The invocation resolves the actual installed skill name rather than leaving a {name} placeholder.",
+        "The response does not substitute a sibling SKILL.md file link for skill invocation.",
+        "The response does not claim that explaining the invocation executed the focused workflow."
+      ],
+      "subject": "product-design-audit-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:audit",
+        "scope:explain",
+        "contract:qualified-invocation"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
+    }
+  ]
+}

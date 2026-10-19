@@ -99,6 +99,13 @@ for (const theme of ["Questions that change the design", "Intent-to-surface", "P
 for (const scenario of ["responsibility-value-before-stack", "feedback-tables-change-decisions", "intent-in-place-not-transcript", "future-opportunity-prepared-work", "bounded-agents-not-notification-supervision", "native-presentation-brand-separation", "value-intent-proactivity-through-build"]) ok(evalNames.has(scenario), "experience eval missing " + scenario);
 ok(!context.includes("generate visual directions with distinctly different palettes"), "context must not use palette-only directions for product ideation");
 for (const symbol of ["validateDesignQaReport","assertBeadsClosure","validateAnnotationReceipt","validateArtifactIndex","validateBuildHandoff"]) ok(evidenceContract.includes("function "+symbol), "missing upstream validator "+symbol);
+const executableContract = read("references/executable-transitions.md");
+for (const [name, content] of [["context", context], ["ideate", ideate], ["build", build], ["clone", clone], ["QA", qa]]) ok(content.includes("executable-transitions.md") && content.includes("check-workflow-evidence.mjs") && content.includes("--consume"), name + " must execute and consume transition checks");
+for (const operation of ["brief-to-ideation", "source-selection", "source-set-approval", "prototype-build", "review-handoff"]) ok(executableContract.includes(operation), "executable contract missing " + operation);
+ok(qa.includes("design-qa.json") && qa.includes("authoritative"), "QA must use canonical JSON authority");
+ok(read("scripts/check-workflow-evidence.mjs").includes("advanceGateTransaction"), "adapter must preserve ordered transition transaction");
+ok(index.includes("load skills product-design:{name}"), "router must use explicit runtime Skill loading");
+for (const name of ["index", "get-context", "research", "ideate", "image-to-code", "url-to-code", "design-qa", "audit", "share", "annotate", "annotate-inject", "user-context", "project-status"]) ok(read("skills/" + name + "/SKILL.md").includes("load skills product-design:{name}"), name + " must declare exact runtime loading");
 if (failures.length) {
   console.error(failures.map((message) => `FAIL: ${message}`).join("\n"));
   process.exit(1);

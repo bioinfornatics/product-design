@@ -41,6 +41,8 @@ Use this as an analysis lens, not a questionnaire. First reuse answered context 
 
 These are themes to review, not nine equal screen regions. Additional business themes come from the brief. Keep the brief compact; do not expose internal JSON or dozens of fields to a nontechnical user.
 
+For involved discovery, also read [product discovery questions](product-discovery-questions.md): current alternative, frequency and total effort, adoption/viability, conditional AI advantage/error/fallback/safety and technical constraints. Link the highest-impact uncertainty to a compact decision-test record with baseline, target/guardrail, owner and continue/change/stop rule. Do not force all themes into fields/screens or claim a test ran from its plan; disproved value can justify no build yet.
+
 ## 4. Intent-to-surface contract (conditional)
 
 | Intention | Useful answer location | Expected effect |

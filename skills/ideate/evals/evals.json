@@ -4,366 +4,1317 @@
     {
       "id": 1,
       "name": "separate-screens-and-pages",
-      "prompt": "Crée une application de mentoring où un mentee trouve un mentor et réserve un rendez-vous. Il n'y a aucune maquette existante.",
-      "expected_output": "Require three complete comparable end-to-end journeys with separately generated screens even at low risk. A landing/anchor-only comparison is incomplete. Correct the selected set and require explicit full-set approval and G4 before code.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Create a mentoring application where a mentee finds a mentor and books an appointment. There are no existing mockups. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The plan defines three complete comparable mentor-search-to-booking journeys. Each planned journey includes outcome and critical recovery screens. Each planned generation call produces one full-size screen. The plan creates one labeled board page per complete journey from separate source files. The plan preserves readable proportions rather than narrow mobile-like columns. The plan requires explicit approval of the complete corrected ordered source set before G4. The plan prohibits coding before explicit G4. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "contains:three",
-        "contains:full-size",
-        "contains:one screen",
-        "contains:board page",
-        "contains:separate"
-      ]
+        "The plan defines three complete comparable mentor-search-to-booking journeys.",
+        "Each planned journey includes outcome and critical recovery screens.",
+        "Each planned generation call produces one full-size screen.",
+        "The plan creates one labeled board page per complete journey from separate source files.",
+        "The plan preserves readable proportions rather than narrow mobile-like columns.",
+        "The plan requires explicit approval of the complete corrected ordered source set before G4.",
+        "The plan prohibits coding before explicit G4.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-ideate-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/end-to-end-journey-coverage.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 2,
       "name": "journey-selection-resumes-ideate",
-      "prompt": "Je choisis le parcours 2 parmi les trois planches affichées.",
-      "expected_output": "Resolve board page 2, verify its already-generated screen set, and request approval without building or regenerating the journey.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: I choose journey 2 from the three boards displayed. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The plan resolves journey 2 from displayed board-page order. The plan reuses journey 2 existing sources. The plan verifies selected-set coverage before requesting approval. The plan does not regenerate solely because a journey was chosen. The plan does not build or start an app server from selection. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "contains:Journey 2 selected",
-        "contains:screen",
-        "not-contains:Building option 2",
-        "not-contains:start the server"
-      ]
+        "The plan resolves journey 2 from displayed board-page order.",
+        "The plan reuses journey 2 existing sources.",
+        "The plan verifies selected-set coverage before requesting approval.",
+        "The plan does not regenerate solely because a journey was chosen.",
+        "The plan does not build or start an app server from selection.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-ideate-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/end-to-end-journey-coverage.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 3,
       "name": "single-screen-exception",
-      "prompt": "Conçois uniquement une modale de confirmation de suppression, sans parcours ni autre écran.",
-      "expected_output": "Generate three visual directions for the exact same modal state and stop for selection.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Design only a deletion confirmation modal, with no journey or other screen. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The plan compares exactly three directions for the same deletion-confirmation modal state. The plan retains explicitly single-screen scope. The plan stops for selection before build. The plan does not manufacture a journey board. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "contains:three",
-        "contains:single-screen",
-        "not-contains:journey board"
-      ]
+        "The plan compares exactly three directions for the same deletion-confirmation modal state.",
+        "The plan retains explicitly single-screen scope.",
+        "The plan stops for selection before build.",
+        "The plan does not manufacture a journey board.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-ideate-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 4,
       "name": "premature-build-block",
-      "prompt": "Construis l'option 1 du parcours que je viens de choisir. Pour l'instant seule la planche générale existe, aucun écran détaillé n'a été généré.",
-      "expected_output": "Refuse build, return to screen planning and require an approved detailed screen set.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Build option 1 of the journey I just selected. For now, only the overview board exists; no detailed screen has been generated. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The response declares the overview-only board insufficient for build. The plan returns to detailed production for the selected option. The plan requires complete source-set approval. The plan requires G4 before app server or scaffold startup. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "contains:screen set",
-        "contains:insufficient",
-        "not-contains:server"
-      ]
+        "The response declares the overview-only board insufficient for build.",
+        "The plan returns to detailed production for the selected option.",
+        "The plan requires complete source-set approval.",
+        "The plan requires G4 before app server or scaffold startup.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-ideate-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/end-to-end-journey-coverage.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 5,
       "name": "screen-production-continuity",
-      "prompt": "Le parcours 3 est choisi. Génère maintenant les écrans détaillés nécessaires.",
-      "expected_output": "Generate exactly one full-size landscape web screen per call for every variant and update board pages from separate files.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Journey 3 is selected. Now generate the necessary detailed screens. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The plan continues only selected journey 3 rather than regenerating other variants. Each planned generation call produces one full-size screen. The plan preserves landscape desktop composition for the stated web target. The plan sequences selected screens using accepted predecessors. The plan updates the selected board page from exact separate source paths. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "contains:one full-size screen",
-        "contains:landscape",
-        "contains:board page"
-      ]
+        "The plan continues only selected journey 3 rather than regenerating other variants.",
+        "Each planned generation call produces one full-size screen.",
+        "The plan preserves landscape desktop composition for the stated web target.",
+        "The plan sequences selected screens using accepted predecessors.",
+        "The plan updates the selected board page from exact separate source paths.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-ideate-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/end-to-end-journey-coverage.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 6,
       "name": "explicit-image-size-override",
-      "prompt": "Pour cette planche de parcours, utilise explicitement un format 1024x1536 car elle doit correspondre à notre source verticale.",
-      "expected_output": "Honor the explicit source-fidelity size instead of the 1024-square default and document the exception.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: For this journey board, explicitly use a 1024x1536 format because it must match our portrait-oriented source. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The plan retains explicitly requested 1024x1536 portrait source ratio. The plan checks provider support before accepting requested dimensions. The response explains the source-fidelity portrait exception. The plan does not silently substitute a square default. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "contains:1024",
-        "contains:1536",
-        "contains:exception"
-      ]
+        "The plan retains explicitly requested 1024x1536 portrait source ratio.",
+        "The plan checks provider support before accepting requested dimensions.",
+        "The response explains the source-fidelity portrait exception.",
+        "The plan does not silently substitute a square default.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-ideate-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 7,
       "name": "repair-narrow-page",
-      "prompt": "La page-board comprime quatre captures web en quatre colonnes étroites comme du mobile. Corrige-la.",
-      "expected_output": "Reject and rearrange separate source images on a wide scrollable or spacious wrapped canvas.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: The board page squeezes four web screenshots into four narrow, mobile-like columns. Fix it. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The response identifies narrow equal screenshot columns as an invalid desktop board layout. The plan rearranges separate images on a wide scrollable or spacious wrapped canvas. The plan preserves native image aspect ratios. The plan changes board layout rather than regenerating valid source pixels. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "contains:reject",
-        "contains:separate",
-        "contains:wide"
-      ]
+        "The response identifies narrow equal screenshot columns as an invalid desktop board layout.",
+        "The plan rearranges separate images on a wide scrollable or spacious wrapped canvas.",
+        "The plan preserves native image aspect ratios.",
+        "The plan changes board layout rather than regenerating valid source pixels.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-ideate-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 8,
       "name": "canonical-manifest-and-servier-contract",
-      "prompt": "Prepare the three Servier desktop journeys for generation and make the run reproducible across MAI and GPT.",
-      "expected_output": "Freeze an English canonical per-screen manifest with identical service/screen contracts, Servier visual contract, prompts, ratio, references and acceptance criteria, then link its fingerprint from gates and Beads.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Prepare the three Servier desktop journeys for generation and make the run reproducible across MAI and GPT. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The plan freezes an English canonical per-screen manifest before generation. The plan keeps service and screen contracts identical across compared providers. Every planned screen carries the same non-empty frozen Servier visual contract. The plan freezes prompts, ratio, references and acceptance criteria. The plan links the canonical fingerprint from gates. The plan mirrors the fingerprint to Beads only if tracking is active. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "contains:canonical manifest",
-        "contains:Servier visual contract",
-        "contains:fingerprint",
-        "contains:acceptance criteria"
-      ]
+        "The plan freezes an English canonical per-screen manifest before generation.",
+        "The plan keeps service and screen contracts identical across compared providers.",
+        "Every planned screen carries the same non-empty frozen Servier visual contract.",
+        "The plan freezes prompts, ratio, references and acceptance criteria.",
+        "The plan links the canonical fingerprint from gates.",
+        "The plan mirrors the fingerprint to Beads only if tracking is active.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-ideate-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/deterministic-ideation-contract.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 9,
       "name": "model-aware-same-ratio-sizes",
-      "prompt": "Compare GPT Image 2, MAI Image 2.5, and MAI Image 2.5 Flash for the same desktop journey.",
-      "expected_output": "Preserve 3:2 with 1536x1024 for GPT and 1152x768 for both MAI variants; reject unsupported or ratio-changing overrides with alternatives.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Compare GPT Image 2, MAI Image 2.5, and MAI Image 2.5 Flash for the same desktop journey. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The plan assigns GPT Image 2 a 1536x1024 desktop output. The plan assigns MAI Image 2.5 a 1152x768 desktop output. The plan assigns MAI Image 2.5 Flash a 1152x768 desktop output. The plan preserves frozen 3:2 across providers. The plan rejects unsupported size overrides. The plan offers supported same-ratio alternatives for rejected overrides. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "contains:1536",
-        "contains:1152",
-        "contains:3:2",
-        "contains:alternatives"
-      ]
+        "The plan assigns GPT Image 2 a 1536x1024 desktop output.",
+        "The plan assigns MAI Image 2.5 a 1152x768 desktop output.",
+        "The plan assigns MAI Image 2.5 Flash a 1152x768 desktop output.",
+        "The plan preserves frozen 3:2 across providers.",
+        "The plan rejects unsupported size overrides.",
+        "The plan offers supported same-ratio alternatives for rejected overrides.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-ideate-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/deterministic-ideation-contract.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 10,
       "name": "exact-path-three-lane-resume",
-      "prompt": "Generate V1, V2, and V3 quickly and safely, then resume if interrupted.",
-      "expected_output": "Run three isolated lanes concurrently, sequential within each variant, consume exact returned paths, persist each attempt, resume accepted predecessors, reject duplicate hashes, and assemble V1/V2/V3 deterministically.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Generate V1, V2, and V3 quickly and safely, then resume if interrupted. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The plan isolates V1, V2 and V3 in separate output directories. The plan permits concurrency between variant lanes. The plan keeps generation strictly sequential within each lane. The plan records each exact returned path before generating its successor. The plan resumes accepted predecessors from persisted exact paths. The plan rejects duplicate hashes across distinct screen IDs. The plan assembles boards in V1/V2/V3 order rather than completion order. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "contains:exact",
-        "contains:sequential",
-        "contains:resume",
-        "contains:duplicate"
-      ]
+        "The plan isolates V1, V2 and V3 in separate output directories.",
+        "The plan permits concurrency between variant lanes.",
+        "The plan keeps generation strictly sequential within each lane.",
+        "The plan records each exact returned path before generating its successor.",
+        "The plan resumes accepted predecessors from persisted exact paths.",
+        "The plan rejects duplicate hashes across distinct screen IDs.",
+        "The plan assembles boards in V1/V2/V3 order rather than completion order.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-ideate-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/deterministic-ideation-contract.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 11,
       "name": "fair-model-benchmark",
-      "prompt": "Tell me which model is best from a benchmark where the GPT prompt was enhanced but the MAI prompt was not and timing is missing.",
-      "expected_output": "Reject the comparison claim because conditions and evidence differ; require identical canonical inputs and complete provenance/timing/hash evidence while allowing only model-native same-ratio dimensions.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Tell me which model is best from a benchmark where the GPT prompt was enhanced but the MAI prompt was not and timing is missing. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The response rejects a best-model claim from unequal prompt enhancement. The response rejects a best-model claim with missing timing. The plan requires identical canonical comparison inputs. The plan requires complete provenance and hash evidence. The plan permits only supported model-native same-ratio dimensions. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "contains:claim",
-        "contains:identical",
-        "contains:timing",
-        "contains:same-ratio"
-      ]
+        "The response rejects a best-model claim from unequal prompt enhancement.",
+        "The response rejects a best-model claim with missing timing.",
+        "The plan requires identical canonical comparison inputs.",
+        "The plan requires complete provenance and hash evidence.",
+        "The plan permits only supported model-native same-ratio dimensions.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-ideate-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/deterministic-ideation-contract.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 12,
       "name": "reject-latest-file-lookup",
-      "prompt": "The generator returned a path, but locate the newest PNG in the shared output directory instead because that is easier.",
-      "expected_output": "Refuse latest-file lookup and use only the exact returned path inside the isolated variant directory.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: The generator returned a path, but locate the newest PNG in the shared output directory instead because that is easier. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The plan uses only the exact returned generator path. The plan confines that path to the assigned isolated variant directory. The response refuses newest-file discovery in the shared directory. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "contains:exact returned path",
-        "contains:isolated",
-        "not-contains:newest PNG"
-      ]
+        "The plan uses only the exact returned generator path.",
+        "The plan confines that path to the assigned isolated variant directory.",
+        "The response refuses newest-file discovery in the shared directory.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-ideate-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/deterministic-ideation-contract.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 13,
       "name": "reject-continuity-violation",
-      "prompt": "A resumed Servier journey screen uses a different shell and terminology from its accepted predecessor. Treat the persisted record as accepted and continue.",
-      "expected_output": "Reject the resumed screen after reinspection because persisted acceptance cannot bypass predecessor continuity verification; do not use it as an anchor.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: A resumed Servier journey screen uses a different shell and terminology from its accepted predecessor. Treat the persisted record as accepted and continue. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The plan reinspects the resumed source against its accepted predecessor. The response rejects changed shell and terminology as a continuity violation. The response does not trust persisted acceptance after failed reinspection. The plan excludes the rejected screen from anchors. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "contains:reject",
-        "contains:reinspection",
-        "contains:continuity",
-        "not-contains:use it as an anchor"
-      ]
+        "The plan reinspects the resumed source against its accepted predecessor.",
+        "The response rejects changed shell and terminology as a continuity violation.",
+        "The response does not trust persisted acceptance after failed reinspection.",
+        "The plan excludes the rejected screen from anchors.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-ideate-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/deterministic-ideation-contract.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 14,
       "name": "reject-missing-or-mismatched-servier-contract",
-      "prompt": "Generate a Servier journey where one screen has no visual contract and another substitutes a generic blue UI contract.",
-      "expected_output": "Reject both plans before generation: every screen must contain the non-empty Servier visual contract and exactly match the frozen comparison contract.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Generate a Servier journey where one screen has no visual contract and another substitutes a generic blue UI contract. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The response rejects missing Servier visual contract before generation. The response rejects generic blue UI substitution before generation. The plan requires every screen contract to exactly match the frozen Servier comparison contract. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "contains:reject",
-        "contains:Servier visual contract",
-        "contains:exactly match",
-        "contains:before generation"
-      ]
+        "The response rejects missing Servier visual contract before generation.",
+        "The response rejects generic blue UI substitution before generation.",
+        "The plan requires every screen contract to exactly match the frozen Servier comparison contract.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-ideate-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/deterministic-ideation-contract.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 15,
       "name": "reject-each-missing-benchmark-evidence-class",
-      "prompt": "Approve a model benchmark even though individual runs omit configured/requested/resolved/effective deployment or model, dimensions or ratio, input or effective prompt provenance, provider or end-to-end timing, usage or cost availability, or the side-by-side artifact location.",
-      "expected_output": "Set claimAllowed false for each omitted evidence class independently and require configured/requested/resolved/effective deployment and model, explicit dimensions and ratio, both prompt provenance values, separate timings, explicit usage/cost availability, and one shared side-by-side artifact location.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Approve a model benchmark even though individual runs omit configured/requested/resolved/effective deployment or model, dimensions or ratio, input or effective prompt provenance, provider or end-to-end timing, usage or cost availability, or the side-by-side artifact location. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The response sets claimAllowed false for independently missing configured/requested/resolved/effective model or deployment provenance. The response sets claimAllowed false for independently missing dimensions or ratio. The response sets claimAllowed false for independently missing input or effective prompt provenance. The response sets claimAllowed false for independently missing provider timing. The response sets claimAllowed false for independently missing end-to-end timing. The response sets claimAllowed false for independently missing usage availability. The response sets claimAllowed false for independently missing cost availability. The response sets claimAllowed false for independently missing shared side-by-side artifact location. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "contains:claimAllowed false",
-        "contains:configured",
-        "contains:effective",
-        "contains:dimensions",
-        "contains:prompt provenance",
-        "contains:provider",
-        "contains:end-to-end",
-        "contains:usage",
-        "contains:cost",
-        "contains:side-by-side"
-      ]
+        "The response sets claimAllowed false for independently missing configured/requested/resolved/effective model or deployment provenance.",
+        "The response sets claimAllowed false for independently missing dimensions or ratio.",
+        "The response sets claimAllowed false for independently missing input or effective prompt provenance.",
+        "The response sets claimAllowed false for independently missing provider timing.",
+        "The response sets claimAllowed false for independently missing end-to-end timing.",
+        "The response sets claimAllowed false for independently missing usage availability.",
+        "The response sets claimAllowed false for independently missing cost availability.",
+        "The response sets claimAllowed false for independently missing shared side-by-side artifact location.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-ideate-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/deterministic-ideation-contract.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 16,
       "name": "complementary-roles-not-variants",
-      "prompt": "Four logistics roles share same delivery; define homes.",
-      "expected_output": "Complementary roles and shared handoffs, no persona competition.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Four logistics roles share same delivery; define homes. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The plan assigns complementary responsibilities to the four logistics roles on the shared delivery. The plan varies interaction strategies rather than electing a winning persona. The plan identifies material role-to-role delivery handoffs. The plan preserves shared delivery context across handoffs. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "Roles remain complementary responsibilities on shared objects",
-        "Three alternatives vary interaction strategies, not competing personas",
-        "Material role handoffs and preserved context appear in the journey plans"
-      ]
+        "The plan assigns complementary responsibilities to the four logistics roles on the shared delivery.",
+        "The plan varies interaction strategies rather than electing a winning persona.",
+        "The plan identifies material role-to-role delivery handoffs.",
+        "The plan preserves shared delivery context across handoffs.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-ideate-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/end-to-end-journey-coverage.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 17,
       "name": "resume-selected-direction",
-      "prompt": "Dossier selected, horizon reusable specialized view; complete missing screens.",
-      "expected_output": "Preserve choice, complete selected plan and local corrections, no new comparison.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Dossier selected, horizon reusable specialized view; complete missing screens. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The plan retains the selected dossier direction. The plan retains horizon as a reusable specialized view. The plan limits production to missing or faulty selected sources. The plan does not restart a three-way comparison. The plan requires explicit approval of the complete corrected ordered source set before G4. The plan requires explicit G4 build scope before application mutation. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "The existing stakeholder choice is retained",
-        "Only missing or faulty selected journey sources are produced or revised",
-        "Full corrected source-set approval and G4 are still required"
-      ]
+        "The plan retains the selected dossier direction.",
+        "The plan retains horizon as a reusable specialized view.",
+        "The plan limits production to missing or faulty selected sources.",
+        "The plan does not restart a three-way comparison.",
+        "The plan requires explicit approval of the complete corrected ordered source set before G4.",
+        "The plan requires explicit G4 build scope before application mutation.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-ideate-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/end-to-end-journey-coverage.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 18,
       "name": "readable-false-business-copy",
-      "prompt": "Selected readable image invents version/chart and approved means sent.",
-      "expected_output": "Material findings, source ineligible until corrected, direction not factual approval.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Selected readable image invents version/chart and approved means sent. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The response classifies the invented version or chart as a material business-data finding. The response classifies approved-as-sent wording as a false effect-state finding. The plan keeps affected sources build-ineligible until corrected pixels are reinspected. The response distinguishes a direction choice from source approval. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "Readable fabricated business data or effect states are recorded as material source findings",
-        "The source remains build-ineligible until its pixels are corrected and reinspected",
-        "A direction choice is not reported as source fidelity or build approval"
-      ]
+        "The response classifies the invented version or chart as a material business-data finding.",
+        "The response classifies approved-as-sent wording as a false effect-state finding.",
+        "The plan keeps affected sources build-ineligible until corrected pixels are reinspected.",
+        "The response distinguishes a direction choice from source approval.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-ideate-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/end-to-end-journey-coverage.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 19,
       "name": "risk-forces-full-evidence",
-      "prompt": "Medication eligibility/approval flows with regulated critical copy.",
-      "expected_output": "Full-evidence is already required for multi-step work; regulated copy additionally requires exact copy and semantic review.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Medication eligibility/approval flows with regulated critical copy. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The plan requires three complete comparable multi-step journeys regardless of risk rating. Each planned medication journey includes critical recovery. The plan requires exact regulated copy review before source-set approval. The plan requires semantic eligibility/approval-state review before source-set approval. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "The planned comparison covers all three end-to-end journeys",
-        "Regulated critical copy is reviewed before source approval"
-      ]
+        "The plan requires three complete comparable multi-step journeys regardless of risk rating.",
+        "Each planned medication journey includes critical recovery.",
+        "The plan requires exact regulated copy review before source-set approval.",
+        "The plan requires semantic eligibility/approval-state review before source-set approval.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-ideate-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/end-to-end-journey-coverage.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 20,
       "name": "low-risk-product-not-three-landings",
       "subject": "end-to-end-product-ideation",
-      "language": "fr",
+      "language": "en",
       "target": {
         "kind": "existing-skill",
-        "path": "skills/ideate",
+        "path": ".",
         "execution": "explain"
       },
       "preconditions": [
         "Use identical model, tools and budget for candidate and frozen old-skill runs",
-        "This routing scenario does not execute image generation or build"
+        "This routing scenario does not execute image generation or build",
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
       ],
       "budget": {
         "max_turns": 12,
         "timeout_seconds": 300
       },
-      "prompt": "@Product Design conçois un outil de mentoring interne simple : chercher un mentor, comparer sa disponibilité, réserver puis retrouver la confirmation. Risque faible, pas de service réel à intégrer. Nous voulons voir le produit avant de coder.",
-      "expected_output": "A scope-aware workflow plan preserving complete journey comparison or an honest blocker; no premature build.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design design a simple internal mentoring tool: find a mentor, compare availability, book, and then find the confirmation. Low risk, no real service to integrate. We want to see the product before coding. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. Each of the three planned journeys covers mentor search through retrievable booking confirmation. Each planned journey includes critical recovery. The plan requires a separate generated image for every required screen before comparison completion. The response rejects home-only anchors as complete journey evidence. The plan requires explicit corrected ordered source-set approval before G4. The plan prohibits app creation before explicit G4 build scope. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "Three alternatives each cover search through confirmed booking, not only home pages",
-        "Every planned screen is generated separately before comparison is declared complete",
-        "No app files or app server are created before selected screen-set approval and G4"
+        "Each of the three planned journeys covers mentor search through retrievable booking confirmation.",
+        "Each planned journey includes critical recovery.",
+        "The plan requires a separate generated image for every required screen before comparison completion.",
+        "The response rejects home-only anchors as complete journey evidence.",
+        "The plan requires explicit corrected ordered source-set approval before G4.",
+        "The plan prohibits app creation before explicit G4 build scope.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
       ],
       "coverage_tags": [
-        "language:fr",
         "scope:multi-step",
-        "decision:approval"
-      ]
+        "decision:approval",
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/end-to-end-journey-coverage.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 21,
       "name": "limited-image-budget-incomplete-journey",
       "subject": "end-to-end-product-ideation",
-      "language": "fr",
+      "language": "en",
       "target": {
         "kind": "existing-skill",
-        "path": "skills/ideate",
+        "path": ".",
         "execution": "explain"
       },
       "preconditions": [
         "Use identical model, tools and budget for candidate and frozen old-skill runs",
-        "This routing scenario does not execute image generation or build"
+        "This routing scenario does not execute image generation or build",
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
       ],
       "budget": {
         "max_turns": 12,
         "timeout_seconds": 300
       },
-      "prompt": "@Product Design explore un service de réservation depuis la recherche jusqu’à la confirmation. Il reste un budget de trois images seulement pour cette session.",
-      "expected_output": "A scope-aware workflow plan preserving complete journey comparison or an honest blocker; no premature build.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design explore a booking service from search to confirmation. There is a budget of only three images left for this session. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The response explains that three images cannot establish three search-to-confirmation journeys. The response marks the comparison incomplete under the stated image budget. The response offers resumption or an explicitly agreed smaller complete scenario. The response does not assert comparison readiness from three anchors. The response does not infer build approval from the limited image budget. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "Three images do not establish three multi-step journeys",
-        "The agent reports incomplete comparison and offers resume or an agreed smaller complete scenario",
-        "No comparison pass or build approval is fabricated"
+        "The response explains that three images cannot establish three search-to-confirmation journeys.",
+        "The response marks the comparison incomplete under the stated image budget.",
+        "The response offers resumption or an explicitly agreed smaller complete scenario.",
+        "The response does not assert comparison readiness from three anchors.",
+        "The response does not infer build approval from the limited image budget.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
       ],
       "coverage_tags": [
-        "language:fr",
         "scope:multi-step",
-        "failure:budget"
-      ]
+        "failure:budget",
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/end-to-end-journey-coverage.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 22,
       "name": "isolated-marketing-page-keeps-small-scope",
       "subject": "end-to-end-product-ideation",
-      "language": "fr",
+      "language": "en",
       "target": {
         "kind": "existing-skill",
-        "path": "skills/ideate",
+        "path": ".",
         "execution": "explain"
       },
       "preconditions": [
         "Use identical model, tools and budget for candidate and frozen old-skill runs",
-        "This routing scenario does not execute image generation or build"
+        "This routing scenario does not execute image generation or build",
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
       ],
       "budget": {
         "max_turns": 12,
         "timeout_seconds": 300
       },
-      "prompt": "@Product Design propose trois directions pour une landing marketing statique uniquement. Aucun espace connecté ni parcours de réservation dans ce lot.",
-      "expected_output": "A scope-aware workflow plan preserving complete journey comparison or an honest blocker; no premature build.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design propose three directions for a static marketing landing page only. No signed-in area or booking journey is included in this scope. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The plan retains the static marketing landing page as isolated single-screen scope. The three planned directions use the same content. The three planned directions use the same viewport. The plan does not add authenticated or booking routes. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "The scope stays explicitly single-screen",
-        "Three directions compare the same content and viewport",
-        "No authenticated product journey is invented"
+        "The plan retains the static marketing landing page as isolated single-screen scope.",
+        "The three planned directions use the same content.",
+        "The three planned directions use the same viewport.",
+        "The plan does not add authenticated or booking routes.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
       ],
       "coverage_tags": [
-        "language:fr",
         "scope:single-screen",
-        "decision:approval"
-      ]
+        "decision:approval",
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 23,
       "name": "approved-home-not-whole-product",
       "subject": "end-to-end-product-ideation",
-      "language": "fr",
+      "language": "en",
       "target": {
         "kind": "existing-skill",
-        "path": "skills/ideate",
+        "path": ".",
         "execution": "explain"
       },
       "preconditions": [
         "Use identical model, tools and budget for candidate and frozen old-skill runs",
-        "This routing scenario does not execute image generation or build"
+        "This routing scenario does not execute image generation or build",
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
       ],
       "budget": {
         "max_turns": 12,
         "timeout_seconds": 300
       },
-      "prompt": "La direction de cet accueil est approuvée. Construis maintenant recherche, comparaison, réservation et confirmation dans le même produit ; leurs écrans ne sont pas encore définis.",
-      "expected_output": "A scope-aware workflow plan preserving complete journey comparison or an honest blocker; no premature build.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: The design direction for this home screen is approved. Now build search, comparison, booking, and confirmation in the same product; their screens are not yet defined. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The plan retains the approved home direction without restarting competition. The plan completes search, comparison, booking and confirmation sources before code. The plan includes critical recovery sources before code. The response states that home approval does not authorize undefined downstream screens. The plan requires completed ordered-set approval before G4. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "The approved direction is retained without restarting a three-way competition",
-        "Missing downstream screens and critical recovery are planned and reviewed before code",
-        "The approved home does not authorize unreviewed product screens"
+        "The plan retains the approved home direction without restarting competition.",
+        "The plan completes search, comparison, booking and confirmation sources before code.",
+        "The plan includes critical recovery sources before code.",
+        "The response states that home approval does not authorize undefined downstream screens.",
+        "The plan requires completed ordered-set approval before G4.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
       ],
       "coverage_tags": [
-        "language:fr",
         "scope:multi-step",
-        "decision:approval"
-      ]
+        "decision:approval",
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/end-to-end-journey-coverage.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 24,
       "name": "responsibility-value-before-stack",
       "subject": "value-intent-proactive-experience",
-      "language": "fr",
+      "language": "en",
       "target": {
         "kind": "existing-skill",
-        "path": "skills/ideate",
+        "path": ".",
         "execution": "explain"
       },
-      "prompt": "@Product Design refais les accueils d’un service : direction garantit les engagements, responsable d’équipe coordonne les blocages, responsable de compte tient le résultat client, opérateur réalise les tâches. J’ai fourni ces responsabilités et les objets communs. Les maquettes précédentes étaient des dashboards décoratifs.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design redesign a service's home screens: leadership guarantees commitments, the team lead coordinates blockers, the account manager is accountable for the client outcome, and the operator performs tasks. I have provided these responsibilities and the shared objects. The previous mockups were decorative dashboards. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
       "preconditions": [
         "Supplied context is stakeholder input, not observed research",
         "Explain only: no generation, build, external command or deck export",
-        "Paired runs require identical models, tools and budget"
+        "Paired runs require identical models, tools and budget",
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
       ],
       "budget": {
         "max_turns": 12,
@@ -378,32 +1329,53 @@
           "developer"
         ]
       },
-      "expected_output": "Concrete value/scenario/UX/UI consequences, conditional initiative/action contracts and honest evidence/scope.",
+      "expected_output": "An explain-only workflow or routing plan. The plan preserves supplied leadership, team-lead, account-manager and operator responsibilities. The plan ties complementary responsibilities to the shared client outcome. The plan defines observable user value before choosing framework or palette. The plan derives information hierarchy from the end-to-end task. The plan derives action hierarchy from the end-to-end task. The plan does not default to a decorative dashboard. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "Uses supplied responsibilities and shared outcome without electing a winning persona",
-        "Defines user value, current task and observable result before framework or palette",
-        "Connects information/action hierarchy to end-to-end scenarios"
+        "The plan preserves supplied leadership, team-lead, account-manager and operator responsibilities.",
+        "The plan ties complementary responsibilities to the shared client outcome.",
+        "The plan defines observable user value before choosing framework or palette.",
+        "The plan derives information hierarchy from the end-to-end task.",
+        "The plan derives action hierarchy from the end-to-end task.",
+        "The plan does not default to a decorative dashboard.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
       ],
       "coverage_tags": [
-        "language:fr",
-        "experience:responsibility-value-before-stack"
-      ]
+        "experience:responsibility-value-before-stack",
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/end-to-end-journey-coverage.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 25,
       "name": "feedback-tables-change-decisions",
       "subject": "value-intent-proactive-experience",
-      "language": "fr",
+      "language": "en",
       "target": {
         "kind": "existing-skill",
-        "path": "skills/ideate",
+        "path": ".",
         "execution": "explain"
       },
-      "prompt": "@Product Design améliore un service après cette revue : calendrier de contact ≠ KPI ; budget absent ≠ zéro ; clic indicateur préserve population/filtres ; aperçu absent ne permet pas d’inventer une version. Je veux comprendre les conséquences produit, UX et UI.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design improve a service following this review: contact schedule ≠ KPI; missing budget ≠ zero; clicking an indicator preserves the population/filters; a missing preview does not allow inventing a version. I want to understand the product, UX, and UI implications. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
       "preconditions": [
         "Supplied context is stakeholder input, not observed research",
         "Explain only: no generation, build, external command or deck export",
-        "Paired runs require identical models, tools and budget"
+        "Paired runs require identical models, tools and budget",
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
       ],
       "budget": {
         "max_turns": 12,
@@ -418,32 +1390,52 @@
           "developer"
         ]
       },
-      "expected_output": "Concrete value/scenario/UX/UI consequences, conditional initiative/action contracts and honest evidence/scope.",
+      "expected_output": "An explain-only workflow or routing plan. The plan treats contact schedule as task information rather than KPI. The plan represents missing budget as unknown rather than zero. The plan preserves population and filters during indicator drill-down. The plan does not invent a version from a missing preview. Each material feedback item has a named verification scenario or an explicitly deferred product area. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "Maps every supplied material feedback item to a concrete Product/UX/UI decision",
-        "Defines source/scope/detail and unknown/recovery states before prompts",
-        "Names a verification scenario or explicitly deferred area for each material feedback item"
+        "The plan treats contact schedule as task information rather than KPI.",
+        "The plan represents missing budget as unknown rather than zero.",
+        "The plan preserves population and filters during indicator drill-down.",
+        "The plan does not invent a version from a missing preview.",
+        "Each material feedback item has a named verification scenario or an explicitly deferred product area.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
       ],
       "coverage_tags": [
-        "language:fr",
-        "experience:feedback-tables-change-decisions"
-      ]
+        "experience:feedback-tables-change-decisions",
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/end-to-end-journey-coverage.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 26,
       "name": "intent-in-place-not-transcript",
       "subject": "value-intent-proactive-experience",
-      "language": "fr",
+      "language": "en",
       "target": {
         "kind": "existing-skill",
-        "path": "skills/ideate",
+        "path": ".",
         "execution": "explain"
       },
-      "prompt": "@Product Design notre dossier garde une conversation accessible. Demandes : explique ce blocage, filtre ces missions, compare deux options, prépare un point client. Aucune colonne permanente de chatbot. Une réponse arrive pendant une édition manuelle.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design our case file keeps a conversation accessible. Requests: explain this blocker, filter these assignments, compare two options, prepare a client update. No permanent chatbot column. A response arrives during a manual edit. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
       "preconditions": [
         "Supplied context is stakeholder input, not observed research",
         "Explain only: no generation, build, external command or deck export",
-        "Paired runs require identical models, tools and budget"
+        "Paired runs require identical models, tools and budget",
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
       ],
       "budget": {
         "max_turns": 12,
@@ -458,33 +1450,56 @@
           "developer"
         ]
       },
-      "expected_output": "Concrete value/scenario/UX/UI consequences, conditional initiative/action contracts and honest evidence/scope.",
+      "expected_output": "An explain-only workflow or routing plan. The plan places blocker explanation in the relevant case-file context. The plan makes assignment filtering a reversible workspace change. The plan places two-option comparison in a temporary surface. The plan places client-update preparation in a native editor. The plan retains direct controls as a conversation alternative. The plan preserves navigation scope and return context. The plan preserves manual edits during a late response. The plan binds late responses to origin instead of taking over another view. The plan does not add a permanent transcript sidebar. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "Maps explain/filter/compare/prepare to local explanation, reversible workspace, temporary comparison and native artifact",
-        "Keeps navigation, scope, origin and return stable with direct controls",
-        "Preserves edits and binds late responses to origin without taking over another view",
-        "Does not use a permanent transcript sidebar"
+        "The plan places blocker explanation in the relevant case-file context.",
+        "The plan makes assignment filtering a reversible workspace change.",
+        "The plan places two-option comparison in a temporary surface.",
+        "The plan places client-update preparation in a native editor.",
+        "The plan retains direct controls as a conversation alternative.",
+        "The plan preserves navigation scope and return context.",
+        "The plan preserves manual edits during a late response.",
+        "The plan binds late responses to origin instead of taking over another view.",
+        "The plan does not add a permanent transcript sidebar.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
       ],
       "coverage_tags": [
-        "language:fr",
-        "experience:intent-in-place-not-transcript"
-      ]
+        "experience:intent-in-place-not-transcript",
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/end-to-end-journey-coverage.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 27,
       "name": "future-opportunity-prepared-work",
       "subject": "value-intent-proactive-experience",
-      "language": "fr",
+      "language": "en",
       "target": {
         "kind": "existing-skill",
-        "path": "skills/ideate",
+        "path": ".",
         "execution": "explain"
       },
-      "prompt": "@Product Design un lancement est prévu en décembre et une fenêtre de contact confirmée la semaine prochaine ; bouclage inconnu. Un agent peut préparer une proposition dans le compte, sans autorisation d’envoi. Que montre le parcours cette semaine ?",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design a launch is planned for December and a contact window is confirmed for next week; the finalization date is unknown. An agent can prepare a proposal in the account, without permission to send it. What does the journey show this week? Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
       "preconditions": [
         "Supplied context is stakeholder input, not observed research",
         "Explain only: no generation, build, external command or deck export",
-        "Paired runs require identical models, tools and budget"
+        "Paired runs require identical models, tools and budget",
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
       ],
       "budget": {
         "max_turns": 12,
@@ -499,33 +1514,56 @@
           "developer"
         ]
       },
-      "expected_output": "Concrete value/scenario/UX/UI consequences, conditional initiative/action contracts and honest evidence/scope.",
+      "expected_output": "An explain-only workflow or routing plan. The plan includes useful preparation this week for the confirmed future contact window. The plan does not restrict agent initiative to overdue exceptions. The plan shows source-linked prepared work rather than generic alerts. The plan represents the unknown finalization date as unknown. The plan distinguishes preparation from send or delivery. The plan defines a bounded preparation mandate. The plan defines mandate stop conditions. The plan identifies the accountable owner. The plan specifies attention or deferral behavior. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "Anticipates preparation needed now for a future opportunity, not only overdue exceptions",
-        "Shows useful prepared work and sources instead of generic alerts",
-        "Keeps closing unknown and preparation distinct from send/delivery",
-        "Specifies bounded mandate, stop conditions, owner and attention/defer behavior"
+        "The plan includes useful preparation this week for the confirmed future contact window.",
+        "The plan does not restrict agent initiative to overdue exceptions.",
+        "The plan shows source-linked prepared work rather than generic alerts.",
+        "The plan represents the unknown finalization date as unknown.",
+        "The plan distinguishes preparation from send or delivery.",
+        "The plan defines a bounded preparation mandate.",
+        "The plan defines mandate stop conditions.",
+        "The plan identifies the accountable owner.",
+        "The plan specifies attention or deferral behavior.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
       ],
       "coverage_tags": [
-        "language:fr",
-        "experience:future-opportunity-prepared-work"
-      ]
+        "experience:future-opportunity-prepared-work",
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/end-to-end-journey-coverage.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 28,
       "name": "bounded-agents-not-notification-supervision",
       "subject": "value-intent-proactive-experience",
-      "language": "fr",
+      "language": "en",
       "target": {
         "kind": "existing-skill",
-        "path": "skills/ideate",
+        "path": ".",
         "execution": "explain"
       },
-      "prompt": "@Product Design les agents réalisent le travail éligible sous mandat d’équipe, sans approbation humaine de chaque run. Après panne un effet externe est inconnu ; un droit vient d’être révoqué.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design agents perform eligible work under a team mandate, without human approval for each run. After a failure, an external effect is unknown; a permission has just been revoked. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
       "preconditions": [
         "Supplied context is stakeholder input, not observed research",
         "Explain only: no generation, build, external command or deck export",
-        "Paired runs require identical models, tools and budget"
+        "Paired runs require identical models, tools and budget",
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
       ],
       "budget": {
         "max_turns": 12,
@@ -540,33 +1578,52 @@
           "developer"
         ]
       },
-      "expected_output": "Concrete value/scenario/UX/UI consequences, conditional initiative/action contracts and honest evidence/scope.",
+      "expected_output": "An explain-only workflow or routing plan. The plan permits eligible work within the team mandate without approval of every run. The plan requires outcome evidence for mandate-authorized execution. The plan rechecks revoked permission before further action. The plan reconciles an unknown external effect before retry. The response labels team replacement as unproven rather than measured benefit. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "Designs eligible preparation/execution under scoped mandates with outcome evidence",
-        "Does not impose endless per-run notification approvals",
-        "Rechecks revoked rights and reconciles unknown effect before retry",
-        "Team replacement is an unproven ambition, not measured benefit"
+        "The plan permits eligible work within the team mandate without approval of every run.",
+        "The plan requires outcome evidence for mandate-authorized execution.",
+        "The plan rechecks revoked permission before further action.",
+        "The plan reconciles an unknown external effect before retry.",
+        "The response labels team replacement as unproven rather than measured benefit.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
       ],
       "coverage_tags": [
-        "language:fr",
-        "experience:bounded-agents-not-notification-supervision"
-      ]
+        "experience:bounded-agents-not-notification-supervision",
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/end-to-end-journey-coverage.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 29,
       "name": "native-presentation-brand-separation",
       "subject": "value-intent-proactive-experience",
-      "language": "fr",
+      "language": "en",
       "target": {
         "kind": "existing-skill",
-        "path": "skills/ideate",
+        "path": ".",
         "execution": "explain"
       },
-      "prompt": "@Product Design prépare le parcours de pitch, kickoff et point client en présentation éditable avec marque agence et client. La charte UI existe mais le gabarit de présentation officiel est absent.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design prepare the pitch, kickoff, and client update journey as an editable presentation with agency and client branding. The UI guidelines exist, but the official presentation template is missing. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
       "preconditions": [
         "Supplied context is stakeholder input, not observed research",
         "Explain only: no generation, build, external command or deck export",
-        "Paired runs require identical models, tools and budget"
+        "Paired runs require identical models, tools and budget",
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
       ],
       "budget": {
         "max_turns": 12,
@@ -581,49 +1638,408 @@
           "developer"
         ]
       },
-      "expected_output": "Concrete value/scenario/UX/UI consequences, conditional initiative/action contracts and honest evidence/scope.",
+      "expected_output": "An explain-only workflow or routing plan. The plan distinguishes app design system from agency and client brands. The plan requires native editable content rather than flattened PNG slides. The plan identifies presentation audience. The plan identifies source corpus and snapshot. The plan links substantive claims to sources. The plan distinguishes version review from export authority. The plan distinguishes export authority from external delivery authority. The response does not claim official template conformity with the template missing. The response does not claim a native deck was completed. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "Distinguishes app design system from agency/client branding",
-        "Plans native editable text/tables/charts with corpus, audience, snapshot and source-linked claims",
-        "Separates review/version, export and external delivery authority",
-        "No official conformity or completed native deck claim from PNG or missing template"
+        "The plan distinguishes app design system from agency and client brands.",
+        "The plan requires native editable content rather than flattened PNG slides.",
+        "The plan identifies presentation audience.",
+        "The plan identifies source corpus and snapshot.",
+        "The plan links substantive claims to sources.",
+        "The plan distinguishes version review from export authority.",
+        "The plan distinguishes export authority from external delivery authority.",
+        "The response does not claim official template conformity with the template missing.",
+        "The response does not claim a native deck was completed.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
       ],
       "coverage_tags": [
-        "language:fr",
-        "experience:native-presentation-brand-separation"
-      ]
+        "experience:native-presentation-brand-separation",
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/end-to-end-journey-coverage.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 30,
       "name": "reuse-answered-brief-proactive-next-step",
       "subject": "question-selection-and-initiative",
-      "language": "fr",
+      "language": "en",
       "target": {
         "kind": "existing-skill",
-        "path": "skills/ideate",
+        "path": ".",
         "execution": "explain"
       },
-      "prompt": "@Product Design j’ai déjà fourni utilisateurs, valeur, responsabilités, cas d’usage et charte. La direction dossier est choisie. Complète la méthode pour une fenêtre future estimée et une décision client bloquée ; garde les données inconnues. Quelle est la prochaine étape utile avant le code ?",
-      "expected_output": "Reuse the answered brief and chosen direction, translate opportunity/exception into task/surface consequences, recommend the next discriminating design step without a new questionnaire or premature build.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design I have already provided users, value, responsibilities, use cases, and brand guidelines. The case-file direction is selected. Complete the method for an estimated future window and a blocked client decision; preserve unknown data as unknown. What is the next useful step before coding? Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The response does not re-ask supplied user, value or design-system facts. The plan retains selected case-file direction without new competition. The response recommends a concrete pre-code step for the future opportunity and blocked decision. The plan preserves uncertain data as unknown. The response asks at most one question about a material blocking omission. The response does not treat conversational intent as external-effect authorization. The response does not treat product initiative as G4 build authorization. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "Does not re-ask supplied users/value/design-system facts or restart direction competition",
-        "Proposes a concrete useful next design step based on opportunity and exception with explicit unknowns",
-        "Asks at most one genuinely material blocking question if a missing fact prevents the next step",
-        "Does not treat conversational intent or product initiative as authorization for external effects or app build"
+        "The response does not re-ask supplied user, value or design-system facts.",
+        "The plan retains selected case-file direction without new competition.",
+        "The response recommends a concrete pre-code step for the future opportunity and blocked decision.",
+        "The plan preserves uncertain data as unknown.",
+        "The response asks at most one question about a material blocking omission.",
+        "The response does not treat conversational intent as external-effect authorization.",
+        "The response does not treat product initiative as G4 build authorization.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
       ],
       "preconditions": [
         "Routing explanation only; no actual generation/build/external effect",
         "Supplied answers are stakeholder context, not user research",
-        "Equivalent baseline/current tools, model and budget"
+        "Equivalent baseline/current tools, model and budget",
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
       ],
       "budget": {
         "max_turns": 12,
         "timeout_seconds": 300
       },
       "coverage_tags": [
-        "language:fr",
-        "experience:question-selection"
-      ]
+        "experience:question-selection",
+        "language:en",
+        "capability:ideate",
+        "scope:explain"
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/end-to-end-journey-coverage.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
+    },
+    {
+      "name": "value-test-shared-comparison-contract",
+      "prompt": "Plan three end-to-end mentor-booking directions from our brief. The current alternative is email; success is finding a usable confirmation without more incorrect bookings. Do not generate anything yet.",
+      "expected_output": "Plan comparable complete strategies and preserve value/guardrail/current alternative before visual generation.",
+      "assertions": [
+        "All three plans share the task and guardrail",
+        "Includes confirmation and critical recovery in the full journey plans",
+        "Does not claim generated screens or measured benefit"
+      ],
+      "id": 31,
+      "subject": "instruction-coherence-and-discovery",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Use the current Skill and its applicable shared references; explain the scenario without claiming a build, study or capture occurred"
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 8,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "change:instruction-coherence",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
+    },
+    {
+      "name": "value-disproved-no-forced-directions",
+      "prompt": "We planned three AI approval journeys, but the authorized brief now says the current direct control is faster and equally accurate. Advise on the next design step without generating images.",
+      "expected_output": "Retain the evidence and recommend explicit reconsideration or no build, not a manufactured comparison.",
+      "assertions": [
+        "Acknowledges counterevidence to the value hypothesis",
+        "Does not invent three viable journeys as if the issue were resolved",
+        "Names the decision owner or next discriminating test"
+      ],
+      "id": 32,
+      "subject": "instruction-coherence-and-discovery",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Use the current Skill and its applicable shared references; explain the scenario without claiming a build, study or capture occurred"
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 8,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "change:instruction-coherence",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
+    },
+    {
+      "name": "selected-sources-not-recompeted",
+      "prompt": "We selected direction V2 already. The task hypothesis is unchanged; a recovery screen is missing. Explain the continuation plan.",
+      "expected_output": "Preserve V2, complete only missing/corrected evidence, then source approval and G4.",
+      "assertions": [
+        "Preserves the selected direction",
+        "Does not start a new three-way competition",
+        "Requires full corrected screen-set approval and G4"
+      ],
+      "id": 33,
+      "subject": "instruction-coherence-and-discovery",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Use the current Skill and its applicable shared references; explain the scenario without claiming a build, study or capture occurred"
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 8,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "change:instruction-coherence",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
+    },
+    {
+      "name": "selection-is-not-build-receipt",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: The user picked journey 2. G2 is valid, but the corrected full set and G4 are absent. Can we build now? Explain only. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The response distinguishes source-selection from prototype-build readiness. The plan limits source-selection readiness to selected-screen-production. The plan completes the corrected ordered set before source-set approval. The plan requires explicit G4 before build. The response rejects build authorization inferred from G2 alone. Generation, build, research, rendered QA, tracking and deployment remain not run.",
+      "assertions": [
+        "The response distinguishes source-selection from prototype-build readiness.",
+        "The plan limits source-selection readiness to selected-screen-production.",
+        "The plan completes the corrected ordered set before source-set approval.",
+        "The plan requires explicit G4 before build.",
+        "The response rejects build authorization inferred from G2 alone.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "id": 34,
+      "subject": "executable-transition-contract",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Use the current Skill and its applicable shared references; explain the scenario without claiming a build, study or capture occurred",
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 8,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "capability:ideate",
+        "change:executable-transitions",
+        "scope:explain",
+        "language:en"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/end-to-end-journey-coverage.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
+    },
+    {
+      "name": "historical-choice-no-fake-comparison",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: A historical direction is selected, old comparison incomplete. Complete selected sources exist. Explain how to use the adapter without restarting ideation. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The plan preserves the historical selected direction without new competition. The response discloses incomplete earlier comparison. The plan uses historical-selection declaration and approved target-set branch. The plan requires actual reviewed ordered-set approval. The plan requires explicit G4 build scope. The response does not fabricate complete historical G2. Generation, build, research, rendered QA, tracking and deployment remain not run.",
+      "assertions": [
+        "The plan preserves the historical selected direction without new competition.",
+        "The response discloses incomplete earlier comparison.",
+        "The plan uses historical-selection declaration and approved target-set branch.",
+        "The plan requires actual reviewed ordered-set approval.",
+        "The plan requires explicit G4 build scope.",
+        "The response does not fabricate complete historical G2.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "id": 35,
+      "subject": "executable-transition-contract",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Use the current Skill and its applicable shared references; explain the scenario without claiming a build, study or capture occurred",
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 8,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "capability:ideate",
+        "change:executable-transitions",
+        "scope:explain",
+        "language:en"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [
+          "references/end-to-end-journey-coverage.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
+    },
+    {
+      "id": 36,
+      "name": "qualified-skill-invocation",
+      "prompt": "For product-design:ideate at target.path . (current skill root), explain how to invoke this installed skill in Goose for a focused handoff. The installed plugin namespace is product-design. Do not run the workflow.",
+      "expected_output": "An explain-only handoff using the exact instruction load skills product-design:ideate; no sibling SKILL.md link substituted as invocation.",
+      "assertions": [
+        "The response gives the exact invocation `load skills product-design:ideate`.",
+        "The invocation resolves the actual installed skill name rather than leaving a {name} placeholder.",
+        "The response does not substitute a sibling SKILL.md file link for skill invocation.",
+        "The response does not claim that explaining the invocation executed the focused workflow."
+      ],
+      "subject": "product-design-ideate-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "scope:explain",
+        "contract:qualified-invocation"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
     }
   ]
 }

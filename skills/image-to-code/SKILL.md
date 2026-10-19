@@ -1,16 +1,28 @@
 ---
 name: image-to-code
-description: Build a selected visual target into a reviewable frontend after product-design:get-context. Trigger for screenshot/mock/Figma/ImageGen-to-code, including Servier/DIFA/DNA screens in an existing boilerplate. Default design-validation builds to mock data only (no new DB/auth/services/actions). Bundled templates include annotation by default; for an existing user project, offer annotation support and obtain confirmation before changing it. Start the app yourself, verify the review URL, then run `product-design:design-qa`. Never ask the user to launch the server manually.
+description: Builds an approved visual target into a reviewable mock-data frontend. Use when translating selected screenshots, mockups, Figma frames, or generated sources into code; requires scoped build approval and canonical QA.
 ---
 
 # Image to Code
 
+## Skill loading and shared resources
+
+For another Skill, use the instruction `load skills product-design:{name}` with its actual unqualified directory name substituted for {name}. Use the exposed skill-loading tool; do not open a sibling SKILL.md as a substitute. Load only the focused workflow required by the current step.
+
+This Skill belongs to the complete Product Design plugin, not a standalone export. Resolve `PLUGIN_ROOT` two levels above this Skill directory. Paths written as `PLUGIN_ROOT/references/...` identify canonical shared policies in that bundle; read them only when the stated condition applies. Local `references/...` remain relative to this Skill. Source and packaging checks verify these paths and their transitive dependencies; do not copy or edit parallel policy versions manually.
+
 You're tasked with translating the visual target image into a high-quality, interactive website or web app.
+
+## Executable build boundary
+
+Before scaffolding, app creation or implementation mutation, read executable transitions at `PLUGIN_ROOT/references/executable-transitions.md`, run `scripts/check-workflow-evidence.mjs` with operation `prototype-build`, then rerun that request with `--consume` immediately before acting. Require passed readiness for this project/scope, approved source bytes and explicit G4.executionContract (required states, implementation roots, mock data and limits). G2/G3, Markdown or Beads labels cannot substitute. Stop on nonzero/blocked; never self-approve to repair validation.
+
+Use `generated` only for actual complete generated comparison provenance. Provided visuals, exact clones and retained historical choices use their documented branches without a new competition; applicable involved G1/contract/blueprint checks remain. Supply the exact bindings and implementation roots to `product-design:design-qa`. Canonical `design-qa.json`, derived Markdown and a freshly consumed `review-handoff` receipt are required before saying done. Apps/remote runtime without locally verifiable implementation evidence remains freshness-blocked.
 
 ## Critical Overrides
 
-- Refer to the Plugin router [`product-design:index`](../index/SKILL.md) before proceeding.
-- Follow [../../references/critical-overrides.md](../../references/critical-overrides.md).
+- Before proceeding, use `load skills product-design:index` for routing.
+- Follow critical overrides at `PLUGIN_ROOT/references/critical-overrides.md`.
 
 ## User Context
 
@@ -24,7 +36,7 @@ Do not inspect every saved reference. Inspect only what the current task needs.
 
 Build success, HTTP health, Goose Apps creation, and deployment success are not visual verification. Use a browser-capable tool exposed in the current Goose session to open the rendered implementation, inspect it at the target viewport, exercise primary interactions, check console errors when supported, and capture evidence for design QA.
 
-If no browser-capable tool is available, record `final result: blocked` in `design-qa.md`; do not claim the prototype is visually verified. Do not assume `sites-preview`, `terminal.local`, `@Browser`, or `@Sites` exists. Use the local or Apps preview URL actually returned by the available runtime, and expose it to the user only when it is a valid user-accessible URL.
+If no browser-capable tool is available, record canonical `finalResult: blocked` in `design-qa.json` and derive `design-qa.md` through the adapter when prerequisites are valid; do not claim the prototype is visually verified. Do not assume `sites-preview`, `terminal.local`, `@Browser`, or `@Sites` exists. Use the local or Apps preview URL actually returned by the available runtime, and expose it to the user only when it is a valid user-accessible URL.
 
 ### Mobile prototypes
 
@@ -34,9 +46,9 @@ For a mobile app or phone prototype, build and verify at 390 × 844 unless the u
 
 CRITICAL: THIS IS NOT GUIDANCE. THIS IS A CHECKLIST TO COMPLETE.
 
-For involved multi-phase builds, apply [planning-aware routing and optional tracking](../../references/planning-and-tracking.md). Before build and at QA handoff, record epic/outcome, phase gate, acceptance criteria, dependencies, ready/blocked state, owner, evidence, and next task. Use `product-design:project-status` for explicit tracking or an applicable existing `.beads/`; vocabulary alone requires an offer and confirmation before Beads changes. Tracking never blocks implementation or substitutes for gate evidence.
+For involved multi-phase builds, apply planning-aware routing and optional tracking at `PLUGIN_ROOT/references/planning-and-tracking.md`. Before build and at QA handoff, record epic/outcome, phase gate, acceptance criteria, dependencies, ready/blocked state, owner, evidence, and next task. `load skills product-design:project-status` for explicit tracking or an applicable existing `.beads/`; vocabulary alone requires an offer and confirmation before Beads changes. Tracking never blocks implementation or substitutes for gate evidence.
 
-1. Do not start unless the visual source matches the target scope. For a multi-step journey, require the user-approved complete corrected ordered screen set of the selected direction, reused after a complete full-evidence comparison or completed for an already selected historical direction without reopening selection; a selected board page alone is not sufficient. Never expand a single approved landing/home into an unapproved multi-screen product. For a genuinely single-screen target, one selected image, screenshot, mockup, Figma frame or Image Gen result is sufficient. Apply G4 in [product decision gates](../../references/product-decision-gates.md): journey, evaluation slice, hypothesis, exact visual targets, states, realistic mock data, success criterion, out-of-scope behavior, design-system components and framework rationale must be resolvable. For involved work write `.gates/04-selection-to-prototype.md`.
+1. Do not start unless the visual source matches the target scope. For a multi-step journey, require the user-approved complete corrected ordered screen set of the selected direction, reused after a complete full-evidence comparison or completed for an already selected historical direction without reopening selection; a selected board page alone is not sufficient. Never expand a single approved landing/home into an unapproved multi-screen product. For a genuinely single-screen target, one selected image, screenshot, mockup, Figma frame or Image Gen result is sufficient. Apply G4 in product decision gates at `PLUGIN_ROOT/references/product-decision-gates.md`: journey, evaluation slice, hypothesis, exact visual targets, states, realistic mock data, success criterion, out-of-scope behavior, design-system components and framework rationale must be resolvable. For involved work write `.gates/04-selection-to-prototype.md`.
 
 2. Resolve the exact selected visual target or ordered screen set before building.
 
@@ -48,11 +60,13 @@ For involved multi-phase builds, apply [planning-aware routing and optional trac
 
 3. Treat the corrected and approved sources as the design to recreate. A direction choice or a readable image with known business/data/action-state defects is not an approved build source. Require exact source hashes, full ordered coverage, semantic review and explicit G4 handoff; a G2 or Beads status is not build authorization.
 
-For involved adaptive/agentic/native-output work, read [product experience method](../../references/product-experience-method.md) and the experience blueprint. Implement the approved intent placements, direct controls, context/return, protected edits, opportunity/exception preparation and eligible action states with realistic mock data. Preserve the compact brief/principal workspace rather than substituting generic dashboards or a transcript feed. Do not add real agent services or external effects without explicit production scope. Native presentation UX is not a completed editable deck; distinguish mock, export capability and branding evidence. Resolve missing/contradictory material feedback links before expanding build scope.
+For involved adaptive/agentic/native-output work, read product experience method at `PLUGIN_ROOT/references/product-experience-method.md` and the experience blueprint. Implement the approved intent placements, direct controls, context/return, protected edits, opportunity/exception preparation and eligible action states with realistic mock data. Preserve the compact brief/principal workspace rather than substituting generic dashboards or a transcript feed. Do not add real agent services or external effects without explicit production scope. Native presentation UX is not a completed editable deck; distinguish mock, export capability and branding evidence. Resolve missing/contradictory material feedback links before expanding build scope.
+
+For involved work read product discovery questions at `PLUGIN_ROOT/references/product-discovery-questions.md` and preserve the agreed hypothesis, current alternative, task, realistic data and test guardrails. Implement only the approved evaluation slice. When AI is part of the product, mock applicable success, error, abstention, correction and fallback states; do not imply measured model accuracy, authorized external effects or production readiness. Missing data/quality/latency assumptions belong in the test limitations or a separately authorized feasibility task, not a speculative backend.
 
 4. If the provided design is a mobile viewport, build a mobile app. If it's unclear, default to desktop.
 
-5. Review the reference design, catalog every image asset in the design, and use the Image Gen tool to create individual images for each one. Zoom in so you can catch every asset that needs to be generated.
+5. Review and measure the reference design, catalog its assets, and reuse supplied or authorized source files first. Generate only missing raster assets when an available image-generation tool is needed; never regenerate an available asset, supplied brand logo or design-system control. If a required official logo is missing, ask for it or record a source blocker rather than inventing brand conformity.
 
     Examples include:
 
@@ -67,7 +81,7 @@ For involved adaptive/agentic/native-output work, read [product experience metho
 
     Rules:
 
-    - CRITICAL RULE: Do not create custom div art, CSS art, inline SVGs, handcrafted SVGs, HTML element drawings, div/span shapes, CSS drawings, gradients, emoji, or text glyphs instead of real icons and image assets ever. Use an available image-generation tool for images and the closest matching icon library for icons.
+    - Do not draw substitutes for reference images, logos or icons using CSS/div art, handcrafted SVG, emoji or text glyphs. Real source vectors and library icons are allowed. Ordinary UI backgrounds, borders, radii and gradients may use CSS when they match approved tokens/source surfaces; this is not permission to fake an illustration. Generate only missing raster imagery.
     - If text is part of an image asset, keep it in the image asset. Examples include full bleed hero images, signs, posters, packaging, storefronts, article art, and illustrations where the type belongs to the visual itself. Do not crop the background image and recreate that text with transparent text boxes, HTML, CSS, or separate overlay layers unless the source clearly shows editable UI text sitting on top of the image.
     - Do not use generic placeholders where the reference implies custom visual content.
     - Generated assets must share the same art direction, palette, rendering style, and design language as the reference mockup.
@@ -85,15 +99,15 @@ Prioritize critical above-the-fold assets first, then reuse agents for supportin
 
 6. Define all sections of the page. For each section, meticulously measure the layout, spacing between elements, and the size and space of the elements themselves.
 
-7. Find freely available fonts that match the target design.
+7. Reuse the supplied/design-system font when authorized and available. Only find the closest freely available font when the original is unavailable; disclose the substitution.
 
-8. Find a freely available icon library that matches the target design. Do not default to Lucide icons. Search for the best match.
+8. Reuse source/design-system icons first. Only find a matching freely available icon library for missing icons; do not default to Lucide unless it is the closest match.
 
     Rules:
 
-    - CRITICAL RULE: Do not create custom inline SVGs, handcrafted SVGs, HTML element drawings, div/span shapes, CSS drawings, gradients, emoji, or text glyphs. Use an available image-generation tool to generate assets and use the closest matching icon library for icons.
+    - Use source/design-system icons or a matching icon library, not handcrafted icon/illustration stand-ins. CSS surfaces matching the approved source remain allowed; generating images is not required for ordinary UI backgrounds.
 
-9. Build the app starting with [../../references/local-prototype-preflight.md](../../references/local-prototype-preflight.md), using the framework `product-design:get-context` resolved (Vite by default, or Next.js/Nuxt/Astro when named or already in use — pass `--framework <name>` to `bootstrap-prototype.mjs` for a new scaffold). If a design system was identified in `product-design:get-context`, build with its real components per that skill's own guidance instead of generic HTML/CSS. Unless the user asks for a static mock, full production behavior, or a different scope, bring the app or website to life with:
+9. Build the app starting with local prototype preflight at `PLUGIN_ROOT/references/local-prototype-preflight.md`, using the framework `product-design:get-context` resolved (Vite by default, or Next.js/Nuxt/Astro when named or already in use — pass `--framework <name>` to `bootstrap-prototype.mjs` for a new scaffold). If a design system was identified in `product-design:get-context`, build with its real components per that skill's own guidance instead of generic HTML/CSS. Unless the user asks for a static mock, full production behavior, or a different scope, bring the app or website to life with:
 
     - Working navigation, links, tabs, menus, and primary CTAs.
     - Functional inputs, filters, toggles, selections, and forms shown in the main experience.
@@ -105,13 +119,13 @@ Prioritize critical above-the-fold assets first, then reuse agents for supportin
     Rules:
 
     - Place every image asset you generated into its position before proceeding. I repeat, replace all placeholders, including CSS/SVG placeholders, before proceeding.
-    - Do not leave controls in the core experience as static chrome. Do not create new pages or routes unless the user asks for them.
+    - Do not leave approved core controls as static chrome. Implement routes required by the approved screen set and G4 scope, but do not invent additional pages.
 
 10. Prepare the review loop and run the local app. For a bundled template, the annotation overlay is already present. For an existing project or external boilerplate where annotation is absent, offer `product-design:annotate-inject` and obtain explicit confirmation before it adds a route, component, or ignore rule. Do not block the ordinary local handoff while awaiting that optional consent, and do not claim annotation is installed or verified unless injection and its checks actually completed. Start or reuse the documented dev server yourself in a persistent/background process, wait for a healthy HTTP response, and keep it running. Do not ask the user to open a terminal or run `npm run dev`, `pnpm dev`, `make start-dev`, or equivalent. If startup fails, investigate it; report blocked only after actionable diagnosis.
 
-11. Capture the local app using the Goose Capability Preflight rule in [`product-design:index`](../index/SKILL.md#goose-capability-preflight).
+11. Capture the local app using the Goose Capability Preflight rule in `load skills product-design:index` (section goose-capability-preflight).
 
-12. Run [`product-design:design-qa`](../design-qa/SKILL.md) as the blocking build gate.
+12. Use `load skills product-design:design-qa`, then complete that Skill as the blocking build gate.
 
     Steps:
 
@@ -125,9 +139,9 @@ Prioritize critical above-the-fold assets first, then reuse agents for supportin
 
 13. Handoff the app or website.
 
-    - Only hand off after [`product-design:design-qa`](../design-qa/SKILL.md) passes.
+    - Use `load skills product-design:design-qa` and hand off only after its checks pass.
     - Keep the prototype running locally; the agent owns startup and lifecycle for the review handoff.
-    - Confirm annotation is usable and tell the user how to enter annotation mode in the running UI; do not give terminal setup steps.
-    - Provide a valid user-accessible local or deployed URL only when the active Goose runtime returned one. Goose Apps creation alone is not a deployment; use `product-design:share` for requested hosting.
+    - When annotation is installed, verify it and explain its in-app toggle. If it is absent in an existing project and optional consent is pending, say it is not installed; do not claim usability or block the ordinary verified handoff. Do not give terminal setup steps.
+    - Provide a valid user-accessible local or deployed URL only when the active Goose runtime returned one. Goose Apps creation alone is not a deployment; `load skills product-design:share` for requested hosting.
     - After the prototype link, use the shared build handoff from `critical-overrides.md`. Do not add a different completion message.
-    - Include the post-build iteration and share nudge from [../../references/critical-overrides.md](../../references/critical-overrides.md#build-handoff).
+    - Include the post-build iteration and share nudge from critical overrides at `PLUGIN_ROOT/references/critical-overrides.md#build-handoff`.

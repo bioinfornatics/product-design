@@ -19,9 +19,11 @@ These rules override generic assistant defaults for Product Design work.
 
 ## Build Handoff
 
+- Completion wording below applies only after canonical QA passes and the review-handoff receipt is freshly consumed under [executable transitions](executable-transitions.md). If blocked, return the blocker and available work-in-progress URL as unverified, never say finished. A link alone does not pass G5.
+
 - After an app, prototype, clone, redesign, or image-to-code build, return the prototype link first. This handoff is not blocked by sharing setup.
 - After the link, say: `I've finished building. Let me know if I can tighten anything up or build out more functionality.`
-- If the current Goose session exposes an annotation capability, add: `You can also suggest and make updates with the annotation tool.` Do not mention annotation when that capability is unavailable.
+- If annotation is installed and verified in the handed-off project, add: `You can also suggest and make updates with the annotation tool.` An exposed tool alone does not prove that project's annotation works. If optional installation is unconfirmed, say it is not installed and offer it without delaying an otherwise verified handoff.
 - Add one short share nudge. Before naming a share target, check saved Product Design context and current available tools for a hosting target that `share` can use. If a target is available or preferred, ask whether to share with the team through that target. If no target is clear, ask whether they want to share with the team and route to `share` to choose the target.
 - Keep the wording plain and human.
 
@@ -35,7 +37,7 @@ These rules override generic assistant defaults for Product Design work.
 - A prototype may live inside the eventual production boilerplate. “Real app,” “full working version,” “use Next.js,” or the presence of Prisma/MSAL does not authorize backend implementation.
 - For design or journey validation, default to realistic frontend mock data. Do not add product-specific database schema/migrations, repositories, services, server actions, API integrations, real auth, or roles unless the user explicitly requests the production phase after validation.
 - Preserve existing infrastructure but do not extend it speculatively. Record deferred production work in an active tracker only when tracking is already in scope.
-- For a reviewable local build, annotation and server startup are agent-owned completion steps: install the overlay when needed, start/reuse the server, verify the review URL, and keep it running. Never make the user open a terminal and execute the startup command.
+- Server startup is agent-owned: start/reuse the server, verify the review URL, and keep it running. Bundled templates already include annotation. In an existing project, install annotation only after an explicit installation request or confirmation; optional annotation consent never blocks an otherwise verified handoff. Never make the user open a terminal and execute the startup command.
 
 ## Explore vs. Design vs. Build
 
@@ -45,7 +47,7 @@ These rules override generic assistant defaults for Product Design work.
 - Never invent a better first screen, landing page, hero, card style, icon set, image style, color palette, radius, spacing, or typography when cloning or matching a provided source. Match the source.
 - Check the work like a senior designer. Look for broken layouts, cropped images, bad padding, bad margins, wrong font styles, wrong font weights, incorrect borders, and incorrect border radii.
 - Screenshots are not QA by themselves. Put the reference image and the prototype screenshot together in the same comparison input, then judge the visible differences from that combined input. Use the same viewport and state, fix visible mismatches, then compare again.
-- Bring the app or website's core experience to life. Navigation, links, tabs, menus, primary CTAs, and any inputs, filters, toggles, selections, forms, or visible states needed for the main task, conversion path, or user journey must work and use realistic mock data. Controls outside the core experience may be visual-only. Do not build new pages or routes unless the user asks for them.
+- Bring the approved core experience to life with realistic mock data and working navigation, primary controls and journey states. An approved screen set and explicit G4 scope authorize its necessary pages/routes; do not add unrelated or unapproved pages. Controls outside the core experience may be visual-only if declared out of scope.
 
 ## Browser user
 
@@ -53,6 +55,8 @@ These rules override generic assistant defaults for Product Design work.
 - Provide URLs, screenshots, mocks, Figma files, or other visual sources, including detailed art direction to the available image-generation tool when generating designs and assets.
 
 ## Working with and making assets
+
+Reuse authorized source/design-system assets first; generate only missing raster imagery. Real source vectors and library icons are allowed. CSS backgrounds, borders and gradients matching approved UI surfaces/tokens are normal styling, not permission to draw substitute images or logos.
 
 - Never fake visible assets with ASCII, prose, text symbols, emoji, placeholder boxes, CSS art, div art, handcrafted SVGs, inline SVGs, or approximate code drawings. Use real source assets when available. Use an available image-generation tool for image assets when source assets are missing. Use the closest matching icon library for icons.
 - Work like a designer. Measure the component or section first, then create or place the asset to fit that slot. Match the needed dimensions, crop, subject, palette, and density. Do not lazily crop sprite sheets, stretch screenshots, or use images that do not fit seamlessly into the design.

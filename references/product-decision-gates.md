@@ -24,6 +24,8 @@ Every involved-work gate must identify whether its evidence is observed user beh
 
 For multi-persona services, require a shared service boundary, persona lanes, backstage/system dependencies and handoffs before G2 can pass. For involved work use [product experience method](product-experience-method.md) to trace material supplied feedback through value/responsibility, answered/assumed design questions, Product/UX/UI decisions, scenarios/screens/states and verification. Conditional intent/proactivity/native-output contracts must be explicit before their sources are approved; a generic mention does not satisfy a material requirement.
 
+For involved discovery use [product discovery questions](product-discovery-questions.md). Trace the current alternative, material uncertainty and cheapest decision-changing test through the existing blueprint/gate. A score is an argued readiness aid, not a measured probability of product success. Weak evidence may justify an experiment; contrary evidence may justify stopping before image generation. Do not fabricate thresholds, research or benefits to pass G1.
+
 ## G2 — Comparable hypotheses to selected direction
 
 Freeze comparisonContract.scope, evidenceMode and three complete plans before generation. Multi-step requires full-evidence regardless of risk: every planned screen separately for three complete comparable journeys from trigger to outcome and critical recovery. A landing page or three anchors cannot pass multi-step G2. Lean is restricted to explicitly isolated single-screen work. If capacity is insufficient, reduce scope only to another agreed complete scenario or resume; preserve incomplete evidence rather than pass an anchor-only comparison. Multi-screen Image Gen composites fail. Personas are complementary service lanes, never alternative products. Already selected work continues; reusable specialized views do not reopen competition.
@@ -44,7 +46,7 @@ Two independent gates must pass: (1) execution quality: browser evidence, matchi
 
 ## G6 — Validated prototype to industrialization
 
-Assess desirability 20; usability 15; user/product value 20; feasibility 15; viability 10; risk readiness 10; evidence confidence 10. Pass at 75+ with at least medium confidence, no untreated critical risk, written acceptance criteria and product ownership. Otherwise experiment or block.
+Assess desirability 20; usability 15; user/product value 20; feasibility 15; viability 10; risk readiness 10; evidence confidence 10. Pass at 75+ with at least medium confidence, no untreated critical risk, written acceptance criteria and product ownership. For material value claims require actual user/operational evidence against the current alternative and agreed baseline, outcome/guardrails and continue/change/stop rule. Missing essential evidence or an unresolved threshold cannot be averaged away by fidelity or a score; otherwise experiment or block. A pass is not permission to implement production without an explicit request.
 
 ## G7 — Production readiness
 
@@ -59,3 +61,7 @@ All gates bind owner, scope, ISO timestamp, exact local evidencePath and SHA256 
 Ideation evidence binds fingerprint, three ordered candidates, all screens in exact manifest order and fullJourneyCoverage true only for full-evidence multi-step scope. Sources: id/path/sha256/provenance/criticalCopyReadable/buildSourceEligible, review(inspectedPath,inspectedSha256,reviewer,timestamp,composition,businessFidelity,findings[]). Review statuses accepted/changes-required. Findings: id,severity(material/minor),category(business-data/action-state/permission/copy/composition/continuity),detail,evidence,status(open/resolved). Eligibility requires accepted reviews and no open findings. Review is declared evidence, not automatic pixel truth detection.
 
 Selected-screen-set evidence binds manifest/variant, complete ordered sources, approval(owner,timestamp,statement,screenSetApproved,screenSetHash). verifyLocalEvidenceFiles checks actual files/hash/confinement including symlinks. Human identity and rights remain outside structural validation. Transitions write evidence, authoritative gate, optional Beads mirror, scoped readiness in that order; any failure stops downstream writes. A pass label cannot manufacture approval. validateExperienceBlueprint checks a separate v1 blueprint linked to a v1 design contract; it checks declared traceability/conditional boundaries, not useful strategy, human authority or research evidence.
+
+## Executable gate checks
+
+[Executable transitions](executable-transitions.md) bind these phase boundaries to scripts/check-workflow-evidence.mjs and operation-scoped receipts. Publish/consume before the corresponding action; G2/G3 cannot authorize build. Canonical design-qa.json and a source-bound passing G5 are required for review-handoff. Local hashes establish consistency, not authenticated approval or measured value. Provided/clone/historical source paths use documented branches without fabricated G2 competition.

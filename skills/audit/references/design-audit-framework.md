@@ -2,7 +2,7 @@
 
 Use this structure for `product-design:audit`.
 
-Use `product-design:audit` for systematic assessment across a broader experience, not for feedback on a single artifact.
+`load skills product-design:audit` for user-facing assessment of an existing experience, including a single screen or bounded interaction. Source-versus-render fidelity checks belong to `product-design:design-qa`.
 
 ## Audit modes
 

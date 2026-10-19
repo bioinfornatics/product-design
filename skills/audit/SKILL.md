@@ -1,9 +1,15 @@
 ---
 name: audit
-description: Audit or critique a product flow, journey, workflow, funnel, onboarding path, checkout path, settings path, screen, or multi-step product experience by capturing screenshots first, then reporting UX, design, and accessibility findings inline from that evidence. Use Figma only when the user explicitly asks for a board. Use when the user asks to audit, review, critique, inspect, assess, analyze, evaluate, or give feedback on a product experience.
+description: Audits a product screen or journey for UX, visual design, and accessibility issues using captured evidence. Use when the user asks to review, critique, inspect, assess, or evaluate an existing experience.
 ---
 
 # Audit
+
+## Skill loading and shared resources
+
+For another Skill, use the instruction `load skills product-design:{name}` with its actual unqualified directory name substituted for {name}. Use the exposed skill-loading tool; do not open a sibling SKILL.md as a substitute. Load only the focused workflow required by the current step.
+
+This Skill belongs to the complete Product Design plugin, not a standalone export. Resolve `PLUGIN_ROOT` two levels above this Skill directory. Paths written as `PLUGIN_ROOT/references/...` identify canonical shared policies in that bundle; read them only when the stated condition applies. Local `references/...` remain relative to this Skill. Source and packaging checks verify these paths and their transitive dependencies; do not copy or edit parallel policy versions manually.
 
 Use this skill when the user wants to audit, review, critique, inspect, assess, analyze, evaluate, or give feedback on a product flow, journey, funnel, onboarding path, checkout path, settings path, screen, or other product experience.
 
@@ -18,12 +24,12 @@ The output is not a loose opinion. The output is:
 
 ## Critical Overrides
 
-- Refer to the Plugin router [`product-design:index`](../index/SKILL.md) before proceeding.
-- Follow [../../references/critical-overrides.md](../../references/critical-overrides.md).
+- Before proceeding, use `load skills product-design:index` for routing.
+- Follow critical overrides at `PLUGIN_ROOT/references/critical-overrides.md`.
 
 ## User Context
 
-Saved user context is optional. Load [`product-design:user-context`](../user-context/SKILL.md) only when the user asks to save or recall context, or when relevant saved context is known to exist.
+Saved user context is optional. Use the instruction `load skills product-design:user-context` only when the user asks to save or recall context, or when relevant saved context is known to exist.
 
 Use saved product URLs, Figma files, screenshots, reference images, codebase paths, Storybook, tokens, design systems, brand assets, component refs, browser preferences, and share targets as grounding material when relevant.
 
@@ -49,7 +55,7 @@ Output rules:
 
 Capture rules:
 
-- Follow the Goose Capability Preflight rule in [`product-design:index`](../index/SKILL.md#goose-capability-preflight).
+- Follow the Goose Capability Preflight rule in `load skills product-design:index` (section goose-capability-preflight).
 - If none of those can capture valid screenshots or control the flow, stop and report the blocker.
 
 Browser capture order:
@@ -90,7 +96,7 @@ Screenshot source rule:
 - Use the screenshot you actually saw.
 - Save that exact screenshot to the local audit folder.
 - Open or inspect the saved file before accepting it.
-- If the saved file shows the wrong window, wrong state, blank page, crop, or loading screen, reject it and capture again.
+- If the saved file shows the wrong window, wrong state, blank page, invalid crop or unintended loading screen, reject it and capture again. Intentionally audited loading/error states remain valid labeled evidence.
 - When Figma is the destination, upload that accepted local file.
 - After upload, verify the Figma board shows the same step.
 - Do not replace a Browser, Chrome, or Computer Use screenshot with an OS screenshot unless you first prove the saved file shows the same window and state.
@@ -99,10 +105,10 @@ For every step:
 
 1. Move to the next step in the requested flow.
 2. Wait until the screen is loaded and visually stable.
-3. Check for loading spinners, blank areas, login walls, error pages, blocked states, cookie dialogs, and half-rendered content.
+3. Check for loading spinners, blank areas, login walls, error pages, blocked states, cookie dialogs, and half-rendered content. Distinguish unintended capture blockers from the intentionally audited loading/error/recovery state.
 4. Capture the screenshot.
 5. Inspect the screenshot before accepting it.
-6. Reject the screenshot if it is blank, loading, cropped, blocked, or showing the wrong state.
+6. Reject blank, cropped or wrong-state captures. Treat an unintended login wall, error or unfinished load as a blocker; retain an intentionally tested loading/error/blocked state with its label and limits.
 7. Observe behavior that matters for the audit, such as navigation, focus, loading, validation, error handling, empty states, motion, and whether the next action is clear.
 8. Write notes for that step.
 9. In the notes, report strengths, UX issues, accessibility risks, and any limits that made the step difficult to audit.

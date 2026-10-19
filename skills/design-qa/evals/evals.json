@@ -4,100 +4,689 @@
     {
       "id": 1,
       "name": "per-screen-source-comparison",
-      "prompt": "Vérifie un prototype de réservation en quatre écrans contre la planche de parcours et les quatre sources détaillées approuvées.",
-      "expected_output": "Compare every implementation state with its corresponding detailed source and separately verify end-to-end continuity; do not use the board alone.",
+      "prompt": "For product-design:design-qa at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Check a four-screen booking prototype against the journey board and the four approved detailed sources. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The plan pairs each of four implementation states with its approved detailed source. The plan compares source/rendering at matching viewport and state. The plan verifies booking continuity separately from per-screen fidelity. The response rejects the board alone as sufficient QA. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "contains:each",
-        "contains:continuity",
-        "not-contains:board alone is sufficient"
-      ]
+        "The plan pairs each of four implementation states with its approved detailed source.",
+        "The plan compares source/rendering at matching viewport and state.",
+        "The plan verifies booking continuity separately from per-screen fidelity.",
+        "The response rejects the board alone as sufficient QA.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-design-qa-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:design-qa",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 2,
       "name": "no-browser-block",
-      "prompt": "Le build réussit mais aucun navigateur ni capture de l'implémentation n'est disponible.",
-      "expected_output": "Write a blocked verdict and refuse visual verification claims.",
+      "prompt": "For product-design:design-qa at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: The build succeeds, but no browser or capture of the implementation is available. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The response marks visual QA blocked without rendered capture. The plan records the missing browser/capture capability. The response does not infer passing QA from build success. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "contains:blocked",
-        "not-contains:passed"
-      ]
+        "The response marks visual QA blocked without rendered capture.",
+        "The plan records the missing browser/capture capability.",
+        "The response does not infer passing QA from build success.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-design-qa-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:design-qa",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 3,
       "name": "qa-not-user-research",
-      "prompt": "La QA visuelle est passée. Peut-on dire que l'expérience est validée par les utilisateurs ?",
-      "expected_output": "Clearly separate fidelity/execution evidence from usability or desirability validation.",
+      "prompt": "For product-design:design-qa at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Visual QA has passed. Can we say the experience has been validated by users? Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The response classifies visual QA as fidelity or execution evidence. The response distinguishes usability validation from visual QA. The response does not claim user validation without a conducted study. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "contains:not",
-        "contains:usability",
-        "contains:user"
-      ]
+        "The response classifies visual QA as fidelity or execution evidence.",
+        "The response distinguishes usability validation from visual QA.",
+        "The response does not claim user validation without a conducted study.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-design-qa-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:design-qa",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 4,
       "name": "traced-value-intent-rendered-task",
       "subject": "experience-qa",
-      "language": "fr",
+      "language": "en",
       "target": {
         "kind": "existing-skill",
-        "path": "skills/design-qa",
+        "path": ".",
         "execution": "explain"
       },
-      "prompt": "@Product Design vérifie notre prototype dossier : sources et rendu au même état sont disponibles, blueprint lie valeur utilisateur, explication locale, filtre réversible, préparation native et résultat. Décris la vérification à effectuer.",
-      "expected_output": "A source/rendered comparison and task-validity plan tracing concrete design consequences; no completed QA claim from prose.",
+      "prompt": "For product-design:design-qa at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design check our case-file prototype: sources and rendering in the same state are available; the blueprint links user value, in-place explanation, reversible filtering, native preparation, and outcome. Describe the verification to perform. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The plan pairs each implemented state with approved source at same viewport and state. The plan checks intent placement against the blueprint. The plan checks direct controls and return context. The plan checks preservation of manual edits. The plan checks native preparation and outcome behavior. The response separates execution quality from product-test validity. The response separates product-test validity from measured user value. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "Compares each implemented state to its approved source at the same viewport/state",
-        "Checks intent placement, direct controls, context/return and manual edits against the blueprint",
-        "Separates execution/test validity from measured usability or product value"
+        "The plan pairs each implemented state with approved source at same viewport and state.",
+        "The plan checks intent placement against the blueprint.",
+        "The plan checks direct controls and return context.",
+        "The plan checks preservation of manual edits.",
+        "The plan checks native preparation and outcome behavior.",
+        "The response separates execution quality from product-test validity.",
+        "The response separates product-test validity from measured user value.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
       ],
       "coverage_tags": [
-        "language:fr",
-        "qa:task-validity"
-      ]
+        "qa:task-validity",
+        "language:en",
+        "capability:design-qa",
+        "scope:explain"
+      ],
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 5,
       "name": "beautiful-rendered-source-effect-drift",
       "subject": "experience-qa",
-      "language": "fr",
+      "language": "en",
       "target": {
         "kind": "existing-skill",
-        "path": "skills/design-qa",
+        "path": ".",
         "execution": "explain"
       },
-      "prompt": "Les captures montrent que notre prototype est beau et ressemble aux sources, mais un filtre déclenche un envoi externe et une préparation est présentée comme livrée. Quel verdict Product Design ?",
-      "expected_output": "Blocked on material intent/effect differences despite visual fidelity.",
+      "prompt": "For product-design:design-qa at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: The captures show that our prototype looks good and matches the sources, but a filter triggers an external send and prepared work is presented as delivered. What is the Product Design verdict? Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The response blocks QA on a filter causing unauthorized external send. The response blocks QA on prepared work mislabeled delivered. The plan identifies affected source and implementation states. The plan requires a targeted fix followed by same-state recomparison. The response does not let visual fidelity compensate for effect errors. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "Blocks QA on no-effect view violations or false delivered state",
-        "Names affected source/implemented states and a targeted fix/recomparison",
-        "Does not let visual fidelity compensate for task/state errors"
+        "The response blocks QA on a filter causing unauthorized external send.",
+        "The response blocks QA on prepared work mislabeled delivered.",
+        "The plan identifies affected source and implementation states.",
+        "The plan requires a targeted fix followed by same-state recomparison.",
+        "The response does not let visual fidelity compensate for effect errors.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
       ],
       "coverage_tags": [
-        "language:fr",
-        "qa:effect-boundary"
-      ]
+        "qa:effect-boundary",
+        "language:en",
+        "capability:design-qa",
+        "scope:explain"
+      ],
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 6,
       "name": "missing-capture-not-ux-validation",
       "subject": "experience-qa",
-      "language": "fr",
+      "language": "en",
       "target": {
         "kind": "existing-skill",
-        "path": "skills/design-qa",
+        "path": ".",
         "execution": "explain"
       },
-      "prompt": "Le code compile et le brief reprend tous nos tableaux. Aucune capture du rendu n’est disponible. Peut-on annoncer QA et amélioration de productivité ?",
-      "expected_output": "Blocked rendered-source QA and unmeasured value, not a completed UX claim.",
+      "prompt": "For product-design:design-qa at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: The code compiles, and the brief includes all our tables. No capture of the rendering is available. Can we claim QA and improved productivity? Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The response marks source/render QA blocked without rendered capture. The response rejects compilation as visual or interaction evidence. The response rejects brief-table presence as fidelity proof. The response does not claim productivity gains without observed operational evidence. The response does not claim usability improvement without observed user evidence. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "Missing rendered visual evidence blocks QA",
-        "Build success or presence of feedback text is not fidelity/interaction evidence",
-        "Does not claim usability or productivity improvement without observed user/operational evidence"
+        "The response marks source/render QA blocked without rendered capture.",
+        "The response rejects compilation as visual or interaction evidence.",
+        "The response rejects brief-table presence as fidelity proof.",
+        "The response does not claim productivity gains without observed operational evidence.",
+        "The response does not claim usability improvement without observed user evidence.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
       ],
       "coverage_tags": [
-        "language:fr",
-        "qa:missing-evidence"
-      ]
+        "qa:missing-evidence",
+        "language:en",
+        "capability:design-qa",
+        "scope:explain"
+      ],
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
+    },
+    {
+      "name": "qa-console-unavailable-honest-limits",
+      "prompt": "Explain the QA verdict rules when the browser can capture and exercise the approved journey but exposes no console API. Source and render are available.",
+      "expected_output": "Record unavailable console capability and reason, still require visual/interaction evidence, never claim clean console.",
+      "assertions": [
+        "Records console unavailability with a reason",
+        "Does not describe console as checked or error-free",
+        "Keeps source/render and interaction checks mandatory"
+      ],
+      "id": 7,
+      "subject": "instruction-coherence-and-discovery",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Use the current Skill and its applicable shared references; explain the scenario without claiming a build, study or capture occurred"
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 8,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:design-qa",
+        "change:instruction-coherence",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
+    },
+    {
+      "name": "qa-available-console-error-blocks",
+      "prompt": "The source and screenshots match but our available console shows a reproducible TypeError in the core flow. Explain the QA result.",
+      "expected_output": "Blocked despite visual fidelity until the error is fixed and recaptured/rechecked.",
+      "assertions": [
+        "Returns blocked for the reproducible runtime error",
+        "Does not waive an available console check",
+        "Requires verification after correction"
+      ],
+      "id": 8,
+      "subject": "instruction-coherence-and-discovery",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Use the current Skill and its applicable shared references; explain the scenario without claiming a build, study or capture occurred"
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 8,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:design-qa",
+        "change:instruction-coherence",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
+    },
+    {
+      "name": "qa-testable-is-not-value-validated",
+      "prompt": "The mock prototype matches the selected sources and supports our test task. The user study has no participant access or measured baseline yet. Explain what G5 and G6 mean here.",
+      "expected_output": "Distinguish review/test validity from executable participant research and measured value; no G6 claim from fidelity.",
+      "assertions": [
+        "Separates execution quality from product-test validity",
+        "States the user study is not run or not executable yet",
+        "Does not assert validated value or production authorization"
+      ],
+      "id": 9,
+      "subject": "instruction-coherence-and-discovery",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Use the current Skill and its applicable shared references; explain the scenario without claiming a build, study or capture occurred"
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 8,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:design-qa",
+        "change:instruction-coherence",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
+    },
+    {
+      "name": "canonical-blocked-no-browser",
+      "prompt": "For product-design:design-qa at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: G4 is valid but no browser capture tool is available. Explain what QA files and receipt to save. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The plan saves authoritative design-qa.json with blocked verdict. The plan derives design-qa.md from canonical JSON. The plan records unavailable rendered capability with reason. The plan labels unperformed required-state checks not run. The plan preserves the blocked attempt and receipt. The response does not fabricate passing G5. Generation, build, research, rendered QA, tracking and deployment remain not run.",
+      "assertions": [
+        "The plan saves authoritative design-qa.json with blocked verdict.",
+        "The plan derives design-qa.md from canonical JSON.",
+        "The plan records unavailable rendered capability with reason.",
+        "The plan labels unperformed required-state checks not run.",
+        "The plan preserves the blocked attempt and receipt.",
+        "The response does not fabricate passing G5.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "id": 10,
+      "subject": "executable-transition-contract",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Use the current Skill and its applicable shared references; explain the scenario without claiming a build, study or capture occurred",
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 8,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "capability:design-qa",
+        "change:executable-transitions",
+        "scope:explain",
+        "language:en"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
+    },
+    {
+      "name": "canonical-md-divergence",
+      "prompt": "For product-design:design-qa at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Canonical QA and its receipt passed. Someone manually changed design-qa.md to say passed after code changed. Explain the handoff. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The response rejects manually edited design-qa.md as authority. The response treats changed implementation bytes as stale QA. The plan requires fresh captures and same-state source recomparison. The plan regenerates Markdown from canonical JSON. The plan consumes review-handoff only after fresh valid publication. Generation, build, research, rendered QA, tracking and deployment remain not run.",
+      "assertions": [
+        "The response rejects manually edited design-qa.md as authority.",
+        "The response treats changed implementation bytes as stale QA.",
+        "The plan requires fresh captures and same-state source recomparison.",
+        "The plan regenerates Markdown from canonical JSON.",
+        "The plan consumes review-handoff only after fresh valid publication.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "id": 11,
+      "subject": "executable-transition-contract",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Use the current Skill and its applicable shared references; explain the scenario without claiming a build, study or capture occurred",
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 8,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "capability:design-qa",
+        "change:executable-transitions",
+        "scope:explain",
+        "language:en"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
+    },
+    {
+      "name": "qa-material-finding-cannot-disappear",
+      "prompt": "For product-design:design-qa at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: An archived QA attempt found open P2. A new report lists the same issue as P3 without any fix/capture history. Explain whether it can pass. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The response rejects unexplained P2-to-P3 downgrade as passing QA basis. The plan preserves archived finding history. The plan requires documented fix and changed after-capture for resolution. The plan requires comparison evidence for resolution. The response does not equate structural checks with user validation. Generation, build, research, rendered QA, tracking and deployment remain not run.",
+      "assertions": [
+        "The response rejects unexplained P2-to-P3 downgrade as passing QA basis.",
+        "The plan preserves archived finding history.",
+        "The plan requires documented fix and changed after-capture for resolution.",
+        "The plan requires comparison evidence for resolution.",
+        "The response does not equate structural checks with user validation.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "id": 12,
+      "subject": "executable-transition-contract",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Use the current Skill and its applicable shared references; explain the scenario without claiming a build, study or capture occurred",
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 8,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "capability:design-qa",
+        "change:executable-transitions",
+        "scope:explain",
+        "language:en"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
+    },
+    {
+      "id": 13,
+      "name": "qualified-skill-invocation",
+      "prompt": "For product-design:design-qa at target.path . (current skill root), explain how to invoke this installed skill in Goose for a focused handoff. The installed plugin namespace is product-design. Do not run the workflow.",
+      "expected_output": "An explain-only handoff using the exact instruction load skills product-design:design-qa; no sibling SKILL.md link substituted as invocation.",
+      "assertions": [
+        "The response gives the exact invocation `load skills product-design:design-qa`.",
+        "The invocation resolves the actual installed skill name rather than leaving a {name} placeholder.",
+        "The response does not substitute a sibling SKILL.md file link for skill invocation.",
+        "The response does not claim that explaining the invocation executed the focused workflow."
+      ],
+      "subject": "product-design-design-qa-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:design-qa",
+        "scope:explain",
+        "contract:qualified-invocation"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
     }
   ]
 }

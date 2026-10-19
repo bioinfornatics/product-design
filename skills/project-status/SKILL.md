@@ -1,9 +1,15 @@
 ---
 name: project-status
-description: 'Optional: track a Product Design project''s phase (`product-design:get-context`, visual sourcing, build, `product-design:design-qa`, `product-design:share`) or annotation rounds as Beads (bd) issues, so status is queryable via `bd ready`/`bd show` instead of only living in conversation history. Triggers on two kinds of request: (1) explicit — the user names Beads, bd, issue tracking, or asks to track/plan progress; (2) vocabulary-based — the user talks in epic, gate, user story, success/acceptance criteria, task breakdown, ready/blocked, or backlog terms about a Product Design project. Never a gate — Product Design workflows run the same with or without this.'
+description: Tracks optional Product Design phase and annotation status in Beads. Use for explicit tracking requests or an applicable existing tracker; planning vocabulary alone prompts an offer and requires confirmation before changes.
 ---
 
 # Project Status (Beads)
+
+## Skill loading and shared resources
+
+For another Skill, use the instruction `load skills product-design:{name}` with its actual unqualified directory name substituted for {name}. Use the exposed skill-loading tool; do not open a sibling SKILL.md as a substitute. Load only the focused workflow required by the current step.
+
+This Skill belongs to the complete Product Design plugin, not a standalone export. Resolve `PLUGIN_ROOT` two levels above this Skill directory. Paths written as `PLUGIN_ROOT/references/...` identify canonical shared policies in that bundle; read them only when the stated condition applies. Local `references/...` remain relative to this Skill. Source and packaging checks verify these paths and their transitive dependencies; do not copy or edit parallel policy versions manually.
 
 [Beads](https://github.com/steveyegge/beads) (`bd`) is an issue tracker with first-class dependency support. This skill wires up two optional formulas that mirror the Product Design plugin's own workflow order — the `product-design-build` Beads formula (`product-design:get-context` → visual source → build → `product-design:design-qa` → `product-design:share`) and the `annotate-cycle` Beads formula (install → collect → process → verify) — so a project's status becomes a `bd` query instead of something only reconstructable from chat history.
 
@@ -16,7 +22,7 @@ Two independent triggers — either is sufficient on its own, do not require bot
 1. **Explicit.** The user names Beads, `bd`, issue tracking, or directly asks to track/plan/see status or progress on a Product Design project. The target repo already having `.beads/` is an existing-tracker signal: for related involved work, this skill may use that tracker without initializing another one; stay within the requested scope.
 2. **Vocabulary-based.** The user describes involved multi-phase Product Design work with a planning cluster such as *epic*, *phase gate*, *acceptance criteria*, *dependencies*, *ready/blocked*, *owner*, *evidence*, or *next task*. Offer this skill, but confirm before initializing, creating, or updating Beads. This means "offer", not "silently start tracking." One isolated word is not enough.
 
-Follow [planning-aware routing and optional tracking](../../references/planning-and-tracking.md). Do not mention tracking for a simple one-shot request, ordinary phase prose, or an incidental planning word without involved tracked-work context. Most Product Design work does not need issue tracking.
+Follow planning-aware routing and optional tracking at `PLUGIN_ROOT/references/planning-and-tracking.md`. Do not mention tracking for a simple one-shot request, ordinary phase prose, or an incidental planning word without involved tracked-work context. Most Product Design work does not need issue tracking.
 
 ## Prerequisites
 

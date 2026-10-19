@@ -4,7 +4,7 @@
     {
       "id": 1,
       "name": "full-new-service-state-machine",
-      "prompt": "Crée un service multi-écran sans référence visuelle.",
+      "prompt": "For the product-design plugin at target.path . (repository root), explain the workflow for this hypothetical request: Create a multi-screen service without a visual reference. Do not execute tools for generation, application edits, research, captures, tracking or deployment; describe transitions and blockers only.",
       "expected_sequence": [
         "index",
         "get-context product/UX/UI and service blueprint",
@@ -24,12 +24,73 @@
         "Image Gen multi-screen composite",
         "N narrow screen columns",
         "unapproved screen set"
-      ]
+      ],
+      "subject": "plugin-integration-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "plugin",
+        "path": ".",
+        "execution": "explain"
+      },
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:plugin-integration",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "plugin.json",
+          "skills/index/SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "assertions": [
+        "The plan begins at index and a brief covering Product/UX/UI responsibilities.",
+        "The plan includes a shared service blueprint before journey comparison.",
+        "The plan freezes full-evidence for the multi-step scope regardless of risk.",
+        "The plan defines three complete comparable journey plans.",
+        "Each planned journey contains separate outcome and critical-recovery screen sources.",
+        "The plan presents three labeled complete board pages before selection.",
+        "The plan corrects only the selected source set after selection.",
+        "The plan requires explicit corrected ordered-set approval before G4.",
+        "The plan requires G4 before image-to-code.",
+        "The plan schedules design-qa after rendered implementation.",
+        "The plan rejects generated multi-screen composites.",
+        "The plan rejects narrow equal screenshot columns.",
+        "The planned handoff specifies the exact invocation `load skills product-design:get-context` for the get-context step.",
+        "The planned handoff specifies the exact invocation `load skills product-design:ideate` for the ideate step.",
+        "The planned handoff specifies the exact invocation `load skills product-design:image-to-code` for the image-to-code step.",
+        "The planned handoff specifies the exact invocation `load skills product-design:design-qa` for the design-qa step.",
+        "The response labels all operational sequence steps planned or not run rather than completed."
+      ],
+      "expected_output": "An explain-only integration plan preserving expected_sequence order and forbidden boundaries. The plan begins at index and a brief covering Product/UX/UI responsibilities. The plan includes a shared service blueprint before journey comparison. The plan freezes full-evidence for the multi-step scope regardless of risk. The plan defines three complete comparable journey plans. Each planned journey contains separate outcome and critical-recovery screen sources. The plan presents three labeled complete board pages before selection. The plan corrects only the selected source set after selection. The plan requires explicit corrected ordered-set approval before G4. The plan requires G4 before image-to-code. The plan schedules design-qa after rendered implementation. The plan rejects generated multi-screen composites. The plan rejects narrow equal screenshot columns. No generation, implementation, research, rendered QA or deployment execution is claimed."
     },
     {
       "id": 2,
       "name": "single-screen-short-path",
-      "prompt": "Crée uniquement une modale sans autre état.",
+      "prompt": "For the product-design plugin at target.path . (repository root), explain the workflow for this hypothetical request: Create only a modal with no other state. Do not execute tools for generation, application edits, research, captures, tracking or deployment; describe transitions and blockers only.",
       "expected_sequence": [
         "index",
         "get-context",
@@ -40,12 +101,67 @@
       ],
       "forbidden": [
         "manufactured journey board"
-      ]
+      ],
+      "subject": "plugin-integration-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "plugin",
+        "path": ".",
+        "execution": "explain"
+      },
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:plugin-integration",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "plugin.json",
+          "skills/index/SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "assertions": [
+        "The plan retains the modal as an isolated single-screen target.",
+        "The plan compares three directions for the same modal state.",
+        "The plan waits for user direction selection before build.",
+        "The plan requires approved source pixels and scoped G4 before image-to-code.",
+        "The plan schedules design-qa after rendering.",
+        "The plan does not manufacture a multi-step journey board.",
+        "The planned handoff specifies the exact invocation `load skills product-design:get-context` for the get-context step.",
+        "The planned handoff specifies the exact invocation `load skills product-design:ideate` for the ideate step.",
+        "The planned handoff specifies the exact invocation `load skills product-design:image-to-code` for the image-to-code step.",
+        "The planned handoff specifies the exact invocation `load skills product-design:design-qa` for the design-qa step.",
+        "The response labels all operational sequence steps planned or not run rather than completed."
+      ],
+      "expected_output": "An explain-only integration plan preserving expected_sequence order and forbidden boundaries. The plan retains the modal as an isolated single-screen target. The plan compares three directions for the same modal state. The plan waits for user direction selection before build. The plan requires approved source pixels and scoped G4 before image-to-code. The plan schedules design-qa after rendering. The plan does not manufacture a multi-step journey board. No generation, implementation, research, rendered QA or deployment execution is claimed."
     },
     {
       "id": 3,
       "name": "research-before-unsupported-service-claims",
-      "prompt": "Crée un service à trois personas sans recherche accessible.",
+      "prompt": "For the product-design plugin at target.path . (repository root), explain the workflow for this hypothetical request: Create a service for three personas with no research available. Do not execute tools for generation, application edits, research, captures, tracking or deployment; describe transitions and blockers only.",
       "expected_sequence": [
         "evidence classification",
         "assumptions ledger",
@@ -55,12 +171,67 @@
       "forbidden": [
         "claim user validation",
         "invent research findings"
-      ]
+      ],
+      "subject": "plugin-integration-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "plugin",
+        "path": ".",
+        "execution": "explain"
+      },
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:plugin-integration",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "plugin.json",
+          "skills/index/SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "assertions": [
+        "The response classifies missing research as an evidence gap.",
+        "The plan labels unsupported persona claims in an assumptions ledger.",
+        "The plan treats the service blueprint as a hypothesis.",
+        "The plan retains complementary persona responsibility lanes.",
+        "The plan requires three complete comparable journey source sets if ideation proceeds.",
+        "The response does not invent research findings.",
+        "The response does not claim user validation from generated sources.",
+        "The planned handoff specifies the exact invocation `load skills product-design:get-context` for the get-context step.",
+        "The planned handoff specifies the exact invocation `load skills product-design:research` for the research step.",
+        "The planned handoff specifies the exact invocation `load skills product-design:ideate` for the ideate step.",
+        "The response labels all operational sequence steps planned or not run rather than completed."
+      ],
+      "expected_output": "An explain-only integration plan preserving expected_sequence order and forbidden boundaries. The response classifies missing research as an evidence gap. The plan labels unsupported persona claims in an assumptions ledger. The plan treats the service blueprint as a hypothesis. The plan retains complementary persona responsibility lanes. The plan requires three complete comparable journey source sets if ideation proceeds. The response does not invent research findings. The response does not claim user validation from generated sources. No generation, implementation, research, rendered QA or deployment execution is claimed."
     },
     {
       "id": 4,
       "name": "url-clone-unchanged",
-      "prompt": "Clone fidèlement une URL existante.",
+      "prompt": "For the product-design plugin at target.path . (repository root), explain the workflow for this hypothetical request: Faithfully clone an existing URL. Do not execute tools for generation, application edits, research, captures, tracking or deployment; describe transitions and blockers only.",
       "expected_sequence": [
         "index",
         "get-context",
@@ -69,12 +240,64 @@
       ],
       "forbidden": [
         "journey boards unless redesign requested"
-      ]
+      ],
+      "subject": "plugin-integration-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "plugin",
+        "path": ".",
+        "execution": "explain"
+      },
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:plugin-integration",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "plugin.json",
+          "skills/index/SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "assertions": [
+        "The plan routes faithful cloning through get-context to url-to-code.",
+        "The plan preserves exact source assets and layout rather than redesigning.",
+        "The plan schedules source/render design-qa.",
+        "The plan does not impose journey-board competition without a redesign request.",
+        "The planned handoff specifies the exact invocation `load skills product-design:get-context` for the get-context step.",
+        "The planned handoff specifies the exact invocation `load skills product-design:url-to-code` for the url-to-code step.",
+        "The planned handoff specifies the exact invocation `load skills product-design:design-qa` for the design-qa step.",
+        "The response labels all operational sequence steps planned or not run rather than completed."
+      ],
+      "expected_output": "An explain-only integration plan preserving expected_sequence order and forbidden boundaries. The plan routes faithful cloning through get-context to url-to-code. The plan preserves exact source assets and layout rather than redesigning. The plan schedules source/render design-qa. The plan does not impose journey-board competition without a redesign request. No generation, implementation, research, rendered QA or deployment execution is claimed."
     },
     {
       "id": 5,
       "name": "annotation-loop",
-      "prompt": "J'ai fini les annotations du prototype.",
+      "prompt": "For the product-design plugin at target.path . (repository root), explain the workflow for this hypothetical request: I have finished annotating the prototype. Do not execute tools for generation, application edits, research, captures, tracking or deployment; describe transitions and blockers only.",
       "expected_sequence": [
         "annotate",
         "capture annotated regions",
@@ -84,12 +307,66 @@
       ],
       "forbidden": [
         "redesign unrelated UI"
-      ]
+      ],
+      "subject": "plugin-integration-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "plugin",
+        "path": ".",
+        "execution": "explain"
+      },
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:plugin-integration",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "plugin.json",
+          "skills/index/SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "assertions": [
+        "The plan routes pending annotation feedback to annotate.",
+        "The plan processes inbox records oldest first.",
+        "The plan reproduces each annotation route and viewport before capture.",
+        "The plan inspects a crop of the annotated region before editing.",
+        "The plan limits each edit to the annotation request.",
+        "The plan recaptures the same region after correction.",
+        "The plan moves a record to processed only after verification.",
+        "The plan does not redesign unrelated UI.",
+        "The planned handoff specifies the exact invocation `load skills product-design:annotate` for the annotate step.",
+        "The response labels all operational sequence steps planned or not run rather than completed."
+      ],
+      "expected_output": "An explain-only integration plan preserving expected_sequence order and forbidden boundaries. The plan routes pending annotation feedback to annotate. The plan processes inbox records oldest first. The plan reproduces each annotation route and viewport before capture. The plan inspects a crop of the annotated region before editing. The plan limits each edit to the annotation request. The plan recaptures the same region after correction. The plan moves a record to processed only after verification. The plan does not redesign unrelated UI. No generation, implementation, research, rendered QA or deployment execution is claimed."
     },
     {
       "id": 6,
       "name": "imagegen-capability-contract",
-      "prompt": "Génère les concepts avec le provider disponible.",
+      "prompt": "For the product-design plugin at target.path . (repository root), explain the workflow for this hypothetical request: Generate the concepts using the available provider. Do not execute tools for generation, application edits, research, captures, tracking or deployment; describe transitions and blockers only.",
       "expected_sequence": [
         "target viewport aspect ratio",
         "low quality when supported",
@@ -99,12 +376,65 @@
       "forbidden": [
         "unsupported 1280x1024 default",
         "Promise.all final image calls"
-      ]
+      ],
+      "subject": "plugin-integration-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "plugin",
+        "path": ".",
+        "execution": "explain"
+      },
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:plugin-integration",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "plugin.json",
+          "skills/index/SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "assertions": [
+        "The plan matches image aspect ratio to the target viewport.",
+        "The plan requests low quality only when supported.",
+        "Each planned image call produces one separate screen.",
+        "The plan keeps image calls sequential within a variant.",
+        "The plan assembles three complete board pages from separate sources.",
+        "The plan does not silently impose unsupported 1280x1024 dimensions.",
+        "The plan does not parallelize dependent final screen calls within one variant.",
+        "The planned handoff specifies the exact invocation `load skills product-design:ideate` for the ideate step.",
+        "The response labels all operational sequence steps planned or not run rather than completed."
+      ],
+      "expected_output": "An explain-only integration plan preserving expected_sequence order and forbidden boundaries. The plan matches image aspect ratio to the target viewport. The plan requests low quality only when supported. Each planned image call produces one separate screen. The plan keeps image calls sequential within a variant. The plan assembles three complete board pages from separate sources. The plan does not silently impose unsupported 1280x1024 dimensions. The plan does not parallelize dependent final screen calls within one variant. No generation, implementation, research, rendered QA or deployment execution is claimed."
     },
     {
       "id": 7,
       "name": "low-risk-end-to-end-product-handoff",
-      "prompt": "@Product Design explore trois façons de chercher, comparer et réserver un mentor, puis retrouver la confirmation. Risque faible. Une landing ne suffit pas.",
+      "prompt": "For the product-design plugin at target.path . (repository root), explain the workflow for this hypothetical request: @Product Design explore three ways to find, compare, and book a mentor, then find the confirmation. Low risk. A landing page is not enough. Do not execute tools for generation, application edits, research, captures, tracking or deployment; describe transitions and blockers only.",
       "expected_sequence": [
         "index",
         "get-context shared scenario and complete start/end",
@@ -121,12 +451,71 @@
         "three home anchors declared complete",
         "single-screen approval expanded to product build",
         "user research claim from generated boards"
-      ]
+      ],
+      "subject": "plugin-integration-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "plugin",
+        "path": ".",
+        "execution": "explain"
+      },
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:plugin-integration",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "plugin.json",
+          "skills/index/SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "assertions": [
+        "Each of three planned mentoring journeys covers find, compare, booking and retrievable confirmation.",
+        "Each planned journey includes critical recovery.",
+        "The plan requires separate sources for every required state before comparison.",
+        "The plan presents three complete comparable board pages before journey selection.",
+        "The plan requires explicit approval of the complete corrected ordered source set before G4.",
+        "The plan limits build to explicit G4 scope.",
+        "The plan schedules design-qa for every implemented state.",
+        "The response does not declare three home anchors complete.",
+        "The response does not expand single-screen approval into whole-product authorization.",
+        "The response does not infer user research from generated boards.",
+        "The planned handoff specifies the exact invocation `load skills product-design:get-context` for the get-context step.",
+        "The planned handoff specifies the exact invocation `load skills product-design:ideate` for the ideate step.",
+        "The planned handoff specifies the exact invocation `load skills product-design:image-to-code` for the image-to-code step.",
+        "The planned handoff specifies the exact invocation `load skills product-design:design-qa` for the design-qa step.",
+        "The response labels all operational sequence steps planned or not run rather than completed."
+      ],
+      "expected_output": "An explain-only integration plan preserving expected_sequence order and forbidden boundaries. Each of three planned mentoring journeys covers find, compare, booking and retrievable confirmation. Each planned journey includes critical recovery. The plan requires separate sources for every required state before comparison. The plan presents three complete comparable board pages before journey selection. The plan requires explicit approval of the complete corrected ordered source set before G4. The plan limits build to explicit G4 scope. The plan schedules design-qa for every implemented state. The response does not declare three home anchors complete. The response does not expand single-screen approval into whole-product authorization. The response does not infer user research from generated boards. No generation, implementation, research, rendered QA or deployment execution is claimed."
     },
     {
       "id": 8,
       "name": "value-intent-proactivity-through-build",
-      "prompt": "@Product Design explore un service multirôle avec intentions dans le workspace central, agents qui préparent/exécutent sous mandat et présentation client éditable. Conserve les responsabilités et le retour d’expérience fourni puis montre les parcours avant le code.",
+      "prompt": "For the product-design plugin at target.path . (repository root), explain the workflow for this hypothetical request: @Product Design explore a multi-role service with intents in the central workspace, agents that prepare/execute under a mandate, and an editable client presentation. Preserve the supplied responsibilities and feedback, then show the journeys before coding. Do not execute tools for generation, application edits, research, captures, tracking or deployment; describe transitions and blockers only.",
       "expected_sequence": [
         "index",
         "get-context recover inputs, value and responsibilities",
@@ -143,7 +532,363 @@
         "exceptions-only proactivity and endless run approval feed",
         "native deck claim from PNG screens",
         "measured UX/team replacement without evidence"
-      ]
+      ],
+      "subject": "plugin-integration-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "plugin",
+        "path": ".",
+        "execution": "explain"
+      },
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:plugin-integration",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "plugin.json",
+          "skills/index/SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "assertions": [
+        "The plan preserves supplied responsibilities and feedback before stack or palette selection.",
+        "The plan maps material answers or evidence to concrete Product/UX/UI decisions.",
+        "The plan places intents in the principal task workspace.",
+        "The plan preserves direct controls and manual edits during conversational responses.",
+        "The plan includes useful preparation for future opportunities as well as exceptions.",
+        "The plan bounds eligible agent execution by mandate and stop conditions.",
+        "The plan requires native editable presentation content rather than PNG-only deck claims.",
+        "The plan keeps app, organization and client brands distinct.",
+        "The plan requires three complete strategy journeys before coding.",
+        "The plan reviews business-data and effect-state semantics before source approval.",
+        "The plan requires explicit approval of the complete corrected ordered source set.",
+        "The plan requires explicit G4 build scope.",
+        "The response distinguishes task-validity checks from measured user benefit.",
+        "The planned handoff specifies the exact invocation `load skills product-design:get-context` for the get-context step.",
+        "The planned handoff specifies the exact invocation `load skills product-design:ideate` for the ideate step.",
+        "The planned handoff specifies the exact invocation `load skills product-design:image-to-code` for the image-to-code step.",
+        "The planned handoff specifies the exact invocation `load skills product-design:design-qa` for the design-qa step.",
+        "The response labels all operational sequence steps planned or not run rather than completed."
+      ],
+      "expected_output": "An explain-only integration plan preserving expected_sequence order and forbidden boundaries. The plan preserves supplied responsibilities and feedback before stack or palette selection. The plan maps material answers or evidence to concrete Product/UX/UI decisions. The plan places intents in the principal task workspace. The plan preserves direct controls and manual edits during conversational responses. The plan includes useful preparation for future opportunities as well as exceptions. The plan bounds eligible agent execution by mandate and stop conditions. The plan requires native editable presentation content rather than PNG-only deck claims. The plan keeps app, organization and client brands distinct. The plan requires three complete strategy journeys before coding. The plan reviews business-data and effect-state semantics before source approval. The plan requires explicit approval of the complete corrected ordered source set. The plan requires explicit G4 build scope. The response distinguishes task-validity checks from measured user benefit. No generation, implementation, research, rendered QA or deployment execution is claimed."
+    },
+    {
+      "id": 9,
+      "name": "instruction-consent-and-source-reuse-handoff",
+      "subject": "plugin-integration-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "plugin",
+        "path": ".",
+        "execution": "explain"
+      },
+      "prompt": "For the product-design plugin at target.path . (repository root), explain the workflow for this hypothetical request: @Product Design explain the build handoff for our approved multi-step sources in an existing app with supplied brand assets. Annotation installation is not authorized. Do not execute tools for generation, application edits, research, captures, tracking or deployment; describe transitions and blockers only.",
+      "expected_sequence": [
+        "get-context applicable brief and involved-work G1",
+        "approved complete sources and explicit G4 scope",
+        "source/design-system asset reuse",
+        "necessary approved routes with mock behavior",
+        "design-qa with honest console capability limits",
+        "verified ordinary handoff; annotation absent and optional"
+      ],
+      "forbidden": [
+        "regenerate supplied logo",
+        "inject without confirmation",
+        "block ordinary handoff solely on optional annotation",
+        "claim console checked when unavailable"
+      ],
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:plugin-integration",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "plugin.json",
+          "skills/index/SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "assertions": [
+        "The plan checks applicable involved-work G1 without re-asking the supplied brief.",
+        "The plan requires approved complete sources and explicit G4 scope.",
+        "The plan reuses supplied brand assets rather than regenerating the logo.",
+        "The plan uses necessary approved routes with realistic mock behavior.",
+        "The plan does not inject annotation without consent.",
+        "The plan does not block ordinary verified handoff solely on absent optional annotation.",
+        "The response does not claim unavailable console checks ran.",
+        "The planned handoff specifies the exact invocation `load skills product-design:get-context` for the get-context step.",
+        "The planned handoff specifies the exact invocation `load skills product-design:image-to-code` for the image-to-code step.",
+        "The planned handoff specifies the exact invocation `load skills product-design:design-qa` for the design-qa step.",
+        "The response labels all operational sequence steps planned or not run rather than completed."
+      ],
+      "expected_output": "An explain-only integration plan preserving expected_sequence order and forbidden boundaries. The plan checks applicable involved-work G1 without re-asking the supplied brief. The plan requires approved complete sources and explicit G4 scope. The plan reuses supplied brand assets rather than regenerating the logo. The plan uses necessary approved routes with realistic mock behavior. The plan does not inject annotation without consent. The plan does not block ordinary verified handoff solely on absent optional annotation. The response does not claim unavailable console checks ran. No generation, implementation, research, rendered QA or deployment execution is claimed."
+    },
+    {
+      "id": 10,
+      "name": "discovery-counterevidence-no-build-pipeline",
+      "subject": "plugin-integration-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "plugin",
+        "path": ".",
+        "execution": "explain"
+      },
+      "prompt": "For the product-design plugin at target.path . (repository root), explain the workflow for this hypothetical request: @Product Design advise whether to build an AI summary portal. Our current manual notes are reliable; observations show AI checking and correction take longer without improving results. Do not generate anything. Do not execute tools for generation, application edits, research, captures, tracking or deployment; describe transitions and blockers only.",
+      "expected_sequence": [
+        "recover current alternative and observed counterevidence",
+        "prioritize value uncertainty and total effort",
+        "recommend explicit change/defer/no build or next discriminating test",
+        "state no measured gain from prototype fidelity"
+      ],
+      "forbidden": [
+        "automatic scaffold",
+        "forced image generation",
+        "invented saved-time metric",
+        "manufactured approval or G6 pass"
+      ],
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:plugin-integration",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "plugin.json",
+          "skills/index/SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "assertions": [
+        "The plan preserves reliable manual notes as the current alternative.",
+        "The response treats longer AI correction effort as contrary value evidence.",
+        "The plan evaluates total effort rather than generation speed alone.",
+        "The response recommends defer, change, no build or a discriminating test instead of automatic scaffolding.",
+        "The plan does not force image generation.",
+        "The response does not invent saved-time metrics.",
+        "The response does not manufacture approval or a G6 pass.",
+        "The planned handoff specifies the exact invocation `load skills product-design:get-context` for the get-context step.",
+        "The response labels all operational sequence steps planned or not run rather than completed."
+      ],
+      "expected_output": "An explain-only integration plan preserving expected_sequence order and forbidden boundaries. The plan preserves reliable manual notes as the current alternative. The response treats longer AI correction effort as contrary value evidence. The plan evaluates total effort rather than generation speed alone. The response recommends defer, change, no build or a discriminating test instead of automatic scaffolding. The plan does not force image generation. The response does not invent saved-time metrics. The response does not manufacture approval or a G6 pass. No generation, implementation, research, rendered QA or deployment execution is claimed."
+    },
+    {
+      "id": 11,
+      "name": "research-to-review-test-validity-not-measured-value",
+      "subject": "plugin-integration-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "plugin",
+        "path": ".",
+        "execution": "explain"
+      },
+      "prompt": "For the product-design plugin at target.path . (repository root), explain the workflow for this hypothetical request: @Product Design explain how a planned value test should carry into an approved mock prototype and QA. Participant access and baseline measurements do not exist yet. Do not execute tools for generation, application edits, research, captures, tracking or deployment; describe transitions and blockers only.",
+      "expected_sequence": [
+        "current alternative and test hypothesis",
+        "baseline/outcome/guardrail and owner with unknowns",
+        "approved G4 evaluation slice and realistic mock/recovery states",
+        "source/render execution quality separate from product-test validity",
+        "participant study not run; no G6 claim"
+      ],
+      "forbidden": [
+        "invented respondents or baseline",
+        "user validation from agent walkthrough",
+        "production integration during prototype review"
+      ],
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:plugin-integration",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "plugin.json",
+          "skills/index/SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "assertions": [
+        "The plan preserves the current alternative and value-test hypothesis.",
+        "The plan identifies baseline, outcome, guardrail and decision owner.",
+        "The response labels absent participant access unresolved.",
+        "The response labels absent baseline measurements unresolved.",
+        "The plan carries the test slice into approved G4 prototype scope.",
+        "The plan includes realistic mock recovery states.",
+        "The response separates source/render execution quality from product-test validity.",
+        "The response labels the participant study not run.",
+        "The response does not infer user validation from an agent walkthrough.",
+        "The plan does not add production integration during prototype review.",
+        "The response does not claim G6 readiness.",
+        "The planned handoff specifies the exact invocation `load skills product-design:research` for the research step.",
+        "The planned handoff specifies the exact invocation `load skills product-design:image-to-code` for the image-to-code step.",
+        "The planned handoff specifies the exact invocation `load skills product-design:design-qa` for the design-qa step.",
+        "The response labels all operational sequence steps planned or not run rather than completed."
+      ],
+      "expected_output": "An explain-only integration plan preserving expected_sequence order and forbidden boundaries. The plan preserves the current alternative and value-test hypothesis. The plan identifies baseline, outcome, guardrail and decision owner. The response labels absent participant access unresolved. The response labels absent baseline measurements unresolved. The plan carries the test slice into approved G4 prototype scope. The plan includes realistic mock recovery states. The response separates source/render execution quality from product-test validity. The response labels the participant study not run. The response does not infer user validation from an agent walkthrough. The plan does not add production integration during prototype review. The response does not claim G6 readiness. No generation, implementation, research, rendered QA or deployment execution is claimed."
+    },
+    {
+      "id": 12,
+      "name": "executable-build-qa-freshness-handoff",
+      "prompt": "For the product-design plugin at target.path . (repository root), explain the workflow for this hypothetical request: In an involved approved prototype workflow, publish/consume G4 readiness, build, then canonical QA; a required recovery capture is missing and later a code file changes. Explain the correct phase transitions without tools. Do not execute tools for generation, application edits, research, captures, tracking or deployment; describe transitions and blockers only.",
+      "expected_sequence": [
+        "Load index and focused contracts",
+        "Check actual approved source/G4 through prototype-build adapter and fresh consume",
+        "Save canonical blocked QA for missing recovery, no fake G5",
+        "Capture/recompare all required states and retain history",
+        "Bind G5 to canonical QA, publish and freshly consume review-handoff",
+        "Reject stale code/Markdown-only completion"
+      ],
+      "assertions": [
+        "The plan publishes prototype-build readiness against actual approved sources and scoped G4.",
+        "The plan requires fresh --consume before app mutation.",
+        "The response does not treat source-selection readiness as build permission.",
+        "The plan saves canonical blocked QA for the missing recovery capture.",
+        "The plan preserves blocked attempt history during correction.",
+        "The plan requires all required-state captures and same-state comparisons before passing QA.",
+        "The plan binds G5 to authoritative canonical QA.",
+        "The plan publishes review-handoff before fresh consumption.",
+        "The response rejects stale implementation evidence after a code change.",
+        "The response rejects Markdown-only completion authority.",
+        "The response does not claim browser QA was executed.",
+        "The response does not claim user research was conducted.",
+        "The response does not treat declared approval as authenticated human authorization.",
+        "The planned handoff specifies the exact invocation `load skills product-design:image-to-code` for the image-to-code step.",
+        "The planned handoff specifies the exact invocation `load skills product-design:design-qa` for the design-qa step.",
+        "The response labels all operational sequence steps planned or not run rather than completed."
+      ],
+      "subject": "plugin-integration-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "plugin",
+        "path": ".",
+        "execution": "explain"
+      },
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:plugin-integration",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "plugin.json",
+          "skills/index/SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "expected_output": "An explain-only integration plan preserving expected_sequence order and forbidden boundaries. The plan publishes prototype-build readiness against actual approved sources and scoped G4. The plan requires fresh --consume before app mutation. The response does not treat source-selection readiness as build permission. The plan saves canonical blocked QA for the missing recovery capture. The plan preserves blocked attempt history during correction. The plan requires all required-state captures and same-state comparisons before passing QA. The plan binds G5 to authoritative canonical QA. The plan publishes review-handoff before fresh consumption. The response rejects stale implementation evidence after a code change. The response rejects Markdown-only completion authority. The response does not claim browser QA was executed. The response does not claim user research was conducted. The response does not treat declared approval as authenticated human authorization. No generation, implementation, research, rendered QA or deployment execution is claimed.",
+      "forbidden": []
     }
   ]
 }

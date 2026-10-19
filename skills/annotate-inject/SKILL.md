@@ -1,16 +1,22 @@
 ---
 name: annotate-inject
-description: Install and verify browser annotation in an existing/user-provided boilerplate (Next.js, Nuxt, Astro, Vite, or port) after the user explicitly requests it or confirms the proposed non-trivial codebase change. Bundled Product Design templates already include annotation. The agent starts/reuses the dev server, verifies toggle + POST + inbox write, keeps it running, and returns the URL; never delegate startup commands to the user.
+description: Adds and verifies development-only browser annotation in an existing application. Use when installation is explicitly requested or confirmed; generated Product Design templates already include it.
 ---
 
 # Annotate Inject
+
+## Skill loading and shared resources
+
+For another Skill, use the instruction `load skills product-design:{name}` with its actual unqualified directory name substituted for {name}. Use the exposed skill-loading tool; do not open a sibling SKILL.md as a substitute. Load only the focused workflow required by the current step.
+
+This Skill belongs to the complete Product Design plugin, not a standalone export. Resolve `PLUGIN_ROOT` two levels above this Skill directory. Paths written as `PLUGIN_ROOT/references/...` identify canonical shared policies in that bundle; read them only when the stated condition applies. Local `references/...` remain relative to this Skill. Source and packaging checks verify these paths and their transitive dependencies; do not copy or edit parallel policy versions manually.
 
 The bundled prototype templates (`product-design:get-context` → any framework via `bootstrap-prototype.mjs`) already ship the annotation overlay wired in. This skill is for the other case: the user has their own boilerplate, an existing codebase, or a design-system-provided starter (see `existing-codebase-edits.md`), and wants the same draggable-rectangle-plus-note annotation loop available there.
 
 ## Critical Overrides
 
-- Refer to the Plugin router [`product-design:index`](../index/SKILL.md) before proceeding.
-- Follow [../../references/critical-overrides.md](../../references/critical-overrides.md) and [../../references/existing-codebase-edits.md](../../references/existing-codebase-edits.md).
+- Before proceeding, use `load skills product-design:index` for routing.
+- Follow critical overrides at `PLUGIN_ROOT/references/critical-overrides.md` and existing codebase edits at `PLUGIN_ROOT/references/existing-codebase-edits.md`.
 
 ## Consent and early blockers
 
@@ -24,7 +30,7 @@ The bundled prototype templates (`product-design:get-context` → any framework 
 
 Every port shares the same contract:
 
-1. A dev-only server endpoint at `/api/goose-annotate` (or framework-equivalent path) accepts `POST` with a small JSON body (`bbox`, `viewport`, `route`, `components`, `note`) — no screenshots, no binary payloads.
+1. A dev-only server endpoint accepts `POST` with a small JSON body (`bbox`, `viewport`, `route`, `components`, `note`) — no screenshots, no binary payloads. Next.js/Nuxt/Astro use `/api/goose-annotate`; the current Vite port and template use legacy `/__goose-annotate`. Preserve that paired client/server route until a coordinated migration is implemented; do not claim it already uses the preferred path.
 2. It writes each record as its own file under `<project-root>/.goose/annotations/inbox/*.json`.
 3. A client-side overlay component lets a reviewer drag a rectangle, add a note, and POST it there.
 4. `product-design:annotate` (this plugin's processing skill) picks up pending records on a later turn: screenshots the same route/viewport, crops to the bbox, edits, and moves the record to `processed/`.
@@ -58,7 +64,7 @@ Before installing, identify what the existing project actually is — do not ass
    | Astro | `goose-annotate.ts`, `AnnotationOverlay.tsx`, `annotate.css` | `src/pages/api/goose-annotate.ts`, `src/components/*` |
    | Vite (user's own, not the bundled template) | `vite-annotate-plugin.mjs`, `AnnotationOverlay.jsx`, `annotate.css` | project root, `src/annotate/*` |
 
-3. **Never name the server route/folder with a leading underscore** (e.g. `__goose-annotate`). This was verified against a real build: Next.js App Router treats `_`-prefixed folders as private and excludes them from routing entirely — a route under `__goose-annotate/` silently never registers. Use `goose-annotate` (no underscore) for the URL path across all frameworks for consistency.
+3. **Never name a Next.js route/folder with a leading underscore**: App Router treats those folders as private and excludes them from routing. Prefer `goose-annotate` without underscores for new ports. The existing Vite middleware is a documented legacy exception; its overlay, middleware and tests still use `/__goose-annotate`. Do not rename only one side or imply the proposed coordinated migration has run.
 4. Mount the overlay once, client-side only, near the app's root (root layout for Next.js/Astro, `app.vue` for Nuxt) — guarded so it never renders outside development. Do not replace or reorganize anything already there; add alongside existing providers/wrappers.
 5. Add `.goose/` to the project's `.gitignore` if not already present.
 6. Verify by actually running both modes, not by reading the code:

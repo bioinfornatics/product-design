@@ -1,9 +1,15 @@
 ---
 name: user-context
-description: Load or manage optional Product Design context stored locally for Goose. Use only when the user asks to set up, save, recall, inspect, or update durable product/design references or preferences; ordinary Product Design workflows do not require persisted context.
+description: Reads or saves optional local Product Design references and preferences. Use when the user asks to set up, remember, recall, inspect, or update durable design context; ordinary workflows do not require persistence.
 ---
 
 # User Context
+
+## Skill loading and shared resources
+
+For another Skill, use the instruction `load skills product-design:{name}` with its actual unqualified directory name substituted for {name}. Use the exposed skill-loading tool; do not open a sibling SKILL.md as a substitute. Load only the focused workflow required by the current step.
+
+This Skill belongs to the complete Product Design plugin, not a standalone export. Resolve `PLUGIN_ROOT` two levels above this Skill directory. Paths written as `PLUGIN_ROOT/references/...` identify canonical shared policies in that bundle; read them only when the stated condition applies. Local `references/...` remain relative to this Skill. Source and packaging checks verify these paths and their transitive dependencies; do not copy or edit parallel policy versions manually.
 
 User Context stores the product and design references a designer uses often, so future Product Design work starts from the right sources.
 
@@ -20,10 +26,11 @@ Use this skill when the user asks to:
 
 ## Critical Overrides
 
-- Refer to the Plugin router [`product-design:index`](../index/SKILL.md) before proceeding.
-- Follow [../../references/critical-overrides.md](../../references/critical-overrides.md).
-- Before offering onboarding or saving context for future conversations, confirm that local shell access is available, `$GOOSE_HOME` can be resolved (default `~/.config/goose`), and `$GOOSE_HOME/.local/state/product-design/` exists and is writable or can be created in a writable parent directory. If `user-context.md` already exists, confirm that it is writable too.
-- If any check cannot be completed or fails, persistent context is unavailable. Do not offer saved-context onboarding or claim that new context was saved for future conversations. If the user asks to save something, explain that it can be used in the current conversation but not saved for future conversations.
+- Before proceeding, use `load skills product-design:index` for routing.
+- Follow critical overrides at `PLUGIN_ROOT/references/critical-overrides.md`.
+- For reading known existing context, confirm local shell access, resolve `$GOOSE_HOME` (default `~/.config/goose`), and run the read-only preflight against a readable file. Do not require write access or create a directory for a read request.
+- Before offering saved-context onboarding or saving, also confirm `$GOOSE_HOME/.local/state/product-design/` is writable or has a writable parent, and an existing `user-context.md` is writable.
+- If writing is unavailable, do not offer persistence or claim a save. Continue using readable existing context and the current conversation. If reading is unavailable, disclose it; missing optional context does not block an otherwise complete workflow.
 
 ## Saved User Context
 

@@ -1,173 +1,186 @@
-# Product Design — instructions aux agents
+# Product Design — Agent Instructions
 
-Ce dépôt contient le plugin Goose **product-design**. Il transforme un brief, une URL ou une source visuelle en parcours, prototypes exécutables, revues et handoffs. Cette documentation décrit uniquement les composants réellement versionnés ici.
+This repository contains the Goose **product-design** plugin. It turns a brief, URL, or visual source into journeys, runnable prototypes, reviews, and handoffs. This documentation describes only the components actually versioned here.
 
-## Autorité et périmètre
+## Authority and scope
 
-- Respecter d'abord la demande utilisateur, puis les instructions du dépôt et du skill actif.
-- Le frontmatter et le corps de chaque fichier `skills/*/SKILL.md` constituent le contrat d'exécution du skill.
-- `references/critical-overrides.md` et `references/communication-protocol.md` s'appliquent à tout travail Product Design.
-- Pour une application existante, respecter son propre `AGENTS.md`, son design system et ses conventions avant les valeurs par défaut du plugin.
-- Ne pas présenter une capacité optionnelle comme intégrée. Navigateur, génération d'images, Figma, hébergement et Beads dépendent des outils disponibles dans la session.
-- Ne pas modifier le code ou les contrats d'un workflow en se fondant seulement sur ce résumé : lire les fichiers concernés.
+- Follow the user's request first, then the repository instructions and the active skill's instructions.
+- The frontmatter and body of each `skills/*/SKILL.md` file form the skill's execution contract.
+- `references/critical-overrides.md` and `references/communication-protocol.md` apply to all Product Design work.
+- For an existing application, follow its own `AGENTS.md`, design system, and conventions before the plugin's defaults.
+- Do not present an optional capability as built in. Browser, image generation, Figma, hosting, and Beads depend on the tools available in the session.
+- Do not modify code or workflow contracts based only on this summary: read the relevant files.
 
-## Architecture réelle
+## Actual architecture
 
-Le plugin est déclaratif et piloté par des skills :
+The plugin is declarative and skill-driven:
 
 ```text
 plugin.json
-  ├─ skills/                  contrats exécutés par Goose
-  ├─ references/              règles transversales et gates
-  ├─ templates/               starters Vite, Next.js, Nuxt et Astro
-  ├─ assets/annotate/         ports de l'overlay d'annotation
-  ├─ assets/beads-formulas/   suivi optionnel des étapes
-  ├─ scripts/                 bootstrap et validateurs
-  └─ tests/evals/             cas d'intégration versionnés
+  ├─ skills/                  contracts executed by Goose
+  ├─ references/              cross-cutting rules and gates
+  ├─ templates/               Vite, Next.js, Nuxt, and Astro starters
+  ├─ assets/annotate/         annotation overlay ports
+  ├─ assets/beads-formulas/   optional phase tracking
+  ├─ scripts/                 bootstrap and validators
+  └─ tests/evals/             versioned integration cases
 ```
 
-Après installation, Goose qualifie les skills avec `product-design:`. Les répertoires et leur frontmatter gardent les noms non qualifiés.
+After installation, Goose qualifies skills with `product-design:`. Directories and their frontmatter keep unqualified names.
 
 ### Skills
 
-| Skill | Responsabilité |
+| Skill | Responsibility |
 |---|---|
-| `product-design:index` | Point d'entrée et routeur ; à charger quand Product Design ou le plugin est explicitement nommé |
-| `product-design:get-context` | Établir le brief, la cible de design et l'issue utilisateur |
-| `product-design:user-context` | Lire ou sauvegarder les références et préférences durables |
-| `product-design:research` | Recherche UX sourcée sur les problèmes et frictions |
-| `product-design:ideate` | Comparer des parcours ou directions visuelles générés |
-| `product-design:audit` | Critique UX, visuelle et accessibilité d'une expérience existante |
-| `product-design:image-to-code` | Implémenter fidèlement une source visuelle approuvée |
-| `product-design:url-to-code` | Cloner fidèlement une URL en frontend local exécutable |
-| `product-design:design-qa` | Comparer le rendu codé et sa source visuelle |
-| `product-design:share` | Déployer uniquement sur demande et retourner une URL vérifiée |
-| `product-design:annotate-inject` | Ajouter l'annotation à un projet existant compatible |
-| `product-design:annotate` | Traiter les annotations en attente sur un projet en cours d'exécution |
-| `product-design:project-status` | Suivi Beads optionnel, jamais un gate ni une dépendance |
+| `product-design:index` | Entry point and router; load when Product Design or the plugin is explicitly named |
+| `product-design:get-context` | Establish the brief, design target, and user outcome |
+| `product-design:user-context` | Read or save persistent references and preferences |
+| `product-design:research` | Source-grounded UX research on problems and friction |
+| `product-design:ideate` | Compare generated journeys or visual directions |
+| `product-design:audit` | UX, visual design, and accessibility critique of an existing experience |
+| `product-design:image-to-code` | Faithfully implement an approved visual source |
+| `product-design:url-to-code` | Faithfully clone a URL into a runnable local frontend |
+| `product-design:design-qa` | Compare the coded rendering with its visual source |
+| `product-design:share` | Deploy only on request and return a verified URL |
+| `product-design:annotate-inject` | Add annotation to a compatible existing project |
+| `product-design:annotate` | Process pending annotations on a running project |
+| `product-design:project-status` | Optional Beads tracking, never a gate or dependency |
 
-## Routage et workflow canonique
+## Routing and canonical workflow
 
 ```text
 index → get-context → research / audit / ideate
-                    → image-to-code ou url-to-code
+                    → image-to-code or url-to-code
                     → design-qa
-                    → share, seulement si demandé
+                    → share, only if requested
 ```
 
-Tous les travaux ne parcourent pas toute la chaîne. Le routeur choisit le skill spécialisé ; il ne réalise pas son travail à sa place.
+Not all work goes through the entire chain. The router selects the specialized skill; it does not do that skill's work on its behalf.
 
-- Nouvelle interface sans référence : clarifier, produire trois options avec `ideate`, attendre un choix, puis construire.
-- Screenshot, mockup ou frame Figma sélectionné : `image-to-code`, puis `design-qa`.
-- « Clone cette URL » : capturer la source, `url-to-code`, puis `design-qa`.
-- « Redessine » ou « fais quelque chose comme cette URL » : capturer la source, idéer, attendre la sélection, puis construire.
-- Audit d'une expérience : `audit`. Comparaison source/rendu : `design-qa`. Ne pas confondre les deux.
-- Recherche d'un problème utilisateur : `research`, avec sources et distinction entre faits et inférences.
-- Déploiement : `share` uniquement si l'utilisateur demande de publier, héberger ou partager.
+- New interface without a reference: clarify, produce three options with `ideate`, wait for a choice, then build.
+- Selected screenshot, mockup, or Figma frame: `image-to-code`, then `design-qa`.
+- “Clone this URL”: capture the source, `url-to-code`, then `design-qa`.
+- “Redesign” or “make something like this URL”: capture the source, ideate, wait for selection, then build.
+- Experience audit: `audit`. Source/render comparison: `design-qa`. Do not confuse them.
+- Research into a user problem: `research`, with sources and a distinction between facts and inferences.
+- Deployment: `share` only if the user asks to publish, host, or share.
 
-### Invariants de conception et de build
+### Design and build invariants
 
-- **Pas de cible visuelle, pas de build.** Un brief complet ne remplace pas la sélection visuelle.
-- Un choix multi-écrans exige trois parcours complets de bout en bout avant sélection, même à faible risque. Une landing ou trois ancres ne suffisent pas. Réserver lean aux cibles explicitement mono-écran ; images individuelles jamais composites.
-- Après sélection, compléter/corriger seulement le set retenu puis obtenir approbation explicite liée aux hashes et handoff G4. Un journey board seul ne suffit pas.
-- Pour une vraie cible mono-écran, comparer trois directions du même écran, avec contenu, état et contraintes constants.
-- Dans un produit existant, inspecter d'abord les écrans analogues, composants, tokens, styles et interactions. Réutiliser avant d'inventer.
-- Un prototype valide le frontend et le parcours avec des données mock réalistes. Ne pas ajouter backend, auth réelle, schémas, migrations, services ou intégrations sans demande explicite de phase production.
-- Les interactions du parcours principal doivent fonctionner. Les contrôles périphériques peuvent rester visuels si cela est clairement hors périmètre.
-- Ne jamais simuler des assets visibles avec emoji, ASCII, texte, placeholder, CSS art ou SVG artisanal. Réutiliser la source, une bibliothèque d'icônes ou un outil de génération d'images disponible.
+- **No visual target, no build.** A complete brief does not replace visual selection.
+- A multi-screen choice requires three complete end-to-end journeys before selection, even at low risk. A landing page or three anchors are not enough. Reserve lean for explicitly single-screen targets; use individual images, never composites.
+- After selection, complete/correct only the selected set, then obtain explicit hash-bound approval and a G4 handoff. A journey board alone is not enough.
+- For a genuinely single-screen target, compare three directions for the same screen, keeping content, state, and constraints constant.
+- In an existing product, inspect analogous screens, components, tokens, styles, and interactions first. Reuse before inventing.
+- A prototype validates the frontend and journey using realistic mock data. Do not add a backend, real authentication, schemas, migrations, services, or integrations without an explicit production-phase request.
+- Main-journey interactions must work. Peripheral controls may remain visual-only if clearly out of scope.
+- Never simulate visible assets with emoji, ASCII, text, placeholders, CSS art, or handcrafted SVGs. Reuse the source, an icon library, or an available image-generation tool.
 
-## Gates de décision
+## Decision gates
 
-La définition normative est `references/product-decision-gates.md`. Pour un travail impliqué, enregistrer les décisions dans `<projet>/.gates/` avec critères, score, confiance, preuves, hypothèses, risques, alternatives rejetées, prochaine étape et propriétaire.
+The normative definition is `references/product-decision-gates.md`. For involved work, record decisions in `<project>/.gates/` with criteria, score, confidence, evidence, assumptions, risks, rejected alternatives, next step, and owner.
 
-| Gate | Passage |
+| Gate | Transition |
 |---|---|
-| G1 | Brief → idéation du parcours/visuel |
-| G2 | Trois parcours complets → parcours sélectionné, pas build |
-| G3 | Parcours sélectionné → ensemble détaillé d'écrans approuvé |
-| G4 | Direction sélectionnée → prototype |
-| G5 | Prototype → revue/handoff, avec qualité d'exécution et validité du test séparées |
-| G6 | Prototype validé → industrialisation |
+| G1 | Brief → journey/visual ideation |
+| G2 | Three complete journeys → selected journey, not build |
+| G3 | Selected journey → approved detailed screen set |
+| G4 | Selected direction → prototype |
+| G5 | Prototype → review/handoff, with execution quality and test validity kept separate |
+| G6 | Validated prototype → production implementation |
 | G7 | Production readiness |
 
-Un score ne compense jamais un critère dur manquant. Les verdicts sont `pass`, `conditional`, `experiment` ou `blocked`. Ne pas confondre approbation stakeholder, exécution technique et validation utilisateur.
+A score never compensates for a missing hard criterion. Verdicts are `pass`, `conditional`, `experiment`, or `blocked`. Do not confuse stakeholder approval, technical execution, and user validation.
 
-## Templates et framework
+## Templates and framework
 
-- `templates/prototype/` : Vite + React, défaut pour une revue jetable.
-- `templates/nextjs/` : Next.js lorsque le comportement Next est réellement à valider.
-- `templates/nuxt/` : Nuxt.
-- `templates/astro/` : Astro.
-- Résoudre le framework avec `get-context` avant de scaffold.
-- Créer un prototype via `scripts/bootstrap-prototype.mjs`, puis installer depuis la racine générée.
-- Les quatre templates embarquent déjà l'overlay d'annotation. Ne pas lancer `annotate-inject` sur un starter généré.
-- Les `templates/*/AGENTS.md` sont copiés dans le projet et donnent les consignes locales de prototype.
+- `templates/prototype/`: Vite + React, the default for a throwaway review.
+- `templates/nextjs/`: Next.js when Next behavior actually needs validation.
+- `templates/nuxt/`: Nuxt.
+- `templates/astro/`: Astro.
+- Resolve the framework with `get-context` before scaffolding.
+- Create a prototype with `scripts/bootstrap-prototype.mjs`, then install from the generated root.
+- All four templates already include the annotation overlay. Do not run `annotate-inject` on a generated starter.
+- `templates/*/AGENTS.md` files are copied into the project and provide local prototype instructions.
 
 ## Annotations
 
-Le mécanisme est local au projet généré ou injecté : overlay navigateur, endpoint de développement et fichiers sous `<projet>/.goose/annotations/`.
+The mechanism is local to the generated or injected project: browser overlay, development endpoint, and files under `<project>/.goose/annotations/`.
 
-- Utiliser `annotate-inject` seulement pour un projet utilisateur qui ne possède pas encore le mécanisme.
-- Détecter le framework et utiliser le port correspondant dans `assets/annotate/{vite,nextjs,nuxt,astro}/`.
-- Monter l'overlay côté client et seulement en développement. L'endpoint est `goose-annotate`, jamais un chemin préfixé par underscore.
-- Vérifier réellement le mode développement (requête acceptée et fichier écrit) et le build/serveur de production (endpoint absent ou refusé).
-- Avec `annotate`, traiter l'inbox du plus ancien au plus récent. Reproduire route et viewport, capturer et recadrer la bbox, effectuer le changement ciblé, recapturer, puis déplacer l'enregistrement vers `processed/`.
-- Pour une modification non triviale ou le dernier cycle avant handoff, relancer `design-qa`.
-- L'agent démarre ou réutilise le serveur et vérifie l'URL de revue ; ne pas déléguer ces commandes à l'utilisateur.
+- Use `annotate-inject` only for a user project that does not already have the mechanism.
+- Detect the framework and use the corresponding port in `assets/annotate/{vite,nextjs,nuxt,astro}/`.
+- Mount the overlay client-side and only in development. New ports and Next.js/Nuxt/Astro use `goose-annotate` without underscores; the current Vite middleware/template is a documented legacy `/__goose-annotate` exception pending coordinated migration. Never use an underscore-prefixed Next.js route folder or rename only one side of a working port.
+- Actually verify development mode (request accepted and file written) and the production build/server (endpoint absent or refused).
+- With `annotate`, process the inbox from oldest to newest. Reproduce the route and viewport, capture and crop the bbox, make the targeted change, recapture, then move the record to `processed/`.
+- For a non-trivial change or the last cycle before handoff, run `design-qa` again.
+- The agent starts or reuses the server and verifies the review URL; do not delegate these commands to the user.
 
-## User context et confidentialité
+## User context and privacy
 
-Le contexte durable est optionnel et Goose-local, par défaut sous `$GOOSE_HOME/.local/state/product-design/` (Goose home usuel : `~/.config/goose`). Lire `skills/user-context/SKILL.md` avant toute opération.
+Persistent context is optional and local to Goose, under `$GOOSE_HOME/.local/state/product-design/` by default (usual Goose home: `~/.config/goose`). Read `skills/user-context/SKILL.md` before any operation.
 
-- Si `user-context.md` existe, l'utiliser comme ancrage par défaut sans le confondre avec le brief courant.
-- L'initialisation et le preflight sont les scripts TypeScript compilés du skill ; ne pas inventer un stockage dans le dépôt du projet.
-- Copier les images sauvegardées dans le sous-répertoire `assets/` du user-context, avec des noms descriptifs, et les référencer depuis le Markdown.
-- Conserver peu de références, mais de haute valeur. `status: not provided` signifie absence d'information, pas une préférence.
-- Ne jamais persister secrets, identifiants, clés API, tokens privés, données client copiées ou contenu qui ne devrait pas survivre à la session.
-- Respecter le navigateur choisi par l'utilisateur. Demander avant d'utiliser directement Playwright si ce n'est pas le navigateur autorisé par le contexte ou la demande.
+- If `user-context.md` exists, use it as a default anchor without confusing it with the current brief.
+- Initialization and preflight use the skill's compiled TypeScript scripts; do not invent storage in the project repository.
+- Copy saved images into the user-context's `assets/` subdirectory, using descriptive names, and reference them from Markdown.
+- Keep a small number of high-value references. `status: not provided` means missing information, not a preference.
+- Never persist secrets, credentials, API keys, private tokens, copied client data, or content that should not survive the session.
+- Respect the user's chosen browser. Ask before using Playwright directly if it is not the browser authorized by the context or request.
 
-## Vérification et preuves
+## Verification and evidence
 
-- Une capture seule n'est pas une QA. Comparer source et rendu dans la même entrée, au même viewport et dans le même état ; corriger puis comparer à nouveau.
-- Ne pas annoncer une QA sans capture rendue, un serveur prêt sans URL vérifiée, ni un partage sans URL de déploiement fonctionnelle.
-- Vérifier les états principaux, navigation, responsive, accessibilité applicable et absence de problèmes P0/P1/P2 avant handoff.
-- Si une capacité obligatoire manque, signaler un blocker précis plutôt que fabriquer un résultat.
+- A capture alone is not QA. Compare source and rendering in the same input, at the same viewport and state; correct, then compare again.
+- Do not claim QA without a rendered capture, a ready server without a verified URL, or sharing without a working deployment URL.
+- Verify main states, navigation, responsiveness, applicable accessibility, and the absence of P0/P1/P2 issues before handoff.
+- If a required capability is missing, report a precise blocker instead of fabricating a result.
 
-## Sécurité
+## Security
 
-- Ne pas exposer ni écrire de secret dans le dépôt, les captures, les annotations, les traces ou le user-context.
-- Ne pas effectuer d'action destructive, de déploiement ou d'intégration production sans autorisation explicite.
-- En clonage d'URL, reproduire le frontend demandé ; ne pas copier de données privées ni contourner une authentification.
-- En projet existant, préserver l'infrastructure et limiter les changements au périmètre convenu.
-- Les traces d'évaluation peuvent contenir des conversations ou données runtime : les garder dans les chemins ignorés `evaluations/` ou `*-workspace/`, jamais les committer.
+- Do not expose or write secrets in the repository, captures, annotations, traces, or user-context.
+- Do not perform destructive actions, deployment, or production integration without explicit authorization.
+- When cloning a URL, reproduce the requested frontend; do not copy private data or bypass authentication.
+- In an existing project, preserve infrastructure and limit changes to the agreed scope.
+- Evaluation traces may contain conversations or runtime data: keep them in ignored `evaluations/` or `*-workspace/` paths, never commit them.
 
-## Tests et contribution
+## Tests and contribution
 
-Avant de proposer un changement, exécuter depuis la racine :
+Before proposing a change, run from the root:
 
 ```bash
 npm test
-# ou séparément
+# or separately
 npm run validate:workflow
 npm run validate:skills
 npm run validate:plugin
 ```
 
-- `validate:workflow` contrôle les invariants du parcours et les fichiers d'evals.
-- `validate:skills` valide chaque skill avec le validateur officiel.
-- `validate:plugin` stage le bundle puis valide les schémas Agent Plugins et Goose.
-- Ajouter ou mettre à jour les evals lorsqu'un comportement observable de skill change.
-- Garder les noms de skill non qualifiés dans les dossiers/frontmatter et utiliser `product-design:<nom>` dans la documentation d'usage.
-- Synchroniser skill, références, templates, tests et documentation quand un contrat partagé change.
-- Ne pas modifier les artefacts générés ou `node_modules`. Ne pas committer sans demande explicite.
-- Limiter le diff au besoin, conserver le style Markdown existant et vérifier `git diff --check` ainsi que `git status`.
+- `validate:workflow` checks journey invariants and eval files.
+- `validate:skills` validates each skill frontmatter with the official validator.
+- `validate:authoring` audits source/contained-projection Skills and every scenario set, failing on errors or warnings; resource closure and exact runtime peer names are checked.
+- `validate:plugin` stages the bundle, then validates Agent Plugins and Goose schemas.
+- Add or update evals when a skill's observable behavior changes.
+- Keep skill names unqualified in directories/frontmatter and use `product-design:<name>` in usage documentation.
+- Synchronize skills, references, templates, tests, and documentation when a shared contract changes.
+- Do not modify generated artifacts or `node_modules`. Do not commit without an explicit request.
+- Limit the diff to the task, preserve the existing Markdown style, and check `git diff --check` and `git status`.
 
-Voir aussi : `docs/architecture.md`, `docs/workflows.md`, `docs/operations.md` et `docs/contributing.md`.
+See also: `docs/architecture.md`, `docs/workflows.md`, `docs/operations.md`, and `docs/contributing.md`.
 
 ## Evidence-mode contract
 
 Multi-step product ideation requires full-evidence: three complete comparable journeys, each with separately generated screens from trigger to proven outcome and critical recovery. A landing page or three anchors cannot establish journey coverage. Lean is restricted to an explicitly isolated single-screen scope. Already selected directions continue without a new competition; complete their missing journey evidence and correct sources before full-set approval and explicit G4. Personas are complementary. references/design-contract.md separates product/UX/UI and metrics/actions/states. scripts/workflow-evidence-contract.mjs checks gates/evidence schemaVersion2, coverage/review/hash/phase; legacy not auto-promoted. No source with open business findings is build eligible. Source tests are not usability research.
 
+## Product discovery and decision tests
+
+For involved discovery/redesign, read `references/product-discovery-questions.md` through the focused skill. Current alternatives, user value, adoption/viability and conditional AI/technical/safety questions feed the existing blueprint/gates, not a new required schema or questionnaire. Prioritize one material uncertainty and record hypothesis, baseline, outcome/guardrail, owner and continue/change/stop rule. No build yet is valid; a test plan is not a conducted study or measured value. `docs/instruction-reliability-proposals.md` distinguishes implemented corrections from unactivated runtime annotation, execution and hook proposals.
+
 ## Experience framing and initiative
 
 For involved product work, [product experience method](references/product-experience-method.md) connects supplied feedback and discriminating questions to responsibility/value, Product/UX/UI decisions, complete scenarios, intent placement and verification. Keep a useful brief and principal workspace; no decorative dashboard default. Conditional conversation uses in-place responses and preserved context/edits, agents anticipate opportunities and exceptions with bounded preparation/execution, and presentations stay native/editable with distinct app/organization/client brands. validateExperienceBlueprint checks declared traceability and boundaries, not measured UX or human authorization. Changed skills and their evals carry this through brief → ideation → build → QA.
+
+## Executable transitions
+
+Focused skills now require scripts/check-workflow-evidence.mjs publication and fresh --consume at brief/selection/source/build/review boundaries; references/executable-transitions.md owns the schema and branch contract. Canonical design-qa.json derives design-qa.md; failed and blocked attempts preserve history and do not grant readiness. D is implemented in source; annotation migration, efficiency refactoring and hooks remain proposals. No installed-plugin update is implied.
+
+## Skill loading and canonical resources
+
+Invoke peer Skills with `load skills product-design:{name}` using the actual name. Never substitute sibling SKILL.md reads. Root references/ is canonical; source Skills declare PLUGIN_ROOT/references/... and require the complete plugin. scripts/skill-resource-contract.mjs generates contained projections only in isolated temporary stages and verifies source/derived hashes. Do not edit generated projections or duplicate source policies. See docs/skill-authoring.md.

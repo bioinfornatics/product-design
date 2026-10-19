@@ -6,17 +6,22 @@
     "validate:workflow": "\"$npm_node_execpath\" \"$(dirname \"$npm_package_json\")/scripts/validate-workflow-contract.mjs\"",
     "validate:skills": "\"$npm_node_execpath\" \"$(dirname \"$npm_package_json\")/scripts/validate-skills.mjs\"",
     "validate:plugin": "\"$npm_node_execpath\" \"$(dirname \"$npm_package_json\")/scripts/validate-plugin.mjs\"",
-    "validate": "npm run validate:workflow && npm run validate:skills && npm run validate:plugin",
+    "validate": "npm run validate:workflow && npm run validate:skills && npm run validate:authoring && npm run validate:plugin",
     "test:bootstrap": "\"$npm_node_execpath\" --test \"$(dirname \"$npm_package_json\")/scripts/test-bootstrap.mjs\"",
     "test:annotations": "\"$npm_node_execpath\" \"$(dirname \"$npm_package_json\")/scripts/test-annotation-handlers.mjs\"",
     "test:user-context": "\"$npm_node_execpath\" \"$(dirname \"$npm_package_json\")/scripts/test-user-context.mjs\"",
     "test:journey-board": "\"$npm_node_execpath\" --test \"$(dirname \"$npm_package_json\")/scripts/test-journey-board.mjs\"",
     "test:ideation-contract": "\"$npm_node_execpath\" --test \"$(dirname \"$npm_package_json\")/scripts/test-ideation-contract.mjs\"",
-    "test:deterministic": "npm run test:bootstrap && npm run test:journey-board && npm run test:ideation-contract && npm run test:end-to-end-ideation && npm run test:experience-blueprint && npm run test:workflow-evidence && npm run test:annotations && npm run test:user-context && npm run test:npm-entrypoints",
+    "test:instruction-coherence": "\"$npm_node_execpath\" --test \"$(dirname \"$npm_package_json\")/scripts/test-instruction-coherence.mjs\"",
+    "test:deterministic": "npm run test:bootstrap && npm run test:journey-board && npm run test:ideation-contract && npm run test:end-to-end-ideation && npm run test:experience-blueprint && npm run test:workflow-evidence && npm run test:transition-adapter && npm run test:skill-resources && npm run test:instruction-coherence && npm run test:annotations && npm run test:user-context && npm run test:npm-entrypoints",
     "test": "npm run validate && npm run test:deterministic",
     "test:npm-entrypoints": "\"$npm_node_execpath\" \"$(dirname \"$npm_package_json\")/scripts/test-npm-entrypoints.mjs\"",
     "test:workflow-evidence": "\"$npm_node_execpath\" --test \"$(dirname \"$npm_package_json\")/scripts/test-workflow-evidence-contract.mjs\"",
     "test:end-to-end-ideation": "\"$npm_node_execpath\" --test \"$(dirname \"$npm_package_json\")/scripts/test-end-to-end-ideation.mjs\"",
-    "test:experience-blueprint": "\"$npm_node_execpath\" --test \"$(dirname \"$npm_package_json\")/scripts/test-experience-blueprint.mjs\""
+    "test:experience-blueprint": "\"$npm_node_execpath\" --test \"$(dirname \"$npm_package_json\")/scripts/test-experience-blueprint.mjs\"",
+    "test:transition-adapter": "\"$npm_node_execpath\" --test \"$(dirname \"$npm_package_json\")/scripts/test-transition-adapter.mjs\"",
+    "check:workflow-evidence": "\"$npm_node_execpath\" \"$(dirname \"$npm_package_json\")/scripts/check-workflow-evidence.mjs\"",
+    "validate:authoring": "\"$npm_node_execpath\" \"$(dirname \"$npm_package_json\")/scripts/validate-authoring.mjs\"",
+    "test:skill-resources": "\"$npm_node_execpath\" --test \"$(dirname \"$npm_package_json\")/scripts/test-skill-resources.mjs\""
   }
 }

@@ -22,6 +22,10 @@ try {
   const result = checked(process.execPath, [npm, "--prefix", root, "run", "test:ideation-contract"], { cwd });
   assert.match(result.stdout, /(?:#|ℹ)\s+pass\s+\d+/u);
   assert.match(result.stdout, /(?:#|ℹ)\s+fail\s+0/u);
+  const adapterHelp = checked(process.execPath, [npm, "--prefix", root, "run", "check:workflow-evidence", "--", "--help"], { cwd });
+  assert.match(adapterHelp.stdout, /check-workflow-evidence --project/);
+  const authoring = checked(process.execPath, [npm, "--prefix", root, "run", "validate:authoring"], { cwd });
+  assert.match(authoring.stdout, /"warnings": 0/);
   const brokenDependency = spawnSync(process.execPath, [npm, "--prefix", root, "run", "validate:skills"], {
     cwd, encoding: "utf8", env: { ...process.env, HOME: cwd, AGENT_PLUGINS_ROOT: path.join(cwd, "missing-agent-plugins") },
   });

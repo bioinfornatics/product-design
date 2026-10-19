@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "kind": "frozen-scenario-index",
+  "status": "not-run",
+  "claim": "Explain-only scenarios frozen for future behavioral evaluation; deterministic tests do not execute these prompts",
+  "cases": [
+    {
+      "skill": "get-context",
+      "name": "brief-receipt-before-exploration",
+      "sha256": "dd52e79ab40e43dd14132219a18ce26eecdbb35ea300f2b67f506426fd326497"
+    },
+    {
+      "skill": "ideate",
+      "name": "selection-is-not-build-receipt",
+      "sha256": "ec44ef32bff92e408128f7eac21cb264decc34835da66818f8b6bb74496db6f8"
+    },
+    {
+      "skill": "ideate",
+      "name": "historical-choice-no-fake-comparison",
+      "sha256": "37d34859793e5810de288818eae8312a3e744296343f16e3ce9ec56843b47300"
+    },
+    {
+      "skill": "image-to-code",
+      "name": "stale-build-receipt-stops-mutation",
+      "sha256": "44ba6b10f31106122cca6f3cab43929e92213d51a5fd4dfbe574b069cac9eaf2"
+    },
+    {
+      "skill": "url-to-code",
+      "name": "exact-clone-receipt-without-generated-g2",
+      "sha256": "ea0587ee769dc38cc6b7b2f3772a0f3ad37519d67953bdd621717eab64ad0177"
+    },
+    {
+      "skill": "design-qa",
+      "name": "canonical-blocked-no-browser",
+      "sha256": "e35b651741cf94a0298ddc24e53a1538c13376e71874098412e334aa9cbd7809"
+    },
+    {
+      "skill": "design-qa",
+      "name": "canonical-md-divergence",
+      "sha256": "c2d6ab2f8541a3d256555ab7059d7a6390624033aa46808e9162168d46c2e667"
+    },
+    {
+      "skill": "design-qa",
+      "name": "qa-material-finding-cannot-disappear",
+      "sha256": "c159fe6357a5026cb4d1a1a2a1a61241aa96b3c095cae551b61b5d1d2f3371a6"
+    }
+  ],
+  "revisionNote": "Authoring correction: same scenarios retained; assertions made atomic and explicit load instructions clarified before any behavioral run."
+}

@@ -4,35 +4,356 @@
     {
       "id": 1,
       "name": "no-evidence-no-findings",
-      "prompt": "Sans accès aux utilisateurs, aux analytics ou aux documents internes, fais la recherche UX complète du nouveau service de mentoring.",
-      "expected_output": "Refuse to fabricate findings; produce assumptions and a research plan, clearly labeling the evidence gap.",
+      "prompt": "For product-design:research at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Without access to users, analytics, or internal documents, conduct complete UX research for the new mentoring service. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The response labels unsupported mentoring claims as assumptions. The response identifies unavailable user, analytics and document access. The plan describes source-grounded research rather than invented findings. The response states no user research was conducted. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "contains:assumption",
-        "contains:research plan",
-        "not-contains:users confirmed"
-      ]
+        "The response labels unsupported mentoring claims as assumptions.",
+        "The response identifies unavailable user, analytics and document access.",
+        "The plan describes source-grounded research rather than invented findings.",
+        "The response states no user research was conducted.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-research-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:research",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 2,
       "name": "multi-persona-research",
-      "prompt": "Recherche les problèmes des mentees, mentors et RH dans notre programme de mentoring à partir des interviews et tickets fournis.",
-      "expected_output": "Analyze evidence per persona and backstage lane, distinguish source types, then synthesize one service blueprint.",
+      "prompt": "For product-design:research at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Research the problems faced by mentees, mentors, and HR in our mentoring program using the supplied interviews and tickets. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The plan separates mentee, mentor and HR evidence analysis. The plan distinguishes interview testimony from ticket evidence. The plan includes backstage HR work. The plan retains cross-persona handoffs in one service blueprint. The response discloses hypothetical interviews and tickets are unavailable as fixtures. The response does not invent unavailable-source quotes or findings. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "contains:service blueprint",
-        "contains:evidence",
-        "contains:mentor",
-        "contains:HR"
-      ]
+        "The plan separates mentee, mentor and HR evidence analysis.",
+        "The plan distinguishes interview testimony from ticket evidence.",
+        "The plan includes backstage HR work.",
+        "The plan retains cross-persona handoffs in one service blueprint.",
+        "The response discloses hypothetical interviews and tickets are unavailable as fixtures.",
+        "The response does not invent unavailable-source quotes or findings.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-research-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:research",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 3,
       "name": "stakeholder-approval-not-research",
-      "prompt": "Le sponsor aime le prototype. Rédige la conclusion de recherche UX.",
-      "expected_output": "State that sponsor approval is stakeholder evidence, not UX research or user validation.",
+      "prompt": "For product-design:research at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: The sponsor likes the prototype. Write the UX research conclusion. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The response classifies sponsor liking as stakeholder approval evidence. The response states sponsor liking is not a UX research finding. The response does not report user validation from sponsor approval. Generation, build, research, rendered QA, tracking and deployment remain not run.",
       "assertions": [
-        "contains:stakeholder",
-        "not-contains:user validated"
-      ]
+        "The response classifies sponsor liking as stakeholder approval evidence.",
+        "The response states sponsor liking is not a UX research finding.",
+        "The response does not report user validation from sponsor approval.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-research-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:research",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
+    },
+    {
+      "name": "discovery-neutral-current-work",
+      "prompt": "Plan research for a new coordination tool. Users currently work in email and spreadsheets. We have no interview consent yet and do not want to pitch features.",
+      "expected_output": "Prioritize recent-task observation/interview questions, current alternative, consent/access and decision rule; results not run.",
+      "assertions": [
+        "Plans neutral questions about recent real work",
+        "Preserves the current alternative",
+        "Marks participant consent/access and results as unresolved/not run"
+      ],
+      "id": 4,
+      "subject": "instruction-coherence-and-discovery",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Use the current Skill and its applicable shared references; explain the scenario without claiming a build, study or capture occurred"
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 8,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:research",
+        "change:instruction-coherence",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
+    },
+    {
+      "name": "complaints-denominator-counterevidence",
+      "prompt": "We have ten reposts of one complaint and support records showing many successful completions. Help assess whether the problem is frequent.",
+      "expected_output": "Deduplicate and report sampling/denominator limits, include contrary evidence, no invented prevalence.",
+      "assertions": [
+        "Distinguishes reposts from independent cases",
+        "Includes successful completions as counterevidence",
+        "Does not infer population frequency from raw complaint count"
+      ],
+      "id": 5,
+      "subject": "instruction-coherence-and-discovery",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Use the current Skill and its applicable shared references; explain the scenario without claiming a build, study or capture occurred"
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 8,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:research",
+        "change:instruction-coherence",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
+    },
+    {
+      "name": "ai-value-total-effort",
+      "prompt": "Plan a value test of AI-generated summaries against our current manual notes. Drafting looks faster, but reviewers spend time correcting errors. No trial has run yet.",
+      "expected_output": "Compare successful outcome quality and total effort including checking/correction, baseline and guardrails, not generation speed alone.",
+      "assertions": [
+        "Includes checking and correction in total effort",
+        "Names baseline and a quality/error guardrail",
+        "Does not report saved time or a conducted trial"
+      ],
+      "id": 6,
+      "subject": "instruction-coherence-and-discovery",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Use the current Skill and its applicable shared references; explain the scenario without claiming a build, study or capture occurred"
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 8,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:research",
+        "change:instruction-coherence",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
+    },
+    {
+      "id": 7,
+      "name": "qualified-skill-invocation",
+      "prompt": "For product-design:research at target.path . (current skill root), explain how to invoke this installed skill in Goose for a focused handoff. The installed plugin namespace is product-design. Do not run the workflow.",
+      "expected_output": "An explain-only handoff using the exact instruction load skills product-design:research; no sibling SKILL.md link substituted as invocation.",
+      "assertions": [
+        "The response gives the exact invocation `load skills product-design:research`.",
+        "The invocation resolves the actual installed skill name rather than leaving a {name} placeholder.",
+        "The response does not substitute a sibling SKILL.md file link for skill invocation.",
+        "The response does not claim that explaining the invocation executed the focused workflow."
+      ],
+      "subject": "product-design-research-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:research",
+        "scope:explain",
+        "contract:qualified-invocation"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
     }
   ]
 }

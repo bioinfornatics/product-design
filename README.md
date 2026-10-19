@@ -161,6 +161,12 @@ For an explicit combined request, load `product-design:index`, then `product-des
 
 Saved context is optional and Goose-local under `$GOOSE_HOME/.local/state/product-design/` (default Goose home: `~/.config/goose`). The plugin does not require Codex state, `@Browser`, `@Sites`, or `terminal.local`.
 
+## Product discovery and reliability
+
+For involved product work, [product discovery questions](references/product-discovery-questions.md) connects current alternatives, user value, adoption/viability and conditional AI/technical/safety assumptions to decision-changing tests. Reuse answered context and one prioritized question; no build yet is a valid outcome. A test plan, prototype QA and measured user value are separate claims.
+
+[Instruction reliability proposals](docs/instruction-reliability-proposals.md) records implemented contradiction fixes and executable transition/QA checks; annotation-state migration, loading refactoring and opt-in hooks remain proposals, not activated. See the [executable transition contract](references/executable-transitions.md) for the source-checkout CLI and canonical QA. The installed plugin is not updated automatically.
+
 ## Local evaluation
 
 Evaluate this plugin with `agent-plugins:plugin-creator`, which provides the standard run, baseline, grading, benchmark, and review workflow. Keep prompts, raw Goose traces, reports, specialized temporary graders, and generated review workspaces under the ignored `evaluations/` or `*-workspace/` paths. Do not commit evaluation artifacts because traces may include conversation or runtime data.
@@ -189,3 +195,7 @@ Multi-step product ideation requires full-evidence: three complete comparable jo
 ## Experience framing and initiative
 
 For involved product work, [product experience method](references/product-experience-method.md) connects supplied feedback and discriminating questions to responsibility/value, Product/UX/UI decisions, complete scenarios, intent placement and verification. Keep a useful brief and principal workspace; no decorative dashboard default. Conditional conversation uses in-place responses and preserved context/edits, agents anticipate opportunities and exceptions with bounded preparation/execution, and presentations stay native/editable with distinct app/organization/client brands. validateExperienceBlueprint checks declared traceability and boundaries, not measured UX or human authorization. Changed skills and their evals carry this through brief → ideation → build → QA.
+
+### Skill authoring and loading
+
+Use `load skills product-design:{name}` with the actual Skill name, not sibling SKILL.md reads. [Authoring/resource contract](docs/skill-authoring.md) covers canonical policies, contained projection and the complete-plugin dependency. `npm test` now also runs `validate:authoring`: source/packaged audits and all 170 scenario-design checks must have zero errors or warnings. Scenarios are explain-only, not behaviorally executed.

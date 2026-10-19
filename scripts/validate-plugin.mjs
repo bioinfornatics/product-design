@@ -4,6 +4,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
+import { projectSkillResources, verifySkillProjection } from "./skill-resource-contract.mjs";
 import { resolveAgentPluginsScript } from "./resolve-agent-plugins.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -17,6 +18,8 @@ for (const entry of entries) {
 }
 
 try {
+  const projection = projectSkillResources(root, stage);
+  verifySkillProjection(root, stage, projection);
   for (const [script, args] of [
     ["validate_agent_plugin_schema.js", [stage, "--format", "json"]],
     ["validate_goose_plugin.js", [stage]],

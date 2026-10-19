@@ -294,8 +294,16 @@ export function validateDesignQaReport(report) {
     pathEvidence(state.sourcePath, `states[${i}].sourcePath`); pathEvidence(state.renderedPath, `states[${i}].renderedPath`); pathEvidence(state.combinedComparisonPath, `states[${i}].combinedComparisonPath`);
     if (!Number.isInteger(state.viewport?.width) || !Number.isInteger(state.viewport?.height)) fail(`states[${i}].viewport is required`);
     for (const surface of ["typography", "spacing", "colors", "images", "copy"]) text(state.surfaces?.[surface], `states[${i}].surfaces.${surface}`);
-    if (state.console?.checked !== true || !Array.isArray(state.console.errors)) fail(`states[${i}].console check is required`);
-    if (state.console.errors.length) fail(`states[${i}] has reproducible runtime console errors`);
+    const consoleCheck = state.console;
+    if (!consoleCheck || !Array.isArray(consoleCheck.errors)) fail(`states[${i}].console errors array is required`);
+    const availability = consoleCheck.availability === undefined ? "available" : consoleCheck.availability; // Legacy checked records remain supported.
+    member(availability, ["available", "unavailable"], `states[${i}].console.availability`);
+    if (availability === "available" && consoleCheck.checked !== true) fail(`states[${i}].console check is required when available`);
+    if (availability === "unavailable") {
+      if (consoleCheck.checked !== false) fail(`states[${i}].console cannot be checked when unavailable`);
+      text(consoleCheck.reason, `states[${i}].console unavailability reason`);
+    }
+    if (consoleCheck.errors.length) fail(`states[${i}] has reproducible runtime console errors`);
   }
   if (!Array.isArray(report.history)) fail("design QA comparison history is required");
   for (const [i, item] of report.history.entries()) { if (!["P0", "P1", "P2"].includes(item.severity)) fail(`history[${i}].severity is invalid`); for (const field of ["finding", "fix", "beforePath", "afterPath"]) text(item[field], `history[${i}].${field}`); }

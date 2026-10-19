@@ -1,43 +1,43 @@
-# Contribuer au plugin
+# Contributing to the Plugin
 
-## Principes
+## Principles
 
-- Faire des changements minimaux et cohérents avec l'architecture par skills.
-- Lire le skill, ses références et ses evals avant de changer un workflow.
-- Garder la documentation descriptive ; les contrats normatifs vivent dans les skills et références.
-- Utiliser le nom simple dans le frontmatter et les chemins (`design-qa`), le nom qualifié dans les instructions d'utilisation (`product-design:design-qa`).
-- Ne pas introduire une dépendance implicite à un outil optionnel.
-- Ne pas modifier un starter sans vérifier les quatre frameworks lorsque le contrat est partagé.
+- Make minimal changes consistent with the skill-based architecture.
+- Read the skill, its references, and its evals before changing a workflow.
+- Keep documentation descriptive; normative contracts live in skills and references.
+- Use the unqualified name in frontmatter and paths (`design-qa`), and the qualified name in usage instructions (`product-design:design-qa`).
+- Do not introduce an implicit dependency on an optional tool.
+- Do not change a starter without checking all four frameworks when the contract is shared.
 
-## Synchronisation attendue
+## Expected synchronization
 
-Selon le changement, mettre à jour ensemble :
+Depending on the change, update together:
 
-- `skills/*/SKILL.md` et les références qu'il charge ;
-- les `evals/evals.json` du skill et/ou `tests/evals/plugin-integration.json` ;
-- `references/product-decision-gates.md` si un passage de phase change ;
-- les templates et ports d'annotation si le comportement runtime change ;
-- `README.md`, `AGENTS.md` et `docs/` si l'interface publique ou l'architecture change.
+- `skills/*/SKILL.md` and the references it loads;
+- the skill's `evals/evals.json` and/or `tests/evals/plugin-integration.json`;
+- `references/product-decision-gates.md` if a phase transition changes;
+- templates and annotation ports if runtime behavior changes;
+- `README.md`, `AGENTS.md`, and `docs/` if the public interface or architecture changes.
 
-Ne pas éditer les sorties générées, les dépendances vendored ou `node_modules`.
+Do not edit generated output, vendored dependencies, or `node_modules`.
 
-## Validation locale
+## Local validation
 
 ```bash
 npm run validate:workflow
 npm run validate:skills
 npm run validate:plugin
-# agrégat
+# aggregate
 npm test
 ```
 
-Le validateur de workflow protège les invariants d'idéation, d'approbation des écrans, de build et de QA. Le validateur de skills applique le format officiel à chaque skill. Le validateur de plugin stage le bundle sans artefacts d'évaluation et exécute les validateurs Agent Plugins et Goose.
+The workflow validator protects ideation, screen approval, build, and QA invariants. The skill validator applies the official format to every skill. The plugin validator stages the bundle without evaluation artifacts and runs the Agent Plugins and Goose validators.
 
-Ajouter au moins les cas positifs, les cas ambigus et les blockers importants lorsqu'un contrat change. Les benchmarks et traces locales vont dans `evaluations/` ou un chemin `*-workspace/` ignoré. Ils peuvent contenir des données runtime et ne doivent pas être commit.
+Add at least positive cases, ambiguous cases, and important blockers when a contract changes. Local benchmarks and traces go in `evaluations/` or an ignored `*-workspace/` path. They may contain runtime data and must not be committed.
 
-## Contrôle du diff
+## Diff review
 
-Avant handoff :
+Before handoff:
 
 ```bash
 git diff --check
@@ -45,4 +45,8 @@ git status --short
 git diff -- AGENTS.md docs
 ```
 
-Vérifier qu'aucun secret, résultat généré, cache ou fichier hors périmètre n'est présent. Ne pas créer de commit sauf demande explicite.
+Check that no secret, generated result, cache, or out-of-scope file is present. Do not create a commit unless explicitly requested.
+
+## Skill authoring correction
+
+Peer Skills use `load skills product-design:{name}`, not sibling-file links. Shared policies remain canonical at root references/; isolated validation/packaging projects contained local resources with identity/closure checks. No source copies or installed-plugin changes are generated. `validate:authoring` is required in npm test and blocks audit/scenario errors or warnings. See [the authoring/resource contract](skill-authoring.md). This is structural evidence, not behavioral evaluation.

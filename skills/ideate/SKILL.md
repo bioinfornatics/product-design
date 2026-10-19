@@ -1,11 +1,23 @@
 ---
 name: ideate
-description: Explores three comparable end-to-end product journeys with generated screens before coding. Use for multi-step product ideation, isolated screen directions, or completion and targeted revision of an already selected journey.
+description: Explores three comparable product journeys or isolated screen directions before coding. Use when visual alternatives are needed or a selected journey needs source completion or targeted revision.
 ---
 
 # Ideate
 
+## Skill loading and shared resources
+
+For another Skill, use the instruction `load skills product-design:{name}` with its actual unqualified directory name substituted for {name}. Use the exposed skill-loading tool; do not open a sibling SKILL.md as a substitute. Load only the focused workflow required by the current step.
+
+This Skill belongs to the complete Product Design plugin, not a standalone export. Resolve `PLUGIN_ROOT` two levels above this Skill directory. Paths written as `PLUGIN_ROOT/references/...` identify canonical shared policies in that bundle; read them only when the stated condition applies. Local `references/...` remain relative to this Skill. Source and packaging checks verify these paths and their transitive dependencies; do not copy or edit parallel policy versions manually.
+
 Use after product-design:index and product-design:get-context have established the brief and G1 is not blocked.
+
+## Executable selection and approval transitions
+
+Read executable transitions at `PLUGIN_ROOT/references/executable-transitions.md`. Consume the `brief-to-ideation` receipt before generation. After actual user selection, run `scripts/check-workflow-evidence.mjs` with operation `source-selection` against the manifest/G2/complete comparison, then `--consume` before selected-screen production. After explicit ordered full-set approval, publish and consume `source-set-approval` using G3 and the corrected sources. G2 permits only selected-screen-production; G3 only build-handoff. Neither permits app mutation; the build skill requires explicit G4 and `prototype-build`.
+
+A historically selected incomplete direction uses the documented `historical-selection` prior-choice declaration and completed approved target set, not an invented complete G2 or a new competition. Stop on nonzero/blocked, preserve choice/history and repair only the missing evidence. Receipts never manufacture stakeholder approval.
 
 ## Critical boundaries
 
@@ -36,11 +48,13 @@ For multi-step work read [end-to-end journey coverage](references/end-to-end-jou
 
 ## Experience synthesis before visual planning
 
-For involved work read [product experience method](../../references/product-experience-method.md). Start from the brief/experience blueprint, not a generic dashboard prompt. Map user responsibility and value → scenario → question/information → action/effect → result/evidence → recovery/return. Show how each interaction strategy changes those moments. Keep a compact useful brief and one principal workspace, with progressive disclosure instead of nine equal blocks.
+For involved work read product experience method at `PLUGIN_ROOT/references/product-experience-method.md`. Start from the brief/experience blueprint, not a generic dashboard prompt. Map user responsibility and value → scenario → question/information → action/effect → result/evidence → recovery/return. Show how each interaction strategy changes those moments. Keep a compact useful brief and one principal workspace, with progressive disclosure instead of nine equal blocks.
 
 For conversation/adaptation, place explanation, reversible filters, temporary comparisons, native editors and structured reviews where the task belongs; keep direct controls, context, edits and late-answer origin. Continuous conversation, when requested, is accessible without a permanent transcript sidebar. For agents, include future opportunities and exceptions, useful preparation/eligible execution under mandates, limits and attention/stop/reconciliation—not only advice or run-approval feeds. For presentations, plan audience/corpus/snapshot, editable native content and distinct app/organization/client brands; PNG screens are not a native deck.
 
 Before comparison/source approval, check the material feedback-to-decision-to-screen/state-to-verification links. A missing material design consequence is a gap to resolve or explicitly defer, not a solved issue because a generic paragraph mentions it.
+
+For involved work read product discovery questions at `PLUGIN_ROOT/references/product-discovery-questions.md` and retain the brief's current alternative, value hypothesis and decision-test record. Compare strategies against the same outcome and guardrails, not merely visual preference. Unresolved evidence stays labeled hypothesis; contrary evidence may require deferring ideation, not manufacturing three screens. Complete journeys and source approvals remain mandatory when comparison proceeds.
 
 ## Common preflight
 
@@ -53,7 +67,7 @@ Before comparison/source approval, check the material feedback-to-decision-to-sc
 
 ## Planning and phase status
 
-For involved multi-phase work, apply [planning-aware routing and optional tracking](../../references/planning-and-tracking.md). At each transition, keep the epic/outcome, phase gate, acceptance criteria, dependencies, ready/blocked state, owner, evidence, and next task clear. Mirror this through `product-design:project-status` only for explicit tracking, an applicable existing `.beads/`, or a confirmed vocabulary-only offer. Never hold ideation on tracking bookkeeping.
+For involved multi-phase work, apply planning-aware routing and optional tracking at `PLUGIN_ROOT/references/planning-and-tracking.md`. At each transition, keep the epic/outcome, phase gate, acceptance criteria, dependencies, ready/blocked state, owner, evidence, and next task clear. Mirror this through `product-design:project-status` only for explicit tracking, an applicable existing `.beads/`, or a confirmed vocabulary-only offer. Never hold ideation on tracking bookkeeping.
 
 # Multi-step workflow
 
@@ -150,6 +164,6 @@ Comparison completion requires three complete journeys in full-evidence, labeled
 
 ## Product, UX, UI and trusted sources
 
-For involved work read [design contract](../../references/design-contract.md). Product value/invariants precede UX scenario/information/actions/recovery, which precede UI hierarchy/components. Responsibilities are complementary, not alternatives. Calendar facts and unknown budget are not performance KPIs. Do not invent numbers, artifact versions, sources or dependency arrows. A specialized view may coexist with the selected home.
+For involved work read design contract at `PLUGIN_ROOT/references/design-contract.md`. Product value/invariants precede UX scenario/information/actions/recovery, which precede UI hierarchy/components. Responsibilities are complementary, not alternatives. Calendar facts and unknown budget are not performance KPIs. Do not invent numbers, artifact versions, sources or dependency arrows. A specialized view may coexist with the selected home.
 
 Review composition, readable critical copy AND business/state fidelity against the frozen corpus. Known material errors block approved source eligibility; a direction may remain selected while its source needs correction. Record exact path/hash/reviewer/timestamp and categorized findings. Changing a note does not repair pixels. Run validateIdeationEvidence(evidence, manifest), verifyLocalEvidenceFiles(sources, {root}) and validateScreenSetEvidence before source approval. Gates/evidence use schemaVersion2; generation manifests stay schemaVersion1 with mandatory comparisonContract.scope, evidenceMode and anchorScreenId; multi-step variants also require journey boundaries and critical recovery IDs. Legacy records are not automatically promoted.

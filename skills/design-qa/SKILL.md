@@ -1,13 +1,19 @@
 ---
 name: design-qa
-description: Blocking Product Design handoff gate after `product-design:image-to-code`, `product-design:url-to-code`, or Goose Apps rendering. Requires an openable source visual and browser-captured rendered implementation at a comparable state; write passed/blocked evidence before handoff. Broad UX critique belongs to `product-design:audit`.
+description: Compares approved source visuals with a browser-rendered implementation and records canonical passed or blocked QA. Use when a Product Design build needs verification before handoff; broad experience critique belongs to audit.
 ---
 
 # Design QA
 
+## Skill loading and shared resources
+
+For another Skill, use the instruction `load skills product-design:{name}` with its actual unqualified directory name substituted for {name}. Use the exposed skill-loading tool; do not open a sibling SKILL.md as a substitute. Load only the focused workflow required by the current step.
+
+This Skill belongs to the complete Product Design plugin, not a standalone export. Resolve `PLUGIN_ROOT` two levels above this Skill directory. Paths written as `PLUGIN_ROOT/references/...` identify canonical shared policies in that bundle; read them only when the stated condition applies. Local `references/...` remain relative to this Skill. Source and packaging checks verify these paths and their transitive dependencies; do not copy or edit parallel policy versions manually.
+
 Use this internal helper to compare a prototype's source design against the rendered implementation before handoff.
 
-Do not use this skill for broad UX critique, design critique, product audits, or flow reviews. Use [`product-design:audit`](../audit/SKILL.md) for those user-facing requests.
+Do not use this skill for broad UX critique, design critique, product audits, or flow reviews. Use `load skills product-design:audit` for those user-facing requests.
 
 Use this skill before every Product Design build handoff.
 
@@ -18,21 +24,31 @@ A passing QA run requires both:
 - a source visual target: Figma node, image, screenshot, mockup, or source capture
 - a rendered implementation: local URL, deployed URL, app screen, component, or screenshot
 
-If either artifact cannot be opened, captured, or compared, write `design-qa.md` with `final result: blocked` and name the blocker. Do not let the build skill hand off as done.
+If either artifact cannot be opened, captured, or compared, write canonical `design-qa.json` with `finalResult: blocked` and derive `design-qa.md` through the adapter when prerequisites are valid and name the blocker. Do not let the build skill hand off as done.
+
+## Canonical QA and executable handoff
+
+Read executable transitions at `PLUGIN_ROOT/references/executable-transitions.md`. Project-root `design-qa.json` is authoritative; `design-qa.md` is the adapter-derived human view, not a separately authored pass. Use the exact G4.executionContract.requiredStates and approved sources; capture source/render/combined evidence, test interactions and record mandatory hashes, five surfaces, console availability, accessibility/responsiveness, findings/history, limitations and independent G5 checks. Snapshot all approved implementation roots using `snapshotImplementation` after capture; code/assets/config changes require recapture. Hashes prove identity, not pixels or true browser execution.
+
+Run `scripts/check-workflow-evidence.mjs` with operation `review-handoff` and qa `design-qa.json`. Passing reports also require an authored passing G5 gate bound to that JSON. Missing browser capability or open material findings require a canonical blocked report with blockers and honest not-run states; run the adapter to persist it, never fabricate G5. Invalid source/gate prerequisites produce a failed receipt, not a validated QA report. Preserve versioned captures and correction/recomparison history; never remove or downgrade material findings to get a pass.
+
+After passing publication, run `--consume` for that request immediately before handoff and cite `.gates/review-handoff.receipt.json`, `design-qa.json` and `design-qa.md`. Nonzero/blocked, stale code, missing state/hash or JSON/Markdown divergence stops handoff. Regenerate Markdown only from canonical JSON through the adapter. G5 is not a user study or G6. Apps/remote targets without locally verifiable implementation evidence remain freshness-blocked, not silently exempt.
 
 ## Critical Overrides
 
-Follow [../../references/critical-overrides.md](../../references/critical-overrides.md).
+Follow critical overrides at `PLUGIN_ROOT/references/critical-overrides.md`.
 
 ## Workflow
 
-For involved multi-phase work, follow [planning-aware routing and optional tracking](../../references/planning-and-tracking.md). State epic/outcome, G5 phase gate, acceptance criteria, dependencies, ready/blocked state, owner, evidence, and next task. Mirror through `product-design:project-status` only when active; vocabulary alone requires an offer and confirmation. A Beads update never decides QA; visual and interaction evidence does.
+For involved multi-phase work, follow planning-aware routing and optional tracking at `PLUGIN_ROOT/references/planning-and-tracking.md`. State epic/outcome, G5 phase gate, acceptance criteria, dependencies, ready/blocked state, owner, evidence, and next task. Mirror through `product-design:project-status` only when active; vocabulary alone requires an offer and confirmation. A Beads update never decides QA; visual and interaction evidence does.
 
 Compare the intended design to the implementation as a product-quality reviewer, not as a generic aesthetic critic. The output must be a prioritized fix list grounded in evidence from both artifacts.
 
-Apply both G5 gates in [product decision gates](../../references/product-decision-gates.md): execution quality and product-test validity. Verify the selected journey, hypothesis, evaluation slice and success criterion; primary task, realistic-enough data/states, test scenario and limitations must be explicit. A faithful implementation of the wrong or untestable journey is `blocked`. For involved work write `.gates/05-prototype-to-review.md`.
+Apply both G5 gates in product decision gates at `PLUGIN_ROOT/references/product-decision-gates.md`: execution quality and product-test validity. Verify the selected journey, hypothesis, evaluation slice and success criterion; primary task, realistic-enough data/states, test scenario and limitations must be explicit. A faithful implementation of the wrong or untestable journey is `blocked`. For involved work write `.gates/05-prototype-to-review.md`.
 
-For involved work, read [product experience method](../../references/product-experience-method.md) and compare the experience blueprint against the approved sources and rendered task. Verify traced questions/decisions, responsibility/value scenario, intent location and direct controls, context/return and manual edits. When applicable check why-now opportunity/exception work, mandate/effect boundaries, late/unknown/revoked states and native artifact/brand claims. Mark unmet material design consequences blocked or explicitly out of scope; a faithful generic dashboard does not satisfy them. This checks execution and test validity, not measured user value.
+For involved work, read product experience method at `PLUGIN_ROOT/references/product-experience-method.md` and compare the experience blueprint against the approved sources and rendered task. Verify traced questions/decisions, responsibility/value scenario, intent location and direct controls, context/return and manual edits. When applicable check why-now opportunity/exception work, mandate/effect boundaries, late/unknown/revoked states and native artifact/brand claims. Mark unmet material design consequences blocked or explicitly out of scope; a faithful generic dashboard does not satisfy them. This checks execution and test validity, not measured user value.
+
+For involved work read product discovery questions at `PLUGIN_ROOT/references/product-discovery-questions.md`. Confirm the prototype can test the stated task/value hypothesis against the current alternative with realistic states and outcome/guardrails. Check AI uncertainty, correction and fallback when applicable; fabricated benefits or metrics cannot pass test validity. Distinguish a usable proposed test from an executable participant study (access, consent, baseline and decision thresholds resolved), and both from measured user/operational results. G5 may approve a review prototype while the user study remains not run; it does not grant G6.
 
 Do not write the QA review from memory, code, or file paths alone. Open or capture both the source design and the implementation first, then compare what is actually visible.
 
@@ -58,7 +74,7 @@ A later pass must identify the earlier findings, the fixes made, and the post-fi
 
 2. Capture evidence.
    - For Figma, use design context and screenshot tools when available.
-   - For web/app implementations, follow the Goose Capability Preflight rule in [`product-design:index`](../index/SKILL.md#goose-capability-preflight). Follow the active build skill's “Previewing prototypes in Goose” section before opening a local implementation. Then capture screenshots at the intended viewport.
+   - For web/app implementations, follow the Goose Capability Preflight rule in `load skills product-design:index` (section goose-capability-preflight). Follow the active build skill's “Previewing prototypes in Goose” section before opening a local implementation. Then capture screenshots at the intended viewport.
    - Capture additional states when relevant: mobile/desktop, hover/focus/active, empty/loading/error, dark/light, and key responsive breakpoints.
    - Save paths or URLs for screenshots when available so findings can cite evidence.
    - Capturing screenshots is not enough. Put the source image and the implementation screenshot together in the same comparison input before judging.
@@ -100,6 +116,8 @@ Every QA report must explicitly evaluate these surfaces:
 - Image quality and asset fidelity: subject correctness, crop, scale, sharpness, compression, transparency halos, masking, background treatment, raster-vs-vector appropriateness, and whether generated assets match the source art direction. Fail QA if logos, illustrations, decorative marks, product imagery, non-standard icons, or other visible image assets from the visual target were replaced with custom inline SVG, handcrafted SVG, HTML elements, div/span shapes, CSS drawings, gradients, emoji, text glyphs, placeholder shapes, or code-native approximations.
 - Copy and content of app-specific text
 
+Ordinary CSS backgrounds, borders and gradients matching approved UI surfaces/tokens are allowed. The asset-substitution prohibition concerns drawing stand-ins for actual image/icon assets, not normal component styling or source/library vectors.
+
 ## Severity
 
 - `P0`: Blocks core use, severe accessibility failure, broken layout, or impossible task.
@@ -133,7 +151,7 @@ Use this structure unless the user asks otherwise:
 
 If there are no substantive mismatches, say that clearly and list any residual test gaps.
 
-When this skill is used before handoff, save the latest QA report as project-root `design-qa.md`.
+Before handoff save canonical project-root `design-qa.json` and run the adapter to derive `design-qa.md`. The output structure above is a human-reading guide, not a second mutable authority.
 
 `design-qa.md` must include:
 
@@ -147,7 +165,7 @@ When this skill is used before handoff, save the latest QA report as project-roo
 - comparison history for every P0/P1/P2 iteration: earlier findings, fixes made, and post-fix visual evidence
 - final result
 
-For Goose builds, `design-qa.md` must include the browser-rendered implementation screenshot, viewport, primary interactions tested, console errors checked when supported, and final result. If browser-rendered evidence is missing, `final result` is `blocked`.
+For Goose builds, `design-qa.md` must include the browser-rendered implementation screenshot, viewport, primary interactions tested, console availability and final result. When console access is available, inspect it and block on reproducible runtime errors. When it is unavailable, record the reason and unchecked runtime limitation; do not claim a clean console or disable an available check. A missing console capability alone does not waive browser/interaction evidence. If browser-rendered evidence is missing, `final result` is `blocked`.
 
 `final result` must be exactly `passed` or `blocked`.
 

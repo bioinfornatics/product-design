@@ -1,22 +1,34 @@
 ---
 name: research
-description: Run fast, source-grounded UX research on the highest-signal problems users are experiencing with a user-specified digital product. Use when the user asks to research user pain, UX friction, onboarding issues, docs/help problems, developer experience friction, support pain, product workflow issues, or current user complaints for a named product.
+description: Examines source-grounded product problems, user value, current alternatives, and UX friction. Use when researching pain points, adoption barriers, support complaints, or a decision-changing product hypothesis.
 ---
 
 # Research
 
-Run a fresh UX research scan for the product the user specifies.
+## Skill loading and shared resources
 
-Focus on current, evidence-backed user problems. Prioritize logged-in product experience, self-serve flows, onboarding, docs/help, developer experience, support friction, and product workflows.
+For another Skill, use the instruction `load skills product-design:{name}` with its actual unqualified directory name substituted for {name}. Use the exposed skill-loading tool; do not open a sibling SKILL.md as a substitute. Load only the focused workflow required by the current step.
+
+This Skill belongs to the complete Product Design plugin, not a standalone export. Resolve `PLUGIN_ROOT` two levels above this Skill directory. Paths written as `PLUGIN_ROOT/references/...` identify canonical shared policies in that bundle; read them only when the stated condition applies. Local `references/...` remain relative to this Skill. Source and packaging checks verify these paths and their transitive dependencies; do not copy or edit parallel policy versions manually.
+
+Investigate the product/problem and decision the user specifies. For an existing product, prioritize task/workflow friction rather than a list of feature requests. For discovery, investigate current alternatives, frequency/consequence, user value, adoption and material technical/AI assumptions before recommending a solution.
+
+## Select the evidence method
+
+Read product discovery questions at `PLUGIN_ROOT/references/product-discovery-questions.md` for involved discovery or value research. Recover supplied evidence; pick the question with the greatest decision impact, not every possible theme. Use a source scan for inspectable existing material, a neutral interview/observation plan for unresolved real work, or a bounded concept/usability/feasibility test plan when that is the actual uncertainty. Do not automatically search all connectors or default every problem to a public complaints scan.
+
+Without participant access and consent, produce the plan rather than claim interviews or tasks occurred. A participant plan states relevant roles and selection rationale, recent-task questions without pitching the solution, permission/privacy/retention needs, actual available access, task/method, baseline, target and guardrail, owner and continue/change/stop rule. Do not invent a fixed sample count, respondents, findings or statistical representativeness.
+
+Reconcile counterevidence, duplicated complaints and sampling limits before claiming frequency. Include what works in the current alternative and total verification/correction effort, especially for AI. Results may support an explicit recommendation to change the hypothesis, defer or not build; do not force a UI recommendation from contradicted value.
 
 ## Critical Overrides
 
-- Refer to the Plugin router [`product-design:index`](../index/SKILL.md) before proceeding.
-- Follow [../../references/critical-overrides.md](../../references/critical-overrides.md).
+- Before proceeding, use `load skills product-design:index` for routing.
+- Follow critical overrides at `PLUGIN_ROOT/references/critical-overrides.md`.
 
 ## User Context
 
-Saved user context is optional. Load [`product-design:user-context`](../user-context/SKILL.md) only when the user asks to save or recall context, or when relevant saved context is known to exist.
+Saved user context is optional. Use the instruction `load skills product-design:user-context` only when the user asks to save or recall context, or when relevant saved context is known to exist.
 
 Use saved product URLs, Figma files, screenshots, reference images, codebase paths, Storybook, tokens, design systems, brand assets, component refs, browser preferences, and share targets as grounding material when relevant.
 
@@ -42,7 +54,7 @@ For multi-persona services, research each persona and the backstage/operator lan
 
 1. Restate the research scope.
 
-2. Search public sources:
+2. For a source scan, search only relevant available public sources:
 
 - Reddit
 - X/Twitter
@@ -51,7 +63,7 @@ For multi-persona services, research each persona and the backstage/operator lan
 - GitHub issues/discussions
 - forums, blogs, reviews, YouTube comments, and developer communities where relevant
 
-3. Search internal sources when available:
+3. Search relevant internal sources only when available and authorized:
 
 - Slack
 - Gong
@@ -74,18 +86,20 @@ For multi-persona services, research each persona and the backstage/operator lan
 
 6. Rank problems by severity, frequency, confidence, and product leverage.
 
-7. Tell a clear product story.
+7. Tell a clear product story and name the next decision/test. Include current alternative, counterevidence, sampling limits and a continue/change/stop rule for the material hypothesis; a planned test is not a measured result.
 
 ## Output
 
 Default to an in-chat research brief unless the user asks for another format.
 
-Include:
+For a source scan, include:
 
 - Executive read: the core story in 5-7 sentences.
 - Ranked UX problems: for each problem, include the problem, user goal, surface, what breaks, evidence, severity, frequency signal, confidence, and recommended product move.
 - Source map: what was searched, what each source contributed, and where signal was weak.
 - Opportunity map: group recommendations into fix this week, fix this quarter, and needs deeper research.
+
+For a discovery or participant/test plan instead, lead with the decision/question, current alternative, evidence and counterevidence, prioritized unknown, method/access/privacy limits, owner and decision rule. Mark results not run. Do not invent a ranked complaint list or pretend every source was searched when the selected method did not require it.
 
 ## Rules
 

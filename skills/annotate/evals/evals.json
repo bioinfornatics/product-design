@@ -1,0 +1,166 @@
+{
+  "skill_name": "annotate",
+  "evals": [
+    {
+      "id": 1,
+      "name": "qualified-skill-invocation",
+      "prompt": "For product-design:annotate at target.path . (current skill root), explain how to invoke this installed skill in Goose for a focused handoff. The installed plugin namespace is product-design. Do not run the workflow.",
+      "expected_output": "An explain-only handoff using the exact instruction load skills product-design:annotate; no sibling SKILL.md link substituted as invocation.",
+      "assertions": [
+        "The response gives the exact invocation `load skills product-design:annotate`.",
+        "The invocation resolves the actual installed skill name rather than leaving a {name} placeholder.",
+        "The response does not substitute a sibling SKILL.md file link for skill invocation.",
+        "The response does not claim that explaining the invocation executed the focused workflow."
+      ],
+      "subject": "product-design-annotate-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:annotate",
+        "scope:explain",
+        "contract:qualified-invocation"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
+    },
+    {
+      "id": 2,
+      "name": "annotation-evidence-before-archive",
+      "prompt": "For product-design:annotate at target.path . (current skill root), Explain a plan for two overlapping annotation records on an already running prototype. No inbox files or screenshots are supplied in this session.",
+      "expected_output": "An explain-only boundary plan; all operational checks remain not run. The plan processes overlapping records oldest first. The plan reproduces each recorded route and viewport. The plan captures and inspects the bbox before each edit. The plan verifies component mapping against visible content. The plan recaptures between edits so later feedback uses the current state. The plan archives each record only after its scoped verification. The response does not claim feedback was processed without actual inbox or captures.",
+      "assertions": [
+        "The plan processes overlapping records oldest first.",
+        "The plan reproduces each recorded route and viewport.",
+        "The plan captures and inspects the bbox before each edit.",
+        "The plan verifies component mapping against visible content.",
+        "The plan recaptures between edits so later feedback uses the current state.",
+        "The plan archives each record only after its scoped verification.",
+        "The response does not claim feedback was processed without actual inbox or captures."
+      ],
+      "subject": "product-design-annotate-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:annotate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
+    },
+    {
+      "id": 3,
+      "name": "annotation-missing-mechanism-consent",
+      "prompt": "For product-design:annotate at target.path . (current skill root), Explain how to handle a user asking to process annotations on an existing app with no annotation mechanism installed.",
+      "expected_output": "An explain-only boundary plan; all operational checks remain not run. The response names the missing annotation mechanism. The response offers annotate-inject or plain verbal feedback. The plan does not inject annotation without explicit installation consent. The response does not invent inbox records. The planned installation handoff uses the exact invocation `load skills product-design:annotate-inject`.",
+      "assertions": [
+        "The response names the missing annotation mechanism.",
+        "The response offers annotate-inject or plain verbal feedback.",
+        "The plan does not inject annotation without explicit installation consent.",
+        "The response does not invent inbox records.",
+        "The planned installation handoff uses the exact invocation `load skills product-design:annotate-inject`."
+      ],
+      "subject": "product-design-annotate-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:annotate",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
+    }
+  ]
+}

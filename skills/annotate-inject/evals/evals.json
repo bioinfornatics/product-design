@@ -3,20 +3,267 @@
     {
       "id": 1,
       "name": "existing-project-requires-consent",
-      "prompt": "J'ai déjà une application Next.js. Termine l'écran et rends-le consultable localement.",
-      "expected_output": "Hand off the verified local build, explain annotation changes, and ask for confirmation before injecting them. Do not claim annotation is installed."
+      "prompt": "For product-design:annotate-inject at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: I already have a Next.js application. Finish the screen and make it available for local review. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The response distinguishes generic local review authorization from annotation consent. The plan asks confirmation before adding annotation routes or overlay. The plan permits ordinary verified handoff while optional annotation consent is pending. The response states annotation is not installed in the described consent-pending state. The response does not claim an actual local build or URL was verified. Generation, build, research, rendered QA, tracking and deployment remain not run.",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-annotate-inject-workflow-contract",
+      "language": "en",
+      "assertions": [
+        "The response distinguishes generic local review authorization from annotation consent.",
+        "The plan asks confirmation before adding annotation routes or overlay.",
+        "The plan permits ordinary verified handoff while optional annotation consent is pending.",
+        "The response states annotation is not installed in the described consent-pending state.",
+        "The response does not claim an actual local build or URL was verified.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:annotate-inject",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 2,
       "name": "explicit-install-is-consent",
-      "prompt": "Installe le mécanisme d'annotation dans mon projet Vite existant et vérifie-le.",
-      "expected_output": "Treat the explicit request as consent and claim success only after toggle, POST, inbox write, and production behavior are verified."
+      "prompt": "For product-design:annotate-inject at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Install the annotation mechanism in my existing Vite project and verify it. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The response treats explicit Vite install request as scoped consent. The plan visually checks the development toggle before success. The plan verifies accepted development POST. The plan verifies an actual inbox write. The plan verifies production endpoint absent or refused. The plan starts or reuses the dev server itself. The plan requires verified review URL before installation handoff. The response does not claim transport or edit-cycle checks already ran. Generation, build, research, rendered QA, tracking and deployment remain not run.",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-annotate-inject-workflow-contract",
+      "language": "en",
+      "assertions": [
+        "The response treats explicit Vite install request as scoped consent.",
+        "The plan visually checks the development toggle before success.",
+        "The plan verifies accepted development POST.",
+        "The plan verifies an actual inbox write.",
+        "The plan verifies production endpoint absent or refused.",
+        "The plan starts or reuses the dev server itself.",
+        "The plan requires verified review URL before installation handoff.",
+        "The response does not claim transport or edit-cycle checks already ran.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:annotate-inject",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
     },
     {
       "id": 3,
       "name": "static-astro-blocker",
-      "prompt": "Ajoute les annotations à ce site Astro configuré avec output: static.",
-      "expected_output": "Do not install a route that will fail. Explain that a server or hybrid adapter is required and ask whether the user approves that change."
+      "prompt": "For product-design:annotate-inject at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Add annotations to this Astro site configured with output: static. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only workflow or routing plan. The response identifies static Astro output as incapable of serving annotation POST. The plan asks approval before server or hybrid adapter changes. The plan does not install a known nonfunctional route before consent. The response does not claim installation success. Generation, build, research, rendered QA, tracking and deployment remain not run.",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-annotate-inject-workflow-contract",
+      "language": "en",
+      "assertions": [
+        "The response identifies static Astro output as incapable of serving annotation POST.",
+        "The plan asks approval before server or hybrid adapter changes.",
+        "The plan does not install a known nonfunctional route before consent.",
+        "The response does not claim installation success.",
+        "The response labels the workflow explain-only rather than claiming external operations were executed."
+      ],
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:annotate-inject",
+        "scope:explain"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "status": "not-run"
+    },
+    {
+      "name": "vite-legacy-route-documented-not-half-migrated",
+      "prompt": "Explain annotation installation for an external Vite project using the current bundled port. Compare its endpoint naming with Next.js; do not change code.",
+      "expected_output": "Describe the paired legacy Vite endpoint exception and no-underscore Next.js rule without claiming a migration occurred.",
+      "assertions": [
+        "Names the legacy Vite route used by both current overlay and middleware",
+        "Does not recommend renaming only one side",
+        "Does not allow an underscore-prefixed Next.js route folder"
+      ],
+      "subject": "instruction-coherence",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Use current port source and Skill as supplied; no injection or migration is requested"
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 8,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:annotate-inject",
+        "change:instruction-coherence",
+        "scope:explain"
+      ],
+      "id": 4,
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
+    },
+    {
+      "id": 5,
+      "name": "qualified-skill-invocation",
+      "prompt": "For product-design:annotate-inject at target.path . (current skill root), explain how to invoke this installed skill in Goose for a focused handoff. The installed plugin namespace is product-design. Do not run the workflow.",
+      "expected_output": "An explain-only handoff using the exact instruction load skills product-design:annotate-inject; no sibling SKILL.md link substituted as invocation.",
+      "assertions": [
+        "The response gives the exact invocation `load skills product-design:annotate-inject`.",
+        "The invocation resolves the actual installed skill name rather than leaving a {name} placeholder.",
+        "The response does not substitute a sibling SKILL.md file link for skill invocation.",
+        "The response does not claim that explaining the invocation executed the focused workflow."
+      ],
+      "subject": "product-design-annotate-inject-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:annotate-inject",
+        "scope:explain",
+        "contract:qualified-invocation"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
     }
-  ]
+  ],
+  "skill_name": "annotate-inject"
 }

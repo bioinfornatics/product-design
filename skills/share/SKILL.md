@@ -1,16 +1,22 @@
 ---
 name: share
-description: Focused Product Design deployment handoff. Use only after a runnable prototype exists and the user requests sharing; require a chosen available hosting target and return a verified working URL. Goose Apps creation alone is not deployment.
+description: Deploys a reviewable prototype to an explicitly chosen available hosting target and verifies its URL. Use when the user explicitly requests sharing, hosting, publishing, or deployment.
 ---
 
 # Share
+
+## Skill loading and shared resources
+
+For another Skill, use the instruction `load skills product-design:{name}` with its actual unqualified directory name substituted for {name}. Use the exposed skill-loading tool; do not open a sibling SKILL.md as a substitute. Load only the focused workflow required by the current step.
+
+This Skill belongs to the complete Product Design plugin, not a standalone export. Resolve `PLUGIN_ROOT` two levels above this Skill directory. Paths written as `PLUGIN_ROOT/references/...` identify canonical shared policies in that bundle; read them only when the stated condition applies. Local `references/...` remain relative to this Skill. Source and packaging checks verify these paths and their transitive dependencies; do not copy or edit parallel policy versions manually.
 
 Deploy the user's runnable prototype so they can share it with others.
 
 ## Critical Overrides
 
-- Refer to the Plugin router [`product-design:index`](../index/SKILL.md) before proceeding.
-- Follow [../../references/critical-overrides.md](../../references/critical-overrides.md).
+- Before proceeding, use `load skills product-design:index` for routing.
+- Follow critical overrides at `PLUGIN_ROOT/references/critical-overrides.md`.
 
 ## User Context
 
@@ -22,7 +28,7 @@ Do not inspect every saved reference. Inspect only what the current task needs.
 
 ## Workflow
 
-For involved multi-phase work, follow [planning-aware routing and optional tracking](../../references/planning-and-tracking.md). At handoff state epic/outcome, release phase gate, acceptance criteria, dependencies, ready/blocked state, owner, deployment evidence, and next task. Mirror through `product-design:project-status` only for explicit tracking, an applicable existing `.beads/`, or a confirmed vocabulary-only offer. Tracking is optional and never a deployment gate.
+For involved multi-phase work, follow planning-aware routing and optional tracking at `PLUGIN_ROOT/references/planning-and-tracking.md`. At handoff state epic/outcome, release phase gate, acceptance criteria, dependencies, ready/blocked state, owner, deployment evidence, and next task. Mirror through `product-design:project-status` only for explicit tracking, an applicable existing `.beads/`, or a confirmed vocabulary-only offer. Tracking is optional and never a deployment gate.
 
 1. Confirm the prototype directory and the user's preferred deployment target.
 2. If the user names Sites, Vercel, or another deployment tool, treat it as the selected hosting target only if that capability is exposed in the current Goose session.

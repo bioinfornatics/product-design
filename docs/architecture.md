@@ -1,70 +1,74 @@
-# Architecture du plugin Product Design
+# Product Design Plugin Architecture
 
-## Modèle d'exécution
+## Execution model
 
-Product Design est un plugin Goose composé de skills Markdown, de références partagées, de starters frontend et de scripts locaux. Il n'embarque pas de service de mémoire, de base vectorielle ou d'orchestrateur de graphe.
+Product Design is a Goose plugin made up of Markdown skills, shared references, frontend starters, and local scripts. It does not include a memory service, a vector database, or a graph orchestrator.
 
 ```text
-Demande utilisateur
+User request
       ↓
-product-design:index (routeur)
+product-design:index (router)
       ↓
-skill spécialisé + références transversales
+specialized skill + cross-cutting references
       ↓
-outils disponibles dans la session
+tools available in the session
       ↓
-artefacts visuels, prototype local, QA ou URL partagée
+visual artifacts, local prototype, QA, or shared URL
 ```
 
-Goose ajoute le préfixe `product-design:` après installation. Le nom déclaré dans chaque répertoire de skill reste simple, par exemple `ideate`.
+Goose adds the `product-design:` prefix after installation. The name declared in each skill directory remains unqualified, for example `ideate`.
 
-## Composants
+## Components
 
 ### Skills
 
-Les treize skills sont répartis par responsabilité :
+The thirteen skills are grouped by responsibility:
 
-- **Orchestration** : `index`, `get-context`.
-- **Contexte et découverte** : `user-context`, `research`, `audit`.
-- **Conception** : `ideate`.
-- **Construction** : `image-to-code`, `url-to-code`.
-- **Vérification et livraison** : `design-qa`, `share`.
-- **Boucle de feedback** : `annotate-inject`, `annotate`.
-- **Suivi optionnel** : `project-status`.
+- **Orchestration**: `index`, `get-context`.
+- **Context and discovery**: `user-context`, `research`, `audit`.
+- **Design**: `ideate`.
+- **Build**: `image-to-code`, `url-to-code`.
+- **Verification and delivery**: `design-qa`, `share`.
+- **Feedback loop**: `annotate-inject`, `annotate`.
+- **Optional tracking**: `project-status`.
 
-Le routeur charge le skill adapté ; les skills peuvent ensuite demander le chargement d'un autre skill au passage d'une étape. Il n'existe pas d'agent custom distinct dans ce dépôt.
+The router loads the appropriate skill; skills may then request another skill when transitioning to a new step. There is no separate custom agent in this repository.
 
-### Références
+### References
 
-`references/` rassemble les règles communes : communication, overrides critiques, modification d'une base existante, preflight des prototypes et gates de décision. Elles évitent de dupliquer ces contrats dans chaque skill.
+`references/` brings together shared rules: communication, critical overrides, changes to an existing codebase, prototype preflight, and decision gates. They prevent these contracts from being duplicated in every skill.
 
 ### Templates
 
-| Répertoire | Stack | Usage |
+| Directory | Stack | Usage |
 |---|---|---|
-| `templates/prototype` | Vite + React | Prototype jetable par défaut |
-| `templates/nextjs` | Next.js | Validation de comportements spécifiques à Next |
-| `templates/nuxt` | Nuxt | Prototype Nuxt demandé ou requis |
-| `templates/astro` | Astro | Prototype Astro demandé ou requis |
+| `templates/prototype` | Vite + React | Default throwaway prototype |
+| `templates/nextjs` | Next.js | Validation of Next-specific behaviors |
+| `templates/nuxt` | Nuxt | Requested or required Nuxt prototype |
+| `templates/astro` | Astro | Requested or required Astro prototype |
 
-Le script `scripts/bootstrap-prototype.mjs` copie le starter choisi vers une nouvelle destination. Chaque starter contient un `AGENTS.md` local et une annotation déjà câblée. Le framework doit être décidé avant le scaffold.
+The `scripts/bootstrap-prototype.mjs` script copies the selected starter to a new destination. Each starter contains a local `AGENTS.md` and annotation already wired up. The framework must be decided before scaffolding.
 
 ### Annotation
 
-`assets/annotate/` contient les ports à injecter dans une application existante : composants overlay, styles et endpoint/plugin par framework. Les templates en contiennent déjà une copie adaptée. Les annotations sont des fichiers locaux au prototype, sous `.goose/annotations/`, et non des données envoyées à une infrastructure du plugin.
+`assets/annotate/` contains ports to inject into an existing application: overlay components, styles, and a framework-specific endpoint/plugin. The templates already contain an adapted copy. Annotations are files local to the prototype, under `.goose/annotations/`, not data sent to plugin infrastructure.
 
-### Gates et suivi
+### Gates and tracking
 
-Les décisions de produit sont documentées dans `.gates/` au sein du projet généré. Les formules sous `assets/beads-formulas/` peuvent refléter les phases dans Beads, mais restent facultatives : elles ne décident pas des gates et aucun skill ne doit échouer parce que Beads est absent.
+Product decisions are documented in `.gates/` within the generated project. The formulas under `assets/beads-formulas/` can reflect phases in Beads, but remain optional: they do not decide gates, and no skill should fail because Beads is unavailable.
 
-## Capacités runtime
+## Runtime capabilities
 
-Le plugin s'appuie sur les capacités exposées à Goose :
+The plugin relies on capabilities exposed to Goose:
 
-- navigateur pour capturer une source et vérifier un rendu ;
-- génération d'images pour l'idéation et certains assets ;
-- Node.js/npm pour bootstrap, installation et serveurs locaux ;
-- hébergeur uniquement lors d'un partage demandé ;
-- Figma ou Goose Apps de façon optionnelle.
+- a browser to capture a source and verify a rendering;
+- image generation for ideation and some assets;
+- Node.js/npm for bootstrap, installation, and local servers;
+- a hosting provider only when sharing is requested;
+- optionally, Figma or Goose Apps.
 
-Ces outils ne sont pas installés automatiquement. Le skill actif doit détecter leur disponibilité et annoncer un blocker si l'étape ne peut pas être prouvée.
+These tools are not installed automatically. The active skill must detect their availability and report a blocker if the step cannot be substantiated.
+
+## Skill authoring correction
+
+Peer Skills use `load skills product-design:{name}`, not sibling-file links. Shared policies remain canonical at root references/; isolated validation/packaging projects contained local resources with identity/closure checks. No source copies or installed-plugin changes are generated. `validate:authoring` is required in npm test and blocks audit/scenario errors or warnings. See [the authoring/resource contract](skill-authoring.md). This is structural evidence, not behavioral evaluation.
