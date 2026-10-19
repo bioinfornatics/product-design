@@ -34,6 +34,10 @@ Run `scripts/check-workflow-evidence.mjs` with operation `review-handoff` and qa
 
 After passing publication, run `--consume` for that request immediately before handoff and cite `.gates/review-handoff.receipt.json`, `design-qa.json` and `design-qa.md`. Nonzero/blocked, stale code, missing state/hash or JSON/Markdown divergence stops handoff. Regenerate Markdown only from canonical JSON through the adapter. G5 is not a user study or G6. Apps/remote targets without locally verifiable implementation evidence remain freshness-blocked, not silently exempt.
 
+## Source identity and traceability
+
+When QA consumes generated/edited screen sources, read source artifacts at PLUGIN_ROOT/references/source-artifacts.md and run PLUGIN_ROOT/scripts/check-source-artifacts.mjs with the plan and ledger. Resolve every required source ID to its accepted canonical file/hash and linked specification/scenario/decision/screenState/verification; recheck dependency impact before comparisons and handoff. A changed spec/context cannot pass merely because rendering matches old pixels. Preserve history and route material source corrections through plan/preflight, exact-byte review and renewed affected approvals; hashes and structural links do not prove semantics or research.
+
 ## Critical Overrides
 
 Follow critical overrides at `PLUGIN_ROOT/references/critical-overrides.md`.

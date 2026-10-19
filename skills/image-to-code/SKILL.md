@@ -19,6 +19,10 @@ Before scaffolding, app creation or implementation mutation, read executable tra
 
 Use `generated` only for actual complete generated comparison provenance. Provided visuals, exact clones and retained historical choices use their documented branches without a new competition; applicable involved G1/contract/blueprint checks remain. Supply the exact bindings and implementation roots to `product-design:design-qa`. Canonical `design-qa.json`, derived Markdown and a freshly consumed `review-handoff` receipt are required before saying done. Apps/remote runtime without locally verifiable implementation evidence remains freshness-blocked.
 
+## Source dependency handoff
+
+For generated/edited screen sources, read source artifacts at PLUGIN_ROOT/references/source-artifacts.md and run PLUGIN_ROOT/scripts/check-source-artifacts.mjs with the plan and ledger before consuming the approved set. Resolve each approved ID to its canonical accepted record/file and actual specification/contract/blueprint links; review changed dependency impact before fresh build consumption. Copied images or stale approvals do not qualify. Return screen-source revisions to ideate for the same plan/preflight; do not silently edit visual truth while coding. Provided authorized assets retain their own provenance; ordinary raster asset production is not a screen-source migration.
+
 ## Critical Overrides
 
 - Before proceeding, use `load skills product-design:index` for routing.

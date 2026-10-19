@@ -19,6 +19,10 @@ Read executable transitions at `PLUGIN_ROOT/references/executable-transitions.md
 
 A historically selected incomplete direction uses the documented `historical-selection` prior-choice declaration and completed approved target set, not an invented complete G2 or a new competition. Stop on nonzero/blocked, preserve choice/history and repair only the missing evidence. Receipts never manufacture stakeholder approval.
 
+## Canonical source preflight
+
+Before every generated/edited screen-source call, read source artifacts at PLUGIN_ROOT/references/source-artifacts.md and run PLUGIN_ROOT/scripts/check-source-artifacts.mjs against the frozen source plan, ledger, screen/attempt and actual tool schema. Use its workspace_output_path (below generated/), save_to_workspace: true, n: 1 and expectedPath unchanged; verify the tool-returned file, inspect and append the accepted/rejected record before the successor. Unknown destination capability, including imageEdit missing workspace_output_path, blocks the call; manual copying/renaming is not a workaround. Bind actual specification/context files and blueprint links, recheck change impact, and keep the same stable plan/IDs through comparison and selected continuation. This source contract governs new destinations; legacy manifest output directories remain historical, not permission for random-name new sources.
+
 ## Critical boundaries
 
 - Do not build, scaffold, start an app server, call Goose Apps, or route to image-to-code before a variant and its complete screen set are approved and explicit G4 build scope is granted.
@@ -84,8 +88,8 @@ Write all three complete plans, anchorScreenId and journey(startScreenId,outcome
 Every Image Gen call produces exactly one full-size screen image. Never generate a board or several screens in one result.
 
 - Run up to three isolated variant workers concurrently: V1, V2 and V3 may progress in parallel. Inside each variant, generate screens strictly sequentially (S1 → S2 → …) so accepted prior screens anchor continuity.
-- Give each worker a distinct output directory and variant-only plan. Workers must not edit shared board files or another variant directory.
-- Use only the exact path returned by each generation call. Never scan for a latest file, infer a filename, or copy from a shared directory. Verify the path stays inside the assigned variant directory, inspect it, hash it, and persist the attempt before starting its successor.
+- Give each worker a distinct output directory derived from the source plan and its variant-only execution slice with prepared canonical destinations. Workers must not edit shared board files or another variant directory.
+- Supply the preflight destination, then use only the exact path returned by that generation/edit call and require equality with expectedPath. Never scan for a latest file, infer a returned filename, or copy into place. Verify confinement, inspect it, hash it, and persist the attempt before starting its successor.
 - Reject duplicate hashes across screen IDs. Use bounded attempts from the manifest, and resume accepted screens from their persisted exact returned paths after interruption. Record provider timing, orchestration timestamps, and prompt provenance.
 - After all mode-required workers finish, the parent verifies outputs and assembles pages in deterministic V1, V2, V3 order, never completion order.
 - If delegation is unavailable, process V1 then V2 then V3 sequentially with the same per-variant contract.
@@ -100,9 +104,9 @@ Create only full-size screen [VARIANT/SCREEN ID — NAME] for candidate [VARIANT
 
 Include responsibility/value, the user question/intent and task-shaped workspace, candidate thesis, start/end context, purpose, entry, exact data/source/unknowns, primary action and real effect, supporting/recovery states and exit/return. When applicable, specify useful prepared work, why-now/lead-time and mandate limits; do not invent delivery/result claims. Preserve the accepted visual anchor and design-system language. For desktop web, preserve a landscape desktop composition, desktop navigation and content density; never reinterpret it as a narrow mobile layout.
 
-## 3 — Create exactly three journey-board pages
+## 3 — Create exactly three journey-board pages for open comparison
 
-After all planned sources exist, create one separate board page per variant showing the complete ordered flow and explicitly labeled recovery branches. A source missing from any compared journey blocks completed comparison. These are presentation artifacts, not generated UI images or product prototypes.
+For open comparison only, after all planned sources exist, create one separate board page per variant showing the complete ordered flow and explicitly labeled recovery branches. A source missing from any compared journey blocks completed comparison. These are presentation artifacts, not generated UI images or product prototypes.
 
 Prefer: (1) the requested collaborative board tool when available; (2) available Figma/FigJam, Miro or equivalent capability; (3) three standalone local HTML pages requiring no app scaffold or product server.
 
@@ -135,7 +139,7 @@ When the user selects N:
 2. Preserve the selected direction. Reuse the selected complete set. For a historical already selected direction with incomplete sources, generate only its missing screens sequentially and disclose that the earlier comparison was incomplete; do not invent completed alternatives or force a new competition. Correct only faulty sources in versioned files.
 3. Record selected page path/URL, image paths/IDs, confidence and assumptions.
 4. Verify end-to-end coverage and continuity of shell, data, actions, terminology and states.
-5. Present and embed every selected screen once at full readable size.
+5. Present and embed every selected screen once at full readable size with its stable ID, role, purpose and nextScreen/End. Historical selected-only continuation may use individual images; do not force the exactly-three board generator, fabricate alternatives or scaffold/start an app for presentation.
 6. Ask only: Do you approve this complete screen set for build, or which screen IDs should I revise?
 
 Do not regenerate merely because the journey was selected. For one-screen feedback, regenerate only that image and update its board reference. For a changed journey, explicitly revise its plan, required images and page.

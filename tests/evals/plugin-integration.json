@@ -889,6 +889,302 @@
       },
       "expected_output": "An explain-only integration plan preserving expected_sequence order and forbidden boundaries. The plan publishes prototype-build readiness against actual approved sources and scoped G4. The plan requires fresh --consume before app mutation. The response does not treat source-selection readiness as build permission. The plan saves canonical blocked QA for the missing recovery capture. The plan preserves blocked attempt history during correction. The plan requires all required-state captures and same-state comparisons before passing QA. The plan binds G5 to authoritative canonical QA. The plan publishes review-handoff before fresh consumption. The response rejects stale implementation evidence after a code change. The response rejects Markdown-only completion authority. The response does not claim browser QA was executed. The response does not claim user research was conducted. The response does not treat declared approval as authenticated human authorization. No generation, implementation, research, rendered QA or deployment execution is claimed.",
       "forbidden": []
+    },
+    {
+      "id": 13,
+      "name": "source-path-base-through-generation",
+      "prompt": "For the product-design plugin at target.path . (repository root), explain this hypothetical workflow: Plan one source attempt for project /work/booking, journey booking, session review-one, variant guided, screen confirm, attempt 2. The hypothetical Image MCP workspace is /work/booking and its generation schema exposes both workspace_output_path and save_to_workspace. What destination should preflight return and what should happen before the next screen? Do not execute generation, app edits, research, captures, QA, tracking or deployment; describe transitions and blockers only.",
+      "expected_sequence": [
+        "index",
+        "ideate",
+        "source plan and actual dependency checks",
+        "destination capability preflight or change-impact review",
+        "verified source review and genuine phase approval before continuation"
+      ],
+      "forbidden": [
+        "manual copied image promoted as canonical generated source",
+        "fabricated human approval",
+        "rewritten historical responses or gates",
+        "app scaffold/server as source-presentation workaround"
+      ],
+      "subject": "plugin-integration-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "plugin",
+        "path": ".",
+        "execution": "explain"
+      },
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:plugin-integration",
+        "scope:explain",
+        "source:path-translation"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "plugin.json",
+          "skills/index/SKILL.md",
+          "references/source-artifacts.md"
+        ],
+        "read_when_relevant": [
+          "skills/ideate/SKILL.md",
+          "references/executable-transitions.md"
+        ],
+        "must_not_read": []
+      },
+      "assertions": [
+        "The plan requests workspace_output_path product-design/booking/review-one/guided/confirm-attempt-2.png.",
+        "The plan expects /work/booking/generated/product-design/booking/review-one/guided/confirm-attempt-2.png.",
+        "The plan requires source-plan preflight using the actual tool schema before a manual or wrapped call.",
+        "The plan sets save_to_workspace true and n 1.",
+        "The plan verifies the exact returned path equals the prepared destination.",
+        "The plan inspects and persists an accepted/rejected record before the successor.",
+        "The response labels external operations planned or not run rather than claiming execution."
+      ],
+      "expected_output": "An explain-only integration plan. The plan requests workspace_output_path product-design/booking/review-one/guided/confirm-attempt-2.png. The plan expects /work/booking/generated/product-design/booking/review-one/guided/confirm-attempt-2.png. The plan requires source-plan preflight using the actual tool schema before a manual or wrapped call. The plan sets save_to_workspace true and n 1. The plan verifies the exact returned path equals the prepared destination. The plan inspects and persists an accepted/rejected record before the successor. The response labels external operations planned or not run rather than claiming execution. No operational execution or permission is claimed."
+    },
+    {
+      "id": 14,
+      "name": "source-edit-capability-manual-copy-block",
+      "prompt": "For the product-design plugin at target.path . (repository root), explain this hypothetical workflow: A selected confirmation screen needs corrected copy. The hypothetical imageEdit schema offers save_to_workspace but no workspace_output_path; imageGenerate exposes both. Someone suggests editing to a random filename and copying it into the planned attempt path. Explain whether this is acceptable. Do not execute generation, app edits, research, captures, QA, tracking or deployment; describe transitions and blockers only.",
+      "expected_sequence": [
+        "index",
+        "ideate",
+        "source plan and actual dependency checks",
+        "destination capability preflight or change-impact review",
+        "verified source review and genuine phase approval before continuation"
+      ],
+      "forbidden": [
+        "manual copied image promoted as canonical generated source",
+        "fabricated human approval",
+        "rewritten historical responses or gates",
+        "app scaffold/server as source-presentation workaround"
+      ],
+      "subject": "plugin-integration-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "plugin",
+        "path": ".",
+        "execution": "explain"
+      },
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:plugin-integration",
+        "scope:explain",
+        "source:capability-block"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "plugin.json",
+          "skills/index/SKILL.md",
+          "references/source-artifacts.md"
+        ],
+        "read_when_relevant": [
+          "skills/ideate/SKILL.md",
+          "references/executable-transitions.md"
+        ],
+        "must_not_read": []
+      },
+      "assertions": [
+        "The response blocks imageEdit because its schema lacks workspace_output_path.",
+        "The response rejects assuming imageEdit has imageGenerate output capabilities.",
+        "The response rejects random-name generation/editing followed by manual copying or renaming as canonical provenance.",
+        "The plan preserves the source choice and records the capability blocker honestly.",
+        "The plan does not silently switch tools or fabricate a successful attempt.",
+        "The response labels external operations planned or not run rather than claiming execution."
+      ],
+      "expected_output": "An explain-only integration plan. The response blocks imageEdit because its schema lacks workspace_output_path. The response rejects assuming imageEdit has imageGenerate output capabilities. The response rejects random-name generation/editing followed by manual copying or renaming as canonical provenance. The plan preserves the source choice and records the capability blocker honestly. The plan does not silently switch tools or fabricate a successful attempt. The response labels external operations planned or not run rather than claiming execution. No operational execution or permission is claimed."
+    },
+    {
+      "id": 15,
+      "name": "source-specification-change-through-build-qa",
+      "prompt": "For the product-design plugin at target.path . (repository root), explain this hypothetical workflow: The hypothetical selected booking set has accepted canonical attempts and a prior source-plan-bound G4. A linked current requirements file now has different bytes, though all approved PNGs are unchanged. Explain whether coding can proceed from the old receipt. Do not execute generation, app edits, research, captures, QA, tracking or deployment; describe transitions and blockers only.",
+      "expected_sequence": [
+        "index",
+        "image-to-code",
+        "source plan and actual dependency checks",
+        "destination capability preflight or change-impact review",
+        "verified source review and genuine phase approval before continuation"
+      ],
+      "forbidden": [
+        "manual copied image promoted as canonical generated source",
+        "fabricated human approval",
+        "rewritten historical responses or gates",
+        "app scaffold/server as source-presentation workaround"
+      ],
+      "subject": "plugin-integration-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "plugin",
+        "path": ".",
+        "execution": "explain"
+      },
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:plugin-integration",
+        "scope:explain",
+        "source:specification-impact"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "plugin.json",
+          "skills/index/SKILL.md",
+          "references/source-artifacts.md"
+        ],
+        "read_when_relevant": [
+          "skills/image-to-code/SKILL.md",
+          "references/executable-transitions.md"
+        ],
+        "must_not_read": []
+      },
+      "assertions": [
+        "The plan detects the changed specification bytes against the source plan.",
+        "The plan reviews sourceImpact and affected sources through specificationIds.",
+        "The plan blocks stale build consumption pending impact review and renewed affected approvals.",
+        "The plan rejects merely refreshing hashes while retaining old approval.",
+        "The plan keeps unchanged accepted sources and the selected direction without a new comparison.",
+        "The response states that hashes cannot determine semantic correctness or human permission.",
+        "The response labels external operations planned or not run rather than claiming execution."
+      ],
+      "expected_output": "An explain-only integration plan. The plan detects the changed specification bytes against the source plan. The plan reviews sourceImpact and affected sources through specificationIds. The plan blocks stale build consumption pending impact review and renewed affected approvals. The plan rejects merely refreshing hashes while retaining old approval. The plan keeps unchanged accepted sources and the selected direction without a new comparison. The response states that hashes cannot determine semantic correctness or human permission. The response labels external operations planned or not run rather than claiming execution. No operational execution or permission is claimed."
+    },
+    {
+      "id": 16,
+      "name": "source-selected-only-history-traceability",
+      "prompt": "For the product-design plugin at target.path . (repository root), explain this hypothetical workflow: Our selected guided booking direction has only historical entry and confirmation images, no old alternatives. Explain how to finish its missing recovery screen and present it for review without making a new app. Do not execute generation, app edits, research, captures, QA, tracking or deployment; describe transitions and blockers only.",
+      "expected_sequence": [
+        "index",
+        "index",
+        "source plan and actual dependency checks",
+        "destination capability preflight or change-impact review",
+        "verified source review and genuine phase approval before continuation"
+      ],
+      "forbidden": [
+        "manual copied image promoted as canonical generated source",
+        "fabricated human approval",
+        "rewritten historical responses or gates",
+        "app scaffold/server as source-presentation workaround"
+      ],
+      "subject": "plugin-integration-workflow-contract",
+      "language": "en",
+      "target": {
+        "kind": "plugin",
+        "path": ".",
+        "execution": "explain"
+      },
+      "status": "not-run",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:plugin-integration",
+        "scope:explain",
+        "source:selected-continuation"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "plugin.json",
+          "skills/index/SKILL.md",
+          "references/source-artifacts.md"
+        ],
+        "read_when_relevant": [
+          "skills/index/SKILL.md",
+          "references/executable-transitions.md"
+        ],
+        "must_not_read": []
+      },
+      "assertions": [
+        "The plan retains the selected direction without reopening three alternatives.",
+        "The plan routes source completion to the exact invocation load skills product-design:ideate.",
+        "The plan preserves stable screen IDs and declared specification/blueprint links through continuation.",
+        "The plan permits individual full-size selected-source presentation instead of a fake exactly-three board.",
+        "The plan blocks app scaffold/server creation as a presentation workaround.",
+        "The plan requires genuine ordered full-set approval and G4 before build.",
+        "The response labels external operations planned or not run rather than claiming execution.",
+        "The plan preserves immutable historical files/responses/gates and uses explicit migration aliases/hashes/new active records when needed."
+      ],
+      "expected_output": "An explain-only integration plan. The plan retains the selected direction without reopening three alternatives. The plan routes source completion to the exact invocation load skills product-design:ideate. The plan preserves stable screen IDs and declared specification/blueprint links through continuation. The plan permits individual full-size selected-source presentation instead of a fake exactly-three board. The plan blocks app scaffold/server creation as a presentation workaround. The plan requires genuine ordered full-set approval and G4 before build. The response labels external operations planned or not run rather than claiming execution. The plan preserves immutable historical files/responses/gates and uses explicit migration aliases/hashes/new active records when needed. No operational execution or permission is claimed."
     }
   ]
 }

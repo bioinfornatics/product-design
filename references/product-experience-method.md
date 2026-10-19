@@ -85,6 +85,8 @@ For involved work maintain an experience blueprint next to the Product/UX/UI con
 | End-to-end variations and source fidelity | Existing manifest/evidence checks; visual/semantic review |
 | Claimed benefit, usability or team replacement | User/operational measurements, not shape validators |
 
+For actual generated/edited screen files read [source artifacts](source-artifacts.md). Bind authoritative specification file revisions/hashes and the existing contract/blueprint to stable source IDs and their scenario/decision/screenState/verification links. Recheck change impact before generation, approval, build and QA; preserve selected directions and historical files. Continuously challenge value, UX, UI, research confidence, accessibility and feasibility through existing questions/decisions/checks, not six parallel specs or a questionnaire.
+
 ## 8. Blueprint shape and example
 
 Write a separate experience blueprint JSON (schemaVersion1) next to the involved-work design contract. Its field names are consumed by validateExperienceBlueprint in scripts/workflow-evidence-contract.mjs. When using this companion, the design contract scenarios also have stable id values; historical v1 contracts without IDs are not rewritten automatically.

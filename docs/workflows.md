@@ -18,7 +18,7 @@ Load `product-design:index` as soon as the user names Product Design or the plug
 
 - `research` produces a source-grounded synthesis of problems and friction; assumptions remain labeled.
 - `audit` examines a specific experience from UX, visual design, and accessibility perspectives.
-- `ideate` renders exactly three comparable alternatives.
+- `ideate` renders exactly three comparable alternatives for open comparison; already selected directions continue without a new competition.
 - A reference URL must be captured and opened before any generation or reproduction.
 
 For a multi-screen choice, generate three complete end-to-end journeys, even at low risk: trigger, actions/decisions, responsibility handoffs, outcome, and critical recoveries. A landing page or three anchors are not enough. Scope a useful scenario rather than removing its ending to reduce cost. Reserve lean for explicitly single-screen targets. Generate sources separately, then select, correct the chosen set, and obtain explicit approval before G4. No new competition for a selected direction.
@@ -94,3 +94,7 @@ The adapter does not verify human identity, assess pixels, conduct user research
 ## Skill authoring correction
 
 Peer Skills use `load skills product-design:{name}`, not sibling-file links. Shared policies remain canonical at root references/; isolated validation/packaging projects contained local resources with identity/closure checks. No source copies or installed-plugin changes are generated. `validate:authoring` is required in npm test and blocks audit/scenario errors or warnings. See [the authoring/resource contract](skill-authoring.md). This is structural evidence, not behavioral evaluation.
+
+## Source-plan continuity
+
+Before new generated/edited screen calls, follow [source artifacts](../references/source-artifacts.md): bind actual specification revisions/files/hashes and applicable contract/blueprint links, preflight active tool destination capability, write directly to the canonical attempt path, then verify/inspect/persist before the successor. Image MCP paths are below generated/, not project-relative paths containing that prefix. Build and QA consume the same stable IDs, accepted records and file dependencies; changed specs/context require impact review and renewed affected approvals, not a hash refresh alone. Historical continuation preserves old responses/gates/files and may present individual full-size selected sources without a three-variant board or product app/server. CLI checks are not image calls, stakeholder permission, semantic review or research.

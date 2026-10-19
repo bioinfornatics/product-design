@@ -124,6 +124,8 @@ Minimal manifest shape (exactly `V1`, `V2`, and `V3` are required):
 }
 ```
 
+Board image paths are relative to the board manifest; viewer copies are presentation derivatives, not canonical generated sources. Historical selected-only continuation may present individual full-size sources rather than manufacture three variants.
+
 Image paths are relative to the manifest. PNG, JPEG, WebP, and GIF are accepted; absolute paths, traversal, SVG, and mismatched file signatures are rejected.
 
 ## Runtime Dependencies
@@ -198,4 +200,8 @@ For involved product work, [product experience method](references/product-experi
 
 ### Skill authoring and loading
 
-Use `load skills product-design:{name}` with the actual Skill name, not sibling SKILL.md reads. [Authoring/resource contract](docs/skill-authoring.md) covers canonical policies, contained projection and the complete-plugin dependency. `npm test` now also runs `validate:authoring`: source/packaged audits and all 170 scenario-design checks must have zero errors or warnings. Scenarios are explain-only, not behaviorally executed.
+Use `load skills product-design:{name}` with the actual Skill name, not sibling SKILL.md reads. [Authoring/resource contract](docs/skill-authoring.md) covers canonical policies, contained projection and the complete-plugin dependency. `npm test` now also runs `validate:authoring`: source/packaged audits and all shipped scenario-design checks must have zero errors or warnings. Scenarios are explain-only, not behaviorally executed.
+
+### Source artifacts and specification impact
+
+[Source artifacts](references/source-artifacts.md) owns the source plan, actual specification/contract/blueprint dependencies, stable screen links, preflight destinations and append-only accepted/rejected provenance. New generated/edited screen calls, including manual calls, require explicit workspace output capability and direct canonical writes; Image MCP output paths omit the project generated/ prefix. Use scripts/check-source-artifacts.mjs for validation/preflight/impact, never as an image caller or approval tool. Selected-only continuation keeps its IDs and may present individual full-size sources; no fake alternatives, moved history or app scaffold is needed. Hashes detect staleness, not semantic correctness or user research.

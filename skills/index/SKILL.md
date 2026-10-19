@@ -206,6 +206,10 @@ Optional Beads (`bd`) tracking for a Product Design project's phases or annotati
 
 Focused brief/ideation/build/QA skills call executable transitions at `PLUGIN_ROOT/references/executable-transitions.md` at their boundaries. A receipt grants only its named scope/phase after fresh consumption; it is not authenticated human approval. Exact clones, provided targets and historical selections keep explicit branches without invented G2 competition. Setup/discovery/audit do not need fictitious build gates.
 
+## Source-artifact routing
+
+For planned generation/editing or consumption of screen sources, read source artifacts at PLUGIN_ROOT/references/source-artifacts.md and route to the focused phase. New calls require a source plan and destination-capability preflight even when manually orchestrated; the router never generates/copies images to bypass this. Historical selected-only continuation may present individual full-size sources without a fake three-variant board or app scaffold.
+
 ## Mode and decision scope
 
 Multi-step product ideation requires three complete end-to-end journeys in full-evidence, not three landing pages or anchors, even at low risk. Lean applies only to explicitly isolated single-screen work. Scope by a useful scenario, not a screen-count shortcut. Include the outcome and critical recovery before comparing. Require explicit complete corrected selected-set approval and G4 before build. Already selected directions are continued, not forced into three new alternatives. Personas are complementary service lanes; a reusable specialized view may coexist with the chosen home. A public marketing landing is not evidence for the authenticated product journey.

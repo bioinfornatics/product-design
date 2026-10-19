@@ -516,7 +516,7 @@
         "path": ".",
         "execution": "explain"
       },
-      "prompt": "For product-design:image-to-code at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design improve a service following this review: contact schedule ≠ KPI; missing budget ≠ zero; clicking an indicator preserves the population/filters; a missing preview does not allow inventing a version. I want to understand the product, UX, and UI implications. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "prompt": "For product-design:image-to-code at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design improve a service following this review: contact schedule \u2260 KPI; missing budget \u2260 zero; clicking an indicator preserves the population/filters; a missing preview does not allow inventing a version. I want to understand the product, UX, and UI implications. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
       "preconditions": [
         "Supplied context is stakeholder input, not observed research",
         "Explain only: no generation, build, external command or deck export",
@@ -1117,6 +1117,65 @@
         "read_when_relevant": [],
         "must_not_read": []
       }
+    },
+    {
+      "id": 21,
+      "name": "changed-specification-blocks-stale-build",
+      "prompt": "For product-design:image-to-code at target.path \".\" (current skill root), explain this hypothetical workflow: The hypothetical selected booking set has accepted canonical attempts and a prior source-plan-bound G4. A linked current requirements file now has different bytes, though all approved PNGs are unchanged. Explain whether coding can proceed from the old receipt. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only source-artifact workflow plan. The plan detects the changed specification bytes against the source plan. The plan reviews sourceImpact and affected sources through specificationIds. The plan blocks stale build consumption pending impact review and renewed affected approvals. The plan rejects merely refreshing hashes while retaining old approval. The plan keeps unchanged accepted sources and the selected direction without a new comparison. The response states that hashes cannot determine semantic correctness or human permission. External operations remain not run.",
+      "assertions": [
+        "The plan detects the changed specification bytes against the source plan.",
+        "The plan reviews sourceImpact and affected sources through specificationIds.",
+        "The plan blocks stale build consumption pending impact review and renewed affected approvals.",
+        "The plan rejects merely refreshing hashes while retaining old approval.",
+        "The plan keeps unchanged accepted sources and the selected direction without a new comparison.",
+        "The response states that hashes cannot determine semantic correctness or human permission.",
+        "The response labels external operations planned or not run rather than claiming execution."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-image-to-code-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:image-to-code",
+        "scope:explain",
+        "source:specification-impact"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md",
+          "PLUGIN_ROOT/references/source-artifacts.md"
+        ],
+        "read_when_relevant": [
+          "PLUGIN_ROOT/references/executable-transitions.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     }
   ]
 }

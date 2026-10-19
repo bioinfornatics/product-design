@@ -729,7 +729,7 @@
         "path": ".",
         "execution": "explain"
       },
-      "prompt": "For product-design:get-context at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design improve a service following this review: contact schedule ≠ KPI; missing budget ≠ zero; clicking an indicator preserves the population/filters; a missing preview does not allow inventing a version. I want to understand the product, UX, and UI implications. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "prompt": "For product-design:get-context at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design improve a service following this review: contact schedule \u2260 KPI; missing budget \u2260 zero; clicking an indicator preserves the population/filters; a missing preview does not allow inventing a version. I want to understand the product, UX, and UI implications. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
       "preconditions": [
         "Supplied context is stakeholder input, not observed research",
         "Explain only: no generation, build, external command or deck export",
@@ -1331,6 +1331,65 @@
         "read_when_relevant": [],
         "must_not_read": []
       }
+    },
+    {
+      "id": 25,
+      "name": "actual-specification-dependency-handoff",
+      "prompt": "For product-design:get-context at target.path \".\" (current skill root), explain this hypothetical workflow: A booking brief includes two project-local requirements files: current revision three and a superseded revision one. It already answers users, value and outcome. Explain the handoff to visual planning and how later screen files remain attributable to these inputs. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only source-artifact workflow plan. The plan inventories actual specification file paths, byte hashes and revisions. The plan distinguishes current from historical specification authority. The plan binds the involved design contract and experience blueprint paths/hashes. The plan links stable screen IDs to specification, scenario, decision, screenState and verification IDs. The plan uses existing blueprint questions/decisions/checks rather than six parallel specifications. The response distinguishes file identity checks from semantic review and research evidence. External operations remain not run.",
+      "assertions": [
+        "The plan inventories actual specification file paths, byte hashes and revisions.",
+        "The plan distinguishes current from historical specification authority.",
+        "The plan binds the involved design contract and experience blueprint paths/hashes.",
+        "The plan links stable screen IDs to specification, scenario, decision, screenState and verification IDs.",
+        "The plan uses existing blueprint questions/decisions/checks rather than six parallel specifications.",
+        "The response distinguishes file identity checks from semantic review and research evidence.",
+        "The response labels external operations planned or not run rather than claiming execution."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-get-context-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:get-context",
+        "scope:explain",
+        "source:specification-links"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md",
+          "PLUGIN_ROOT/references/source-artifacts.md"
+        ],
+        "read_when_relevant": [
+          "PLUGIN_ROOT/references/executable-transitions.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     }
   ]
 }

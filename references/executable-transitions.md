@@ -18,7 +18,7 @@ This is the runtime contract for `scripts/check-workflow-evidence.mjs`. Read it 
 
 ## Running and consuming a transition
 
-Resolve `PLUGIN_ROOT` from the loaded skill directory (two levels up), not the application's current working directory. Keep a single explicit target project root. Sources, JSON inputs, captures and comparison artifacts must be inside that project after realpath resolution. Import external images into it before recording hashes. Gate evidencePath and source paths are exact normalized absolute paths; request paths may be project-relative.
+Resolve `PLUGIN_ROOT` from the loaded skill directory (two levels up), not the application's current working directory. Keep a single explicit target project root. Sources, JSON inputs, captures and comparison artifacts must be inside that project after realpath resolution. Authorized provided targets/captures may be imported into it before recording hashes; newly generated/edited sources must be written directly to their preflight destination under [source artifacts](source-artifacts.md), never copied into canonical provenance. Gate evidencePath and source paths are exact normalized absolute paths; request paths may be project-relative.
 
 Prepare the target directory as an evidence workspace before rendering. A directory containing only evidence is not permission to scaffold. Keep this canonical evidence root. For a new app, bootstrap into its empty app/ subdirectory and declare app/src, app/public, app/package.json, app/package-lock.json and framework configuration as applicable implementation roots. This avoids the bootstrap script's nonempty-destination refusal without overwrite flags. For an existing app, the application root may itself be the evidence root. Do not relocate either root silently.
 
@@ -71,6 +71,10 @@ Paths and declarations above are examples, not evidence or approvals. Populate t
 
 Generated manifests remain schemaVersion 1; generated comparison/selected-screen-set and G2/G3/G4/G5 remain schemaVersion 2. Use existing validators, not the legacy validateBuildHandoff schemaVersion 1 (which hardcodes G1/G2/G3 for every workflow). The adapter supplies phase-aware G4 checking instead. All gates share the exact request.scope. G3/G4 bind the same approved set path and canonical parsed-object hash. G3/G4 verdict must be pass, not experiment. G2 may preserve an experiment for correction, never for building unapproved pixels.
 
+## Source-plan dependency binding
+
+Read [source artifacts](source-artifacts.md) for new generated/edited source calls and source-plan-bound approvals. A request may carry sourcePlan (project-relative plan path) to bind actual specification/context files, stable screen links and canonical accepted ledger records/files to source dependencies. G2 binds the comparison sources; subsequent source approval/build/QA bind only the active approved set, allowing a selected-only plan without fabricating records for unselected historical variants. Source-plan-bound source approvals require those accepted records, not merely manually copied bytes. Publication and fresh consumption recheck dependencies; changed specs/context block stale readiness until impact review and genuinely renewed affected approvals. The source CLI only preflights/files-checks; it never calls Image MCP or creates human approval. Existing unrelated gates and provided/clone/historical branches remain unchanged; older evidence is not auto-migrated.
+
 ## G4 executionContract
 
 Attach this schemaVersion 1 object to the explicit G4 gate before build authorization:
@@ -112,7 +116,7 @@ For workflow provided-target, exact-clone or historical-selection, G3 evidence i
 
 A live URL alone is not a local hashed source; capture/import its approved states. A single-screen clone stays a single-screen scope. Missing critical recovery in an agreed multi-step source scope blocks source approval; do not invent proof. Permission to clone is distinct from evidence of source-state coverage. Reuse an explicit request's authorization only for its actual scope; if the reviewed captures expose an ambiguity or expand scope, obtain clarification/approval rather than synthesizing it.
 
-Historical continuation additionally supplies request.priorSelection with schemaVersion: 1, kind: historical-selection, selectedDirection matching the target set, comparisonComplete: false, declared owner/statement/timestamp. Preserve the choice, disclose missing old alternatives, complete/correct only the selected sources and obtain full-set/G4 approval. This does not retroactively claim a complete G2 comparison.
+Historical continuation additionally supplies request.priorSelection with schemaVersion: 1, kind: historical-selection, selectedDirection matching the target set, comparisonComplete: false, declared owner/statement/timestamp. Preserve the choice, disclose missing old alternatives, complete/correct only the selected sources and obtain full-set/G4 approval. This does not retroactively claim a complete G2 comparison. Selected-only presentation may use individual full-size images with IDs/roles/nextScreen and complete ordered-set access; the exactly-three board generator must not force fabricated alternatives or an app scaffold/server. New generated/edited additions still require the source plan/preflight and honest append-only records.
 
 ## Canonical design-qa.json
 

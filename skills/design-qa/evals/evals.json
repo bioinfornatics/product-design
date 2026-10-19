@@ -687,6 +687,65 @@
         "read_when_relevant": [],
         "must_not_read": []
       }
+    },
+    {
+      "id": 14,
+      "name": "rendered-match-not-current-specification-proof",
+      "prompt": "For product-design:design-qa at target.path \".\" (current skill root), explain this hypothetical workflow: A hypothetical browser rendering matches the old accepted booking images, but the source plan shows changed contract/blueprint files affecting the recovery decision. Explain how QA should handle source traceability and prior findings. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only source-artifact workflow plan. The plan resolves required source IDs to accepted canonical ledger records and actual files. The plan checks specification/contract/blueprint change impact before QA handoff. The response rejects a pass based only on matching stale pixels. The plan traces affected scenario/decision/screenState/verification links. The plan preserves historical source reviews and QA findings rather than rewriting them. The plan requires reviewed source corrections and renewed affected approvals when impact changes visual truth. External operations remain not run.",
+      "assertions": [
+        "The plan resolves required source IDs to accepted canonical ledger records and actual files.",
+        "The plan checks specification/contract/blueprint change impact before QA handoff.",
+        "The response rejects a pass based only on matching stale pixels.",
+        "The plan traces affected scenario/decision/screenState/verification links.",
+        "The plan preserves historical source reviews and QA findings rather than rewriting them.",
+        "The plan requires reviewed source corrections and renewed affected approvals when impact changes visual truth.",
+        "The response labels external operations planned or not run rather than claiming execution."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-design-qa-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:design-qa",
+        "scope:explain",
+        "source:qa-impact"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md",
+          "PLUGIN_ROOT/references/source-artifacts.md"
+        ],
+        "read_when_relevant": [
+          "PLUGIN_ROOT/references/executable-transitions.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     }
   ]
 }

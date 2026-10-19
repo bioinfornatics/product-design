@@ -1004,7 +1004,7 @@
         "path": ".",
         "execution": "explain"
       },
-      "prompt": "For product-design:index at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design improve a service following this review: contact schedule ≠ KPI; missing budget ≠ zero; clicking an indicator preserves the population/filters; a missing preview does not allow inventing a version. I want to understand the product, UX, and UI implications. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "prompt": "For product-design:index at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design improve a service following this review: contact schedule \u2260 KPI; missing budget \u2260 zero; clicking an indicator preserves the population/filters; a missing preview does not allow inventing a version. I want to understand the product, UX, and UI implications. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
       "preconditions": [
         "Supplied context is stakeholder input, not observed research",
         "Explain only: no generation, build, external command or deck export",
@@ -1549,6 +1549,65 @@
         "read_when_relevant": [],
         "must_not_read": []
       }
+    },
+    {
+      "id": 29,
+      "name": "source-selected-only-routing",
+      "prompt": "For product-design:index at target.path \".\" (current skill root), explain this hypothetical workflow: Our selected guided booking direction has only historical entry and confirmation images, no old alternatives. Explain how to finish its missing recovery screen and present it for review without making a new app. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only source-artifact workflow plan. The plan retains the selected direction without reopening three alternatives. The plan routes source completion to the exact invocation load skills product-design:ideate. The plan preserves stable screen IDs and declared specification/blueprint links through continuation. The plan permits individual full-size selected-source presentation instead of a fake exactly-three board. The plan blocks app scaffold/server creation as a presentation workaround. The plan requires genuine ordered full-set approval and G4 before build. External operations remain not run.",
+      "assertions": [
+        "The plan retains the selected direction without reopening three alternatives.",
+        "The plan routes source completion to the exact invocation load skills product-design:ideate.",
+        "The plan preserves stable screen IDs and declared specification/blueprint links through continuation.",
+        "The plan permits individual full-size selected-source presentation instead of a fake exactly-three board.",
+        "The plan blocks app scaffold/server creation as a presentation workaround.",
+        "The plan requires genuine ordered full-set approval and G4 before build.",
+        "The response labels external operations planned or not run rather than claiming execution."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-index-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:index",
+        "scope:explain",
+        "source:selected-continuation"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md",
+          "PLUGIN_ROOT/references/source-artifacts.md"
+        ],
+        "read_when_relevant": [
+          "PLUGIN_ROOT/references/executable-transitions.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     }
   ]
 }

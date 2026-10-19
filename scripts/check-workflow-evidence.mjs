@@ -5,6 +5,8 @@ import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 import { sha256, canonicalJson, validateG1, validateGateRecord, validateDirectionSelection, validateScreenSetEvidence, verifyLocalEvidenceFiles, validateDesignContract, validateExperienceBlueprint, validateDesignQaReport, advanceGateTransaction } from "./workflow-evidence-contract.mjs";
 
+import { verifySourcePlanFiles, verifySourceLedger } from "./source-artifacts.mjs";
+
 export const operations = Object.freeze({ "brief-to-ideation": "ideation", "source-selection": "selected-screen-production", "source-set-approval": "build-handoff", "prototype-build": "prototype-build", "review-handoff": "review-handoff" });
 const fail = message => { throw new Error(message); };
 const text = (value, label) => { if (typeof value !== "string" || !value.trim()) fail(label + " required"); };
@@ -196,7 +198,7 @@ export async function checkTransition({ project, requestPath, consume = false, m
   const root = realpathSync(path.resolve(project));
   if (!lstatSync(root).isDirectory()) fail("project directory required");
   const dependencies = new Map(), archives = new Map();
-  const verifierHash = sha256([readFileSync(fileURLToPath(import.meta.url)), readFileSync(new URL("./workflow-evidence-contract.mjs", import.meta.url)), readFileSync(new URL("./ideation-contract.mjs", import.meta.url))].map(bytes => sha256(bytes)));
+  const verifierHash = sha256([readFileSync(fileURLToPath(import.meta.url)), readFileSync(new URL("./workflow-evidence-contract.mjs", import.meta.url)), readFileSync(new URL("./ideation-contract.mjs", import.meta.url)), readFileSync(new URL("./source-artifacts.mjs", import.meta.url))].map(bytes => sha256(bytes)));
   const file = (value, expected) => { const p = local(root, value), bytes = readFileSync(p), hash = sha256(bytes); if (expected !== undefined && hash !== expected) fail("file hash mismatch: " + value); if (dependencies.has(p) && dependencies.get(p).sha256 !== hash) fail("input changed while reading: " + p); dependencies.set(p, { path: p, sha256: hash }); return { p, bytes, hash }; };
   const load = value => { const { p, bytes } = file(value); archives.set(p, bytes); return JSON.parse(bytes); };
   const receiptBase = { schemaVersion: 1, verifierHash, project: root, status: "blocked", readyFor: null, authorization: "Declared approval consistency only; human identity, rights, pixel fidelity and measured value are not verified" };
@@ -263,6 +265,21 @@ export async function checkTransition({ project, requestPath, consume = false, m
           if (g4.verdict !== "pass") fail("G4 must explicitly pass, not experiment");
           equal(g4.evidencePath, load(request.sourceApproval).evidencePath, "G4 approved set path");
           equal(g4.evidenceHash, sha256(set), "G4 approved set"); execution = g4.executionContract; validateExecution(execution, root, request, set.screens);
+        }
+      }
+    }
+    if (request.sourcePlan) {
+      const sourcePlan = load(request.sourcePlan);
+      for (const dependency of verifySourcePlanFiles(sourcePlan, { project: root })) file(dependency.path, dependency.sha256);
+      if (request.involved && (!sourcePlan.involved || local(root, sourcePlan.context.designContract.path) !== local(root, request.designContract) || local(root, sourcePlan.context.blueprint.path) !== local(root, request.blueprint))) fail("source plan context must match request contract/blueprint");
+      // Comparison sources belong to G2; later phases bind only the active approved set.
+      const plannedSources = set ? set.screens : sources;
+      if (plannedSources.length) {
+        const ledger = load(request.sourceLedger);
+        verifySourceLedger(sourcePlan, ledger, { project: root });
+        for (const record of ledger.records) file(record.path, record.sha256);
+        for (const source of plannedSources) {
+          if (!sourcePlan.screens.some(s => s.id === source.id) || !ledger.records.some(r => r.screenId === source.id && r.path === source.path && r.sha256 === source.sha256 && r.verdict === "accepted")) fail("approved source must bind an accepted canonical source-plan record: " + source.id);
         }
       }
     }

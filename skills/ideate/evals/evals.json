@@ -1366,7 +1366,7 @@
         "path": ".",
         "execution": "explain"
       },
-      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design improve a service following this review: contact schedule ≠ KPI; missing budget ≠ zero; clicking an indicator preserves the population/filters; a missing preview does not allow inventing a version. I want to understand the product, UX, and UI implications. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design improve a service following this review: contact schedule \u2260 KPI; missing budget \u2260 zero; clicking an indicator preserves the population/filters; a missing preview does not allow inventing a version. I want to understand the product, UX, and UI implications. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
       "preconditions": [
         "Supplied context is stakeholder input, not observed research",
         "Explain only: no generation, build, external command or deck export",
@@ -2040,6 +2040,123 @@
         "read_when_relevant": [],
         "must_not_read": []
       }
+    },
+    {
+      "id": 37,
+      "name": "mcp-generated-base-path-translation",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain this hypothetical workflow: Plan one source attempt for project /work/booking, journey booking, session review-one, variant guided, screen confirm, attempt 2. The hypothetical Image MCP workspace is /work/booking and its generation schema exposes both workspace_output_path and save_to_workspace. What destination should preflight return and what should happen before the next screen? Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only source-artifact workflow plan. The plan requests workspace_output_path product-design/booking/review-one/guided/confirm-attempt-2.png. The plan expects /work/booking/generated/product-design/booking/review-one/guided/confirm-attempt-2.png. The plan requires source-plan preflight using the actual tool schema before a manual or wrapped call. The plan sets save_to_workspace true and n 1. The plan verifies the exact returned path equals the prepared destination. The plan inspects and persists an accepted/rejected record before the successor. External operations remain not run.",
+      "assertions": [
+        "The plan requests workspace_output_path product-design/booking/review-one/guided/confirm-attempt-2.png.",
+        "The plan expects /work/booking/generated/product-design/booking/review-one/guided/confirm-attempt-2.png.",
+        "The plan requires source-plan preflight using the actual tool schema before a manual or wrapped call.",
+        "The plan sets save_to_workspace true and n 1.",
+        "The plan verifies the exact returned path equals the prepared destination.",
+        "The plan inspects and persists an accepted/rejected record before the successor.",
+        "The response labels external operations planned or not run rather than claiming execution."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-ideate-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "scope:explain",
+        "source:path-translation"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md",
+          "PLUGIN_ROOT/references/source-artifacts.md"
+        ],
+        "read_when_relevant": [
+          "PLUGIN_ROOT/references/executable-transitions.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
+    },
+    {
+      "id": 38,
+      "name": "image-edit-missing-destination-capability",
+      "prompt": "For product-design:ideate at target.path \".\" (current skill root), explain this hypothetical workflow: A selected confirmation screen needs corrected copy. The hypothetical imageEdit schema offers save_to_workspace but no workspace_output_path; imageGenerate exposes both. Someone suggests editing to a random filename and copying it into the planned attempt path. Explain whether this is acceptable. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "expected_output": "An explain-only source-artifact workflow plan. The response blocks imageEdit because its schema lacks workspace_output_path. The response rejects assuming imageEdit has imageGenerate output capabilities. The response rejects random-name generation/editing followed by manual copying or renaming as canonical provenance. The plan preserves the source choice and records the capability blocker honestly. The plan does not silently switch tools or fabricate a successful attempt. External operations remain not run.",
+      "assertions": [
+        "The response blocks imageEdit because its schema lacks workspace_output_path.",
+        "The response rejects assuming imageEdit has imageGenerate output capabilities.",
+        "The response rejects random-name generation/editing followed by manual copying or renaming as canonical provenance.",
+        "The plan preserves the source choice and records the capability blocker honestly.",
+        "The plan does not silently switch tools or fabricate a successful attempt.",
+        "The response labels external operations planned or not run rather than claiming execution."
+      ],
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "subject": "product-design-ideate-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "coverage_tags": [
+        "language:en",
+        "capability:ideate",
+        "scope:explain",
+        "source:capability-block"
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md",
+          "PLUGIN_ROOT/references/source-artifacts.md"
+        ],
+        "read_when_relevant": [
+          "PLUGIN_ROOT/references/executable-transitions.md"
+        ],
+        "must_not_read": []
+      },
+      "status": "not-run"
     }
   ]
 }
