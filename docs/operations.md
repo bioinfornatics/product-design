@@ -34,6 +34,20 @@ Rules:
 
 User-context provides persistent defaults. `get-context` remains responsible for the current brief, which can override them on request.
 
+## Optional tooling onboarding
+
+The first involved workflow on a resolved target, or an explicit tracking/provenance/setup request, uses [the canonical onboarding contract](../references/tooling-onboarding.md). `scripts/check-product-tooling.mjs` provides read-only diagnostics and an exported consent-checked setup command planner. Missing optional tooling is not a design gate. Agent-performed setup requires explicit target-bound consent and fresh verification; no auto-install/init hook or bundled setup executor. Preserve the native tracker and Entire integration, including external Goose; enabled settings do not prove a captured checkpoint. Do not copy development configuration into products.
+
+## Lifecycle inspection and maintenance
+
+Follow [product lifecycle reasoning](../references/product-lifecycle-reasoning.md) for involved why/impact questions. `read-product-slice.mjs` returns a bounded explicit document/task slice; inspect diagnostics and freshness rather than only its Mermaid projection. `check-annotation-queue.mjs` is read-only: pending/blocked records are not processed, and transport or edit-cycle success still requires the focused annotation workflow. Capability inventory is transient input from the current host, not saved provider configuration. No new setup executor or lifecycle hook is installed.
+
+## Bounded specification and rationale reads
+
+For a why question, use [progressive disclosure](../references/product-information-disclosure.md): overview first, then the relevant explicit section/entity and selected fields. `read-product-information.mjs` returns at most 2000 code points by default (maximum 8000), paging metadata and a continuation bound to the exact source SHA. A CLI continuation reads a safe project-relative cursor JSON file; the module API can pass the returned cursor directly. No cursor file is created automatically. A stale cursor returns no content: restart and reassess, never mix versions.
+
+Graph node content has independent per-node and aggregate serialized-data limits. Labels, references, metadata, edges and diagnostics are outside that data budget; it is not a token or total response-size guarantee. Partial pages, navigation-only roots and link-only task/budget results require targeted follow-up. Read applicable constraints/recovery/alternatives before an action. Complete selected text does not establish graph completeness, historical retention, approval or evidence validity.
+
 ## Operational security
 
 - Ask for permission before directly using a browser other than the one chosen.

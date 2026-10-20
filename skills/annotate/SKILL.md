@@ -5,6 +5,12 @@ description: Processes pending browser annotations as scoped, visually verified 
 
 # Annotate
 
+## Phase evidence obligations
+
+Resolve the annotation to its route/state, owning rationale and affected code before a scoped edit. Capture before and after, retain evidence in the processed record, and rerun applicable canonical QA; a note changing intent requires approval, not automatic execution.
+
+For material why/impact dependencies, follow `PLUGIN_ROOT/references/product-lifecycle-reasoning.md`. For scoped specification retrieval, follow `PLUGIN_ROOT/references/product-information-disclosure.md` and use `PLUGIN_ROOT/scripts/read-product-information.mjs`; finish relevant continuations before acting.
+
 ## Skill loading and shared resources
 
 For another Skill, use the instruction `load skills product-design:{name}` with its actual unqualified directory name substituted for {name}. Use the exposed skill-loading tool; do not open a sibling SKILL.md as a substitute. Load only the focused workflow required by the current step.
@@ -57,9 +63,9 @@ Identical across every framework port — one JSON file per annotation under `<p
 
 ## Workflow
 
-1. List `<project-root>/.goose/annotations/inbox/`. If empty and the user explicitly asked about annotations, say so plainly and stop. If empty from a proactive/unprompted check, stop silently per Proactive Checking above. Never fabricate feedback.
+1. Run the read-only `PLUGIN_ROOT/scripts/check-annotation-queue.mjs` inspector with the explicit target root; inspect blocked malformed/duplicate/unsafe records before replay and preserve originals. It lists `<project-root>/.goose/annotations/inbox/` in received order and does not move, edit or verify captures. If empty and the user explicitly asked about annotations, say so plainly and stop. If empty from a proactive/unprompted check, stop silently per Proactive Checking above. Never fabricate feedback.
 2. For each record, oldest first:
-   a. Open the project at `record.route`, sized to `record.viewport`. Use the running dev server; do not start a second one.
+   a. Open the project at `record.route`, sized to `record.viewport`. Reuse the running dev server; if none exists, start it as the agent and verify the review URL. Do not start a second server.
    b. Screenshot the full viewport, then crop to `record.bbox` (grow the crop by ~24px on each side for surrounding context). Downscale the crop so its longer edge is ~1024px before inspecting it, matching the project's standard image-size convention.
    c. Use `record.components` (when present) to locate the candidate source file(s). Prefer the most specific (first) component name that plausibly renders in that bbox; confirm by matching visible content/markup, not name alone. When `components` is empty, locate the source by route + visible content instead.
    d. Read the surrounding component and screen before editing, per the index Skill loaded with `load skills product-design:index` and its Browser Annotation Updates rule. Make the scoped edit `record.note` asks for. Do not redesign nearby UI. If a design system is in use for this project, keep the edit scoped to that component's existing props/variants rather than dropping to raw markup — see existing codebase edits at `PLUGIN_ROOT/references/existing-codebase-edits.md`.

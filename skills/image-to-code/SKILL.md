@@ -5,6 +5,12 @@ description: Builds an approved visual target into a reviewable mock-data fronte
 
 # Image to Code
 
+## Phase evidence obligations
+
+Recover the approved screen/state and its owning rationale before editing. Verify specification/source hashes with the fresh build receipt, implement only its scope, and carry those exact references into the QA handoff; code completion is not verification.
+
+For material why/impact dependencies, follow `PLUGIN_ROOT/references/product-lifecycle-reasoning.md`. For scoped specification retrieval, follow `PLUGIN_ROOT/references/product-information-disclosure.md` and use `PLUGIN_ROOT/scripts/read-product-information.mjs`; finish relevant continuations before acting.
+
 ## Skill loading and shared resources
 
 For another Skill, use the instruction `load skills product-design:{name}` with its actual unqualified directory name substituted for {name}. Use the exposed skill-loading tool; do not open a sibling SKILL.md as a substitute. Load only the focused workflow required by the current step.

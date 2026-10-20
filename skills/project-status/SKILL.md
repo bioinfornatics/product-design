@@ -5,6 +5,12 @@ description: Tracks optional Product Design phase and annotation status in Beads
 
 # Project Status (Beads)
 
+## Phase evidence obligations
+
+Read native task rationale and explicit product references on demand. Link authorized task updates to the owning specification and actual verification artifact; closed status or a proposed check cannot justify canonical QA closure.
+
+For material why/impact dependencies, follow `PLUGIN_ROOT/references/product-lifecycle-reasoning.md`. For scoped specification retrieval, follow `PLUGIN_ROOT/references/product-information-disclosure.md` and use `PLUGIN_ROOT/scripts/read-product-information.mjs`; finish relevant continuations before acting.
+
 ## Skill loading and shared resources
 
 For another Skill, use the instruction `load skills product-design:{name}` with its actual unqualified directory name substituted for {name}. Use the exposed skill-loading tool; do not open a sibling SKILL.md as a substitute. Load only the focused workflow required by the current step.
@@ -26,8 +32,9 @@ Follow planning-aware routing and optional tracking at `PLUGIN_ROOT/references/p
 
 ## Prerequisites
 
-- `bd` must be installed and on `PATH` (`which bd`). If it isn't, say so and skip this skill — do not tell the user to install it unless they ask how.
-- The target directory must be (or become) a `bd` project: check for `.beads/` first; if absent and the user wants tracking, run `bd init --non-interactive` in the project root.
+- Read `PLUGIN_ROOT/references/tooling-onboarding.md` and run the read-only `PLUGIN_ROOT/scripts/check-product-tooling.mjs` preflight with the explicitly resolved target root. A `.beads/` marker alone is not initialized/associated proof; verify native `bd --readonly context --json`. Do not use the plugin development tracker or silently follow a redirected database.
+- If `bd` is missing, explain the lost native task/history capability and offer agent-performed installation when useful. Do not install without authorization, ask the user to run terminal commands, or block ordinary Product Design work.
+- If tracking is requested and the target is genuinely new/uninitialized, obtain target-bound initialization consent, inspect installed help, then run `bd init --non-interactive --skip-hooks --skip-agents` from the verified root and recheck association. Preserve existing instructions, hooks and tracker data; ambiguous/partial setup requires scoped repair, not reinitialization. Entire recording and synchronization require independent consent and are never implied by tracking.
 
 ## Formulas bundled with this skill
 
@@ -74,7 +81,7 @@ Use these to answer "where are we on X" instead of re-deriving it from the conve
 
 - Leave a comment on the `product-design:design-qa` step each time a pass returns `blocked`, citing the findings (`bd comment <id> "..."`).
 - Reopen the step (`bd reopen <id>`) if new annotations require another QA pass after it was already closed.
-- Close it once `design-qa.md` says `final result: passed`.
+- Close it only after canonical `design-qa.json` passes, the matching gate/status/hash satisfies `assertBeadsClosure`, and the review-handoff receipt is freshly consumed. Derived Markdown alone is not closure authority.
 
 ## What not to do
 

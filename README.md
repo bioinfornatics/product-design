@@ -153,9 +153,21 @@ Involved workflows use hard criteria, weighted score, evidence confidence and ex
 
 ## Optional: project status via Beads
 
-`assets/beads-formulas/` bundles two [Beads](https://github.com/steveyegge/beads) (`bd`) formulas — `product-design-build` (mirrors `get-context → visual-source → build → design-qa → share`) and `annotate-cycle` (mirrors `annotate-inject → collect → annotate → verify`). Use `project-status` to install and query them. This is purely additive: no Product Design skill requires or checks for Beads, and a project with no `.beads/` directory works exactly the same. It exists for users who want project phase/status queryable via `bd ready`/`bd show` instead of only reconstructable from conversation history, or who already track work in Beads and want these workflows to compose with it.
+`assets/beads-formulas/` bundles two [Beads](https://github.com/steveyegge/beads) (`bd`) formulas — `product-design-build` (mirrors `get-context → visual-source → build → design-qa → share`) and `annotate-cycle` (mirrors `annotate-inject → collect → annotate → verify`). Use `project-status` to install and query them. This is purely additive: no Product Design skill requires Beads, and a project with no `.beads/` directory can continue. The first involved target-product workflow checks optional tooling without activating tracking; useful setup is offered once and performed by the agent only after consent. It exists for users who want project phase/status queryable via `bd ready`/`bd show` instead of only reconstructable from conversation history, or who already track work in Beads and want these workflows to compose with it.
 
 Both formulas were verified against a real `bd` install: recognized by `bd formula show`, instantiated via `bd mol pour`/`bd mol wisp`, and their step dependencies correctly enforced by `bd ready`/`bd close`.
+
+## Optional tooling onboarding
+
+[Tooling onboarding](references/tooling-onboarding.md) checks executable presence, native Beads association, Entire enabled state and selected external-agent availability. Goose is supported through Entire's external-agent integration; absence from a built-in list is not a rejection. Missing tooling does not block design. Setup runs in the end user's resolved target only after separate initialization/recording/synchronization consent, never by copying this plugin repository's settings or auto-running a hook. The read-only preflight and command planner are implemented; no installer, setup executor, new hook or captured-session guarantee is bundled.
+
+## Lifecycle reasoning and maintenance
+
+[The lifecycle method](references/product-lifecycle-reasoning.md) makes involved work follow **retrieve → traverse → explore → verify → act** across specifications, optional native work history and actual evidence. A read-only reader resolves declared references and emits bounded JSON/Mermaid; it does not turn proposed criteria, closed tasks or old QA into current approval. Current tool schemas classify image/browser/build/share availability, while source and QA checks still require real output. The annotation queue inspector checks order, invalid records and duplicate replay risks before the existing capture/edit/recapture cycle.
+
+[Progressive product-information disclosure](references/product-information-disclosure.md) keeps full specifications on disk while loading derived navigation, then exact selected Markdown sections or JSON fields/entities in bounded pages. Continuations verify source hashes; changed sources require restarting the read. Graph payloads no longer preload complete JSON roots. This improves read control, not automatic authoring or historical rationale retention.
+
+See [the product lifecycle and reasoning diagrams](docs/product-lifecycle-graph.md). No new hook is activated, no native data is mirrored, and current `.gates/`, generated sources and annotation endpoints are not relocated.
 
 ## Product Design + Goose Apps
 

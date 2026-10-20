@@ -91,3 +91,12 @@ test("selected-only source plan binds actual full-set approval, not unselected c
  request.operation="source-selection";assert.match((await check()).reason,/accepted canonical/);
  request.operation="source-set-approval";assert.equal((await check()).status,"passed");writeFileSync(path.join(f.root,"specifications/product.json"),"changed");assert.match((await check(true)).reason,/dependency changed/);
 },false));
+
+ test("F3 equivalent image tools preserve actual identity with reviewed operation", async()=>using(async f=>{
+  for(const toolName of ["render_screen","vendor.edit_frame"]){assert.doesNotThrow(()=>prepareSourceAttempt({...f.args,toolName,toolCapabilities:["image-generate"]}));assert.throws(()=>prepareSourceAttempt({...f.args,toolName,toolCapabilities:[]}),/capability/);}
+  const toolName="vendor.edit_frame";const result=await produce(f,{...f.args,toolName,toolSchema:{inputSchema:schema,capabilities:["image-edit"]}});assert.equal(result.record.provenance.toolName,toolName);
+ }));
+ test("F3 unrelated tools fail before callbacks and destination-less tools remain blocked",async()=>using(async f=>{
+  let called=false;await assert.rejects(()=>executeSourceAttempt({...f.args,toolName:"unrelated",toolCapabilities:["filesystem-read"],generate:async()=>{called=true;},inspect:async()=>{},persist:async()=>{}}),/capability/);assert.equal(called,false);
+  assert.throws(()=>prepareSourceAttempt({...f.args,toolName:"render_screen",toolCapabilities:["image-generate"],toolSchema:{type:"object",properties:{}}}),/capability/);
+ }));

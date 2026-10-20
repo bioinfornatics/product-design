@@ -194,6 +194,121 @@
         "read_when_relevant": [],
         "must_not_read": []
       }
+    },
+    {
+      "subject": "instruction-coherence-and-discovery",
+      "language": "en",
+      "preconditions": [
+        "Use the current Skill and its applicable shared references; explain the scenario without claiming a build, study or capture occurred"
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 8,
+        "timeout_seconds": 300
+      },
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "id": 5,
+      "name": "bounded-rationale-and-stale-evidence-audit",
+      "prompt": "For product-design:audit at target.path \".\" (current contract root), explain this hypothetical lifecycle case: A previous change is closed in Beads. The product rationale changed since its verification, and a linked product criterion is still only proposed. Explain how you would resume involved Product Design work for /tmp/customer-product. This is explain-only: do not modify trackers, run generation, change applications or perform captures/deployment.",
+      "assertions": [
+        "The plan retrieves the owning product specifications rather than treating task closure as current approval.",
+        "The plan follows declared upstream rationale and downstream states or criteria.",
+        "The plan reports the changed evidence dependency as stale.",
+        "The plan keeps the proposed criterion distinct from an executed test result.",
+        "The plan preserves historical task completion unless a scoped new work decision requires a change.",
+        "The plan does not refresh old hashes to retain an old approval.",
+        "The response labels all external execution planned or not run."
+      ],
+      "expected_output": "An explain-only lifecycle plan. The plan retrieves the owning product specifications rather than treating task closure as current approval. The plan follows declared upstream rationale and downstream states or criteria. The plan reports the changed evidence dependency as stale. The plan keeps the proposed criterion distinct from an executed test result. The plan preserves historical task completion unless a scoped new work decision requires a change. The plan does not refresh old hashes to retain an old approval. No setup, capture, generation, tracker change, product verification or deployment is claimed.",
+      "coverage_tags": [
+        "language:en",
+        "scope:explain",
+        "capability:lifecycle-reasoning",
+        "risk:evidence-applicability"
+      ],
+      "status": "not-run",
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
+    },
+    {
+      "subject": "current-product-rationale-completion",
+      "language": "fr",
+      "preconditions": [
+        "The target at path . is the current read-only workflow contract; product context and files are hypothetical.",
+        "Filesystem access is for contract reads only; no hypothetical product writes, browser, network, native-store access or setup is permitted.",
+        "Explain-only coverage, not measured end-to-end execution; future baseline comparisons need equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 8,
+        "timeout_seconds": 300
+      },
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "id": 9,
+      "name": "current-rationale-workspace-audit",
+      "prompt": "Pour le skill product-design:audit à target.path « . », explique ce cas hypothétique : À la fin d'un audit de remboursement, la responsable accepte de rapprocher le motif de rejet du montant pour faciliter la correction, plutôt qu'un avertissement global. Une proposition de couleur reste sans justification; aucune refonte n'est autorisée. Le dossier produit /tmp/customer-product existe et les écritures y sont autorisées. specifications/product.md contient une section avec l'ancre explicite current-intent. Le compte rendu sera présenté dans le chat. Que reste-t-il à faire pour terminer proprement ? Explique uniquement la conduite à tenir, sans accéder au produit fictif, écrire, lancer des outils de projet ou utiliser le réseau.",
+      "assertions": [
+        "The plan persists current accepted intent in the existing owning product specification.",
+        "The plan records the supplied comparative reason rather than only a design impact.",
+        "The plan retains unresolved proposals as distinct from accepted decisions.",
+        "The plan records missing reasons as unknown rather than inventing them.",
+        "The plan verifies the saved file before claiming documentation.",
+        "The plan verifies the explicit current-intent anchor resolves to the saved rationale.",
+        "The plan publishes the owning file plus stable anchor reference.",
+        "The response does not treat the inline report as a persisted artifact.",
+        "The response preserves human authorization boundaries.",
+        "The response labels hypothetical product execution as not run."
+      ],
+      "expected_output": "A French explain-only completion plan distinguishing current rationale persistence from inline presentation, without claiming execution or historical recovery.",
+      "coverage_tags": [
+        "language:fr",
+        "scope:explain",
+        "capability:current-rationale-completion",
+        "branch:workspace"
+      ],
+      "status": "not-run",
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md",
+          "PLUGIN_ROOT/references/product-experience-method.md"
+        ],
+        "read_when_relevant": [
+          "PLUGIN_ROOT/references/product-information-disclosure.md"
+        ],
+        "must_not_read": [
+          "/tmp/customer-product/.beads/",
+          "/tmp/customer-product/.entire/"
+        ]
+      }
     }
   ]
 }

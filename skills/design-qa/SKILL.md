@@ -5,6 +5,12 @@ description: Compares approved source visuals with a browser-rendered implementa
 
 # Design QA
 
+## Phase evidence obligations
+
+Write canonical design-qa.json from actual source/render comparisons and executed checks. Cite the approved state and current specification; report stale bindings, unavailable checks and proposed value tests separately. Derive Markdown from JSON and freshly consume the review handoff.
+
+For material why/impact dependencies, follow `PLUGIN_ROOT/references/product-lifecycle-reasoning.md`. For scoped specification retrieval, follow `PLUGIN_ROOT/references/product-information-disclosure.md` and use `PLUGIN_ROOT/scripts/read-product-information.mjs`; finish relevant continuations before acting.
+
 ## Skill loading and shared resources
 
 For another Skill, use the instruction `load skills product-design:{name}` with its actual unqualified directory name substituted for {name}. Use the exposed skill-loading tool; do not open a sibling SKILL.md as a substitute. Load only the focused workflow required by the current step.

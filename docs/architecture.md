@@ -57,6 +57,22 @@ The `scripts/bootstrap-prototype.mjs` script copies the selected starter to a ne
 
 Product decisions are documented in `.gates/` within the generated project. The formulas under `assets/beads-formulas/` can reflect phases in Beads, but remain optional: they do not decide gates, and no skill should fail because Beads is unavailable.
 
+## Optional tooling onboarding
+
+`references/tooling-onboarding.md` defines skill-triggered diagnostics and consent-based, agent-owned setup. `scripts/check-product-tooling.mjs` implements read-only native CLI checks and a non-executing setup planner, with deterministic subprocess tests. No automatic setup hook, installer or installed-plugin update. Target-product association is independent of this development repository.
+
+## Proposed product memory (not implemented)
+
+[Minimal product memory proposal](product-memory-read-write-review.md) separates current product specifications and evidence under a proposed project-root `.product-design/` workspace, work rationale/dependencies in optional Beads, and development provenance in optional Entire. It adds only missing cross-authority references and checks, not a task registry, change journal, or transcript mirror. Goose external-agent support and the enable command are user-confirmed; this development repository is enabled, but no captured checkpoint was verified by this work. Storage migration and host adapters remain separate work; this proposal changes no current paths, schemas, runtime behavior, or installed plugins.
+
+## Product lifecycle reasoning
+
+[The canonical lifecycle method](../references/product-lifecycle-reasoning.md) connects capabilities and declared product rationale to scoped actions. The explicit read-only reader `scripts/read-product-slice.mjs` resolves stable document/entity/anchor references, optional native Beads issues and bounded Mermaid projections; `scripts/product-capabilities.mjs` classifies current exposed tool schemas; `scripts/check-annotation-queue.mjs` checks received order and replay risks. Existing transition/source/QA validators still decide their own readiness. No graph database, duplicate work store, transcript import, auto-init hook or evidence-path migration. See [the lifecycle diagrams](product-lifecycle-graph.md) and [implementation scope](capability-lifecycle-implementation.md).
+
+## Progressive information loading
+
+`scripts/read-product-information.mjs` provides derived overview navigation and exact section/entity/field reads with bounded code-point pages and source/projection-bound cursors. It creates no index, cache or authored summary. `read-product-slice.mjs` projects selected node data under per-node/aggregate payload budgets and returns separate content completeness. Native task details remain on-demand. Full bytes are read/hashed locally, not returned wholesale to model context. See [the canonical disclosure policy](../references/product-information-disclosure.md).
+
 ## Runtime capabilities
 
 The plugin relies on capabilities exposed to Goose:

@@ -161,6 +161,119 @@
         "read_when_relevant": [],
         "must_not_read": []
       }
+    },
+    {
+      "subject": "product-design-annotate-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "id": 4,
+      "name": "bounded-rationale-and-stale-evidence-annotate",
+      "prompt": "For product-design:annotate at target.path \".\" (current contract root), explain this hypothetical lifecycle case: A previous change is closed in Beads. The product rationale changed since its verification, and a linked product criterion is still only proposed. Explain how you would resume involved Product Design work for /tmp/customer-product. This is explain-only: do not modify trackers, run generation, change applications or perform captures/deployment.",
+      "assertions": [
+        "The plan retrieves the owning product specifications rather than treating task closure as current approval.",
+        "The plan follows declared upstream rationale and downstream states or criteria.",
+        "The plan reports the changed evidence dependency as stale.",
+        "The plan keeps the proposed criterion distinct from an executed test result.",
+        "The plan preserves historical task completion unless a scoped new work decision requires a change.",
+        "The plan does not refresh old hashes to retain an old approval.",
+        "The response labels all external execution planned or not run."
+      ],
+      "expected_output": "An explain-only lifecycle plan. The plan retrieves the owning product specifications rather than treating task closure as current approval. The plan follows declared upstream rationale and downstream states or criteria. The plan reports the changed evidence dependency as stale. The plan keeps the proposed criterion distinct from an executed test result. The plan preserves historical task completion unless a scoped new work decision requires a change. The plan does not refresh old hashes to retain an old approval. No setup, capture, generation, tracker change, product verification or deployment is claimed.",
+      "coverage_tags": [
+        "language:en",
+        "scope:explain",
+        "capability:lifecycle-reasoning",
+        "risk:evidence-applicability"
+      ],
+      "status": "not-run",
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
+    },
+    {
+      "subject": "product-design-annotate-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "id": 6,
+      "name": "maintenance-annotation-not-authorization-annotate",
+      "prompt": "For product-design:annotate at target.path \".\" (current contract root), explain this hypothetical lifecycle case: A browser annotation on /tmp/customer-product asks to change the main journey; another inbox file already exists under processed with the same filename. Explain the next maintenance pass. This is explain-only: do not modify trackers, run generation, change applications or perform captures/deployment.",
+      "assertions": [
+        "The plan checks only the explicitly resolved target annotation queue.",
+        "The plan diagnoses the duplicate processed filename before replay.",
+        "The plan preserves original annotation records.",
+        "The plan requires actual before and after rendered evidence for a scoped edit.",
+        "The plan resolves material journey and source impact before coding.",
+        "The plan obtains applicable source and build approval rather than treating the annotation as blanket authorization.",
+        "The plan reruns canonical QA for a final or nontrivial edit cycle.",
+        "The response labels all external execution planned or not run."
+      ],
+      "expected_output": "An explain-only lifecycle plan. The plan checks only the explicitly resolved target annotation queue. The plan diagnoses the duplicate processed filename before replay. The plan preserves original annotation records. The plan requires actual before and after rendered evidence for a scoped edit. The plan resolves material journey and source impact before coding. The plan obtains applicable source and build approval rather than treating the annotation as blanket authorization. The plan reruns canonical QA for a final or nontrivial edit cycle. No setup, capture, generation, tracker change, product verification or deployment is claimed.",
+      "coverage_tags": [
+        "language:en",
+        "scope:explain",
+        "capability:lifecycle-reasoning",
+        "risk:evidence-applicability"
+      ],
+      "status": "not-run",
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
     }
   ]
 }

@@ -5,6 +5,12 @@ description: Deploys a reviewable prototype to an explicitly chosen available ho
 
 # Share
 
+## Phase evidence obligations
+
+Use the current canonical QA and review-handoff evidence before deployment. Preserve their references in the sharing handoff and verify the actual deployment URL; tool availability or a build log is not publication evidence.
+
+For material why/impact dependencies, follow `PLUGIN_ROOT/references/product-lifecycle-reasoning.md`. For scoped specification retrieval, follow `PLUGIN_ROOT/references/product-information-disclosure.md` and use `PLUGIN_ROOT/scripts/read-product-information.mjs`; finish relevant continuations before acting.
+
 ## Skill loading and shared resources
 
 For another Skill, use the instruction `load skills product-design:{name}` with its actual unqualified directory name substituted for {name}. Use the exposed skill-loading tool; do not open a sibling SKILL.md as a substitute. Load only the focused workflow required by the current step.

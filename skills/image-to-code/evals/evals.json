@@ -216,659 +216,6 @@
       "status": "not-run"
     },
     {
-      "id": 5,
-      "name": "low-risk-product-not-three-landings",
-      "subject": "end-to-end-product-ideation",
-      "language": "en",
-      "target": {
-        "kind": "existing-skill",
-        "path": ".",
-        "execution": "explain"
-      },
-      "preconditions": [
-        "Use identical model, tools and budget for candidate and frozen old-skill runs",
-        "This routing scenario does not execute image generation or build",
-        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
-        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
-        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
-        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
-        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
-      ],
-      "budget": {
-        "max_turns": 12,
-        "timeout_seconds": 300
-      },
-      "prompt": "For product-design:image-to-code at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design design a simple internal mentoring tool: find a mentor, compare availability, book, and then find the confirmation. Low risk, no real service to integrate. We want to see the product before coding. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
-      "expected_output": "An explain-only workflow or routing plan. Each of the three planned journeys covers mentor search through retrievable booking confirmation. Each planned journey includes critical recovery. The plan requires a separate generated image for every required screen before comparison completion. The response rejects home-only anchors as complete journey evidence. The plan requires explicit corrected ordered source-set approval before G4. The plan prohibits app creation before explicit G4 build scope. Generation, build, research, rendered QA, tracking and deployment remain not run.",
-      "assertions": [
-        "Each of the three planned journeys covers mentor search through retrievable booking confirmation.",
-        "Each planned journey includes critical recovery.",
-        "The plan requires a separate generated image for every required screen before comparison completion.",
-        "The response rejects home-only anchors as complete journey evidence.",
-        "The plan requires explicit corrected ordered source-set approval before G4.",
-        "The plan prohibits app creation before explicit G4 build scope.",
-        "The response labels the workflow explain-only rather than claiming external operations were executed."
-      ],
-      "coverage_tags": [
-        "scope:multi-step",
-        "decision:approval",
-        "language:en",
-        "capability:image-to-code",
-        "scope:explain"
-      ],
-      "capabilities": {
-        "filesystem": true,
-        "agent_runner": true,
-        "browser": false,
-        "network": false,
-        "tools": [
-          "developer"
-        ]
-      },
-      "navigation_expectations": {
-        "must_read": [
-          "SKILL.md"
-        ],
-        "read_when_relevant": [],
-        "must_not_read": []
-      },
-      "status": "not-run"
-    },
-    {
-      "id": 6,
-      "name": "limited-image-budget-incomplete-journey",
-      "subject": "end-to-end-product-ideation",
-      "language": "en",
-      "target": {
-        "kind": "existing-skill",
-        "path": ".",
-        "execution": "explain"
-      },
-      "preconditions": [
-        "Use identical model, tools and budget for candidate and frozen old-skill runs",
-        "This routing scenario does not execute image generation or build",
-        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
-        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
-        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
-        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
-        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
-      ],
-      "budget": {
-        "max_turns": 12,
-        "timeout_seconds": 300
-      },
-      "prompt": "For product-design:image-to-code at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design explore a booking service from search to confirmation. There is a budget of only three images left for this session. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
-      "expected_output": "An explain-only workflow or routing plan. The response explains that three images cannot establish three search-to-confirmation journeys. The response marks the comparison incomplete under the stated image budget. The response offers resumption or an explicitly agreed smaller complete scenario. The response does not assert comparison readiness from three anchors. The response does not infer build approval from the limited image budget. Generation, build, research, rendered QA, tracking and deployment remain not run.",
-      "assertions": [
-        "The response explains that three images cannot establish three search-to-confirmation journeys.",
-        "The response marks the comparison incomplete under the stated image budget.",
-        "The response offers resumption or an explicitly agreed smaller complete scenario.",
-        "The response does not assert comparison readiness from three anchors.",
-        "The response does not infer build approval from the limited image budget.",
-        "The response labels the workflow explain-only rather than claiming external operations were executed."
-      ],
-      "coverage_tags": [
-        "scope:multi-step",
-        "failure:budget",
-        "language:en",
-        "capability:image-to-code",
-        "scope:explain"
-      ],
-      "capabilities": {
-        "filesystem": true,
-        "agent_runner": true,
-        "browser": false,
-        "network": false,
-        "tools": [
-          "developer"
-        ]
-      },
-      "navigation_expectations": {
-        "must_read": [
-          "SKILL.md"
-        ],
-        "read_when_relevant": [],
-        "must_not_read": []
-      },
-      "status": "not-run"
-    },
-    {
-      "id": 7,
-      "name": "isolated-marketing-page-keeps-small-scope",
-      "subject": "end-to-end-product-ideation",
-      "language": "en",
-      "target": {
-        "kind": "existing-skill",
-        "path": ".",
-        "execution": "explain"
-      },
-      "preconditions": [
-        "Use identical model, tools and budget for candidate and frozen old-skill runs",
-        "This routing scenario does not execute image generation or build",
-        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
-        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
-        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
-        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
-        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
-      ],
-      "budget": {
-        "max_turns": 12,
-        "timeout_seconds": 300
-      },
-      "prompt": "For product-design:image-to-code at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design propose three directions for a static marketing landing page only. No signed-in area or booking journey is included in this scope. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
-      "expected_output": "An explain-only workflow or routing plan. The plan retains the static marketing landing page as isolated single-screen scope. The three planned directions use the same content. The three planned directions use the same viewport. The plan does not add authenticated or booking routes. Generation, build, research, rendered QA, tracking and deployment remain not run.",
-      "assertions": [
-        "The plan retains the static marketing landing page as isolated single-screen scope.",
-        "The three planned directions use the same content.",
-        "The three planned directions use the same viewport.",
-        "The plan does not add authenticated or booking routes.",
-        "The response labels the workflow explain-only rather than claiming external operations were executed."
-      ],
-      "coverage_tags": [
-        "scope:single-screen",
-        "decision:approval",
-        "language:en",
-        "capability:image-to-code",
-        "scope:explain"
-      ],
-      "capabilities": {
-        "filesystem": true,
-        "agent_runner": true,
-        "browser": false,
-        "network": false,
-        "tools": [
-          "developer"
-        ]
-      },
-      "navigation_expectations": {
-        "must_read": [
-          "SKILL.md"
-        ],
-        "read_when_relevant": [],
-        "must_not_read": []
-      },
-      "status": "not-run"
-    },
-    {
-      "id": 8,
-      "name": "approved-home-not-whole-product",
-      "subject": "end-to-end-product-ideation",
-      "language": "en",
-      "target": {
-        "kind": "existing-skill",
-        "path": ".",
-        "execution": "explain"
-      },
-      "preconditions": [
-        "Use identical model, tools and budget for candidate and frozen old-skill runs",
-        "This routing scenario does not execute image generation or build",
-        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
-        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
-        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
-        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
-        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
-      ],
-      "budget": {
-        "max_turns": 12,
-        "timeout_seconds": 300
-      },
-      "prompt": "For product-design:image-to-code at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: The design direction for this home screen is approved. Now build search, comparison, booking, and confirmation in the same product; their screens are not yet defined. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
-      "expected_output": "An explain-only workflow or routing plan. The plan retains the approved home direction without restarting competition. The plan completes search, comparison, booking and confirmation sources before code. The plan includes critical recovery sources before code. The response states that home approval does not authorize undefined downstream screens. The plan requires completed ordered-set approval before G4. Generation, build, research, rendered QA, tracking and deployment remain not run.",
-      "assertions": [
-        "The plan retains the approved home direction without restarting competition.",
-        "The plan completes search, comparison, booking and confirmation sources before code.",
-        "The plan includes critical recovery sources before code.",
-        "The response states that home approval does not authorize undefined downstream screens.",
-        "The plan requires completed ordered-set approval before G4.",
-        "The response labels the workflow explain-only rather than claiming external operations were executed."
-      ],
-      "coverage_tags": [
-        "scope:multi-step",
-        "decision:approval",
-        "language:en",
-        "capability:image-to-code",
-        "scope:explain"
-      ],
-      "capabilities": {
-        "filesystem": true,
-        "agent_runner": true,
-        "browser": false,
-        "network": false,
-        "tools": [
-          "developer"
-        ]
-      },
-      "navigation_expectations": {
-        "must_read": [
-          "SKILL.md"
-        ],
-        "read_when_relevant": [],
-        "must_not_read": []
-      },
-      "status": "not-run"
-    },
-    {
-      "id": 9,
-      "name": "responsibility-value-before-stack",
-      "subject": "value-intent-proactive-experience",
-      "language": "en",
-      "target": {
-        "kind": "existing-skill",
-        "path": ".",
-        "execution": "explain"
-      },
-      "prompt": "For product-design:image-to-code at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design redesign a service's home screens: leadership guarantees commitments, the team lead coordinates blockers, the account manager is accountable for the client outcome, and the operator performs tasks. I have provided these responsibilities and the shared objects. The previous mockups were decorative dashboards. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
-      "preconditions": [
-        "Supplied context is stakeholder input, not observed research",
-        "Explain only: no generation, build, external command or deck export",
-        "Paired runs require identical models, tools and budget",
-        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
-        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
-        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
-        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
-        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
-      ],
-      "budget": {
-        "max_turns": 12,
-        "timeout_seconds": 300
-      },
-      "capabilities": {
-        "filesystem": true,
-        "agent_runner": true,
-        "browser": false,
-        "network": false,
-        "tools": [
-          "developer"
-        ]
-      },
-      "expected_output": "An explain-only workflow or routing plan. The plan preserves supplied leadership, team-lead, account-manager and operator responsibilities. The plan ties complementary responsibilities to the shared client outcome. The plan defines observable user value before choosing framework or palette. The plan derives information hierarchy from the end-to-end task. The plan derives action hierarchy from the end-to-end task. The plan does not default to a decorative dashboard. Generation, build, research, rendered QA, tracking and deployment remain not run.",
-      "assertions": [
-        "The plan preserves supplied leadership, team-lead, account-manager and operator responsibilities.",
-        "The plan ties complementary responsibilities to the shared client outcome.",
-        "The plan defines observable user value before choosing framework or palette.",
-        "The plan derives information hierarchy from the end-to-end task.",
-        "The plan derives action hierarchy from the end-to-end task.",
-        "The plan does not default to a decorative dashboard.",
-        "The response labels the workflow explain-only rather than claiming external operations were executed."
-      ],
-      "coverage_tags": [
-        "experience:responsibility-value-before-stack",
-        "language:en",
-        "capability:image-to-code",
-        "scope:explain"
-      ],
-      "navigation_expectations": {
-        "must_read": [
-          "SKILL.md"
-        ],
-        "read_when_relevant": [],
-        "must_not_read": []
-      },
-      "status": "not-run"
-    },
-    {
-      "id": 10,
-      "name": "feedback-tables-change-decisions",
-      "subject": "value-intent-proactive-experience",
-      "language": "en",
-      "target": {
-        "kind": "existing-skill",
-        "path": ".",
-        "execution": "explain"
-      },
-      "prompt": "For product-design:image-to-code at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design improve a service following this review: contact schedule \u2260 KPI; missing budget \u2260 zero; clicking an indicator preserves the population/filters; a missing preview does not allow inventing a version. I want to understand the product, UX, and UI implications. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
-      "preconditions": [
-        "Supplied context is stakeholder input, not observed research",
-        "Explain only: no generation, build, external command or deck export",
-        "Paired runs require identical models, tools and budget",
-        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
-        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
-        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
-        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
-        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
-      ],
-      "budget": {
-        "max_turns": 12,
-        "timeout_seconds": 300
-      },
-      "capabilities": {
-        "filesystem": true,
-        "agent_runner": true,
-        "browser": false,
-        "network": false,
-        "tools": [
-          "developer"
-        ]
-      },
-      "expected_output": "An explain-only workflow or routing plan. The plan treats contact schedule as task information rather than KPI. The plan represents missing budget as unknown rather than zero. The plan preserves population and filters during indicator drill-down. The plan does not invent a version from a missing preview. Each material feedback item has a named verification scenario or an explicitly deferred product area. Generation, build, research, rendered QA, tracking and deployment remain not run.",
-      "assertions": [
-        "The plan treats contact schedule as task information rather than KPI.",
-        "The plan represents missing budget as unknown rather than zero.",
-        "The plan preserves population and filters during indicator drill-down.",
-        "The plan does not invent a version from a missing preview.",
-        "Each material feedback item has a named verification scenario or an explicitly deferred product area.",
-        "The response labels the workflow explain-only rather than claiming external operations were executed."
-      ],
-      "coverage_tags": [
-        "experience:feedback-tables-change-decisions",
-        "language:en",
-        "capability:image-to-code",
-        "scope:explain"
-      ],
-      "navigation_expectations": {
-        "must_read": [
-          "SKILL.md"
-        ],
-        "read_when_relevant": [],
-        "must_not_read": []
-      },
-      "status": "not-run"
-    },
-    {
-      "id": 11,
-      "name": "intent-in-place-not-transcript",
-      "subject": "value-intent-proactive-experience",
-      "language": "en",
-      "target": {
-        "kind": "existing-skill",
-        "path": ".",
-        "execution": "explain"
-      },
-      "prompt": "For product-design:image-to-code at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design our case file keeps a conversation accessible. Requests: explain this blocker, filter these assignments, compare two options, prepare a client update. No permanent chatbot column. A response arrives during a manual edit. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
-      "preconditions": [
-        "Supplied context is stakeholder input, not observed research",
-        "Explain only: no generation, build, external command or deck export",
-        "Paired runs require identical models, tools and budget",
-        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
-        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
-        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
-        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
-        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
-      ],
-      "budget": {
-        "max_turns": 12,
-        "timeout_seconds": 300
-      },
-      "capabilities": {
-        "filesystem": true,
-        "agent_runner": true,
-        "browser": false,
-        "network": false,
-        "tools": [
-          "developer"
-        ]
-      },
-      "expected_output": "An explain-only workflow or routing plan. The plan places blocker explanation in the relevant case-file context. The plan makes assignment filtering a reversible workspace change. The plan places two-option comparison in a temporary surface. The plan places client-update preparation in a native editor. The plan retains direct controls as a conversation alternative. The plan preserves navigation scope and return context. The plan preserves manual edits during a late response. The plan binds late responses to origin instead of taking over another view. The plan does not add a permanent transcript sidebar. Generation, build, research, rendered QA, tracking and deployment remain not run.",
-      "assertions": [
-        "The plan places blocker explanation in the relevant case-file context.",
-        "The plan makes assignment filtering a reversible workspace change.",
-        "The plan places two-option comparison in a temporary surface.",
-        "The plan places client-update preparation in a native editor.",
-        "The plan retains direct controls as a conversation alternative.",
-        "The plan preserves navigation scope and return context.",
-        "The plan preserves manual edits during a late response.",
-        "The plan binds late responses to origin instead of taking over another view.",
-        "The plan does not add a permanent transcript sidebar.",
-        "The response labels the workflow explain-only rather than claiming external operations were executed."
-      ],
-      "coverage_tags": [
-        "experience:intent-in-place-not-transcript",
-        "language:en",
-        "capability:image-to-code",
-        "scope:explain"
-      ],
-      "navigation_expectations": {
-        "must_read": [
-          "SKILL.md"
-        ],
-        "read_when_relevant": [],
-        "must_not_read": []
-      },
-      "status": "not-run"
-    },
-    {
-      "id": 12,
-      "name": "future-opportunity-prepared-work",
-      "subject": "value-intent-proactive-experience",
-      "language": "en",
-      "target": {
-        "kind": "existing-skill",
-        "path": ".",
-        "execution": "explain"
-      },
-      "prompt": "For product-design:image-to-code at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design a launch is planned for December and a contact window is confirmed for next week; the finalization date is unknown. An agent can prepare a proposal in the account, without permission to send it. What does the journey show this week? Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
-      "preconditions": [
-        "Supplied context is stakeholder input, not observed research",
-        "Explain only: no generation, build, external command or deck export",
-        "Paired runs require identical models, tools and budget",
-        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
-        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
-        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
-        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
-        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
-      ],
-      "budget": {
-        "max_turns": 12,
-        "timeout_seconds": 300
-      },
-      "capabilities": {
-        "filesystem": true,
-        "agent_runner": true,
-        "browser": false,
-        "network": false,
-        "tools": [
-          "developer"
-        ]
-      },
-      "expected_output": "An explain-only workflow or routing plan. The plan includes useful preparation this week for the confirmed future contact window. The plan does not restrict agent initiative to overdue exceptions. The plan shows source-linked prepared work rather than generic alerts. The plan represents the unknown finalization date as unknown. The plan distinguishes preparation from send or delivery. The plan defines a bounded preparation mandate. The plan defines mandate stop conditions. The plan identifies the accountable owner. The plan specifies attention or deferral behavior. Generation, build, research, rendered QA, tracking and deployment remain not run.",
-      "assertions": [
-        "The plan includes useful preparation this week for the confirmed future contact window.",
-        "The plan does not restrict agent initiative to overdue exceptions.",
-        "The plan shows source-linked prepared work rather than generic alerts.",
-        "The plan represents the unknown finalization date as unknown.",
-        "The plan distinguishes preparation from send or delivery.",
-        "The plan defines a bounded preparation mandate.",
-        "The plan defines mandate stop conditions.",
-        "The plan identifies the accountable owner.",
-        "The plan specifies attention or deferral behavior.",
-        "The response labels the workflow explain-only rather than claiming external operations were executed."
-      ],
-      "coverage_tags": [
-        "experience:future-opportunity-prepared-work",
-        "language:en",
-        "capability:image-to-code",
-        "scope:explain"
-      ],
-      "navigation_expectations": {
-        "must_read": [
-          "SKILL.md"
-        ],
-        "read_when_relevant": [],
-        "must_not_read": []
-      },
-      "status": "not-run"
-    },
-    {
-      "id": 13,
-      "name": "bounded-agents-not-notification-supervision",
-      "subject": "value-intent-proactive-experience",
-      "language": "en",
-      "target": {
-        "kind": "existing-skill",
-        "path": ".",
-        "execution": "explain"
-      },
-      "prompt": "For product-design:image-to-code at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design agents perform eligible work under a team mandate, without human approval for each run. After a failure, an external effect is unknown; a permission has just been revoked. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
-      "preconditions": [
-        "Supplied context is stakeholder input, not observed research",
-        "Explain only: no generation, build, external command or deck export",
-        "Paired runs require identical models, tools and budget",
-        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
-        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
-        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
-        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
-        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
-      ],
-      "budget": {
-        "max_turns": 12,
-        "timeout_seconds": 300
-      },
-      "capabilities": {
-        "filesystem": true,
-        "agent_runner": true,
-        "browser": false,
-        "network": false,
-        "tools": [
-          "developer"
-        ]
-      },
-      "expected_output": "An explain-only workflow or routing plan. The plan permits eligible work within the team mandate without approval of every run. The plan requires outcome evidence for mandate-authorized execution. The plan rechecks revoked permission before further action. The plan reconciles an unknown external effect before retry. The response labels team replacement as unproven rather than measured benefit. Generation, build, research, rendered QA, tracking and deployment remain not run.",
-      "assertions": [
-        "The plan permits eligible work within the team mandate without approval of every run.",
-        "The plan requires outcome evidence for mandate-authorized execution.",
-        "The plan rechecks revoked permission before further action.",
-        "The plan reconciles an unknown external effect before retry.",
-        "The response labels team replacement as unproven rather than measured benefit.",
-        "The response labels the workflow explain-only rather than claiming external operations were executed."
-      ],
-      "coverage_tags": [
-        "experience:bounded-agents-not-notification-supervision",
-        "language:en",
-        "capability:image-to-code",
-        "scope:explain"
-      ],
-      "navigation_expectations": {
-        "must_read": [
-          "SKILL.md"
-        ],
-        "read_when_relevant": [],
-        "must_not_read": []
-      },
-      "status": "not-run"
-    },
-    {
-      "id": 14,
-      "name": "native-presentation-brand-separation",
-      "subject": "value-intent-proactive-experience",
-      "language": "en",
-      "target": {
-        "kind": "existing-skill",
-        "path": ".",
-        "execution": "explain"
-      },
-      "prompt": "For product-design:image-to-code at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design prepare the pitch, kickoff, and client update journey as an editable presentation with agency and client branding. The UI guidelines exist, but the official presentation template is missing. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
-      "preconditions": [
-        "Supplied context is stakeholder input, not observed research",
-        "Explain only: no generation, build, external command or deck export",
-        "Paired runs require identical models, tools and budget",
-        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
-        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
-        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
-        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
-        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
-      ],
-      "budget": {
-        "max_turns": 12,
-        "timeout_seconds": 300
-      },
-      "capabilities": {
-        "filesystem": true,
-        "agent_runner": true,
-        "browser": false,
-        "network": false,
-        "tools": [
-          "developer"
-        ]
-      },
-      "expected_output": "An explain-only workflow or routing plan. The plan distinguishes app design system from agency and client brands. The plan requires native editable content rather than flattened PNG slides. The plan identifies presentation audience. The plan identifies source corpus and snapshot. The plan links substantive claims to sources. The plan distinguishes version review from export authority. The plan distinguishes export authority from external delivery authority. The response does not claim official template conformity with the template missing. The response does not claim a native deck was completed. Generation, build, research, rendered QA, tracking and deployment remain not run.",
-      "assertions": [
-        "The plan distinguishes app design system from agency and client brands.",
-        "The plan requires native editable content rather than flattened PNG slides.",
-        "The plan identifies presentation audience.",
-        "The plan identifies source corpus and snapshot.",
-        "The plan links substantive claims to sources.",
-        "The plan distinguishes version review from export authority.",
-        "The plan distinguishes export authority from external delivery authority.",
-        "The response does not claim official template conformity with the template missing.",
-        "The response does not claim a native deck was completed.",
-        "The response labels the workflow explain-only rather than claiming external operations were executed."
-      ],
-      "coverage_tags": [
-        "experience:native-presentation-brand-separation",
-        "language:en",
-        "capability:image-to-code",
-        "scope:explain"
-      ],
-      "navigation_expectations": {
-        "must_read": [
-          "SKILL.md"
-        ],
-        "read_when_relevant": [],
-        "must_not_read": []
-      },
-      "status": "not-run"
-    },
-    {
-      "id": 15,
-      "name": "reuse-answered-brief-proactive-next-step",
-      "subject": "question-selection-and-initiative",
-      "language": "en",
-      "target": {
-        "kind": "existing-skill",
-        "path": ".",
-        "execution": "explain"
-      },
-      "prompt": "For product-design:image-to-code at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design I have already provided users, value, responsibilities, use cases, and brand guidelines. The case-file direction is selected. Complete the method for an estimated future window and a blocked client decision; preserve unknown data as unknown. What is the next useful step before coding? Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
-      "expected_output": "An explain-only workflow or routing plan. The response does not re-ask supplied user, value or design-system facts. The plan retains selected case-file direction without new competition. The response recommends a concrete pre-code step for the future opportunity and blocked decision. The plan preserves uncertain data as unknown. The response asks at most one question about a material blocking omission. The response does not treat conversational intent as external-effect authorization. The response does not treat product initiative as G4 build authorization. Generation, build, research, rendered QA, tracking and deployment remain not run.",
-      "assertions": [
-        "The response does not re-ask supplied user, value or design-system facts.",
-        "The plan retains selected case-file direction without new competition.",
-        "The response recommends a concrete pre-code step for the future opportunity and blocked decision.",
-        "The plan preserves uncertain data as unknown.",
-        "The response asks at most one question about a material blocking omission.",
-        "The response does not treat conversational intent as external-effect authorization.",
-        "The response does not treat product initiative as G4 build authorization.",
-        "The response labels the workflow explain-only rather than claiming external operations were executed."
-      ],
-      "preconditions": [
-        "Routing explanation only; no actual generation/build/external effect",
-        "Supplied answers are stakeholder context, not user research",
-        "Equivalent baseline/current tools, model and budget",
-        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
-        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
-        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
-        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
-        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
-      ],
-      "budget": {
-        "max_turns": 12,
-        "timeout_seconds": 300
-      },
-      "coverage_tags": [
-        "experience:question-selection",
-        "language:en",
-        "capability:image-to-code",
-        "scope:explain"
-      ],
-      "capabilities": {
-        "filesystem": true,
-        "agent_runner": true,
-        "browser": false,
-        "network": false,
-        "tools": [
-          "developer"
-        ]
-      },
-      "navigation_expectations": {
-        "must_read": [
-          "SKILL.md"
-        ],
-        "read_when_relevant": [],
-        "must_not_read": []
-      },
-      "status": "not-run"
-    },
-    {
       "name": "source-assets-first-no-regeneration",
       "prompt": "The approved screen set uses our supplied logo, font and design-system icons plus a CSS gradient surface. Explain your implementation plan; no asset is missing.",
       "expected_output": "Reuse real supplied assets and approved CSS surfaces; do not run image generation for existing assets.",
@@ -1176,6 +523,76 @@
         "must_not_read": []
       },
       "status": "not-run"
+    },
+    {
+      "subject": "product-information-progressive-disclosure",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget.",
+        "The product documents, page metadata and source SHAs described in the prompt are hypothetical; no product fixtures or native stores may be accessed."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "id": 25,
+      "name": "scoped-progressive-read-image-to-code",
+      "prompt": "For product-design:image-to-code at target.path \".\" (current contract root), explain this hypothetical case: An approved source set for /tmp/customer-product includes an exception panel. A developer asks why it is needed before considering omission. The long specifications/product.md explains its safety rationale and recovery at explicit anchor exception-panel. Explain the relevant read before any implementation change. This is explain-only: do not access the hypothetical product, run setup, change trackers or code, generate images, use the network or perform deployment.",
+      "assertions": [
+        "The plan uses bounded overview navigation before a targeted excerpt.",
+        "The plan selects a stable explicit anchor or entity identity.",
+        "The plan reads the relevant full semantic section rather than a detached rationale summary.",
+        "The plan retrieves applicable constraints before proposing a material action.",
+        "The plan retrieves relevant recovery behavior.",
+        "The plan retrieves relevant alternatives.",
+        "The response labels incomplete content as partial.",
+        "The plan uses SHA-bound continuation for remaining relevant text.",
+        "The response keeps text completeness separate from graph coverage.",
+        "The response does not promote retrieved text into validated evidence.",
+        "The response labels product execution as not run.",
+        "The plan resolves source impact before an implementation change."
+      ],
+      "expected_output": "An explain-only, source-grounded information retrieval plan with explicit scope, completeness and revision limits. All hypothetical product reads and actions remain planned or not run; no readiness or recovered-history claim follows from the plan.",
+      "coverage_tags": [
+        "language:en",
+        "scope:explain",
+        "capability:progressive-disclosure",
+        "risk:partial-context"
+      ],
+      "status": "not-run",
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md",
+          "PLUGIN_ROOT/references/product-information-disclosure.md"
+        ],
+        "read_when_relevant": [
+          "PLUGIN_ROOT/references/product-lifecycle-reasoning.md",
+          "PLUGIN_ROOT/scripts/read-product-information.mjs",
+          "PLUGIN_ROOT/references/executable-transitions.md"
+        ],
+        "must_not_read": [
+          "/tmp/customer-product/.beads/",
+          "/tmp/customer-product/.entire/"
+        ]
+      }
     }
   ]
 }

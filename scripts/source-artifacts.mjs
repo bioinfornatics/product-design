@@ -1,5 +1,6 @@
 import { readFileSync, realpathSync, lstatSync, existsSync } from "node:fs";
 import path from "node:path";
+import { inspectImageTool } from "./product-capabilities.mjs";
 import { sha256, validateExperienceBlueprint } from "./workflow-evidence-contract.mjs";
 
 const fail = message => { throw new Error(message); };
@@ -99,8 +100,11 @@ export function verifySourceLedger(plan,ledger,{project}) {
   }
   return ledger;
 }
-export function prepareSourceAttempt({project,plan,screenId,attempt,toolSchema,toolName,ledger}) {
-  verifySourcePlanFiles(plan,{project});if(!["imageGenerate","imageEdit","image_generate","image_edit"].includes(toolName))fail("generation/edit tool name required");
+export function prepareSourceAttempt({project,plan,screenId,attempt,toolSchema,toolName,toolCapabilities,ledger}) {
+  verifySourcePlanFiles(plan,{project});
+  const legacy={imageGenerate:"image-generate",image_generate:"image-generate",imageEdit:"image-edit",image_edit:"image-edit"};
+  const reviewed=inspectImageTool({name:toolName,capabilities:toolCapabilities??toolSchema?.capabilities??(legacy[toolName]?[legacy[toolName]]:[]),inputSchema:toolSchema?.inputSchema??toolSchema});
+  if(!reviewed.operations.length)fail("reviewed image-generate/image-edit capability required for actual tool name");
   const properties=schemaProperties(toolSchema);if(properties.workspace_output_path?.type!=="string"||properties.save_to_workspace?.type!=="boolean")fail("tool lacks explicit workspace_output_path/save_to_workspace capability");
   const d=sourceDestination(plan,screenId,attempt,{project});if(existsSync(d.expectedPath))fail("occupied canonical source destination");
   if(!ledger)fail("explicit source ledger required");verifySourceLedger(plan,ledger,{project});
@@ -108,9 +112,9 @@ export function prepareSourceAttempt({project,plan,screenId,attempt,toolSchema,t
   if(attempt!==records.length+1)fail("attempt must follow persisted accepted/rejected attempts");return d;
 }
 /** Callback wrapper verifies bytes and persists rejected sources as well as accepted ones. */
-export async function executeSourceAttempt({project,plan,screenId,attempt,toolSchema,toolName,ledger,generate,inspect,persist}) {
+export async function executeSourceAttempt({project,plan,screenId,attempt,toolSchema,toolName,toolCapabilities,ledger,generate,inspect,persist}) {
   if([generate,inspect,persist].some(f=>typeof f!=="function"))fail("generate, inspect and persist callbacks required");
-  const prepared=prepareSourceAttempt({project,plan,screenId,attempt,toolSchema,toolName,ledger}),screen=plan.screens.find(s=>s.id===screenId),started=Date.now();
+  const prepared=prepareSourceAttempt({project,plan,screenId,attempt,toolSchema,toolName,toolCapabilities,ledger}),screen=plan.screens.find(s=>s.id===screenId),started=Date.now();
   const result=await generate({...prepared,screen});
   // Never substitute a copied file or infer a returned filename.
   if(result?.path!==prepared.expectedPath)fail("tool returned a different source destination");

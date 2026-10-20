@@ -22,6 +22,12 @@ The output is not a loose opinion. The output is:
 - Accessibility risks tied to steps or screenshots
 - Clear limits on what could not be checked from screenshots alone
 
+## Phase evidence obligations
+
+Record each material observed finding with its capture, affected state and owning requirement. Persist current recommendations and their reasons in the authorized audit/specification artifact; keep observed defects separate from inferred user impact.
+
+For material why/impact dependencies, follow `PLUGIN_ROOT/references/product-lifecycle-reasoning.md`. For scoped specification retrieval, follow `PLUGIN_ROOT/references/product-information-disclosure.md` and use `PLUGIN_ROOT/scripts/read-product-information.mjs`; finish relevant continuations before acting.
+
 ## Critical Overrides
 
 - Before proceeding, use `load skills product-design:index` for routing.
@@ -49,7 +55,7 @@ Before auditing:
 Output rules:
 
 - Default to a concise inline report with screenshots rendered in the chat.
-- Saving screenshots and notes in the workspace is an internal implementation detail. Do not ask the user to choose a local folder.
+- Reuse the explicitly resolved, authorized product workspace for screenshots and notes; do not ask for a redundant folder choice. Complete Current rationale completion below before handoff; the inline report alone is not persisted product rationale.
 - If the user explicitly asks for Figma, create the Figma audit board in addition to the inline report.
 - After the inline report, ask once: `Want me to plot this out in Figma with the screenshots and notes?`
 
@@ -150,6 +156,10 @@ Blockers:
 - Notes cannot be written.
 - The requested claim would require evidence that screenshots cannot provide.
 - Do not claim an audit if the actual flow could not be accessed and captured. Help Center pages, web searches, and other indirect evidence are research, not an audit.
+
+## Current rationale completion
+
+Save material findings, recommendations and their current reasons before handoff. Follow `PLUGIN_ROOT/references/product-experience-method.md` section current-rationale-completion for owning-file selection, authorized writes, stable-reference verification and not-persisted handling. Do not invent reasons, approvals, a tracker or historical retention.
 
 ## Final Response
 

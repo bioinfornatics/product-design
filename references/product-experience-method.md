@@ -2,6 +2,19 @@
 
 Read for involved product exploration, multirole services, adaptive/conversational interfaces or experience redesign. Tiny static edits and exact clones use only applicable checks. This method generalizes stakeholder feedback; it does not claim that interviews, historical prompts or productivity measurements exist.
 
+## Contents
+
+- [1. Separate Product, UX and UI](#method-1)
+- [2. Eight-step workflow](#method-2)
+- [3. Questions that change the design](#method-3)
+- [4. Intent-to-surface contract (conditional)](#method-4)
+- [5. Proactivity that reduces work](#method-5)
+- [6. Native deliverables (conditional)](#method-6)
+- [7. Evidence and traceability boundaries](#method-7)
+- [Current rationale completion](#current-rationale-completion)
+- [8. Blueprint shape and example](#method-8)
+
+<a id="method-1"></a>
 ## 1. Separate Product, UX and UI
 
 | Layer | Question to resolve | Inspectable output |
@@ -12,6 +25,7 @@ Read for involved product exploration, multirole services, adaptive/conversation
 
 A technology choice or agent architecture does not answer user priority. A dashboard is a representation, not the default product strategy. Calendar facts, missing data, workflow status, editable artifacts and metrics are different data kinds.
 
+<a id="method-2"></a>
 ## 2. Eight-step workflow
 
 1. **Recover inputs and decisions.** Inspect the provided tables, specifications, references and existing product. Label stakeholder statements, observations, operational data, external research, inference and assumptions. Preserve accepted decisions and authoritative sources. Record contradictions without silently choosing a new strategy.
@@ -23,6 +37,7 @@ A technology choice or agent architecture does not answer user priority. A dashb
 7. **Inspect and approve exact sources.** Compare task usefulness, continuity, business/state fidelity and composition. Trace each material feedback item to a decision, scenario, screen/state and verification, or an explicit defer/out-of-scope rationale. Source defects require pixel revision, not a note. Full source approval and explicit G4 precede code.
 8. **Test the task and value hypothesis.** Verify rendered sources and interactions, then evaluate representative tasks with users when available. Report structural checks, source review, agent walkthrough and user research separately. A stakeholder selection or attractive prototype does not prove time saved, desirability, trust or team replacement.
 
+<a id="method-3"></a>
 ## 3. Questions that change the design
 
 Use this as an analysis lens, not a questionnaire. First reuse answered context and derive a short brief. Ask only the highest-information unanswered blocking question; otherwise state assumptions and the cheapest test. Record question → answer/provenance → design decision → scenario/screen → verification in the experience blueprint.
@@ -43,6 +58,7 @@ These are themes to review, not nine equal screen regions. Additional business t
 
 For involved discovery, also read [product discovery questions](product-discovery-questions.md): current alternative, frequency and total effort, adoption/viability, conditional AI advantage/error/fallback/safety and technical constraints. Link the highest-impact uncertainty to a compact decision-test record with baseline, target/guardrail, owner and continue/change/stop rule. Do not force all themes into fields/screens or claim a test ran from its plan; disproved value can justify no build yet.
 
+<a id="method-4"></a>
 ## 4. Intent-to-surface contract (conditional)
 
 | Intention | Useful answer location | Expected effect |
@@ -57,6 +73,7 @@ For involved discovery, also read [product discovery questions](product-discover
 
 If continuous conversation is requested, keep it accessible without a permanent transcript sidebar. Do not force this shell on every product. Preserve navigation, tenant/responsibility scope, period, filters, selection/object, origin/arrival reason and return. A late answer belongs to its origin and must not take over another view. Keep direct click/keyboard paths alongside conversation. Reserve space and focus behavior; never cover primary controls. Show loading, partial/unknown, canceled, stale, conflict and revoked states with recovery when applicable.
 
+<a id="method-5"></a>
 ## 5. Proactivity that reduces work
 
 **Product agents:** review both opportunity and exception triggers. Opportunities include a launch, contact window, publication, event, seasonal need or meeting requiring preparation now. Temporal proximity is not a dependency. Use sources and known/estimated/unknown dates. For every in-scope initiative specify source, why-now/lead time, scope, intended value, artifact/action prepared, eligible execution, authority/mandate, limits, owner, attention placement, defer/dismiss, stop and unknown-effect reconciliation. Do not fabricate opportunities: disclose uncertainty or defer that slice.
@@ -65,12 +82,14 @@ Prefer preparing or executing eligible work under bounded mandates to endless ad
 
 **The Product Design assistant:** proactively inspect sources, reuse answers, flag contradictions/data-kind/state errors, recommend the next cheapest discriminating test, and perform the next eligible design step without asking permission already given. Retain selected directions; specialized views remain proposals until accepted. Never silently widen scope, switch provider/model, invent missing facts, mutate app code before G4 or claim research from its walkthrough.
 
+<a id="method-6"></a>
 ## 6. Native deliverables (conditional)
 
 When business presentations are requested, cover the relevant pitch, kickoff, coordination, client point, committee, operational plan or report scenario. Define audience, purpose/decision, source corpus/snapshot, claim-to-source links, editable native text/tables/charts, review/version, export and external delivery separately. A screen image is a design target, not a native deck. Text baked into PNG slides is not an editable deliverable.
 
 Keep application design system, organization/agency brand and client brand separate. Official template absent means a neutral concept with no conformity claim. Treat untrusted templates as isolated/sanitized inputs, not active code. Rights revocation overrides frozen-meeting convenience; do not promise revocation of downloaded files. Missing tooling means deferred native generation, not a fake completed deck.
 
+<a id="method-7"></a>
 ## 7. Evidence and traceability boundaries
 
 For involved work maintain an experience blueprint next to the Product/UX/UI contract. Include users/value, answered/assumed/blocking questions, decisions and Product/UX/UI impacts, scenarios and intent placement, conditional initiative/artifact contracts, and checks. Trace each material input to these outputs; deferred areas carry a rationale. validateExperienceBlueprint checks declared IDs, links, evidence labels, no-effect boundaries and conditional contracts, not business truth, useful strategy, human authority or pixels. Legacy design contracts remain v1; the blueprint is a separate artifact, not automatic promotion of historical selections.
@@ -87,6 +106,22 @@ For involved work maintain an experience blueprint next to the Product/UX/UI con
 
 For actual generated/edited screen files read [source artifacts](source-artifacts.md). Bind authoritative specification file revisions/hashes and the existing contract/blueprint to stable source IDs and their scenario/decision/screenState/verification links. Recheck change impact before generation, approval, build and QA; preserve selected directions and historical files. Continuously challenge value, UX, UI, research confidence, accessibility and feasibility through existing questions/decisions/checks, not six parallel specs or a questionnaire.
 
+<a id="current-rationale-completion"></a>
+## Current rationale completion
+
+Before completing involved work or handing it off, persist material **current** accepted intent and its Product/UX/UI reasons in the existing owning specification or experience blueprint, in an explicitly resolved product workspace with authorized writes. Include layout/placement reasoning, considered alternatives and why they were retained or rejected, applicable constraints, evidence/provenance and uncertainty. Use existing prose and decision/question/check fields; a consequence or impact label alone is not a comparative reason. Missing reasons remain unknown, not retrospective invention.
+
+Keep observations, proposals and accepted decisions visibly distinct. Not every comment becomes a product rule; preserve human decision ownership, consent and execution boundaries. A material unresolved proposal may be recorded as such, never silently accepted. Persist only the authorized product content needed for the current decision, not private transcripts or saved personal context.
+
+Discovery-only/no-build is a valid completion branch: update its owning brief/specification, or save a compact current brief in that authorized workspace if no owner exists yet. No generated sources, new mandatory schema/catalog/database/journal, fictitious gate or tracker is needed merely to save it. An inline research/audit report may remain the presentation format, but chat alone is not a persisted artifact.
+
+Before claiming “documented”, inspect the actual saved file and resolve the published stable reference to the relevant content: document plus explicit Markdown section anchor, or document plus JSON collection/entity ID, not a guessed slug, line number or array position. Reuse stable existing references; add a local anchor when needed. Follow [product information disclosure](product-information-disclosure.md) for scoped reads. A path mentioned in chat, planned write or file hash alone does not verify saved rationale. If writing or verification fails, report that limitation rather than completion.
+
+If no explicit product workspace exists or writes are unauthorized, state **not persisted** and retain the answer inline; do not place product rationale in the plugin checkout or saved personal context, or initialize a workspace/tool to bypass the boundary. This obligation does not authorize setup, commits, imports, migrations, hooks or product actions.
+
+This corrects current-state completion instructions only. Historical retention gap **F2 remains open**: there is no snapshot/history retention or archive change here, and overwritten or never-saved reasons cannot be recovered from current hashes. Source instructions and explain-only scenarios are not proof of agent execution, end-to-end persistence or complete durable memory.
+
+<a id="method-8"></a>
 ## 8. Blueprint shape and example
 
 Write a separate experience blueprint JSON (schemaVersion1) next to the involved-work design contract. Its field names are consumed by validateExperienceBlueprint in scripts/workflow-evidence-contract.mjs. When using this companion, the design contract scenarios also have stable id values; historical v1 contracts without IDs are not rewritten automatically.

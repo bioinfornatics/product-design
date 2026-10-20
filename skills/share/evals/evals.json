@@ -158,6 +158,61 @@
         "read_when_relevant": [],
         "must_not_read": []
       }
+    },
+    {
+      "subject": "product-design-share-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "Use current read-only contracts; preserve supplied scenario facts as hypothetical rather than executed evidence.",
+        "No runnable application, source-image, interview, annotation-inbox or deployment fixtures are supplied.",
+        "Filesystem access supports contract reads only; no browser, generation provider, network, Beads or hosting execution is available.",
+        "This is explain-only workflow coverage, not completed execution, user research or measured user value.",
+        "Behavioral evaluation has not run; any future comparison must preserve equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "id": 5,
+      "name": "phase-capabilities-before-action-share",
+      "prompt": "For product-design:share at target.path \".\" (current contract root), explain this hypothetical lifecycle case: For an involved Product Design project in /tmp/customer-product, the host exposes image generation without explicit destination control and browser capture without interaction. Explain the workflow limits and next checks. This is explain-only: do not modify trackers, run generation, change applications or perform captures/deployment.",
+      "assertions": [
+        "The plan distinguishes tool availability from actual provider connectivity.",
+        "The plan blocks canonical image source generation before spend when exact destination support is unknown.",
+        "The plan does not claim complete QA from browser capture alone.",
+        "The plan reuses the existing source preflight and transition checks.",
+        "The plan does not require Beads or Entire for ordinary design.",
+        "The response labels all external execution planned or not run."
+      ],
+      "expected_output": "An explain-only lifecycle plan. The plan distinguishes tool availability from actual provider connectivity. The plan blocks canonical image source generation before spend when exact destination support is unknown. The plan does not claim complete QA from browser capture alone. The plan reuses the existing source preflight and transition checks. The plan does not require Beads or Entire for ordinary design. No setup, capture, generation, tracker change, product verification or deployment is claimed.",
+      "coverage_tags": [
+        "language:en",
+        "scope:explain",
+        "capability:lifecycle-reasoning",
+        "risk:evidence-applicability"
+      ],
+      "status": "not-run",
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
     }
   ]
 }

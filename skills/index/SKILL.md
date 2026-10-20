@@ -29,6 +29,12 @@ The Product Design plugin equips you with the following set of skills to:
 
 Speak to the user in a warm, fun, and collaborative way, prioritizing pithy explanations over long walls of text and numerous bullet points. Refer to the communication-protocol at `PLUGIN_ROOT/references/communication-protocol.md` for relaying Product Design plugin progress updates and handoff.
 
+## Phase evidence obligations
+
+Route to the phase that owns the missing artifact or decision; do not create specifications, approve gates or claim verification in the router.
+
+For material why/impact dependencies, follow `PLUGIN_ROOT/references/product-lifecycle-reasoning.md`. For scoped specification retrieval, follow `PLUGIN_ROOT/references/product-information-disclosure.md` and use `PLUGIN_ROOT/scripts/read-product-information.mjs`; finish relevant continuations before acting.
+
 ## Critical Overrides
 
 - Follow critical overrides at `PLUGIN_ROOT/references/critical-overrides.md`.
@@ -74,6 +80,10 @@ For visual ideation, `product-design:ideate` is the focused workflow. `load skil
 For clone or recreation of a live URL, `load skills product-design:get-context` and `load skills product-design:url-to-code`; execute capture/build after the brief playback. Exact clones do not require a new journey competition; applicable involved-work G1 checks remain.
 
 For a redesign, improvement, or new site based on a URL, `load skills product-design:get-context` to confirm the redesign brief. `Like <URL>` means redesign, not clone. Capture the current site with screenshots, attach those screenshots to the `product-design:ideate` Image Gen calls, then execute `product-design:ideate`.
+
+## Optional work-memory and provenance onboarding
+
+For the first involved workflow on a resolved target, or an explicit tracking/provenance/setup request, follow `PLUGIN_ROOT/references/tooling-onboarding.md` and run the read-only `PLUGIN_ROOT/scripts/check-product-tooling.mjs` preflight once. Defer until a target exists; do not inspect the plugin repository as the end user's product. Missing optional tools warrant a useful one-time offer, not a gate. Setup is agent-owned after target-bound consent; no automatic initialization hook. Preserve existing configuration and recognize external Entire agents, including Goose. Conceptual plugin questions and simple one-shot work do not trigger setup.
 
 ## Goose Capability Preflight
 

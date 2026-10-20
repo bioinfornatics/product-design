@@ -21,6 +21,12 @@ Without participant access and consent, produce the plan rather than claim inter
 
 Reconcile counterevidence, duplicated complaints and sampling limits before claiming frequency. Include what works in the current alternative and total verification/correction effort, especially for AI. Results may support an explicit recommendation to change the hypothesis, defer or not build; do not force a UI recommendation from contradicted value.
 
+## Phase evidence obligations
+
+Write source-grounded findings and the resulting current decision into the authorized research/specification artifact. Link evidence and uncertainty to the affected question, scenario and proposed check; never relabel that proposal as an executed study.
+
+For material why/impact dependencies, follow `PLUGIN_ROOT/references/product-lifecycle-reasoning.md`. For scoped specification retrieval, follow `PLUGIN_ROOT/references/product-information-disclosure.md` and use `PLUGIN_ROOT/scripts/read-product-information.mjs`; finish relevant continuations before acting.
+
 ## Critical Overrides
 
 - Before proceeding, use `load skills product-design:index` for routing.
@@ -88,9 +94,13 @@ For multi-persona services, research each persona and the backstage/operator lan
 
 7. Tell a clear product story and name the next decision/test. Include current alternative, counterevidence, sampling limits and a continue/change/stop rule for the material hypothesis; a planned test is not a measured result.
 
+## Current rationale completion
+
+Save current findings, evidence limits and their resulting product decision before handoff. Follow `PLUGIN_ROOT/references/product-experience-method.md` section current-rationale-completion for owning-file selection, authorized writes, stable-reference verification and not-persisted handling. Do not invent reasons, approvals, a tracker or historical retention.
+
 ## Output
 
-Default to an in-chat research brief unless the user asks for another format.
+Default to an in-chat research brief unless the user asks for another format; this presentation choice does not replace Current rationale completion above.
 
 For a source scan, include:
 

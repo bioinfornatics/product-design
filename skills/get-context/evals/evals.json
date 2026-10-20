@@ -215,59 +215,6 @@
       "status": "not-run"
     },
     {
-      "id": 5,
-      "name": "complementary-roles-not-variants",
-      "prompt": "For product-design:get-context at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Four logistics roles share same delivery; define homes. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
-      "expected_output": "An explain-only workflow or routing plan. The plan assigns complementary responsibilities to the four logistics roles on the shared delivery. The plan varies interaction strategies rather than electing a winning persona. The plan identifies material role-to-role delivery handoffs. The plan preserves shared delivery context across handoffs. Generation, build, research, rendered QA, tracking and deployment remain not run.",
-      "assertions": [
-        "The plan assigns complementary responsibilities to the four logistics roles on the shared delivery.",
-        "The plan varies interaction strategies rather than electing a winning persona.",
-        "The plan identifies material role-to-role delivery handoffs.",
-        "The plan preserves shared delivery context across handoffs.",
-        "The response labels the workflow explain-only rather than claiming external operations were executed."
-      ],
-      "target": {
-        "kind": "existing-skill",
-        "path": ".",
-        "execution": "explain"
-      },
-      "subject": "product-design-get-context-workflow-contract",
-      "language": "en",
-      "preconditions": [
-        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
-        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
-        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
-        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
-        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
-      ],
-      "capabilities": {
-        "filesystem": true,
-        "agent_runner": true,
-        "browser": false,
-        "network": false,
-        "tools": [
-          "developer"
-        ]
-      },
-      "budget": {
-        "max_turns": 12,
-        "timeout_seconds": 300
-      },
-      "coverage_tags": [
-        "language:en",
-        "capability:get-context",
-        "scope:explain"
-      ],
-      "navigation_expectations": {
-        "must_read": [
-          "SKILL.md"
-        ],
-        "read_when_relevant": [],
-        "must_not_read": []
-      },
-      "status": "not-run"
-    },
-    {
       "id": 6,
       "name": "resume-selected-direction",
       "prompt": "For product-design:get-context at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Dossier selected, horizon reusable specialized view; complete missing screens. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
@@ -279,59 +226,6 @@
         "The plan does not restart a three-way comparison.",
         "The plan requires explicit approval of the complete corrected ordered source set before G4.",
         "The plan requires explicit G4 build scope before application mutation.",
-        "The response labels the workflow explain-only rather than claiming external operations were executed."
-      ],
-      "target": {
-        "kind": "existing-skill",
-        "path": ".",
-        "execution": "explain"
-      },
-      "subject": "product-design-get-context-workflow-contract",
-      "language": "en",
-      "preconditions": [
-        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
-        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
-        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
-        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
-        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
-      ],
-      "capabilities": {
-        "filesystem": true,
-        "agent_runner": true,
-        "browser": false,
-        "network": false,
-        "tools": [
-          "developer"
-        ]
-      },
-      "budget": {
-        "max_turns": 12,
-        "timeout_seconds": 300
-      },
-      "coverage_tags": [
-        "language:en",
-        "capability:get-context",
-        "scope:explain"
-      ],
-      "navigation_expectations": {
-        "must_read": [
-          "SKILL.md"
-        ],
-        "read_when_relevant": [],
-        "must_not_read": []
-      },
-      "status": "not-run"
-    },
-    {
-      "id": 7,
-      "name": "readable-false-business-copy",
-      "prompt": "For product-design:get-context at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: Selected readable image invents version/chart and approved means sent. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
-      "expected_output": "An explain-only workflow or routing plan. The response classifies the invented version or chart as a material business-data finding. The response classifies approved-as-sent wording as a false effect-state finding. The plan keeps affected sources build-ineligible until corrected pixels are reinspected. The response distinguishes a direction choice from source approval. Generation, build, research, rendered QA, tracking and deployment remain not run.",
-      "assertions": [
-        "The response classifies the invented version or chart as a material business-data finding.",
-        "The response classifies approved-as-sent wording as a false effect-state finding.",
-        "The plan keeps affected sources build-ineligible until corrected pixels are reinspected.",
-        "The response distinguishes a direction choice from source approval.",
         "The response labels the workflow explain-only rather than claiming external operations were executed."
       ],
       "target": {
@@ -729,7 +623,7 @@
         "path": ".",
         "execution": "explain"
       },
-      "prompt": "For product-design:get-context at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design improve a service following this review: contact schedule \u2260 KPI; missing budget \u2260 zero; clicking an indicator preserves the population/filters; a missing preview does not allow inventing a version. I want to understand the product, UX, and UI implications. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
+      "prompt": "For product-design:get-context at target.path \".\" (current skill root), explain or route a workflow for this hypothetical request: @Product Design improve a service following this review: contact schedule ≠ KPI; missing budget ≠ zero; clicking an indicator preserves the population/filters; a missing preview does not allow inventing a version. I want to understand the product, UX, and UI implications. Provide only a plan; do not perform generation, app edits, research, captures, QA, tracking or deployment.",
       "preconditions": [
         "Supplied context is stakeholder input, not observed research",
         "Explain only: no generation, build, external command or deck export",
@@ -1390,6 +1284,452 @@
         "must_not_read": []
       },
       "status": "not-run"
+    },
+    {
+      "subject": "product-design-get-context-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "id": 26,
+      "name": "optional-tools-missing-no-auto-setup-get-context",
+      "prompt": "For product-design:get-context at target.path \".\" (the current contract root), explain onboarding for this hypothetical request: I want to start an involved Product Design project in /tmp/customer-product. Beads and Entire are not installed there. Explain how you would proceed. Provide only a plan; do not execute setup or change any tracker/integration.",
+      "assertions": [
+        "The plan checks the explicit target, not the plugin development repository.",
+        "The plan explains useful missing optional-tool limitations and offers setup once.",
+        "The plan continues ordinary design without requiring Beads or Entire.",
+        "The plan requires authorization before installing or initializing and never activates an auto-init hook.",
+        "The response labels setup and verification planned or not run, not completed."
+      ],
+      "expected_output": "An explain-only onboarding plan. The plan checks the explicit target, not the plugin development repository. The plan explains useful missing optional-tool limitations and offers setup once. The plan continues ordinary design without requiring Beads or Entire. The plan requires authorization before installing or initializing and never activates an auto-init hook. No setup, checkpoint capture or product QA is claimed.",
+      "coverage_tags": [
+        "language:en",
+        "scope:explain",
+        "capability:tooling-onboarding",
+        "risk:consent"
+      ],
+      "status": "not-run"
+    },
+    {
+      "subject": "product-design-get-context-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "id": 28,
+      "name": "onboard-consent-and-wrong-target-get-context",
+      "prompt": "For product-design:get-context at target.path \".\" (the current contract root), explain onboarding for this hypothetical request: I want native task tracking and development provenance for /tmp/customer-product, not the plugin development repository. The tools are installed but setup is incomplete; explain the next decisions. Provide only a plan; do not execute setup or change any tracker/integration.",
+      "assertions": [
+        "The plan verifies native target/tracker association and does not reinitialize ambiguous or redirected data.",
+        "The plan requests target-bound Beads initialization consent separately from Entire recording and synchronization consent.",
+        "The plan recognizes telemetry=false does not disable recording or synchronization.",
+        "The agent owns authorized setup commands.",
+        "The plan reviews installed CLI help before setup.",
+        "The plan reruns preflight immediately before setup.",
+        "The plan verifies actual resulting target changes after setup.",
+        "The plan never silently initializes Git, imports history, forces hook replacement or performs a push.",
+        "The response labels setup and verification planned or not run, not completed."
+      ],
+      "expected_output": "An explain-only onboarding plan. The plan verifies native target/tracker association and does not reinitialize ambiguous or redirected data. The plan requests target-bound Beads initialization consent separately from Entire recording and synchronization consent. The plan recognizes telemetry=false does not disable recording or synchronization. The agent owns authorized setup commands. The plan reviews installed CLI help before setup. The plan reruns preflight immediately before setup. The plan verifies actual resulting target changes after setup. The plan never silently initializes Git, imports history, forces hook replacement or performs a push. No setup, checkpoint capture or product QA is claimed.",
+      "coverage_tags": [
+        "language:en",
+        "scope:explain",
+        "capability:tooling-onboarding",
+        "risk:consent"
+      ],
+      "status": "not-run"
+    },
+    {
+      "subject": "product-information-progressive-disclosure",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget.",
+        "The product documents, page metadata and source SHAs described in the prompt are hypothetical; no product fixtures or native stores may be accessed."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "id": 32,
+      "name": "scoped-why-read-get-context",
+      "prompt": "For product-design:get-context at target.path \".\" (current contract root), explain this hypothetical case: The product at /tmp/customer-product has a 1400-line specifications/product.md with a contents list and an explicit decision-review anchor. That section records why analysts review uncertain results, the fallback, constraints and rejected automatic-release option. A separate specifications/experience-blueprint.json contains decisions/D2 and unrelated journeys. A colleague asks why review is necessary, not for a redesign. This is explain-only: do not access the hypothetical product, run setup, change trackers or code, generate images, use the network or perform deployment.",
+      "assertions": [
+        "The plan starts with bounded heading or entity navigation.",
+        "The plan addresses the Markdown section by its explicit decision-review anchor.",
+        "The plan retrieves the complete relevant semantic section before concluding its rationale.",
+        "The plan identifies the JSON entity by document, collection and ID.",
+        "The plan selects relevant JSON top-level fields instead of preloading the root.",
+        "The response distinguishes derived navigation from authoritative source content.",
+        "The plan retains applicable constraints alongside the rationale.",
+        "The plan retrieves the critical recovery behavior.",
+        "The plan retrieves the rejected alternative.",
+        "The plan binds retrieved content to the current source SHA.",
+        "The response distinguishes selected text completeness from graph coverage.",
+        "The response does not treat retrieval as evidence validation.",
+        "The plan leaves the existing specification storage intact.",
+        "The response labels product execution as not run."
+      ],
+      "expected_output": "An explain-only, source-grounded information retrieval plan with explicit scope, completeness and revision limits. All hypothetical product reads and actions remain planned or not run; no readiness or recovered-history claim follows from the plan.",
+      "coverage_tags": [
+        "language:en",
+        "scope:explain",
+        "capability:progressive-disclosure",
+        "risk:partial-context"
+      ],
+      "status": "not-run",
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md",
+          "PLUGIN_ROOT/references/product-information-disclosure.md"
+        ],
+        "read_when_relevant": [
+          "PLUGIN_ROOT/references/product-lifecycle-reasoning.md",
+          "PLUGIN_ROOT/scripts/read-product-information.mjs",
+          "PLUGIN_ROOT/references/executable-transitions.md"
+        ],
+        "must_not_read": [
+          "/tmp/customer-product/.beads/",
+          "/tmp/customer-product/.entire/"
+        ]
+      }
+    },
+    {
+      "subject": "product-information-progressive-disclosure",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget.",
+        "The product documents, page metadata and source SHAs described in the prompt are hypothetical; no product fixtures or native stores may be accessed."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "id": 33,
+      "name": "long-section-continuation-get-context",
+      "prompt": "For product-design:get-context at target.path \".\" (current contract root), explain this hypothetical case: The product at /tmp/customer-product has a long decision-review section in specifications/product.md. Its first bounded excerpt explains the review step, but the returned page metadata says the section is partial and supplies a continuation cursor. The contraindication and safe recovery appear later in the same section. A colleague wants to remove review after reading only the opening paragraph. This is explain-only: do not access the hypothetical product, run setup, change trackers or code, generate images, use the network or perform deployment.",
+      "assertions": [
+        "The response explicitly warns that the available section text is partial.",
+        "The plan follows the returned continuation cursor within a bounded page budget.",
+        "The plan completes the relevant semantic section before recommending removal.",
+        "The plan retrieves the later contraindication.",
+        "The plan retrieves the safe recovery behavior.",
+        "The plan checks linked applicable alternatives before a material action.",
+        "The plan verifies the same source SHA for continuation.",
+        "The response does not infer no impact from the first page.",
+        "The response treats unavailable continuation as a blocker for a material action.",
+        "The response leaves action approval separate from completion of the read.",
+        "The response labels product execution as not run."
+      ],
+      "expected_output": "An explain-only, source-grounded information retrieval plan with explicit scope, completeness and revision limits. All hypothetical product reads and actions remain planned or not run; no readiness or recovered-history claim follows from the plan.",
+      "coverage_tags": [
+        "language:en",
+        "scope:explain",
+        "capability:progressive-disclosure",
+        "risk:partial-context"
+      ],
+      "status": "not-run",
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md",
+          "PLUGIN_ROOT/references/product-information-disclosure.md"
+        ],
+        "read_when_relevant": [
+          "PLUGIN_ROOT/references/product-lifecycle-reasoning.md",
+          "PLUGIN_ROOT/scripts/read-product-information.mjs",
+          "PLUGIN_ROOT/references/executable-transitions.md"
+        ],
+        "must_not_read": [
+          "/tmp/customer-product/.beads/",
+          "/tmp/customer-product/.entire/"
+        ]
+      }
+    },
+    {
+      "subject": "product-information-progressive-disclosure",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget.",
+        "The product documents, page metadata and source SHAs described in the prompt are hypothetical; no product fixtures or native stores may be accessed."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "id": 34,
+      "name": "source-changed-mid-read-get-context",
+      "prompt": "For product-design:get-context at target.path \".\" (current contract root), explain this hypothetical case: A hypothetical first page from /tmp/customer-product/specifications/product.md#decision-review was read at source SHA A. Before continuation, an editor changes the constraint in that same file, producing SHA B. The existing source approval still binds A. A colleague wants to append the next page and proceed using that approval. This is explain-only: do not access the hypothetical product, run setup, change trackers or code, generate images, use the network or perform deployment.",
+      "assertions": [
+        "The plan freshly validates source bytes before returning continuation content.",
+        "The response identifies the old cursor as stale.",
+        "The plan refuses to concatenate pages from source SHA A and SHA B.",
+        "The plan restarts the affected read against the current source.",
+        "The plan reassesses applicable constraints under the current SHA.",
+        "The plan checks source impact through the applicable evidence contract.",
+        "The response does not treat a fresh read as renewed approval.",
+        "The plan preserves the historical approval binding.",
+        "The response states that current-file hashing cannot recover missing prior rationale.",
+        "The response labels product execution as not run."
+      ],
+      "expected_output": "An explain-only, source-grounded information retrieval plan with explicit scope, completeness and revision limits. All hypothetical product reads and actions remain planned or not run; no readiness or recovered-history claim follows from the plan.",
+      "coverage_tags": [
+        "language:en",
+        "scope:explain",
+        "capability:progressive-disclosure",
+        "risk:mixed-revisions"
+      ],
+      "status": "not-run",
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md",
+          "PLUGIN_ROOT/references/product-information-disclosure.md"
+        ],
+        "read_when_relevant": [
+          "PLUGIN_ROOT/references/product-lifecycle-reasoning.md",
+          "PLUGIN_ROOT/scripts/read-product-information.mjs",
+          "PLUGIN_ROOT/references/executable-transitions.md"
+        ],
+        "must_not_read": [
+          "/tmp/customer-product/.beads/",
+          "/tmp/customer-product/.entire/"
+        ]
+      }
+    },
+    {
+      "subject": "current-product-rationale-completion",
+      "language": "fr",
+      "preconditions": [
+        "The target at path . is the current read-only workflow contract; product context and files are hypothetical.",
+        "Filesystem access is for contract reads only; no hypothetical product writes, browser, network, native-store access or setup is permitted.",
+        "Explain-only coverage, not measured end-to-end execution; future baseline comparisons need equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "id": 35,
+      "name": "current-rationale-workspace-get-context",
+      "prompt": "Pour le skill product-design:get-context à target.path « . », explique ce cas hypothétique : Nous cadrons un service de demandes sans construire. La responsable retient une liste plutôt qu'un tableau de bord pour repérer la prochaine demande. La position des filtres reste une proposition sans justification. Le dossier produit /tmp/customer-product existe et les écritures y sont autorisées. specifications/product.md contient une section avec l'ancre explicite current-intent. Le compte rendu sera présenté dans le chat. Que reste-t-il à faire pour terminer proprement ? Explique uniquement la conduite à tenir, sans accéder au produit fictif, écrire, lancer des outils de projet ou utiliser le réseau.",
+      "assertions": [
+        "The plan persists current accepted intent in the existing owning product specification.",
+        "The plan records the supplied comparative reason rather than only a design impact.",
+        "The plan retains unresolved proposals as distinct from accepted decisions.",
+        "The plan records missing reasons as unknown rather than inventing them.",
+        "The plan verifies the saved file before claiming documentation.",
+        "The plan verifies the explicit current-intent anchor resolves to the saved rationale.",
+        "The plan publishes the owning file plus stable anchor reference.",
+        "The response does not treat the inline report as a persisted artifact.",
+        "The response preserves human authorization boundaries.",
+        "The response labels hypothetical product execution as not run."
+      ],
+      "expected_output": "A French explain-only completion plan distinguishing current rationale persistence from inline presentation, without claiming execution or historical recovery.",
+      "coverage_tags": [
+        "language:fr",
+        "scope:explain",
+        "capability:current-rationale-completion",
+        "branch:workspace"
+      ],
+      "status": "not-run",
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md",
+          "PLUGIN_ROOT/references/product-experience-method.md"
+        ],
+        "read_when_relevant": [
+          "PLUGIN_ROOT/references/product-information-disclosure.md"
+        ],
+        "must_not_read": [
+          "/tmp/customer-product/.beads/",
+          "/tmp/customer-product/.entire/"
+        ]
+      }
+    },
+    {
+      "subject": "current-product-rationale-completion",
+      "language": "fr",
+      "preconditions": [
+        "The target at path . is the current read-only workflow contract; product context and files are hypothetical.",
+        "Filesystem access is for contract reads only; no hypothetical product writes, browser, network, native-store access or setup is permitted.",
+        "Explain-only coverage, not measured end-to-end execution; future baseline comparisons need equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "id": 36,
+      "name": "current-rationale-chat-only-get-context",
+      "prompt": "Pour le skill product-design:get-context à target.path « . », explique ce cas hypothétique : Nous cadrons un service de demandes sans construire. La responsable retient une liste plutôt qu'un tableau de bord pour repérer la prochaine demande. La position des filtres reste une proposition sans justification. Nous n'avons désigné aucun dossier produit et aucune écriture n'est autorisée. Le dossier courant est celui du plugin. Peut-on conclure que ces raisons sont documentées après ta réponse dans le chat ? Explique uniquement la conduite à tenir, sans accéder au produit fictif, écrire, lancer des outils de projet ou utiliser le réseau.",
+      "assertions": [
+        "The response explicitly states that product rationale is not persisted.",
+        "The response permits an inline answer without calling it a persisted artifact.",
+        "The plan does not use the plugin checkout as substitute product storage.",
+        "The plan does not use saved personal context as substitute product storage.",
+        "The plan does not invent a gate or tracker for completion.",
+        "The plan does not initialize a workspace or tooling without consent.",
+        "The response leaves historical retention gap F2 open.",
+        "The response does not claim complete durable memory.",
+        "The response labels hypothetical product execution as not run."
+      ],
+      "expected_output": "A French explain-only completion plan distinguishing current rationale persistence from inline presentation, without claiming execution or historical recovery.",
+      "coverage_tags": [
+        "language:fr",
+        "scope:explain",
+        "capability:current-rationale-completion",
+        "branch:chat-only"
+      ],
+      "status": "not-run",
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md",
+          "PLUGIN_ROOT/references/product-experience-method.md"
+        ],
+        "read_when_relevant": [
+          "PLUGIN_ROOT/references/product-information-disclosure.md"
+        ],
+        "must_not_read": [
+          "/tmp/customer-product/.beads/",
+          "/tmp/customer-product/.entire/"
+        ]
+      }
     }
   ]
 }

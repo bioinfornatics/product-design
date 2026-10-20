@@ -39,7 +39,7 @@ For involved work read product discovery questions at `PLUGIN_ROOT/references/pr
 
 For a material value hypothesis define the current alternative, observable outcome, baseline measure, target/guardrail, test owner and continue/change/stop rule. Unknown thresholds or participant access may be deferred before ideation under an explicit experiment, but must be resolved before claiming a user study is executable or G6 is passed. Reuse the existing blueprint question/verification links and gate record, not a new compulsory schema.
 
-If the requested work is problem/value exploration, or the supported decision is defer/change/no build yet, return the compact decision and next test before framework detection or visual generation. If UI exploration remains warranted, continue through the applicable G1 checks below; a complete brief alone still does not authorize build.
+If the requested work is problem/value exploration, or the supported decision is defer/change/no build yet, complete Current rationale completion below, then return the compact decision and next test before framework detection or visual generation. If UI exploration remains warranted, continue through the applicable G1 checks below; a complete brief alone still does not authorize build.
 
 ## Framework and Design System Detection
 
@@ -82,6 +82,12 @@ When the next step will generate/edit screen sources, read source artifacts at `
 
 Before starting visual exploration, read executable transitions at `PLUGIN_ROOT/references/executable-transitions.md`, prepare the evidence workspace/request and run `scripts/check-workflow-evidence.mjs` with operation `brief-to-ideation`; then run the same request with `--consume` immediately before ideation. Require a passed receipt for this project/scope, including applicable G1/design-contract/blueprint checks. A blocked command stops exploration. This does not authorize scaffolding. Discovery-only/no-build, setup-only and experience audits do not need an invented ideation receipt. Exact clone/provided-source work uses its source/build transitions instead of a new G2 competition.
 
+## Phase evidence obligations
+
+Before handoff, persist current user value, responsibilities, intent, layout reasons, rejected alternatives and uncertainty in the authorized owning specification/blueprint. Reopen its stable references and include them in the handoff; if writing is not authorized, say the rationale was not persisted.
+
+For material why/impact dependencies, follow `PLUGIN_ROOT/references/product-lifecycle-reasoning.md`. For scoped specification retrieval, follow `PLUGIN_ROOT/references/product-information-disclosure.md` and use `PLUGIN_ROOT/scripts/read-product-information.mjs`; finish relevant continuations before acting.
+
 ## Critical Overrides
 
 - Before proceeding, use `load skills product-design:index` for routing.
@@ -95,9 +101,17 @@ Use saved product URLs, Figma files, screenshots, reference images, codebase pat
 
 Do not inspect every saved reference. Inspect only what the current task needs.
 
+## Optional tooling onboarding
+
+At the first involved workflow for an existing resolved target, or an explicit tooling request, read `PLUGIN_ROOT/references/tooling-onboarding.md` and run `PLUGIN_ROOT/scripts/check-product-tooling.mjs` in read-only mode with the absolute target root and actual host. Reuse a current session check rather than repeating it. A future scaffold has no target yet: defer checks until it exists. Missing Beads/Entire does not delay the brief or authorize setup; offer useful agent-performed setup once, obtain the separate tracking/recording/synchronization consent, then verify native association. Do not copy plugin-development settings.
+
 ## Planning and phase status
 
 For involved multi-phase work, follow planning-aware routing and optional tracking at `PLUGIN_ROOT/references/planning-and-tracking.md`. At brief handoff, identify the epic/outcome, G1 phase gate, acceptance criteria, dependencies, ready or blocked state, owner, evidence, and next task. Explicit tracking or an applicable existing `.beads/` routes to `product-design:project-status`. Planning vocabulary alone requires an offer and confirmation before changing Beads, without delaying handoff. Skip tracking offers for simple one-shot work.
+
+## Current rationale completion
+
+Save the current brief/decision and specification-to-source references before design handoff or discovery/no-build completion. Follow `PLUGIN_ROOT/references/product-experience-method.md` section current-rationale-completion for owning-file selection, authorized writes, stable-reference verification and not-persisted handling. Do not invent reasons, approvals, a tracker or historical retention.
 
 ## Handoff To The Next Workflow
 
@@ -117,7 +131,7 @@ Do not send this note for tiny static changes, quick audits, simple research, se
 
 For multi-step work, the brief playback must also state the exact journey start boundary, end outcome, common scenario/data, and the frozen scope and evidenceMode: multi-step requires full-evidence for three complete journeys regardless of risk, from trigger through outcome and critical recovery; lean is reserved for an explicitly isolated single-screen target. Then require the complete corrected selected set for explicit approval. Never propose composite multi-screen images.
 
-For a design handoff, done means supplied inputs and decisions are recovered; user responsibilities/value and material question-to-Product/UX/UI consequences are traced when involved; conditional intent/proactivity/native-output contracts are explicit; target user/context, problem, outcome, product value, observable success criterion, framework/design-system decisions, assumptions and confidence are explicit; G1 has a verdict where applicable; the journey boundary and shared scenario are frozen when applicable; defaults have been played back; and the next Skill has been loaded through the explicit instruction. For a discovery-only or no-build decision, done instead means the current alternative, evidence/counterevidence, material uncertainty, decision and next test are explicit; do not require a framework, generated sources or a fictitious ideation gate.
+For a design handoff, done means supplied inputs and decisions are recovered; user responsibilities/value and material question-to-Product/UX/UI consequences are traced when involved; conditional intent/proactivity/native-output contracts are explicit; target user/context, problem, outcome, product value, observable success criterion, framework/design-system decisions, assumptions and confidence are explicit; G1 has a verdict where applicable; the journey boundary and shared scenario are frozen when applicable; defaults have been played back; and the next Skill has been loaded through the explicit instruction. Both branches must complete Current rationale completion above. For a discovery-only or no-build decision, done instead means the current alternative, evidence/counterevidence, material uncertainty, decision and next test are explicit; do not require a framework, generated sources or a fictitious ideation gate.
 
 ## Product / UX / UI contract
 

@@ -254,6 +254,72 @@
         "read_when_relevant": [],
         "must_not_read": []
       }
+    },
+    {
+      "subject": "product-information-progressive-disclosure",
+      "language": "en",
+      "preconditions": [
+        "Use the current Skill and its applicable shared references; explain the scenario without claiming a build, study or capture occurred",
+        "The product documents, page metadata and source SHAs described in the prompt are hypothetical; no product fixtures or native stores may be accessed."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 8,
+        "timeout_seconds": 300
+      },
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "id": 9,
+      "name": "scoped-progressive-read-url-to-code",
+      "prompt": "For product-design:url-to-code at target.path \".\" (current contract root), explain this hypothetical case: An authorized exact-clone brief for /tmp/customer-product preserves a confirmation step. A developer asks why before simplifying the clone. The local long specifications/product.md records source-fidelity and recovery constraints at explicit anchor clone-confirmation. Explain a local rationale read without visiting the URL. This is explain-only: do not access the hypothetical product, run setup, change trackers or code, generate images, use the network or perform deployment.",
+      "assertions": [
+        "The plan uses bounded overview navigation before a targeted excerpt.",
+        "The plan selects a stable explicit anchor or entity identity.",
+        "The plan reads the relevant full semantic section rather than a detached rationale summary.",
+        "The plan retrieves applicable constraints before proposing a material action.",
+        "The plan retrieves relevant recovery behavior.",
+        "The plan retrieves relevant alternatives.",
+        "The response labels incomplete content as partial.",
+        "The plan uses SHA-bound continuation for remaining relevant text.",
+        "The response keeps text completeness separate from graph coverage.",
+        "The response does not promote retrieved text into validated evidence.",
+        "The response labels product execution as not run.",
+        "The plan preserves exact-clone scope rather than authorizing a redesign."
+      ],
+      "expected_output": "An explain-only, source-grounded information retrieval plan with explicit scope, completeness and revision limits. All hypothetical product reads and actions remain planned or not run; no readiness or recovered-history claim follows from the plan.",
+      "coverage_tags": [
+        "language:en",
+        "scope:explain",
+        "capability:progressive-disclosure",
+        "risk:partial-context"
+      ],
+      "status": "not-run",
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md",
+          "PLUGIN_ROOT/references/product-information-disclosure.md"
+        ],
+        "read_when_relevant": [
+          "PLUGIN_ROOT/references/product-lifecycle-reasoning.md",
+          "PLUGIN_ROOT/scripts/read-product-information.mjs",
+          "PLUGIN_ROOT/references/executable-transitions.md"
+        ],
+        "must_not_read": [
+          "/tmp/customer-product/.beads/",
+          "/tmp/customer-product/.entire/"
+        ]
+      }
     }
   ]
 }

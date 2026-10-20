@@ -6,6 +6,14 @@ These rules override generic assistant defaults for Product Design work.
 
 - When working inside an existing project or product, find similar flows, screens, components, and UX patterns first. Build on the product's existing design system. Do not reinvent the wheel. Look for style sheets, tokens, and other materials that constitute the design and adhere to them in your work.
 
+## Lifecycle evidence reasoning
+
+- For involved work and material change-impact questions, follow [product lifecycle reasoning](product-lifecycle-reasoning.md): retrieve, traverse declared rationale/impact, explore material uncertainty, verify actual authority/bytes, then act within scope. Missing/stale links and bounded graph coverage do not grant readiness or renew approvals. Native Beads/Entire remain optional authorities, not duplicate stores.
+
+## Optional tooling
+
+- For the first involved workflow on a resolved target or an explicit tracking/provenance/setup request, follow [tooling onboarding](tooling-onboarding.md). Use a current session preflight when available; no check/setup loop on every prompt. Missing Beads or Entire does not block local design. The agent performs setup only with target-bound consent and preserves external agents and existing configuration; no automatic initialization hook.
+
 ## Saved User Context
 
 - If `user-context.md` exists, use it by default.

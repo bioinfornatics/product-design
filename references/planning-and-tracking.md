@@ -2,6 +2,8 @@
 
 Use this contract for involved, multi-phase Product Design work. It adds consistent planning vocabulary without making project tracking a prerequisite.
 
+For the first involved workflow on a resolved target or an explicit tooling request, apply [optional tooling onboarding](tooling-onboarding.md). A read-only capability check is not tracking activation: warn/offer once when useful, preserve native association and obtain consent before setup. Beads/Entire remain optional; the plugin development configuration is not the target product configuration.
+
 ## Signals and activation
 
 - **Explicit tracking signal:** the user names Beads, `bd`, `product-design:project-status`, issue tracking, or asks to track status/progress. Route to `product-design:project-status`; this permits tracking within the requested scope.

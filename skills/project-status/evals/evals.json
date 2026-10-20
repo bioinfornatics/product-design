@@ -316,6 +316,246 @@
         "read_when_relevant": [],
         "must_not_read": []
       }
+    },
+    {
+      "subject": "product-design-project-status-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "id": 8,
+      "name": "entire-external-goose-preserve-enabled-project-status",
+      "prompt": "For product-design:project-status at target.path \".\" (the current contract root), explain onboarding for this hypothetical request: Entire is already enabled in /tmp/customer-product and my external Goose agent works, but its built-in agents list omits Goose. Explain onboarding for this involved Product Design project. Provide only a plan; do not execute setup or change any tracker/integration.",
+      "assertions": [
+        "The plan accepts working external Goose support and does not infer unsupported from the built-in list.",
+        "The plan preserves existing enabled configuration without rerunning enable.",
+        "The plan distinguishes external availability, hook installation and actual captured provenance.",
+        "The plan does not copy plugin development .entire or .agents configuration into the target.",
+        "The response labels setup and verification planned or not run, not completed."
+      ],
+      "expected_output": "An explain-only onboarding plan. The plan accepts working external Goose support and does not infer unsupported from the built-in list. The plan preserves existing enabled configuration without rerunning enable. The plan distinguishes external availability, hook installation and actual captured provenance. The plan does not copy plugin development .entire or .agents configuration into the target. No setup, checkpoint capture or product QA is claimed.",
+      "coverage_tags": [
+        "language:en",
+        "scope:explain",
+        "capability:tooling-onboarding",
+        "risk:consent"
+      ],
+      "status": "not-run"
+    },
+    {
+      "subject": "product-design-project-status-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      },
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "id": 9,
+      "name": "onboard-consent-and-wrong-target-project-status",
+      "prompt": "For product-design:project-status at target.path \".\" (the current contract root), explain onboarding for this hypothetical request: I want native task tracking and development provenance for /tmp/customer-product, not the plugin development repository. The tools are installed but setup is incomplete; explain the next decisions. Provide only a plan; do not execute setup or change any tracker/integration.",
+      "assertions": [
+        "The plan verifies native target/tracker association and does not reinitialize ambiguous or redirected data.",
+        "The plan requests target-bound Beads initialization consent separately from Entire recording and synchronization consent.",
+        "The plan recognizes telemetry=false does not disable recording or synchronization.",
+        "The agent owns authorized setup commands.",
+        "The plan reviews installed CLI help before setup.",
+        "The plan reruns preflight immediately before setup.",
+        "The plan verifies actual resulting target changes after setup.",
+        "The plan never silently initializes Git, imports history, forces hook replacement or performs a push.",
+        "The response labels setup and verification planned or not run, not completed."
+      ],
+      "expected_output": "An explain-only onboarding plan. The plan verifies native target/tracker association and does not reinitialize ambiguous or redirected data. The plan requests target-bound Beads initialization consent separately from Entire recording and synchronization consent. The plan recognizes telemetry=false does not disable recording or synchronization. The agent owns authorized setup commands. The plan reviews installed CLI help before setup. The plan reruns preflight immediately before setup. The plan verifies actual resulting target changes after setup. The plan never silently initializes Git, imports history, forces hook replacement or performs a push. No setup, checkpoint capture or product QA is claimed.",
+      "coverage_tags": [
+        "language:en",
+        "scope:explain",
+        "capability:tooling-onboarding",
+        "risk:consent"
+      ],
+      "status": "not-run"
+    },
+    {
+      "subject": "product-design-project-status-workflow-contract",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "id": 10,
+      "name": "bounded-rationale-and-stale-evidence-project-status",
+      "prompt": "For product-design:project-status at target.path \".\" (current contract root), explain this hypothetical lifecycle case: A previous change is closed in Beads. The product rationale changed since its verification, and a linked product criterion is still only proposed. Explain how you would resume involved Product Design work for /tmp/customer-product. This is explain-only: do not modify trackers, run generation, change applications or perform captures/deployment.",
+      "assertions": [
+        "The plan retrieves the owning product specifications rather than treating task closure as current approval.",
+        "The plan follows declared upstream rationale and downstream states or criteria.",
+        "The plan reports the changed evidence dependency as stale.",
+        "The plan keeps the proposed criterion distinct from an executed test result.",
+        "The plan preserves historical task completion unless a scoped new work decision requires a change.",
+        "The plan does not refresh old hashes to retain an old approval.",
+        "The response labels all external execution planned or not run."
+      ],
+      "expected_output": "An explain-only lifecycle plan. The plan retrieves the owning product specifications rather than treating task closure as current approval. The plan follows declared upstream rationale and downstream states or criteria. The plan reports the changed evidence dependency as stale. The plan keeps the proposed criterion distinct from an executed test result. The plan preserves historical task completion unless a scoped new work decision requires a change. The plan does not refresh old hashes to retain an old approval. No setup, capture, generation, tracker change, product verification or deployment is claimed.",
+      "coverage_tags": [
+        "language:en",
+        "scope:explain",
+        "capability:lifecycle-reasoning",
+        "risk:evidence-applicability"
+      ],
+      "status": "not-run",
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md"
+        ],
+        "read_when_relevant": [],
+        "must_not_read": []
+      }
+    },
+    {
+      "subject": "product-information-progressive-disclosure",
+      "language": "en",
+      "preconditions": [
+        "The current skill root is a read-only contract target; no runnable app, source images, gate records, interview corpus, annotation inbox or hosting fixtures are supplied.",
+        "Artifacts or completed actions mentioned in the prompt are hypothetical scenario facts, not verified execution evidence.",
+        "This is a workflow-contract explanation, including legacy action-worded requests; it is not an execution test or proof of user value.",
+        "Filesystem access can load contracts; application/browser/provider/network/Beads/deployment execution is unavailable.",
+        "Behavioral status is not run; future baseline comparisons require equivalent contract access and budget.",
+        "The product documents, page metadata and source SHAs described in the prompt are hypothetical; no product fixtures or native stores may be accessed."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": [
+          "developer"
+        ]
+      },
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "id": 13,
+      "name": "scoped-progressive-read-project-status",
+      "prompt": "For product-design:project-status at target.path \".\" (current contract root), explain this hypothetical case: A closed Beads task in /tmp/customer-product points to specifications/product.md#decision-review. A stakeholder asks why the task existed. The long specification still owns the product decision, while the task owns its discussion. Explain a scoped read with the task details available natively on demand. This is explain-only: do not access the hypothetical product, run setup, change trackers or code, generate images, use the network or perform deployment.",
+      "assertions": [
+        "The plan uses bounded overview navigation before a targeted excerpt.",
+        "The plan selects a stable explicit anchor or entity identity.",
+        "The plan reads the relevant full semantic section rather than a detached rationale summary.",
+        "The plan retrieves applicable constraints before proposing a material action.",
+        "The plan retrieves relevant recovery behavior.",
+        "The plan retrieves relevant alternatives.",
+        "The response labels incomplete content as partial.",
+        "The plan uses SHA-bound continuation for remaining relevant text.",
+        "The response keeps text completeness separate from graph coverage.",
+        "The response does not promote retrieved text into validated evidence.",
+        "The response labels product execution as not run.",
+        "The plan retrieves task-specific discussion through the native Beads authority on demand.",
+        "The response identifies an unread task link as link-only evidence.",
+        "The plan avoids preloading Entire transcripts."
+      ],
+      "expected_output": "An explain-only, source-grounded information retrieval plan with explicit scope, completeness and revision limits. All hypothetical product reads and actions remain planned or not run; no readiness or recovered-history claim follows from the plan.",
+      "coverage_tags": [
+        "language:en",
+        "scope:explain",
+        "capability:progressive-disclosure",
+        "risk:partial-context"
+      ],
+      "status": "not-run",
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md",
+          "PLUGIN_ROOT/references/product-information-disclosure.md"
+        ],
+        "read_when_relevant": [
+          "PLUGIN_ROOT/references/product-lifecycle-reasoning.md",
+          "PLUGIN_ROOT/scripts/read-product-information.mjs",
+          "PLUGIN_ROOT/references/executable-transitions.md"
+        ],
+        "must_not_read": [
+          "/tmp/customer-product/.beads/",
+          "/tmp/customer-product/.entire/"
+        ]
+      }
     }
   ]
 }
